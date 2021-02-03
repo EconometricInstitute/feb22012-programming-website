@@ -17,7 +17,6 @@
     "code-states-visualizer": "^0.1.1",
     "color": "^3.1.1",
     "commonmark": "^0.29.0",
-    "core-js": "^3.3.3",
     "crowdsorcerer": "^0.1.79",
     "fetch-ponyfill": "^6.0.2",
     "focus-visible": "^5.0.2",
@@ -51,9 +50,7 @@
     "moocfi-quizzes": "^0.4.4",
     "pdf-slideshow": "^0.1.4",
     "prismjs": "^1.17.1",
-    "react": "^16.10.2",
     "react-content-loader": "^4.3.2",
-    "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-i18next": "^10.13.1",
     "react-jss": "^10.0.0",
@@ -98,10 +95,13 @@
     "@babel/plugin-proposal-optional-chaining": "^7.6.0",
     "@babel/preset-env": "^7.6.3",
     "babel-preset-gatsby": "^0.2.20",
+    "core-js": "^2.6.5",
     "husky": "^3.0.9",
     "import-all.macro": "^2.0.3",
     "npm-check": "^5.9.0",
-    "prettier": "^1.17.1"
+    "prettier": "^1.17.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "husky": {
     "hooks": {
