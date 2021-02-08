@@ -8,8 +8,8 @@ const NotFoundPage = () => (
   <Layout>
     <Container>
       <Helmet title="404" />
-      <h1>Ei löytynyt</h1>
-      <p>Olet päätynyt osoitteeseen, jota ei ole olemassa.</p>
+      <h1>Page not found.</h1>
+      <p>You are trying to access a page that does not exist.</p>
     </Container>
   </Layout>
 )
