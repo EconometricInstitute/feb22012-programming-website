@@ -1,5 +1,0 @@
-# Ignore .js files that were causing issues when committing
-# can't be bothered to check why they're not pretty
-src/components/Footer.js
-src/components/TreeView/TreeViewItem.js
-src/partials/PagesInThisSection.js
