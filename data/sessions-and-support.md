@@ -5,8 +5,8 @@ hidden: false
 information_page: true
 ---
 
-Support for this course will mainly be provided through scheduled sessions. For an overview of when the sessions take place, see the online timetable: [EN](https://timetables.eur.nl/link?timetables.0.key=FEB21011X&timetables.0.type=module&timetables.0.source=2020&timetables.1.key=FEB21011X&timetables.1.type=examrequirement&ignoreEmpty=true&ignoreNotFound=true&view=list&term=2020:Academic%20Year
-) [NL](https://timetables.eur.nl/link?timetables.0.key=FEB21011&timetables.0.type=module&timetables.0.source=2020&timetables.1.key=FEB21011&timetables.1.type=examrequirement&ignoreEmpty=true&ignoreNotFound=true&view=list&term=2020:Academic%20Year). Moreover, additional help can be obtained by posting questions on the course `Canvas Discussion Board` page.
+Support for this course will mainly be provided through scheduled sessions. For an overview of when the sessions take place, see the online timetable: [EN](https://timetables.eur.nl/link?timetables.0.key=FEB21011X&timetables.0.type=module&timetables.0.source=2020
+) [NL](https://timetables.eur.nl/link?timetables.0.key=FEB21011&timetables.0.type=module&timetables.0.source=2020). Moreover, additional help can be obtained by posting questions on the course `Canvas Discussion Board` page.
 
 ### Lecture videos
 Due to the current circumstances, there will not be a regular lecture for this course. Instead, every week has a series of videos that become available on Monday through Canvas. Most videos are around 10-20 minutes in length, and each video discusses a topic from that week. You are recommended to watch the videos on Monday, as they are intended to get you started with the material of the week, and provide some further depth. After watching the videos, you should be well prepared to go through the material and practice exercises of the week.
