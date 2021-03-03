@@ -24,7 +24,9 @@ public class Program {
 }
 ```
 
-Below is an example of a program which asks for user input, reads the text entered by the user, and then prints it. The comments will guide you through the example for understanding. Have finished getting input, one should close the scanner with the command `scanner.close();`.
+Below is an example of a program which asks for user input, reads the text entered by the user, and then prints it. The comments will guide you through the example for understanding. Have finished getting input, one should close the scanner with the command `scanner.close();`. 
+
+Do be careful when closing a scanner that uses `System.in`, as closing the scanner also closes `System.in`. This means you cannot create a new scanner that uses `System.in`. So, you should only close it when you are certain you will not need to use `System.in` again.
 
 ```java
 // Introduce the scanner tool used for reading user input
