@@ -180,7 +180,7 @@ for (int i; i < 8; i++) {
 ```
 
 ###  Readability over compactness
-The goal of programming is not about writing your code as compactly as possible, but to write it as readable (for humans) as possible. *Writing your code very compactly will not make it run faster in most cases*. It will cause you to make more mistakes and it will make it more difficult for others to understand what you are doing. On the other hand, excessive code can also make it hard to understand what's going on. It is important to strike the right balance to ensure a human can read it most easily.
+The goal of programming is not to write your code as compactly as possible, but to write it as readable (for humans) as possible. *Writing your code very compactly will not make it run faster in most cases*, but it will cause you to make more mistakes and it will make it more difficult for others to understand what you are doing. On the other hand, excessive code can also make it hard to understand what's going on. It is important to strike the right balance to make easy to understand for a human what your code does.
 
 ```java
 // Good
