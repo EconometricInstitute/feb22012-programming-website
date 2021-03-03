@@ -177,7 +177,7 @@ public class Program {
         String second = reader.nextLine();
         System.out.println("Write the third string:");
         String third = reader.nextLine();
-        scanner.close();
+        reader.close();
 
         System.out.println("Last string you wrote was " + third + ", which ");
         System.out.println("was preceded by " + second+ ".");
