@@ -21,6 +21,10 @@ const courseSettings = {
       title: "Grading and exams",
       path: "/grading-and-exams",
     },
+    {
+      title: "Style guide",
+      path: "/style-guide",
+    },
     { separator: true, title: "Java Programming I" },
   ],
   sidebarFuturePages: [
