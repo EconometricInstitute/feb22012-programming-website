@@ -29,9 +29,7 @@ Other popular programming languages using objects include `C++`, `C#` and `Pytho
 All of these, including Java, rank within the [top 10 of most popular programming languages](https://octoverse.github.com/#top-languages).
 Learning Java will thus provide you with a good basis for learning many other popular (object-oriented) programming languages.
 
-Another important reason for the popularity of Java is that a Java program can be run on any platform.
-This means that you can easily share your written program with someone else and that this person can directly run your code without having to make changes or to transform the code to a different format.
-This is made possible by the `Java Virtual Machine (JVM)`, which translates the source code that is run to code (`bytecode`) that is understandable by the operating system and computer you are running it on.
+Another important reason for the popularity of Java is that a Java program can be run on any platform. This means that you can easily share your written program with someone else and that this person can directly run your code without having to make changes or to transform the code to a different format. This is made possible by the `Java Compiler`, which translates the source code that the computer needs to run to code (`bytecode`). This bytecode is then compiled into code your computer can understand, `CPU-specific Assembly`, by the JVM (Java Virtual Machine); that way the CPU on that computer can execute it.
 
 ## This course
 In this course, you will become familiar with some of the most important concepts of Java.
