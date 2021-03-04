@@ -26,7 +26,7 @@ Hello World!
 
 The same command can be used to print other text as well. For example, we might want to say goodbye as well. We would then again use the `System.out.println` command, now putting a different value between the brackets. For example, we could use the command as follows:
 ``` Java
-System.our.println("Goodbye!")
+System.out.println("Goodbye!")
 ```
 This then leads to the below output being printed to the console.
 
