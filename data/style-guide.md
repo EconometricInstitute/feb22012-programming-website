@@ -67,19 +67,22 @@ int sumPrimes
 
 
 ### Spacing
-Like in English, every comma should be followed by a space, and there should be no space before a comma. Use a single space to separate tokens.
+Like in English, every comma should be followed by a space, and there should be no space before a comma. Use a single space to separate tokens. One exception is the use of spaces to align similar statements across multiple lines.
 
 ```java
 // Good
 public static void printNumbers(int num1, int num2)
 1 + 2
-int number
+int number = 4;
+
+if (number > 1)   doSomething();
+if (number < 333) doSomethingElse();
 
 // Bad
 public static void printNumbers(int num1 ,int num2)
 1+ 2
 1  +     2
-int  number
+int  number = 7;
 ```
 
 Place a space after control statements (`if`, `while`, `else`). Do not place a space between a method and its arguments. Do not put spaces around code in parentheses
