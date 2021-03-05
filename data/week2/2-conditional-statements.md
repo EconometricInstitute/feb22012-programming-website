@@ -419,7 +419,7 @@ int number = 145;
 if (number < 0 || number > 100) {
     System.out.println("It is! :)");
 } else {
-    System.out.println("It is not :(")
+    System.out.println("It is not :(");
 }
 ```
 
@@ -431,7 +431,7 @@ int number = 7;
 if (!(number > 4)) {
     System.out.println("The number is not greater than 4.");
 } else {
-    System.out.println("The number is greater than 4.")
+    System.out.println("The number is greater than 4.");
 }
 ```
 
