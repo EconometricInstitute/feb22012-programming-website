@@ -225,6 +225,11 @@ The numbers are equal!
 
 </programming-exercise>
 
+In the following video, we show what it looks like when we write a program using if, else and if-else systems in IntelliJ.
+
+<panopto src="https://eur.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=72ad852b-4f50-4e72-bdac-ace200f7437c&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&start=0&interactivity=all"></panopto>
+
+
 ## Conditional Statement Expression and the Boolean Variable
 The value that goes between the parentheses of the conditional statement should be of type boolean after the evaluation. `boolean` type variables are either _true_ or _false_. A conditional statement can also be done as follows:
 
