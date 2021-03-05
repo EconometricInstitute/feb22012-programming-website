@@ -132,9 +132,9 @@ if (importantSecurityCheck)
 
 ### Comments
 
-You should use comments in order to indicate what certain segments of your code do, and to explain more difficult parts of your code. Comments can be on their own line, or even span multiple lines, but very short comments are also allowed after code (inline comment). 
+You should use comments in order to indicate what certain segments of your code do, and to explain more difficult parts of your code. Comments can be on their own line, or even span multiple lines, but very short comments are also allowed after code (inline comment). Do not use comments if they are not necessary.
  
-Note that the following example contains an excessive amount of comments for the sake of the example. In practice, no comments would be necessary here because the naming makes it obvious what the code does.
+Note that the following example contains an excessive amount of comments for the sake of the example. In practice, **no comments would be necessary here because the naming makes it obvious what the code does**.
 
 ```java
 /* Method that prints its two arguments
@@ -147,6 +147,13 @@ public static void printNumbers(int num1, int num2) {
 }
 ```
 
+For clarity, the following is considered bad, as the comments only make the code less readable.
+```java
+// Bad
+x = 5; // I assign 5 to x
+y = x + 7; // y becomes seven larger than x
+return x * y; // I return the result
+```
 
 ###  Blank lines
 Use blank lines between parts of your code to improve readability. A good rule of thumb is to use a blank line whenever the code is "semantically" different. For example, two assignment statement can be beneath each other. However, a subsequent method call should be seperated by a blank line.
