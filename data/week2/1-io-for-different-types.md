@@ -124,7 +124,9 @@ We can also use other flags to represent other variable types. In particular:
 - `%.xf` represents a `double` value as above, where the number `x` indicates the number of decimals we want to print behind the comma.
 - `%.xe` can be used to print a `double` in scientific notation. In scientific notation we print the value in the form `y*10^z` where `y` is a fractional number below 10 and `z` is a round number. The number `x` indicates in this case the number of digits that we display behind the comma of the `double` y.
 
-Note that in all these cases the variable itself is not actually changed when printing. Instead, the `printf` method only determines how the variable is displayed in the printed output.
+Note that in all these cases the variable itself is not actually changed when printing. Instead, the `printf` method only determines how the variable is displayed in the printed output. 
+
+Furthermore, notice that unlike `println`, `printf` does not start a new line. So, if you do want to start a new line, you will have to do this manually.
 
 <programming-exercise name="Formatted Printing">
 
