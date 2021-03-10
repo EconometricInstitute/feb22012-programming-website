@@ -105,7 +105,7 @@ From here on out, when introducing methods, we will not explicitly mention that 
 
 <programming-exercise name='Speaking Method'>
 
-Create a method called `printText` which prints the phrase "In a hole in the ground there lived a method" and a newline.
+Create a method called `printText` which prints the phrase "This method speaks!" and a newline.
 
 ```java
 public static void main(String[] args) {
@@ -121,7 +121,7 @@ The output of the program:
 
 <sample-output>
 
-In a hole in the ground there lived a method
+This method speaks!
 
 </sample-output>
 
@@ -149,13 +149,13 @@ Sample output:
 
 How many times?
 **7**
-In a hole in the ground there lived a method
-In a hole in the ground there lived a method
-In a hole in the ground there lived a method
-In a hole in the ground there lived a method
-In a hole in the ground there lived a method
-In a hole in the ground there lived a method
-In a hole in the ground there lived a method
+This method speaks!
+This method speaks!
+This method speaks!
+This method speaks!
+This method speaks!
+This method speaks!
+This method speaks!
 
 </sample-output>
 
