@@ -722,6 +722,8 @@ public static int sum(int first, int second) {
 
 Now the value of the variable `number1` is copied as the value of the method parameter `first`, and the value of the variable `number2` is copied as the value of the parameter `second`.
 
+In the following video, it is shown what it looks like to implement a method in IntelliJ.
+
 <panopto src="https://eur.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=93c37ed8-5e1a-478d-976b-acec000bad09&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&start=0&interactivity=all"></panopto>
 
 <programming-exercise name='Summation'>
