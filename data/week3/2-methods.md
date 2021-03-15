@@ -135,7 +135,7 @@ Expand the previous program so that the main program asks the user for the numbe
 ```java
 public static void main(String[] args) {
     // ask the user for the number of times that the phrase will be printed
-    // use the while command to call the method a suitable number of times
+    // use the for command to call the method a suitable number of times
 }
 
 public static void printText() {
