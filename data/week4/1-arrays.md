@@ -307,8 +307,8 @@ Array is an object, so when you change the array inside the method, the changes 
 
 <programming-exercise name='Average of array'>
 
-The class ArrayAverage has a method `public static double computeAverageOfArray(int[] array)`. Complete the method so that it computes and returns the sum of the numbers in the array it receives as parameter.
-You can try out the computation of the sum with this example:
+The class ArrayAverage has a method `public static double computeAverageOfArray(int[] array)`. Complete the method so that it computes and returns the average of the numbers in the array it receives as parameter.
+You can try out the computation of the average with this example:
 
 ```java
 int[] numbers = {5, 1, 3, 4, 2};
