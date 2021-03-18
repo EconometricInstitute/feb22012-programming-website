@@ -45,15 +45,15 @@ Creating playlists is easy with the help of the class above.
 
 ```java
 Playlist list = new Playlist();
-list.addSong("Sorateiden kuningas");
-list.addSong("Teuvo, maanteiden kuningas");
+list.addSong("Killer Queen");
+list.addSong("Crazy Little Thing Called Love");
 list.printSongs();
 ```
 
 <sample-output>
 
-Sorateiden kuningas
-Teuvo, maanteiden kuningas
+Killer Queen
+Crazy Little Thing Called Love
 
 </sample-output>
 
