@@ -1007,6 +1007,12 @@ public String toString() {
 }
 ```
 
+
+## Video
+In the following video, we show how a class can be implemented from scratch.
+
+<panopto src="https://eur.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=5cb642bd-b2c1-4770-a00a-acf20112d694&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&start=0&interactivity=all"></panopto>
+
 <programming-exercise name='Statistics (4 parts)'>
 
 <h2>Count</h2>
