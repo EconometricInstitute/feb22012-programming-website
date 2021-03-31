@@ -232,7 +232,7 @@ Write a `Calendar` class that is able to store dates. The class should have:
 - A constructor without any parameters
 - A method `public void addDate(LocalDate date)` which adds a date to the Calendar
 - A method `public void print()` that prints the dates in the Calendar. See the usage below for the format of printing. Moreover, it should print the text `Calendar is empty` if there are no dates in the calendar.
-- A method `public LocalDate latestDate()` which returns the last date (in time) on the Calendar. If no date is present in the calendar, return `null`
+- A method `public LocalDate getLatestDate()` which returns the last date (in time) on the Calendar. If no date is present in the calendar, return `null`
 
 The usage of this class should looks as follows:
 ``` java
