@@ -11,19 +11,19 @@ const courseSettings = {
   sidebarEntries: [
     {
       title: "About the course",
-      path: "/feb22012-programming-website/",
+      path: "/",
     },
     {
       title: "Sessions and Support",
-      path: "/feb22012-programming-website/sessions-and-support",
+      path: "/sessions-and-support",
     },
     {
       title: "Grading and exams",
-      path: "/feb22012-programming-website/grading-and-exams",
+      path: "/grading-and-exams",
     },
     {
       title: "Style guide",
-      path: "/feb22012-programming-website/style-guide",
+      path: "/style-guide",
     },
     { separator: true, title: "Java Programming II" },
   ],
