@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/3. Reading and Writing</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/2. Errors and Exceptions</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/1. Random numbers</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week1/4. Immutable objects</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -52,7 +53,6 @@
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-12/2-arraylist-and-hashtable</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-12</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-11/5-conclusion</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-11/4-processing-files</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-11/2-packages</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-11</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-10/4-summary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
