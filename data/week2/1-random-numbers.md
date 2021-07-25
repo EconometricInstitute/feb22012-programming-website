@@ -1,5 +1,5 @@
 ---
-path: '/week2/1. Random numbers'
+path: '/week2/1-random-numbers'
 title: 'Random numbers'
 hidden: false
 ---
@@ -7,15 +7,15 @@ hidden: false
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
 - You know how to generate random numbers, and know some situations where random numbers are needed.
-    
+
 - You can use Java `Random` class to generate random numbers.
-    
+
 - You know what a seed is and how to use it.
 
 </text-box>
 
 ## Randomness
-Encryption algorithms, machine learning and making computer games less predictable all require randomness. It is hard to realize randomness on a computer, since a computer can't make decisions on its own: a computer works deterministically. But, we can model randomness using pseudo random numbers. 
+Encryption algorithms, machine learning and making computer games less predictable all require randomness. It is hard to realize randomness on a computer, since a computer can't make decisions on its own: a computer works deterministically. But, we can model randomness using pseudo random numbers.
 In Java, the most-used Pseudo Random Number (PRN) generator is a linear congruential generator, following the recursive relation of
 
 X<sub>n+1</sub> = (a X<sub>n</sub> + c) mod m
@@ -50,23 +50,23 @@ The program output is not always the same, unless we would have created the Rand
 <sample-output>
 
 2
-    
+
 2
-    
+
 4
-    
+
 3
-    
+
 4
-    
+
 5
-    
+
 6
-    
+
 0
-    
+
 7
-    
+
 8
 
 </sample-output>
@@ -79,15 +79,15 @@ Write a program that prompts the user for how many random numbers should be gene
 <sample-output>
 
 How many random numbers should be printed?
-    
+
 **4**
-    
+
 9
-    
+
 1
-    
+
 4
-    
+
 3
 
 </sample-output>
@@ -95,23 +95,23 @@ How many random numbers should be printed?
 <sample-output>
 
 How many random numbers should be printed?
-    
+
 **8**
-    
+
 9
-    
+
 6
-    
+
 0
-    
+
 9
-    
+
 10
-    
+
 7
-    
+
 3
-    
+
 3
 
 </sample-output>
@@ -172,23 +172,23 @@ The output could be as follows:
 <sample-output>
 
 1
-    
+
 6
-    
+
 3
-    
+
 5
-    
+
 3
-    
+
 3
-    
+
 2
-    
+
 2
-    
+
 6
-    
+
 1
 
 </sample-output>
@@ -276,19 +276,19 @@ The program output could be:
 <sample-output>
 
 Next week's weather forecast:
-    
+
 Mon: It snows 1 degrees.
-    
+
 Tue: It snows 1 degrees.
-    
+
 Wed: The sun shines -2 degrees.
-    
+
 Thu: The sun shines 0 degrees.
-    
+
 Fri: It snows -3 degrees.
-    
+
 Sat: It snows -3 degrees.
-    
+
 Sun: The sun shines -5 degrees
 
 </sample-output>

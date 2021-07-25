@@ -1,23 +1,23 @@
 ---
-path: '/week2/2. Errors and exceptions'
+path: '/week2/2-errors-and-exceptions'
 title: 'Errors and Exceptions'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
- 
+
  - You know the error classifications and how to solve them.
- 
+
  - You know what exceptions are and how to handle them
- 
+
  - You can throw exceptions
- 
+
  - You know that some exceptions have to be handled and that some exceptions do not have to be handled.
 
 </text-box>
 
 ## Errors
-When programming, many errors can occur. You experienced some of them already last year when you took the course Introduction to Programming. We can classify errors in three rubrics, namely compile time errors, runtime errors and logic errors. In the course Introduction to Programming, we focussed on prevention of logic errors by commenting our code. In this section, we emphasize more on the compile time and runtime errors, which also have been shortly mentioned before. 
+When programming, many errors can occur. You experienced some of them already last year when you took the course Introduction to Programming. We can classify errors in three rubrics, namely compile time errors, runtime errors and logic errors. In the course Introduction to Programming, we focussed on prevention of logic errors by commenting our code. In this section, we emphasize more on the compile time and runtime errors, which also have been shortly mentioned before.
 
 The compiler finds some of these errors before we even run our code. These errors are called compile times errors. Several examples of compile time errors are syntax errors, type errors, and structural errors.
 
@@ -130,7 +130,7 @@ _Amount exceeds balance of 50. Please try again._
 **20**
 
 _Balance is now: 30_
- 
+
 </sample-output>
 
 You can also choose to catch all exceptions at once with the general statement `catch (Exception e)`. Here is an example in which we look at the situation of parsing strings to integers.
@@ -153,7 +153,7 @@ try {
 <sample-output>
 
 Give a number: **5**
- 
+
 Good job!
 
 </sample-output>
@@ -161,7 +161,7 @@ Good job!
 <sample-output>
 
 Give a number: **no!**
- 
+
 User input was not a number.
 
 </sample-output>
@@ -169,7 +169,7 @@ User input was not a number.
 The code in the `catch` block is executed immediately if the code in the `try` block throws an exception. This can be seen from the above example, because the print statement below the line calling the `Integer.parseInt` method in the `try` block was executed if and only if no exception was thrown. The user input, in this case the string `no!`, is given to the `Integer.parseInt` method as a parameter. The method throws an error if the string cannot be parsed into an integer. Note, that the code within the `catch` block is executed *only* if an exception is thrown.
 
 ### Try - finally
-Another language construct that we can use with `try`, is the `finally` clause. The `finally` block is always executed as soon as the try block is exited, no matter the reason; whether the end was just reached, an exception was raised or even when a value was returned. 
+Another language construct that we can use with `try`, is the `finally` clause. The `finally` block is always executed as soon as the try block is exited, no matter the reason; whether the end was just reached, an exception was raised or even when a value was returned.
 Here is an example:
 ```java
 String s = "hello over there.";
@@ -204,8 +204,8 @@ In the above example, the recourse is right behind the try statement. Now the re
 Also, no `catch` is required, since the `FileNotFoundException` is thrown by the method. However, you can still add a catch block like is done here, to get information if an exception was thrown anyways.
 
 ### Shifting the responsibility
-Methods and constructors can throw exceptions. There are roughly two categories of exceptions. 
-The first category is types of exceptions that **may** be caught, such as the `IllegalArgumentException`, the `IllegalStateException`, and the `NumberFormatException`. 
+Methods and constructors can throw exceptions. There are roughly two categories of exceptions.
+The first category is types of exceptions that **may** be caught, such as the `IllegalArgumentException`, the `IllegalStateException`, and the `NumberFormatException`.
 Other types of exceptions **must** be caught or declared in the method header using `throws`. These are called **checked exceptions**, such as the `IOException` and the `FileNotFoundException`.
 Some problems are so severe that they will stop your program if they occur. These are called `Error` instead of `Exception`, such as the `OutOfMemoryError` and `StackOverflowError`.
 
@@ -322,7 +322,7 @@ Grade illegalGrade = new Grade(22);
 <sample-output>
 
 3
- 
+
 Exception in thread "..." java.lang.IllegalArgumentException: Grade must be between 0 and 5.
 
 </sample-output>

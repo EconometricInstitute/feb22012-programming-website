@@ -1,5 +1,5 @@
 ---
-path: '/week-5/4-primitive-and-reference-variables'
+path: '/week5/4-primitive-and-reference-variables'
 title: 'Primitive and reference variables'
 hidden: false
 ---

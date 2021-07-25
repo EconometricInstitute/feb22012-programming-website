@@ -1,5 +1,5 @@
 ---
-path: '/week-5/5-objects-and-references'
+path: '/week5/5-objects-and-references'
 title: 'Objects and references'
 hidden: false
 ---

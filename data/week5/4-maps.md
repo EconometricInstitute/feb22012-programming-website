@@ -1,5 +1,5 @@
 ---
-path: '/part-8/2-hash-map'
+path: '/week5/2-hash-map'
 title: 'Hash Map'
 hidden: false
 ---
@@ -1878,11 +1878,11 @@ System.out.println(facility.storageUnits());
 The order of the storage units in the output may be different from this example.
 
 </programming-exercise>
- 
- 
+
+
  ### The Map Interface
 
-The <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html">Map</a> interface defines the basic behavior associated with hash tables. Because the HashMap class implements the `Map` interface, it can also be accessed through the `Map` interface. 
+The <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Map.html">Map</a> interface defines the basic behavior associated with hash tables. Because the HashMap class implements the `Map` interface, it can also be accessed through the `Map` interface.
 
 <br/>
 
@@ -1911,7 +1911,7 @@ hai: yes
 
 </sample-output>
 
-The `keySet` method returns a set of elements that implement the `Set` interface. You can use a for-each statement to go through a set that implements the `Set` interface. The hash values can be obtained from the hash table using the `values` method. The `values` method returns a set of elements that implement the `Collection` interface. Let's take a quick look at the `Set` and `Collection` interfaces. 
+The `keySet` method returns a set of elements that implement the `Set` interface. You can use a for-each statement to go through a set that implements the `Set` interface. The hash values can be obtained from the hash table using the `values` method. The `values` method returns a set of elements that implement the `Collection` interface. Let's take a quick look at the `Set` and `Collection` interfaces.
 
 <programming-exercise name='Map as a method parameter' tmcname='part09-Part09_08.MapAsAMethodParameter'>
 
@@ -2316,7 +2316,7 @@ public class Store {
     }
 }
 ```
-    
+
 The following is a main method that stocks the stores warehouse and sends John to shop in the store.
 
 ```java

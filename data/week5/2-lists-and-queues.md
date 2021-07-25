@@ -1,5 +1,5 @@
 ---
-path: '/part-12/2-arraylist-and-hashtable'
+path: '/week5/2-arraylist-and-hashtable'
 title: 'ArrayList and hash table'
 hidden: false
 ---

@@ -1,5 +1,5 @@
 ---
-path: "/week1/4. Immutable objects"
+path: "/week1/4-immutable-objects"
 title: "Immutable Objects"
 hidden: false
 ---
@@ -9,8 +9,8 @@ hidden: false
 - You know what immutable objects are.
 
 - You can create your own immutable object.
-  
-- You know the advantages and disadvantages of immutable objects.  
+
+- You know the advantages and disadvantages of immutable objects.
 
 </text-box>
 
@@ -21,9 +21,9 @@ Immutable objects **never change their state**, so that their values cannot be c
 An example of an immutable object is `BigInteger` which allows us to do integer calculations with numbers that are too big to fit in an `int` or `long`.
 First, you import it: `import java.math.BigInteger`. Then, take a look at this example where we use it:
 ```java
-/*To create an instance of BigInteger, we use a special static method valueOf, not a constructor. 
+/*To create an instance of BigInteger, we use a special static method valueOf, not a constructor.
 Some classes are designed this way by their programmers. **/
-BigInteger a = BigInteger.valueOf(233); 
+BigInteger a = BigInteger.valueOf(233);
 BigInteger addValue = Biginteger.ValueOf(144);
 BigInteger b = a;
 b.add(addValue);

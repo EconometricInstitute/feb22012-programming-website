@@ -1,3 +1,8 @@
+---
+path: "/week4/1-abstract-classes"
+title: "Abstract Classes"
+hidden: false
+---
 
 ## Abstract classes
 

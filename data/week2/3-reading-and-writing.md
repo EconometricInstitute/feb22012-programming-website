@@ -1,5 +1,5 @@
 ---
-path: '/week2/3. Reading and writing'
+path: '/week2/3-reading-and-writing'
 title: 'Reading and Writing'
 hidden: false
 ---
@@ -7,8 +7,8 @@ hidden: false
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
 - You refresh your memories of reading from files with use of Scanner.
-    
-- You can read a file with use of BufferedReader.    
+
+- You can read a file with use of BufferedReader.
 
 - You will be able to write to a file.
 
@@ -20,11 +20,11 @@ hidden: false
 Computers have several different programs for browsing files. These programs are specific to the operating system. All programs used for browsing files make use of the file system of the computer in one way or another. The computer's **file system** has the responsibility of keeping track of the locations of files on the hard drive as well as providing the ability to create new files and modify them. The file system's main responsibility is abstracting the true structure of the hard drive; a user or a program using a file doesn't need to care about how, or where, the file is actually stored.
 
 <text-box variant='hint' name='Organizing your file system'>
-    
+
 During your studies, you receive, use and create a lot of files. We strongly advise you to organize your file system well, so that searching for files remains simple. You can do this by creating a folder `Econometrics`, then create subfolders `Year 1`, `Year 2`, `Year 3` et cetera, and in these you can create a subfolder for each course you take. Of course, you can make your own choices on this. For more inspiration on structuring your file system, watch this video on [how to structure your file system](https://www.youtube.com/watch?v=bKjRKZxr-KY&ab_channel=ThomasFrank).
 
 Also, we highly recommend you to back-up your files from time to time, or to use a cloud service such as [Dropbox](https://www.dropbox.com/referrals/AACmbdSW9rvTWjuelMVNPq7xaUhsi3c65ao?src=global9) or [OneDrive](https://onedrive.live.com?invref=163a01a4ac2d7121&invscr=90).
-    
+
 </text-box>
 
 
@@ -161,7 +161,7 @@ The dictionary must also be able to translate both from Finnish to another langu
 <h2>The basic functionality</h2>
 
 For the dictionary, implement a constructor which takes no parameters, and the following methods:
-    
+
  - `public void add(String words, String translation)` adds a word to the dictionary. Every word has just one translation, and if the same word is added for the second time, nothing happens.
 
  - `public String translate(String word)` returns the translation for the given word. If the word is not in the dictionary, returns null.
@@ -334,7 +334,7 @@ In the beginning, the dictionary is loaded from a file, and, in the end, it is s
 </programming-exercise>
 
 ## Filtering a file
-Sometimes we want to read a file line by line and write it to another file line by line, filtering out the lines that we do not want to take. 
+Sometimes we want to read a file line by line and write it to another file line by line, filtering out the lines that we do not want to take.
 The program that we will present in the upcoming example only keeps a single line of data in the memory. If the lines are not too long, it does not matter how many lines there are.
 If a file has millions of lines, software such as Excel will try to read everything into memory at once and probably complain that the file is too large. In situations like that, it is very useful to process a file line-by-line.
 
@@ -351,5 +351,5 @@ public void filter(File in, File out, String pattern) throws IOException {
         pw.flush();
    }
 }
-``` 
+```
 

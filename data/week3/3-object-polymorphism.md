@@ -1,5 +1,5 @@
 ---
-path: '/part-9/3-object-polymorphism'
+path: '/week3/3-object-polymorphism'
 title: 'Object polymorphism'
 hidden: false
 ---

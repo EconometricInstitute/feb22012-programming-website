@@ -1,5 +1,5 @@
 ---
-path: '/week3/1. Interfaces and polymorphism'
+path: '/week3/1-Interfaces-and-polymorphism'
 title: 'Interfaces and polymorphism'
 hidden: false
 ---
@@ -8,9 +8,9 @@ hidden: false
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
 - You're familiar with the concept of an interface, can define your own interfaces, and implement an interface in a class.
-    
+
 - You know how to use interfaces as variable types, method parameters and method return values.
-    
+
 - You're aware of some of the interfaces that come with Java.
 
 </text-box>
@@ -23,12 +23,12 @@ This game can be implemented as follows:
 public class Dice {
     private int d1;
     private int d2;
-    
+
     public Dice(int die1, int die2) {
         d1 = Math.max(die1, die2);
         d2 = Math.min(die1, die2);
     }
-    
+
     public int getValue() {
         if (d1 ==2 && d2 == 1) {
             return 1000;
@@ -59,7 +59,7 @@ public static void sort(ArrayList<Dice> input) {
         input.set(i, greatestDice);
     }
 }
-``` 
+```
 
 **NB: do not use this algorithm in practice, it is very inefficient.**
 
@@ -81,9 +81,9 @@ public static void sort(ArrayList<PokerHand> input) {
         input.set(i, greatestDice);
     }
 }
-``` 
+```
 
-If you want to sort other objects too, at this point you realize that you need to change something in your algorithm. Copy-pasting of code is not a good idea! We have an alternative way to do this, because our sorting algorithm does not care what is being sorted, as long as we have a way to obtain their value in the game. 
+If you want to sort other objects too, at this point you realize that you need to change something in your algorithm. Copy-pasting of code is not a good idea! We have an alternative way to do this, because our sorting algorithm does not care what is being sorted, as long as we have a way to obtain their value in the game.
 We want to achieve **polymorphism**: treating objects of completely different classes in a uniform way. One way to achieve this, is by using **interfaces**.
 
 ## Interfaces: definition and use
@@ -101,12 +101,12 @@ The `GameValue` interface declares a `getValue()` method, which returns a int-ty
 public class Dice implements GameValue {
     private int d1;
     private int d2;
-    
+
     public Dice(int die1, int die2) {
         d1 = Math.max(die1, die2);
         d2 = Math.min(die1, die2);
     }
-    
+
     @Override
     public int getValue() {
         if (d1 ==2 && d2 == 1) {
@@ -123,7 +123,7 @@ public class Dice implements GameValue {
 The `implements GameValue` means that the class Dice will adhere to the definition in the GameValue interface, promising that this class will have all methods that are defined in the `GameValue` interface. We can do this in as many classes as we like.
 The `@Override` annotation is not mandatory, but it is a good idea because we tell the compiler that we intend to implement a method from an interface. If we make a typo in the method signature, the compiler will warn us that we made a mistake.
 
-As a result of our introduction of the `GameValue` interface and the modification of our `Dice` class, we are now allowed to use GameValue as a **type** throughout our files. Objects can be instantiated from interface-implementing classes just like with normal classes. They're also used in the same way, for instance, as an ArrayList's type. Objects of type Dice can be used when type GameValue is needed. 
+As a result of our introduction of the `GameValue` interface and the modification of our `Dice` class, we are now allowed to use GameValue as a **type** throughout our files. Objects can be instantiated from interface-implementing classes just like with normal classes. They're also used in the same way, for instance, as an ArrayList's type. Objects of type Dice can be used when type GameValue is needed.
 We can also let other classes, such as `PokerHand` and other similar classes implement the `GameValue` interface. Since a `Dice` object is now a specific type of `GameValue` object, we can cast both implicitly and explicitly, like this:
 
 ```java
@@ -158,7 +158,7 @@ public static void sort(ArrayList<GameValue> input) {
         input.set(i, greatestDice);
     }
 }
-``` 
+```
 
 **NB: do not use this algorithm in practice, it is very inefficient.**
 

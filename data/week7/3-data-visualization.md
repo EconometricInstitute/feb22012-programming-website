@@ -1,5 +1,5 @@
 ---
-path: '/part-14/1-data-visualization'
+path: '/week7/3-data-visualization'
 title: 'Data visualization'
 hidden: false
 ---

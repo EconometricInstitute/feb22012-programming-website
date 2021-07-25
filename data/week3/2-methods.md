@@ -1,5 +1,5 @@
 ---
-path: '/week-3/2-methods'
+path: '/week3/2-methods'
 title: 'Methods and dividing the program into smaller parts'
 hidden: false
 ---

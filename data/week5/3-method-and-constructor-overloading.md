@@ -1,5 +1,5 @@
 ---
-path: '/week-5/3-method-and-constructor-overloading'
+path: '/week5/3-method-and-constructor-overloading'
 title: 'Removing repetitive code (overloading methods and constructors)'
 hidden: false
 ---

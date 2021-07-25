@@ -1,5 +1,5 @@
 ---
-path: '/week-5/1-learning-object-oriented-programming'
+path: '/week5/1-learning-object-oriented-programming'
 title: 'Learning object-oriented programming'
 hidden: false
 ---

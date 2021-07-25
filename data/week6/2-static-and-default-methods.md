@@ -1,5 +1,5 @@
 ---
-path: "/week-6/4-using-existing-classes"
+path: "/week6/4-using-existing-classes"
 title: "Using existing classes in Java"
 hidden: false
 ---

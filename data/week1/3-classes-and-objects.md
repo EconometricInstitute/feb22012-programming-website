@@ -1,5 +1,5 @@
 ---
-path: "/week1/3. Classes and objects in Java"
+path: "/week1/3-classes-and-objects-in-java"
 title: "Classes and objects in Java"
 hidden: false
 ---
@@ -11,11 +11,11 @@ hidden: false
 - You understand what a constructor is, and you are able to make one yourself.
 
 - You know how to use the Java Documentation and open API for existing classes and their methods.
-    
-- You can tell the difference between static and non-static methods. 
-    
+
+- You can tell the difference between static and non-static methods.
+
 - You know that most objects store references to values.
-    
+
 - You are familiar with the null and this reference.
 
 </text-box>

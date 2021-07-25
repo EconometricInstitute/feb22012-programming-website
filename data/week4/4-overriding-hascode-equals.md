@@ -1,5 +1,5 @@
 ---
-path: "/part-8/3-similarity-of-objects"
+path: "/week4/3-similarity-of-objects"
 title: "Similarity of objects"
 hidden: false
 ---

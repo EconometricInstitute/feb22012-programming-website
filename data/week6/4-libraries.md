@@ -1,5 +1,5 @@
 ---
-path: '/part-14/4-maven-and-third-party-libraries'
+path: '/week6/4-maven-and-third-party-libraries'
 title: 'Maven and third-party libraries'
 hidden: false
 ---

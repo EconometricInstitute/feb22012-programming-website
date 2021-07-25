@@ -1,5 +1,5 @@
 ---
-path: '/part-10/2-interface-comparable'
+path: '/week4/2-interface-comparable'
 title: 'The Comparable Interface'
 hidden: false
 ---

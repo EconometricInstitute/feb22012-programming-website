@@ -1,5 +1,5 @@
 ---
-path: '/week-5/2-objects-in-a-list'
+path: '/week5/2-objects-in-a-list'
 title: 'Objects in a list'
 hidden: false
 ---

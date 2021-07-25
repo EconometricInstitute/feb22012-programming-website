@@ -1,5 +1,5 @@
 ---
-path: "/week-3/3-lists"
+path: "/week3/3-lists"
 title: "Lists"
 hidden: false
 ---

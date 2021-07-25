@@ -1,5 +1,5 @@
 ---
-path: '/week3/2. Class inheritance'
+path: '/week3/2-class-inheritance'
 title: 'Class Inheritance'
 hidden: false
 ---
@@ -7,15 +7,15 @@ hidden: false
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
 - You know that in the Java programming language every class inherits the Object class, and you understand why every object has methods toString, equals, and hashCode.
-  
+
 - You are familiar with the concepts of inheritance, superclass, and subclass.
-  
+
 - You can create classes that inherit some of their properties from another class.
-  
+
 - You can call a constructor or method that is defined in a superclass.
-  
+
 - You know how an object's executed method is determined, and you are familiar with the concept of polymorphism.
-  
+
 - You can assess when to use inheritance, and you can come up with an example that is ill-suited for inheritance.
 
 </text-box>
@@ -25,7 +25,7 @@ Inheritance does not only apply to interfaces, but also to classes. Here is an e
 ```java
 public class Square {
   public int x;
-  
+
   public int getSquaredValue() {
     return x*x;
   }
@@ -33,12 +33,12 @@ public class Square {
 
 public class SquareSum extends Square {
   public int y;
-  
+
   public SquareSum(int value1, int value2) {
     x = value1;
     y = value2;
   }
-  
+
   public int getSum() {
     return x + y;
   }
@@ -63,14 +63,14 @@ public class SquareSumPlus extends SquareSum {
     x = value1;
     y = value2;
   }
-  
+
   public int getSumPlusSquare() {
     return getSum() + getSquaredValue();
   }
 }
 ```
 
-When we use class inheritance, the subclass inherits the methods of the superclass (including the body) and the instance variables of the superclass (but private ones are invisible). We can call methods of the superclass as if they are defined in the current class, unless they are private. Also, subtype and supertype relationships work the same as with interfaces. Moreover, a class can have at most one direct superclass and implement any non-negative number of interfaces. 
+When we use class inheritance, the subclass inherits the methods of the superclass (including the body) and the instance variables of the superclass (but private ones are invisible). We can call methods of the superclass as if they are defined in the current class, unless they are private. Also, subtype and supertype relationships work the same as with interfaces. Moreover, a class can have at most one direct superclass and implement any non-negative number of interfaces.
 For example:
 
 `public class D excents A implements I, J {...}`
@@ -833,7 +833,7 @@ As we can see from the previous example, the `toString()` inherited by the Produ
 - **public String toString()** -  Returns the state of the object represented as a string like this `Juice: balance = 64.5, space left 123.5`
 
 The new `toString()` method could be written using the getters inherited from the superclass, which would give access to values of inherited, but still hidden fields. However, the superclass already has the desired functionality to provide a string representation of the warehouse state, so why bother recreating that functionality? Just take advantage of the inherited `toString()`.
-                                                                                                                                               
+
 *Remind yourself of how to call an overridden method in a subclass!*
 
 Usage example:

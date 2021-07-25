@@ -1,5 +1,5 @@
 ---
-path: '/week-4'
+path: '/week4'
 title: 'Week 4'
 overview: true
 hidden: false

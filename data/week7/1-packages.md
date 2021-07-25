@@ -1,5 +1,5 @@
 ---
-path: '/part-11/2-packages'
+path: '/week7/1-packages'
 title: 'Packages'
 hidden: false
 ---
@@ -1445,7 +1445,7 @@ Choose an action:
 
 <!-- **Huom2:** älä käytä luokkien nimissä skandeja, ne saattavat aiheuttaa ongelmia testeihin! -->
 
-<!-- Will not apply for English course students 
+<!-- Will not apply for English course students
 **NB** don't use scandic letters (å, ä, ö) in the class names, since they might cause probelms with the tests! -->
 
 

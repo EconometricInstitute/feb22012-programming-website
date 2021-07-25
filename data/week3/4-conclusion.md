@@ -1,5 +1,5 @@
 ---
-path: '/part-9/4-summary'
+path: '/week3/4-summary'
 title: 'Summary'
 hidden: false
 ---

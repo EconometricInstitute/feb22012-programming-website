@@ -1,5 +1,5 @@
 ---
-path: '/part-10/1-handling-collections-as-streams'
+path: '/week6/1-handling-collections-as-streams'
 title: 'Handling collections as streams'
 hidden: false
 ---

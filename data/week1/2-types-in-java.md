@@ -1,19 +1,19 @@
 ---
-path: '/week1/2. Types in Java'
+path: '/week1/2-types-in-java'
 title: 'Types in Java'
 hidden: false
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
-    
+
 - You know what types are.
-    
+
 - You know what primitive types are and which eight primitive types exist in Java.
-    
+
 - You are familiar with the concept and use of conversion.
 
 - You know what non-primitive types are.
-    
+
 - You know what is meant with the concept of a generic type parameter.
 
 - You are familiar with some already existing Java classes that make use of generic type parameters.
@@ -34,7 +34,7 @@ register(student, grade);
 Is this correct code? It depends on how the register method is defined. Consider the two following options:
 ```java
 public static void register(int grade, int student) {...}
-``` 
+```
 or
 ```java
 public static void register(int student, int grade) {...}
@@ -75,7 +75,7 @@ double number = 123.0;
 int sameNumber = number; //this will give an error
 ```
 In general, **automatic conversion is only possible if the conversion goes from a more specific to a more general type**. This way, the compiler saves you from _loss of precision_ without realizing.
-In some cases, we may still want to convert a `double` into an `int` value because we know that it will work out right. 
+In some cases, we may still want to convert a `double` into an `int` value because we know that it will work out right.
 We can do that by **explicit casting**, which is basically telling the compiler to override the type system, like this:
 ```java
 double number 123.0;
@@ -90,8 +90,8 @@ For instance, conversion from `Integer` to `double` is done automatically, but f
 
 ## Generic types
 Until now, we have seen classes and methods for which the types used were explicitly determined in the class or method signature. But can you implement a class that can contain objects of any given type?
-_Generics_ relates to how classes that store objects can store objects of a freely chosen type. 
-The choice is based on the generic type parameter in the definition of the classes, which makes it possible to choose the type(s) *at the moment of the object's creation*. 
+_Generics_ relates to how classes that store objects can store objects of a freely chosen type.
+The choice is based on the generic type parameter in the definition of the classes, which makes it possible to choose the type(s) *at the moment of the object's creation*.
 Using generics is done in the following manner: after the name of the class, follow it with a chosen number of type parameters. Each of them is  placed between the 'smaller than' and 'greater than' signs, like this: `public class Class<TypeParameter1, TypeParameter2, ...>`. The type parameters are usually defined with a single character.
 
 Let's implement our own generic class `Locker` that can hold one object of any type.

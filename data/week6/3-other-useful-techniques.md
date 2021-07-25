@@ -1,5 +1,5 @@
 ---
-path: '/part-10/3-other-useful-techniques'
+path: '/week6/3-other-useful-techniques'
 title: 'Other useful techniques'
 hidden: false
 ---

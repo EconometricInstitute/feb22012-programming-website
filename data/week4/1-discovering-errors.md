@@ -1,5 +1,5 @@
 ---
-path: "/week-3/1-discovering-errors"
+path: "/week4/1-discovering-errors"
 title: 'Discovering and Solving Errors'
 hidden: false
 ---
