@@ -1,11 +1,11 @@
 const courseSettings = {
   language: "en",
-  name: "Introduction To Programming",
+  name: "Programming",
   siteUrl: "https://econometricinstitute.github.io/feb22012-programming-website/",
   subtitle: "A course on Object Oriented Programming in Java",
-  slug: "java-programming-ii",
-  tmcCourse: "java-programming-ii",
-  quizzesId: "1d10a591-8704-467f-bfb0-7edc8b22b490",
+  slug: "feb22012",
+  tmcCourse: "feb22012",
+  quizzesId: "bcd8173f-4f0f-47f4-9aa5-a8e40e79eaf3",
   tmcOrganization: "mooc",
   bannerPath: "banner.svg",
   sidebarEntries: [
@@ -25,10 +25,10 @@ const courseSettings = {
       title: "Style guide",
       path: "/style-guide",
     },
-    { separator: true, title: "Java Programming II" },
+    { separator: true, title: "Programming" },
   ],
   sidebarFuturePages: [
-  ], 
+  ],
   splitCourses: false,
   useNewPointsVisualization: false
 }
