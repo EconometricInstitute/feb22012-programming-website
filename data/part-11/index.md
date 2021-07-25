@@ -2,7 +2,7 @@
 path: '/part-11'
 title: 'Part 11'
 overview: true
-hidden: false
+hidden: true
 ---
 
 <!-- Kurssimateriaalin yhdennessätoista osassa opit tulkitsemaan yksinkertaisia luokkakaavioita. Tutustut Javan pakkauksiin ja opit mistä `import`-lauseen osat muodostuvat. Harjoittelet Javan poikkeusten käyttöä ja opit sekä niiden käsittelyn että niiden eteenpäin heittämisen. Kertaat tiedon lukemista tiedostosta ja opit kirjoittamaan tietoa tiedostoon. -->

@@ -2,7 +2,7 @@
 path: '/part-8'
 title: 'Part 8'
 overview: true
-hidden: false
+hidden: true
 ---
 
 <please-login></please-login>
