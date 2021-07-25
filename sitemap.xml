@@ -1,64 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/2. Class inheritance</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/1. Interfaces and polymorphism</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/3. Reading and writing</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/2. Errors and exceptions</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/1. Random numbers</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week1/4. Immutable objects</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week1/3. Classes and objects in Java</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week1/2. Types in Java</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-7</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-6/4-using-existing-classes</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-6</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-5/5-objects-and-references</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-5/4-primitive-and-reference-variables</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-5/3-method-and-constructor-overloading</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-5/2-objects-in-a-list</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-5/1-learning-object-oriented-programming</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-5</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-4</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-3/3-lists</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-3/2-methods</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-3/1-discovering-errors</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-1/1. Why Java.md</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week-1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week7/3-data-visualization</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week7/1-packages</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week7</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/4-using-existing-classes</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/4-maven-and-third-party-libraries</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/3-other-useful-techniques</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/1-handling-collections-as-streams</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week5/5-objects-and-references</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week5/4-primitive-and-reference-variables</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week5/3-method-and-constructor-overloading</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week5/2-objects-in-a-list</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week5/2-hash-map</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week5/2-arraylist-and-hashtable</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week5/1-learning-object-oriented-programming</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week5</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week4/3-similarity-of-objects</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week4/2-interface-comparable</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week4/1-discovering-errors</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week4/1-abstract-classes</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week4</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/4-summary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/3-object-polymorphism</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/3-lists</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/2-methods</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/2-class-inheritance</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/1-Interfaces-and-polymorphism</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/3-reading-and-writing</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/2-errors-and-exceptions</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/1-random-numbers</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week1/4-immutable-objects</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week1/3-classes-and-objects-in-java</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week1/2-types-in-java</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week1/1-why-java</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/style-guide</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/sessions-and-support</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-9/4-summary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-9/3-object-polymorphism</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-9</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-8/5-fast-data-fetching-and-grouping-information</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-8/3-similarity-of-objects</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-8/2-hash-map</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-8</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-14/5-conclusion</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-14/4-maven-and-third-party-libraries</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-14/3-larger-application-asteroids</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-14/2-multimedia-in-programs</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-14/1-data-visualization</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-14</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-13/6-summary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-13/5-multiple-views</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-13/4-launch-parameters</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-13/3-event-handling</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-13/2-UI-components-and-layout</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-13/1-graphical-user-interfaces</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-13</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-12/5-summary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-12/4-multidimensional-data</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-12/2-arraylist-and-hashtable</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-12</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-11/5-conclusion</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-11/2-packages</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-11</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-10/4-summary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-10/3-other-useful-techniques</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-10/2-interface-comparable</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-10/1-handling-collections-as-streams</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/part-10</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/installation</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/grading-and-exams</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/faq</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
