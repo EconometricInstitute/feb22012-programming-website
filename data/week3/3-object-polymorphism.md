@@ -1,9 +1,10 @@
 ---
 path: '/week3/3-object-polymorphism'
 title: 'Object polymorphism'
-hidden: false
+hidden: true
 ---
 
+<!-- @PAUL this whole file is currently out of use, but could come in use later -->
 
 <!-- <text-box variant='learningObjectives' name='Oppimistavoitteet'> -->
 <text-box variant='learningObjectives' name='Learning Objectives'>
