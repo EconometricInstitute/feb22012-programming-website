@@ -4,7 +4,6 @@ title: 'Interfaces and polymorphism'
 hidden: false
 ---
 
-
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
 - You're familiar with the concept of an interface, can define your own interfaces, and implement an interface in a class.
@@ -170,6 +169,18 @@ The interface defines only the names, parameters, and return values of the requi
 
 </text-box>
 
+### Interface inheritance
+Since the bank has an advantage in some types of games, we want to be able to detect whether a value was obtained by the bank or someone else. We could add a method `public boolean fromBank();` to the GameValue interface, but then all our classes would need to add a second method, while some of the games may not even have a bank.
+We could create a second interface `public interface BankScore`, but then we have two separate types. On `GameValue` objects we can only call `getValue()` and on `BankScore` objects we can only call `fromBank()`.
+
+We do not have a singly type where we can use both and we can choose only one type for variables and/or method and constructor arguments.
+Ofcourse, we could add `public int getValue()'` to the `BankScore` interface, but then we cannot use `BankScore` objects in our old sorting algorithm. `BankScore` is still a separate type from `GameValue`.
+
+To solve this problem, we let the interface `BankScore` inherit the interface `GameValue` by stating  `public interface BankScore extends GameValue`.
+Now, the type `BankScore` can be used as a `GameValue` and classes that implement `BankScore` must have both `getValue()` and `fromBank()` methods. The `getValue()` method is inherited from `GameValue`.
+
+We say that `BankScore` is a **subtype** of `GameValue` and that `GameValue` is a **supertype** of `BankScore`. A subtype can always do at least as much as its supertype. This terminology is based on _set theory_: the set of `BankScore` objects is a subset of the set of `GameValue` objects. The set of `GameValue` objects is a superset of the set of `BankScore` objects. Also supertype and subtype relations are **transitive**.
+
 <programming-exercise name='TacoBoxes (2 parts)' tmcname='part09-Part09_05.TacoBoxes'>
 
 In the exercise template you'll find Interface `TacoBox` ready for your use. It has the following methods:
@@ -195,209 +206,47 @@ Implement the class `CustomTacoBox`, that implements the `TacoBox` interface. `C
 
 </programming-exercise>
 
-## Interface inheritance
-Since the bank has an advantage in some types of games, we want to be able to detect whether a value was obtained by the bank or someone else. We could add a method `public boolean fromBank();` to the GameValue interface, but then all our classes would need to add a second method, while some of the games may not even have a bank.
-We could create a second interface `public interface BankScore`, but then we have two separate types. On `GameValue` objects we can only call `getValue()` and on `BankScore` objects we can only call `fromBank()`.
-We do not have a singly type where we can use both and we can choose only one type for variables and/or method and constructor arguments.
-Ofcourse, we could add `public int getValue()'` to the `BankScore` interface, but then we cannot use `BankScore` objects in our old sorting algorithm. `BankScore` is still a separate type from `GameValue`.
-
-To solve this problem, we let the interface `BankScore` inherit the interface `GameValue` by stating  `public interface BankScore extends GameValue`.
-Now, the type `BankScore` can be used as a `GameValue` and classes that implement `BankScore` must have both `getValue()` and `fromBank()` methods. The `getValue()` method is inherited from `GameValue`.
-We say that `BankScore` is a **subtype** of `GameValue` and that `GameValue` is a **supertype** of `BankScore`. A subtype can always do at least as much as its supertype. This terminology is based on _set theory_: the set of `BankScore` objects is a subset of the set of `GameValue` objects. The set of `GameValue` objects is a superset of the set of `BankScore` objects. Also supertype and subtype relations are **transitive**.
-
-## Interface as Variable Type
-<!-- TODO understand what this is about and where it fits in best -->
+### Interface as Variable Type
 The type of a variable is always stated as its introduced. There are two kinds of type, the primitive-type variables (int, double, ...) and reference-type variables (all objects). We've so far used an object's class as the type of a reference-type variable.
+An object's type can be other than its class. For example, the type of the `Dice` class that implements the `GameValue` interface is both `Dice` and `GameValue`.
 
 ```java
-String string = "string-object";
-TextMessage message = new TextMessage("ope", "many types for the same object");
-```
-
-An object's type can be other than its class. For example, the type of the `Ebook` class that implements the `Readable` interface is both `Ebook` and `Readable`. Similarly, the text message also has multiple types. Because the `TextMessage` class implements the `Readable` interface, it has a `Readable` type in addition to the `TextMessage` type.
-
-```java
-TextMessage message = new TextMessage("ope", "Something cool's about to happen);
-Readable readable = new TextMessage("ope", "The text message is Readable!");
-```
-
-```java
-ArrayList<String> pages = new ArrayList<>();
-pages.add("A method can call itself.");
-
-Readable book = new Ebook("Introduction to Recursion", pages);
-
-int page = 0;
-while (page < book.pages()) {
-    System.out.println(book.read());
-    page = page + 1;
-}
+Dice throwDice = new Dice(3, 4);
+GameValue throwDice2 = new Dice(2,5);
 ```
 
 Because an interface can be used as a type, it's possible to create a list that contains objects of the interface's type.
 
 ```java
-ArrayList<Readable> readingList = new ArrayList<>();
+ArrayList<GameValue> gamesList = new ArrayList<>();
 
-readingList.add(new TextMessage("ope", "never been programming before..."));
-readingList.add(new TextMessage("ope", "gonna love it i think!"));
-readingList.add(new TextMessage("ope", "give me something more challenging! :)"));
-readingList.add(new TextMessage("ope", "you think i can do it?"));
-readingList.add(new TextMessage("ope", "up here we send several messages each day"));
+gamesList.add(new Dice(3,5));
+gamesList.add(new PokerHand(4,8));
+gamesList.add(new Dice(1,6));
+gamesList.add(new Dice(1000,5));
+gamesList.add(new Dice(7,8));
 
-
-ArrayList<String> pages = new ArrayList<>();
-pages.add("A method can call itself.");
-
-readingList.add(new Ebook("Introduction to Recursion.", pages));
-
-for (Readable readable: readingList) {
-    System.out.println(readable.read());
+for (GameValue game: gamesList) {
+    System.out.println(game.getValue());
 }
 ```
 
-Note that although the `Ebook` class that inherits the `Readable` interface class is always of the interface's type, not all classes that implement the `Readable` interface are of type `Ebook`. You can assign an object created from the `Ebook` class to a `Readable`-type variable, but it does not work the other way without a separate type conversion.
+Note that although the `Dice` class that inherits the `GameValue` interface class is always of the interface's type, not all classes that implement the `GameValue` interface are of type `Dice`. You can assign an object created from the `Dice` class to a `GameValue`-type variable, but it does not work the other way without a separate type conversion.
+Type conversion succeeds if, and only if, the variable is of the type that it's being converted to. Type conversion is not considered good practice, and one of the few situation where it's use is appropriate is in the implementation of the `equals` method, which we will learn about more later in this course.
 
+### Interfaces as Method Parameters
+The true benefits of interfaces are reaped when they are used as the type of parameter provided to a method. Since an interface can be used as a variable's type, it can also be used as a parameter type in method calls. For example, the `getValue` method of the class below gets a variable of type `GameValue`.
+
+<!--- Hi Paul, can you have a look at this code, to check if I did it right? I had to change this example into the terms that fit to your example, but it was a bit confusing--->
 ```java
-Readable readable = new TextMessage("ope", "TextMessage is Readable!"); // works
-TextMessage message = readable; // doesn't work
-
-TextMessage castMessage = (TextMessage) readable; // works if, and only if, readable is of text message type
-```
-
-Type conversion succeeds if, and only if, the variable is of the type that it's being converted to. Type conversion is not considered good practice, and one of the few situation where it's use is appropriate is in the implementation of the `equals` method.
-
-## Interfaces as Method Parameters
-The true benefits of interfaces are reaped when they are used as the type of parameter provided to a method. Since an interface can be used as a variable's type, it can also be used as a parameter type in method calls. For example, the `print` method in the `Printer` class of the class below gets a variable of type `read`.
-
-```java
-public class Printer {
-    public void print(Readable readable) {
-        System.out.println(readable.read());
+public class GameValue {
+    public void getValue(GameValue gameValue) {
+        System.out.println(gameValue.value);
     }
 }
 ```
 
-The value of the `print` method of the `printer` class lies in the fact that it can be given *any* class that implements the `Readable` interface as a parameter. Were we to call the method with any object instantiated from a class that inherits the Readable class, the method would function as desired.
-
-```java
-TextMessage message = new TextMessage("ope", "Oh wow, this printer knows how to print these as well!");
-
-ArrayList<String> pages = new ArrayList<>();
-pages.add("Values common to both {1, 3, 5} and {2, 3, 4, 5} are {3, 5}.");
-Ebook book = new Ebook("Introduction to University Mathematics.", pages);
-
-Printer printer = new Printer();
-printer.print(message);
-printer.print(book);
-```
-
-<sample-output>
-
-Oh wow, this printer knows how to print these as well!
-Values common to both {1, 3, 5} and {2, 3, 4, 5} are {3, 5}.
-
-</sample-output>
-
-Let's make another class called `ReadingList` to which we can add interesting things to read. The class has an `ArrayList` instance as an instance variable, where the things to be read are added. Adding to the reading list is done using the `add` method, which receives a `Readable`-type object as its parameter.
-
-```java
-public class ReadingList {
-    private ArrayList<Readable> readables;
-
-    public ReadingList() {
-        this.readables = new ArrayList<>();
-    }
-
-    public void add(Readable readable) {
-        this.readables.add(readable);
-    }
-
-    public int toRead() {
-        return this.readables.size();
-    }
-}
-```
-
-Reading lists are usually readable, so let's have the `ReadingList` class implement the `Readable` interface. The `read` method of the reading list reads all the objects in the `readables` list, and adds them to the string returned by the `read()` method one-by-one.
-
-```java
-public class ReadingList implements Readable {
-    private ArrayList<Readable> readables;
-
-    public ReadingList() {
-        this.readables = new ArrayList<>();
-    }
-
-    public void add(Readable readable) {
-        this.readables.add(readable);
-    }
-
-    public int toRead() {
-        return this.readables.size();
-    }
-
-    public String read() {
-        String read = "";
-
-        for (Readable readable: this.readables) {
-            read = read + readable.read() + "\n";
-        }
-
-        // once the reading list has been read, we empty it
-        this.readables.clear();
-        return read;
-    }
-}
-```
-
-```java
-ReadingList jonisList = new ReadingList();
-jonisList.add(new TextMessage("arto", "have you written the tests yet?"));
-jonisList.add(new TextMessage("arto", "have you checked the submissions yet?"));
-
-System.out.println("Joni's to-read: " + jonisList.toRead());
-```
-
-<sample-output>
-
-Joni's to-read: 2
-
-</sample-output>
-
-Because the `ReadingList` is of type `Readable`, we're able to add `ReadingList` objects to the reading list. In the example below, Joni has a lot to read. Fortunately for him, Verna comes to the rescue and reads the messages on Joni's behalf.
-
-```java
-ReadingList jonisList = new ReadingList();
-int i = 0;
-while (i < 1000) {
-    jonisList.add(new TextMessage("arto", "have you written the tests yet?"));
-    i = i + 1;
-}
-
-System.out.println("Joni's to-read: " + jonisList.toRead());
-System.out.println("Delegating the reading to Verna");
-
-ReadingList vernasList = new ReadingList();
-vernasList.add(jonisList);
-vernanLista.read();
-
-System.out.println();
-System.out.println("Joni's to-read: " + jonisList.toRead());
-```
-
-<sample-output>
-
-Joni's to-read: 1000
-Delegating the reading to Verna
-
-Joni's to-read:0
-
-</sample-output>
-
-The `read` method called on Verna's list goes through all the `Readable` objects and calls the `read` method on them. When the `read` method is called on Verna's list it also goes through Joni's reading list that's included in Verna's reading list. Joni's reading list is run through by calling its `read` method. At the end of each `read` method call, the read list is cleared. In this way, Joni's reading list empties when Verna reads it.
-
-As you notice, the program already contains a lot of references. It's a good idea to draw out the state of the program step-by-step on paper and outline how the `read` method call of the `vernasList` object proceeds!
+The value of the `getValue` method of the `GameValue` class lies in the fact that it can be given *any* class that implements the `GameValue` interface as a parameter. Were we to call the method with any object instantiated from a class that inherits the GameValue class, the method would function as desired.
 
 <programming-exercise name='Interface In A Box (4 parts)' tmcname='part09-Part09_06.InterfaceInABox' nocoins='true'>
 
@@ -513,7 +362,7 @@ Try this out. Make some boxes containing some items, and add some smaller boxes 
 
 </programming-exercise>
 
-## Interface as a return type of a method
+### Interface as a return type of a method
 Interfaces can be used as return types in methods -- just like regular variable types. In the next example is a class `Factory` that can be asked to construct differerent objects that implement the `Packable` interface.
 
 ```java
@@ -653,7 +502,3 @@ public class TextServer implements FileServer {
     }
 }
 ```
-
-
-
-
