@@ -84,18 +84,20 @@ If the programmer does not define a constructor for a class, Java automatically 
 
 ## Methods
 ### Standard objects
-For standard objects in Java, you can find the accessory methods in the [Java Documentation](https://docs.oracle.com/javase/8/docs/api/) of the API.
+For objects of standard Java classes, you can find the available methods in the [Java Documentation](https://docs.oracle.com/javase/8/docs/api/) of the API.
 On the left, a list of all public classes is presented. If you choose the `String` class, you can scroll down to the Method Summary, where all methods of the String class are described.
 For instance, the methods length(), toLowerCase(), toUpperCase(), charAt(), split() and replaceAll() are mentioned here.
 If you place your cursor on the word `String` at the definition of a String object and press `Ctrl + Shift + i` on Windows or `Cmd + Shift + i` on Mac, you can find the implementation of all these methods in the pop-up.
 
 ### Static versus Non-Static
+**TODO:** deze uitleg kan verwarrend zijn, omdat objecten wel degelijke bij instance variabelen kunnen zolang het maar via een referentie naar een object gaat. Het punt is vooral dat er geen `this` bestaat, wat een argument zou kunnen zijn om `this` eerst uit te leggen?
+
 Static methods are not associated with an object and cannot access instance variables, but only static variables. A static variable belongs to a class and is global. Thus, methods in two different objects can access and change the same variable.
 Instance variables are non-static. Each object has his own copy of the instance variables. Non-static methods can access both static and non-static variables.
 
 ## Objects and references
-In java, variables that do not actually hold objects, merely hold the memory location of an object. The object itself is stored elsewhere in the system. An **object reference** denotes the memory location of an object. When a variable contains the memory location of an object, it _refers_ to that object.
-For instance, in the following code, two variables _a_ and _b_ refer to the same arrayList object.
+In Java, variables that do not actually hold objects, merely hold a **reference** to the object, which is a location of the object within the computer's memory. When a variable contains the memory location of an object, it _refers_ to that object.
+For instance, in the following code, two variables `a` and `b` refer to the same `ArrayList` object.
 ```java
 ArrayList<Integer> a = new ArrayList<>();
 a.add(5);
@@ -103,8 +105,10 @@ ArrayList<Integer> b = a;
 b.add(10);
 System.out.println(a);
 ```
-Since they refer to the same object, an adjustment of b is also applied to a, such that now `[5, 10]` will be printed.
-This shows a clear distinction between primitive and non-primitive variables. Object variables are non-primitive and use pointers. Primitive variables, however, store data, not references. In the following example, the two variables _a_ and _b_ can thus be adjusted separately without impacting each other.
+Since they refer to the same object, an adjustment performed via reference `b` is also visible via reference `a`, such that now `[5, 10]` will be printed.
+This shows a clear distinction between primitive and non-primitive variables. Object variables are non-primitive and hold references. Primitive variables, however, store data, not references. In the following example, the two variables _a_ and _b_ can thus be adjusted separately without impacting each other.
 
 If an object does not refer to anything at all, the object reference has the special value `null`.
 Another used reference is `this`. This reference is used by methods to refer to the object that the method is called on.
+
+**TODO**: het is wellicht nog mooi iets met memory state diagrams toe te voegen aan deze sectie, of dit stukje daarmee uit te breiden?

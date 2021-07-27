@@ -35,5 +35,6 @@ public class HelloWorld {
 In the weeks after, you have learned to use loops to prevent repetitive code and if-statements to account for multiple cases. To store large quantities of values, you have learned to use arrays and lists. Also, you have written methods to structure your code and used objects to create different instances of one construct.
 
 ## This course
-In this course, you will become more experienced with some of the most important concepts of Java.
-In essence, our aim is that you will be able to write Java programs to solve complex problems that you will encounter during your studies.
+In this course, you will become more experienced with some of the most important concepts related to Object Oriented Programming in Java.
+In essence, our aim is that you will be able to write Java programs to solve complex problems that you will encounter during your studies,
+and learn valuable concepts that allow you to easily learn more complex features of languages such as Python and R.
