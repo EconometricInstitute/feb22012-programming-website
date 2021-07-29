@@ -22,8 +22,6 @@ hidden: false
 
 </text-box>
 
-**TODO:** Deze pagina is wel lang; we kunnen overwegen hem op te splitsen
-
 ## Introduction to types
 Since we began using lists, we have given data structures the type of the values that we want them to store. For example, a list that stores strings has been defined as `ArrayList<String>`. But why would we bother about types?
 
@@ -40,7 +38,7 @@ Is this correct code? It depends on how the register method is defined. Consider
 ```java
 public static void register(int grade, int student) {...}
 ```
-or alternatively.
+or alternatively,
 ```java
 public static void register(int student, int grade) {...}
 ```
@@ -51,10 +49,9 @@ Take a moment to think which of the two options would be the correct one.
 
 </programming-exercise>
 
-Unfortunately, there is no way to tell which of the two is correct! They might both be, but it depends
-on the actual method was implemented. This is makes it very easy to introduce nasty bugs, by accidentally
-swapping the two. Of course, this would be something that we would like to avoid and
-**the best way to avoid bugs is to make them impossible.**
+Unfortunately, there is no way to tell which of the two is correct! They might both be, but it depends on the actual method was implemented. 
+This is makes it very easy to introduce nasty bugs, by accidentally swapping the two. 
+Of course, this would be something that we would like to avoid and **the best way to avoid bugs is to make them impossible.**
 Let us rewrite this code by introducing types for `Student` and `Grade`.
 ```java
 Student student = getStudent(36);
@@ -62,9 +59,8 @@ Grade grade = getGrade(12);
 register(student, grade);
 ```
 This way only one register method signature is valid, and the compiler will check if we provide the right parameters.
-In the above code, we have used the `Student` and `Grade` types. Now, if the method signature is
-`public static void register(Grade grade, Student student)` the code will not compile,
-but with `public static void register(Student student, Grade grade)` it will.
+In the above code, we have used the `Student` and `Grade` types. 
+Now, if the method signature is `public static void register(Grade grade, Student student)` the code will not compile, but with `public static void register(Student student, Grade grade)` it will.
 This way, the compiler finds a mistake before we can even run the code, which saves the effort of debugging.
 
 The use of types in Java both has advantages and disadvantages, which are listed below.
@@ -112,7 +108,7 @@ double number 123.0;
 int sameNumber = (int) number; //sameNumber holds 123 now
 ```
 
-In this particular example, things will work fine. In general, **explicit casts*  may produce unexpected results:
+In this particular example, things will work fine. In general, **explicit casts**  may produce unexpected results:
 
 ```java
 int number = 198;
@@ -126,9 +122,8 @@ which will result in
 -58
 </sample-output>
 
-The reason for this output is that `byte` values can only store numbers between `-128` and `127`, which is insufficient to represent
-the `int` value `198`. This type of behavior is called an *overflow*. When you write an explicit cast, you should be aware of
-potential issues and if needed, write additional code to safeguard yourself against such unexpected behavior.
+The reason for this output is that `byte` values can only store numbers between `-128` and `127`, which is insufficient to represent the `int` value `198`. 
+This type of behavior is called an *overflow*. When you write an explicit cast, you should be aware of potential issues and if needed, write additional code to safeguard yourself against such unexpected behavior.
 
 ## Non-Primitive Types
 
@@ -136,7 +131,32 @@ All types that are not primitive types are non-primitive types. Examples of thes
 Since Java 5 we can also construct type-of-type things like `ArrayList<String>`. The rule to determine if a type is a primitive or non-primitive type, all you need to do is check whether the type is one of
 the eight primitive types. If it is not, it has to be a non-primitive type.
 
-Lastly, for every primitive type there is an associated non-primitive type, spelled with an uppercase letter: `Byte`, `Short`, `Integer`, `Long`, `Float`, `Double`, `Character`, `Boolean`. For these special types, primitive types and their corresponding non-primitive types can be mixed. This is called **autoboxing** and conversion is carried out automatically mostly.
-For instance, conversion from `Integer` to `double` is done automatically, but from `int` to Double is not possible.
+### Autoboxing
 
-**TODO:** Er is vast meer en/of preciezer te vertellen over autoboxing rules, en ik zie vaak in de tentamens dat studenten het toch niet helemaal begrijpen.
+Lastly, for every primitive type there is an associated non-primitive type, spelled with an uppercase letter: `Byte`, `Short`, `Integer`, `Long`, `Float`, `Double`, `Character`, `Boolean`. 
+For these special types, primitive types and their corresponding non-primitive types can be mixed. Type conversion then makes use of something called **autoboxing**.
+Autoboxing is the automatic conversion that the Java compiler makes between primitive types and their corresponding non-primitive types. 
+For example, converting and `int` to an `Integer` is done automatically by autoboxing. If the conversion goes the other way, it is called unboxing.
+The Java compiler applies autoboxing when a primitive value is passed as a parameter to a method that expects its corresponding non-primitive type, or when a primitive value is assigned to a non-primitive typed variable.
+
+Consider the following example:
+```java
+public static int evenSum(List<Integer> numbersList) {
+  int evenNumbersSum = 0;
+  for (Integer i : numbersList) {
+    if (i % 2 == 0) {
+      evenNumbersSum += i;
+    }
+  }
+  return evenNumbersSum;
+}  
+```
+Note that the remainder `%` and unary plus `+=` operators do not apply to `Integer` objects. However, the compiler does not generate an error, because it unboxes the objects to `int` objects at runtime.
+
+<text-box title="Advantages of Autoboxing and Unboxing">
+  * The compiler makes you write code that is easier to read, because we do not need to cast types explicitly.
+  * It also lets you use primitive and non-primitive types interchangeably, which is convenient.
+</text-box>
+  
+  Moreover, for unboxed variables the same rules apply as for primitive types in general.
+  For instance, conversion from `Integer` to `double` is done automatically, but from `int` to Double is not possible.
