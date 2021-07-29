@@ -157,6 +157,6 @@ Note that the remainder `%` and unary plus `+=` operators do not apply to `Integ
   * The compiler makes you write code that is easier to read, because we do not need to cast types explicitly.
   * It also lets you use primitive and non-primitive types interchangeably, which is convenient.
 </text-box>
-  
-  Moreover, for unboxed variables the same rules apply as for primitive types in general.
-  For instance, conversion from `Integer` to `double` is done automatically, but from `int` to Double is not possible.
+
+**TODO: more on autoboxing rules here** <!-- Couldn't find it -->
+For instance, conversion from `Integer` to `double` is done automatically, but from `int` to Double is not possible.
