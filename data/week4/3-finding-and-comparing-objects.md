@@ -14,7 +14,7 @@ hidden: false
 </text-box>
 
 ## Finding objects
-In some cases, we must retrieve and compare data from memory for the use of our program. Think of finding out whether a certain transaction occurs in multiple datasets, or computing some aggregate scores for the same person, item or identifier accross multiple data sets, or keeping trach of how often certain events occur during a simulation.
+In some cases, we must retrieve and compare data from memory for the use of our program. Think of finding out whether a certain transaction occurs in multiple datasets, or computing some aggregate scores for the same person, item, or identifier across multiple data sets, or keeping track of how often certain events occur during a simulation.
 To do this, we need two things: a structured way to store data (such as an array, ArrayList or ...), and a way to compare new to old objects.
 
 Please consider the following example:
@@ -43,12 +43,12 @@ Integer i1 = new Integer(12);
 Integer i2 = new Integer(12);
 Integer i3 = i2;
 ```
-<img width="277" alt="week4 object references 1" src="https://user-images.githubusercontent.com/67587903/128515240-8e271590-1110-4ac2-b8ad-22ca7309b688.PNG">
+<img width="400" alt="week4 object references 1" src="https://user-images.githubusercontent.com/67587903/128515240-8e271590-1110-4ac2-b8ad-22ca7309b688.PNG">
 
 In the above image, you can see how the memory stores the various `Integer` values. `i1`'s reference points towards an `Integer` object that stores the value 12. The variables `i2` and `i3` both point towards the same object, but to another object than `i1` points to. This other object is also an `Integer` object, storing the value 12. 
-In practice the memory of a computer is linear. It is a very long array of bits. Although arrows are visually appealing, when we compare references we actually compare memory addresses, like in the picture below.
+In practice, the memory of a computer is linear. It is a very long array of bits. Although arrows are visually appealing, when we compare references we actually compare memory addresses, like in the picture below.
 
-<img width="322" alt="week4 object references 2" src="https://user-images.githubusercontent.com/67587903/128515242-cf8a2364-b4ef-4127-97f1-3db838abbf24.PNG">
+<img width="400" alt="week4 object references 2" src="https://user-images.githubusercontent.com/67587903/128515242-cf8a2364-b4ef-4127-97f1-3db838abbf24.PNG">
 
 Here, the linear computer memory is displayed by a sequence of numbers and words. Since a and b are primitive types, actual values are stored in the memory. When we compare `a==b`, we compare the numbers 12 and 12.
 Since `i1` is a non-primitive, the memory address of the object it references is stored in the memory. The 49 tells it that it can be looked up from character 49 onwards. `i2` is stored in the memory from index 63 onwards. When we compare `i1==i2`, we compare 49 with 63.
@@ -57,7 +57,7 @@ When we want to compare the **contents** of objects, the `equals` method should 
 Most classes that you are familiar with, such as `String` and `Integer`, do so.
 
 ## Overriding the equals() and hashCode() methods
-As we have seen last week, the cosmic superclass `Object` has several general method, of which we have already seen the `toString()` method. Now, we will see the other two methods that we promised to cover.
+As we have seen last week, the cosmic superclass `Object` has several general methods, of which we have already seen the `toString()` method. Now, we will see the other two methods that we promised to cover.
 
 ### equals()
 When overriding the `boolean equals()` methods, there is a number of rules you need to take into account if you want to let other classes use your objects.
@@ -70,17 +70,17 @@ For equals itself, there are five rules, which also could be found in the [docum
 - It is **consistent**: calling `x.equals(y)` multiple times should each time result in `true` or each time result in `false`, provided no information used in these equal comparisons of the object is modified in between the calls.
 - And `x.equals(null)` should return `false`, provided `x` is not `null`.
 
-Aside from these five rules for `equals()`, the documentation also mentions: "Note that it is generally necessary to override the `hashCode()` method whenever `equals()` is overridden, so as to maintain the general contract for the `hashCode()` method, which stats that equal objects must have equal hash codes."
+Aside from these five rules for `equals()`, the documentation also mentions: "Note that it is generally necessary to override the `hashCode()` method whenever `equals()` is overridden, to maintain the general contract for the `hashCode()` method, which stats that equal objects must have equal hash codes."
 
 ### hashCode()
 So, what does `int hashCode()` do?
 
-Well, by default it returns the memory address of the object as an `int`. In general, a **hash function** maps data of arbitrary size to a fixed size, that is in our case an `int`. In Java, the main purpose is rapid data lookup, typically in a HashSet or HashMap, about which we talk more later). Possible analogies are a fingerprint or the length of a movie.
+Well, by default, it returns the memory address of the object as an `int`. In general, a **hash function** maps data of arbitrary size to a fixed size, that is in our case an `int`. In Java, the main purpose is rapid data lookup, typically in a HashSet or HashMap, about which we talk more later). Possible analogies are a fingerprint or the length of a movie.
 To understand this well, realize that a movie has only one length (as so, each object's memory address has only one hashcode), but multiple movies could have the same length (so that a hashcode can belong to multiple objects). As you can see from this example, a hashCode might not be unique.
 
 The documentation specifies the following:
 
-- `hashCode` must return the same integer when called multiple times if no information used in `equals` is modified between the calls.
+- `hashCode` must return the same integer when called multiple times, if no information used in `equals` is modified between the calls.
 - If `x.equals(y)` returns `true`, then it **must hold** that `x.hashCode() == y.hashCode()`.
 - If `x.equals(y)` returns `false`, then `x.hashCode` does not necessarily have to differ from `y.hashCode()`. However, distinct integer results for unequal objects may improve the performance of hash tables.
 
@@ -89,7 +89,7 @@ Equal hashcodes thus are a **necessary condition** for equality of two objects, 
 For deeper understanding, elaborate for yourself on the fingerprint analogy: if the same human leaves fingerprints in two locations, they will be equal. However, if two sets of fingerprints are equal, they still could be from different humans. How does this compare to the use of hashCode()?
 
 ### Overriding equals() and hashCode()
-Adhering to the contracts of `equals()` and `hashCode()` can be a tricky business. In practice you should try to avoid doing this by hand. Actually, `IntelliJ` or any other good IDE can generate the code for you! 
+Adhering to the contracts of `equals()` and `hashCode()` can be a tricky business. In practice, you should try to avoid doing this by hand. Actually, `IntelliJ` or any other good IDE can generate the code for you! 
 Consider the following example:
 ```java
 public class Pair {
