@@ -6,14 +6,15 @@ hidden: false
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
-- You are aware of Java's Comparable class and now how to implement it in your own classes
-- You know how to use Java's tools for sorting lists and stream elements.
+- You are aware of Java's Comparable interface and know how to implement the compareTo method in your own classes
+- You know what is Java's Comparator interface and how to implement the compare method.
+- You can explain the difference between the compareTo method and the compare method and when to use which.
 - You know how to sort list elements using multiple criteria (e.g., you know how to sort a person based on name and age).
 
 </text-box>
 
 ## Ordering objects
-When it comes to numbers, we have a perfect natural ordening, for instance: 
+When it comes to numbers, we have a perfect natural ordering, for instance: 
 
 1 &leq 3.14 &leq 5 &leq 6 &leq 7 &leq <sup>16</sup>&frasl;<sub>2</sub> &leq 12 &leq 386 &leq 1001 + <sup>1</sup>&frasl;<sub>3</sub> &leq 5302 &leq ...
 
@@ -52,7 +53,7 @@ For example: `public class Subscription implements Comparable<Subscription>`.
 The `Comparable` interface defines the `compareTo` method used to compare objects: `public int compareTo(E other);`. If a class implements the Comparable interface, objects created from that class can be sorted using Java's sorting algorithms.
 The `compareTo` method required by the Comparable interface receives as its parameter the object to which the "this" object is compared. If the "this" object comes before the object received as a parameter in terms of sorting order, the method should return a negative number. If, on the other hand, the "this" object comes after the object received as a parameter, the method should return a positive number. Otherwise, 0 is returned. The sorting resulting from the `compareTo` method is called *natural ordering*.
 
-The `Comparable` interface has the following ruls in its contract:
+The `Comparable` interface has the following rules in its contract:
 
 - If we have `x.compareTo(y) > 0` then we must have `y.compareTo(x) < 0`.
 - It is **transitive**: if we have `x.compareTo(y) > 0` and `y.compareTo(z) > 0`, then we must have `x.compareTo(z) > 0`.
@@ -90,7 +91,7 @@ public class MyDouble implements Comparable<MyDouble> {
 }
 ```
 
-With a `String`, you can even delegate the comparison the the compareTo function of the `String` class! For instance like this:
+With a `String`, you can even delegate the comparison to the compareTo function of the `String` class! For instance, like this:
 ```java
 public class MyText implements Comparable<MyText> {
     private final String text;
@@ -193,6 +194,33 @@ matti (187)
 
 </sample-output>
 
+However, sometimes the user may want to choose how to sort. Either this compareTo method is used in the Subscription class we have seen before:
+```java
+@Override
+public int compareTo(Subscription other) {
+    if (price != other.price) {
+        // A lower price is better than a higher one
+        return (int)Math.signum(price - other.price);
+    }
+    // A higher data limit is better than a lower one
+    return other.dataLimit - dataLimit;
+}
+```
+
+or this one:
+
+```java
+@Override
+public int compareTo(Subscription other) {
+    if (dataLimit != other.dataLimit) {
+        // A higher data limit is better than a lower one
+        return other.dataLimit - dataLimit;
+    }
+    // A lower price is better than a higher one
+    return (int)Math.signum(price - other.price);
+}
+```
+
 <programming-exercise name='Wage order' tmcname='part10-Part10_11.WageOrder'>
 
 You are provided with the class Human. A human has a name and wage information. Implement the interface `Comparable` in a way, such that the overridden `compareTo` method sorts the humans according to wage from largest to smallest salary.
@@ -206,3 +234,52 @@ The exercise template includes the class `Student`, which has a name. Implement 
 The name of the `Student` is a String, which implements `Comparable` itself. You may use its `compareTo` method when implementing the method for the `Student` class. Note that `String.compareTo()` also treats letters according to their size, while the `compareToIgnoreCase` method of the same class ignores the capitalization completely. You may either of these methods in the exercise.
 
 </programming-exercise>
+
+## Comparator interface
+Now, we will have a look at the `Comparator` interface, which is obviously slightly different from the `Comparable` and defines the following method: `public int compare(E left, E right);`.
+It should also behave very similar to `compareTo`, but now you are comparing `left` with `right`. The big difference between the two is the following:
+**The compareTo() method of the Comparable interface defines a _natural order_, while the compare() method of the Comparator interface defines an ad-hoc order!**
+
+Here is an extensive example of an implementation of the compare method:
+```java
+public class PriceComparator implements Comparator<Subscription> {
+    @Override
+    public int compare(Subscription left, Subscription right) {
+        return (int)Math.signum(left.getPrice() - right.getPrice());
+    }
+}
+```
+
+or
+
+```java
+public class DataLimitComparator implements Comparator<Subscription> {
+    @Override
+    public int compare(Subscription left, Subscription right) {
+        return right.getDataLimit() - left.getDataLimit();
+    }
+}
+```
+
+and if we assign the following tasks to the compiler:
+
+```java
+ArrayList<Subscription> subs = new ArrayList<>();
+subs.add(new Subscription(5,20));
+subs.add(new Subscription(30,1000));
+subs.add(new Subscription(10, 15));
+subs.add(new Subscription(15, 250));
+System.out.println(subs);
+Collections.sort(subs, new PriceComparator());
+System.out.println(subs);
+Collections.sort(subs, new DataLimitComparator());
+System.out.println(subs);
+```
+
+it would print the following:
+
+<sample-output>
+[(price: 5.0, limit: 20 MB), (price: 30.0, limit: 1000 MB), (price: 10.0, limit: 15 MB), (price: 15.0, limit: 250 MB)]
+[(price: 5.0, limit: 20 MB), (price: 10.0, limit: 15 MB), (price: 15.0, limit: 250 MB), (price: 30.0, limit: 1000 MB)]
+[(price: 30.0, limit: 1000 MB), (price: 15.0, limit: 250 MB), (price: 5.0, limit: 20 MB), (price: 10.0, limit: 15 MB)]  
+</sample-output>
