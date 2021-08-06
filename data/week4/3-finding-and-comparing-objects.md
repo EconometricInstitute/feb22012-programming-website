@@ -53,8 +53,10 @@ In practice, the memory of a computer is linear. It is a very long array of bits
 Here, the linear computer memory is displayed by a sequence of numbers and words. Since a and b are primitive types, actual values are stored in the memory. When we compare `a==b`, we compare the numbers 12 and 12.
 Since `i1` is a non-primitive, the memory address of the object it references is stored in the memory. The 49 tells it that it can be looked up from character 49 onwards. `i2` is stored in the memory from index 63 onwards. When we compare `i1==i2`, we compare 49 with 63.
 
-When we want to compare the **contents** of objects, the `equals` method should be used, instead of the `==` operator. In the Introduction to Programming course, yhou learned that the Object class contains a method `equals(Object other)`. The default implementation of this method does the same as the == operator, but it can be overridden. 
-Most classes that you are familiar with, such as `String` and `Integer`, do so.
+When we want to compare the **contents** of objects, the `equals` method should be used, instead of the `==` operator. In the Introduction to Programming course, yhou learned that the Object class contains a method `equals(Object other)`. The default implementation of this method does the same as the == operator, but it can be overridden. Most classes that you are familiar with, such as `String` and `Integer`, do so.
+
+For strings, `equals` works as expected in that it declares two strings _identical in content_ to be 'equal' even if they are two separate objects. The String class has replaced the default `equals` with its own implementation.
+If we want to compare our own classes using the `equals` method, then it must be defined inside the class. The method created accepts an `Object`-type reference as a parameter, which can be any object. The comparison first looks at the references. This is followed by checking the parameter object's type with the `instanceof` operation - if the object type does not match the type of our class, the object cannot be the same. We then create a version of the object that is of the same type as our class, after which the object variables are compared against each other.
 
 ## Overriding the equals() and hashCode() methods
 As we have seen last week, the cosmic superclass `Object` has several general methods, of which we have already seen the `toString()` method. Now, we will see the other two methods that we promised to cover.
@@ -90,6 +92,13 @@ For deeper understanding, elaborate for yourself on the fingerprint analogy: if 
 
 ### Overriding equals() and hashCode()
 Adhering to the contracts of `equals()` and `hashCode()` can be a tricky business. In practice, you should try to avoid doing this by hand. Actually, `IntelliJ` or any other good IDE can generate the code for you! 
+
+<text-box variant='hint' name='Assisted creation of the equals method and hashCode '>
+
+IntelliJ provides support for the creation of both `equals` and `hashCode`. You can select Source -> Insert Code from the menu and then select *equals() and hashCode()* from the drop-down list. The IDE then asks for the instance variables used in the methods. The methods developed by NetBeans are typically sufficient for our needs.
+
+</text-box>
+
 Consider the following example:
 ```java
 public class Pair {
