@@ -1,5 +1,5 @@
 ---
-path: '/week5/2-arraylist-and-hashtable'
+path: '/week5/2-hashmap'
 title: 'ArrayList and hash table'
 hidden: false
 ---
