@@ -73,22 +73,26 @@ The names of these methods are very descriptive. For most of the methods the boo
 The `Collections` class contains a number of really useful static methods. This is similar to the many useful static methods in the `Math` class.
 
 Some useful methods for List types:
+
 - public static &lt;T extends Comparable&lt;? super T&gt;&gt; void sort(List&lt;T&gt; list)
 - public static &lt;T&gt; void sort(List&lt;T&gt; list, Comparator&lt;? super T&gt; c)
 - public static void reverse(List&lt;?&gt; list)
 - public static void shuffle(List&lt;?&gt; list, Random rnd)
 
 If we want to obtain some statistics:
+
 - public static &lt;T&gt; T max(Collection&lt;? extends T&gt; coll, Comparator&lt;? super T&gt; comp)
 - public static &lt;T&gt; T min(Collection&lt;? extends T&gt; coll, Comparator&lt;? super T&gt; comp)
 - public static int frequency(Collection&lt;?&gt; c, Object o)
 
 If we want to return a version of a `List`, `Set` or `Map` that cannot be modified (and we don’t want to copy it)
-• public static &lt;T&gt; Set&lt;T&gt; unmodifiableSet(Set&lt;? extends T&gt; s)
-• public static &lt;T&gt; List&lt;T&gt; unmodifiableList(List&lt;? extends T&gt; list)
-• public static &lt;K,V&gt; Map&lt;K,V&gt; unmodifiableMap(Map&lt;? extends K, ? extends V&gt; m)
+
+- public static &lt;T&gt; Set&lt;T&gt; unmodifiableSet(Set&lt;? extends T&gt; s)
+- public static &lt;T&gt; List&lt;T&gt; unmodifiableList(List&lt;? extends T&gt; list)
+- public static &lt;K,V&gt; Map&lt;K,V&gt; unmodifiableMap(Map&lt;? extends K, ? extends V&gt; m)
 
 In the following sections, the following data structure will be introduced: 
+
 - Lists and Queues
 - Sets: HashSets and TreeSets
 - Maps: HashMaps and TreeMaps
