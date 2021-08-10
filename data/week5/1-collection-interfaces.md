@@ -18,7 +18,7 @@ To store much data and be able to retrieve it efficiently, Java implements sever
 ### Iterable interface
 The interface `Iterable<E>` are all types that we can use the **enhanced for-loop** on.
 It specifies only one method: `public Iterator<E> iterator()`. 
-An iterator is able to indicate whether there are any elements left to iterate on (with `hasNext()`) and to produce the next element with `next()`)
+An iterator is able to indicate whether there are any elements left to iterate on (with `hasNext()`) and to produce the next element (with `next()`)
 When we work with a collection of data containing a bunch of objects, it is often useful to do something _for each_ object.
 The enhanced for-loop should be preferred in such cases. It will use the most efficient way to iterate over a collection.
 
