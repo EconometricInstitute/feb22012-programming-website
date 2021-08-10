@@ -57,3 +57,62 @@ The `TreeSet` stores its elements in the nodes of a binary tree, such that the f
 - All nodes in the right subtree of the node hold greater (or equal) elements
 
 Here is an example:
+<img width="724" alt="The TreeSet&lt;Integer%gt; object contains the reference to the root node of the TreeSet and an integer value of the size. A node has a pointer to a node object with a smaller value, a pointer to a node object with a greater value and a pointer to the integer value of the node itself. In this example, the root node has two children and they also have two children each. If you go to the left from one node, you obtain node objects with smaller values. On the right, however, are nodes with greater values." src="https://user-images.githubusercontent.com/67587903/128865316-5ff48ad7-eb80-409d-a9c6-eb7b4fc79421.PNG">
+
+The `TreeSet&lt;E&gt;` class has the advantage that iterating over the elements happens according to the specified order. Ranged subsets can be selected efficiently. 
+However, in practice `HashSet` is faster (unless you end up in the very unlikely case that all objects end up in the same bucket). However, `HashSet`s have random order, while a `TreeSet` has a reliable order.
+`TreeSet` also requires the order to be consistent with equals in order to work correctly.
+
+Three of TreeSet’s constructors are:
+
+- public TreeSet()
+- public TreeSet(Comparator&lt;? super E&gt; comparator)
+- public TreeSet(Collection&lt;? extends E&gt; c)
+
+## Map&lt;K,V%gt; interface
+Another very useful type of data structure is the `Map`. In other languages it is sometimes called a *dictionary* or a *hash table*. Maps store **key-value pairs**.
+The keys in a map are unique: the keys of a map form the **key set**. For every key in the key set, the map will contain an associated value. The values are not necessarily a set.
+Maps have many uses. Some examples include:
+- Counting how often a String occurs in a file (keys: `String`, values: `Integer`)
+- Keep track of the reputation of a Player (keys: `Player`, values: `Double`)
+- Check which files contain a certain line (keys: `String`, values: `List<File>`)
+
+The interface `Map&lt;K,V%gt;` has two type parameters: one for the keys (K) and one for the values (V). It does **not** extend `Collection&lt;E&gt;` because `Collection`s only hold values of a single type. 
+The interface Map&lt;K,V&gt; defines the following methods:
+
+- boolean containsKey(Object key);
+- boolean containsValue(Object value);
+- V get(Object key);
+- V put(K key, V value);
+- V remove(Object key);
+- void putAll(Map&lt;? extends K, ? extends V&gt; m);
+- void clear();
+- Set&lt;K&gt; keySet();
+- int size();
+- boolean isEmpty();
+
+If a value for a non-existing key is requested, `get()` returns `null`.
+
+Here is an example of the use of a `Map`:
+```java
+Map<String,Integer> myMap = … ;
+myMap.put("hello", 5);
+myMap.put("world", 3);
+myMap.put("Java", 12);
+myMap.put("world", 5);
+myMap.remove("hello");
+
+System.out.println(myMap.get("Java"));
+System.out.println(myMap.get("other") == null);
+System.out.println(myMap.containsKey("world"));
+System.out.println(myMap);
+```
+
+will print the following:
+
+<sample-output>
+12
+true
+true
+{Java=12, world=5} 
+</sample-output>  
