@@ -53,6 +53,10 @@ for (Integer i : iterable) {
 ```
 
 ## Collection interface
+The Collection interface describes functionality related to collections. Among other things, lists and sets are categorized as collections in Java - both the List and Set interfaces implement the Collection interface. The Collection interface provides, for instance, methods for checking the existence of an item (the method `contains`) and determining the size of a collection (the method `size`).
+
+The Collection interface also determines how the collection is iterated over. Any class that implements the Collection interface, either directly or indirectly, inherits the functionality required for a `for-each` loop.
+
 The `Collection<E>` interface extends `Iterable<E>` so we can use the enhanced for loop on any `Collection`.
 On top of that, it defines a number of methods:
 
