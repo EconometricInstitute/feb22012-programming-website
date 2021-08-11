@@ -1,7 +1,7 @@
 ---
 path: "/week5/3-hashmap-comparison"
 title: "Approximate comparison with hashmap"
-hidden: false
+hidden: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
