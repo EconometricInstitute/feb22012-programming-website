@@ -1,7 +1,7 @@
 ---
 path: '/week5/2-hash-map'
 title: 'Hash Map'
-hidden: false
+hidden: true
 ---
 
 <!-- <text-box variant='learningObjectives' name='Oppimistavoitteet'> -->
