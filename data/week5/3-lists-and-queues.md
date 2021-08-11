@@ -1,6 +1,6 @@
 ---
-path: '/week5/2-lists-and-queues'
-title: 'Removing repetitive code (overloading methods and constructors)'
+path: '/week5/3-lists-and-queues'
+title: 'Lists and queues'
 hidden: false
 ---
 
