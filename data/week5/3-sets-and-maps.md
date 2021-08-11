@@ -6,11 +6,9 @@ hidden: false
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
-- You will brush up on using classes and objects.
-- You know what a `null` reference is, and what causes the NullPointerException error.
-- You can use an object as an object variable and a method parameter.
-- You can create a method that returns an object.
-- You can create the method equals, which can be used to check if two objects of the same type have the same contents or state.
+- You are familiar with the Set interface and its inheritances.
+- You are familiar with the Map interface and its inheritances.
+- You know how a hashMap works and when to use it.
 
 </text-box>
 
@@ -19,7 +17,7 @@ Sometimes, we want to work with data while we do not care about the order elemen
 Set data structures are thus different from lists. They specialize in checking efficiently whether an element is in the set. If the same element gets added multiple times, it will be in the set only once.
 
 The `Set<E>` interface extends the `Collection<E>` interface, but does not add any methods on top of it. It indicates there are no repeated values.
-Since a `Set` behaves differently from a `List`, we can interpret some of the operations in the `Collection<E>` interface as operations on mathematical sets:
+Since a `Set` behaves differently from a `List`, we can interpret some operations in the `Collection<E>` interface as operations on mathematical sets:
 - The set union (𝑆 ∪ 𝑇) can be performed via the addAll method: `public boolean addAll(Collection<? extends E> arg0);`
 - The set intersection (𝑆 ∩ 𝑇) can be performed via the retainAll method: `public boolean retainAll(Collection<?> arg0);`
 - The set difference (S \ 𝑇) can be performed via the removeAll method: `public boolean removeAll(Collection<?> arg0);`
@@ -49,7 +47,7 @@ Note that HashSet in no way assumes the order of a set of elements. If objects c
 
 ### HashSet&lt;E&gt; class
 As an example, the set interface is implemented by `HashSet`. In order to check if an element is already in the set, you could iterate over all elements in the set. But this is inefficient. The `HashSet<E>` class uses the contract between `equals()` and `hashCode()` to find objects much faster.
-It maintains a list of _m_ buckets. When a new element _o_ is added, the it is added to the bucket with index `o.hashCode() % m`. When we check whether an element is already in the set, we only need to compare the element to other elements in its bucket.
+It maintains a list of _m_ buckets. When a new element _o_ is added, it is added to the bucket with index `o.hashCode() % m`. When we check whether an element is already in the set, we only need to compare the element to other elements in its bucket.
 
 Here is a visual example of how the `HashSet` works:
 
@@ -60,10 +58,10 @@ The `HashSet` has two constructors:
 - public HashSet()
 - public HashSet(Collection&lt;? extends E&gt; c)
 
-If the hash codes of the objects added to a `HashSet` are distributed uniformly, they will distribute nicely over the different buckets with high probability and it will be very efficient. To work properly, `HashSet` really depends on the contracts for `hashCode()` and `equals()`. Calling the contains() method on a `HashSet` with a 10.000 elements will be a lot faster than calling it on a `List`, approximately 100 to 1000 times faster.
+If the hash codes of the objects added to a `HashSet` are distributed uniformly, they will distribute nicely over the different buckets with high probability, and it will be very efficient. To work properly, `HashSet` really depends on the contracts for `hashCode()` and `equals()`. Calling the contains() method on a `HashSet` with a 10,000 elements will be a lot faster than calling it on a `List`, approximately 100 to 1,000 times faster.
 
 ## SortedSet&lt;E&gt; interface
-The `HashSet<E>` stores it elements in a very random order, depending on the current number of buckets and the hashCodes of the objects. If there is some order available we may want to obtain all objects in the set greater than some object `fromElement` or smaller than some object `toElement`.
+The `HashSet<E>` stores it elements in a very random order, depending on the current number of buckets and the hashCodes of the objects. If there is some order available, we may want to obtain all objects in the set greater than some object `fromElement` or smaller than some object `toElement`.
 The `SortedSet<E>` interface defines the following methods:
 
 - E first();
@@ -83,7 +81,7 @@ Here is an example:
 <img width="724" alt="The TreeSet&lt;Integer%gt; object contains the reference to the root node of the TreeSet and an integer value of the size. A node has a pointer to a node object with a smaller value, a pointer to a node object with a greater value and a pointer to the integer value of the node itself. In this example, the root node has two children and they also have two children each. If you go to the left from one node, you obtain node objects with smaller values. On the right, however, are nodes with greater values." src="https://user-images.githubusercontent.com/67587903/128865316-5ff48ad7-eb80-409d-a9c6-eb7b4fc79421.PNG">
 
 The `TreeSet<E>` class has the advantage that iterating over the elements happens according to the specified order. Ranged subsets can be selected efficiently. 
-However, in practice `HashSet` is faster (unless you end up in the very unlikely case that all objects end up in the same bucket). However, `HashSet`s have random order, while a `TreeSet` has a reliable order.
+However, in practice, `HashSet` is faster (unless you end up in the very unlikely case that all objects end up in the same bucket). However, `HashSet`s have random order, while a `TreeSet` has a reliable order.
 `TreeSet` also requires the order to be consistent with equals in order to work correctly.
 
 Three of TreeSet’s constructors are:
@@ -93,7 +91,7 @@ Three of TreeSet’s constructors are:
 - public TreeSet(Collection&lt;? extends E&gt; c)
 
 ## Map&lt;K,V%gt; interface
-Another very useful type of data structure is the `Map`. In other languages it is sometimes called a *dictionary* or a *hash table*. Maps store **key-value pairs**.
+Another very useful type of data structure is the `Map`. In other languages, it is sometimes called a *dictionary* or a *hash table*. Maps store **key-value pairs**.
 The keys in a map are unique: the keys of a map form the **key set**. For every key in the key set, the map will contain an associated value. The values are not necessarily a set.
 Maps have many uses. Some examples include:
 - Counting how often a String occurs in a file (keys: `String`, values: `Integer`)
@@ -167,7 +165,7 @@ Helsinki
   
 </sample-output>
 
-If the hash map does not contained the key used for the search, its `get` method returns a `null` reference.
+If the hash map does not contain the key used for the search, its `get` method returns a `null` reference.
 
 Two type parameters are required when creating a hash map - the type of the key and the type of the value added. If the keys of the hash map are of type `String`, and the values of type `Integer`, the hash map is created with the following statement `HashMap<String, Integer> hashmap = new HashMap<>();`
 Adding to the hash map is done through the `put(*key*, *value*)` method that has two parameters, one for the key, the other for the value. Retrieving from a hash map happens with the help of the `get(*key*)` method that is passed the key as a parameter and returns a value.
@@ -247,7 +245,7 @@ Content: ...
 
 </sample-output>
 
-##  Hash Map as an Instance Variable
+####  Hash Map as an Instance Variable
 The example considered above on storing books is problematic in that the book's spelling format must be remembered accurately. Someone may search for a book with a lowercase letter, while another may, for example, enter a space to begin typing a name. Let's take a look at a slightly more forgiving search by book title.
 
 We make use of the tools provided by the String-class to handle strings. The `toLowerCase()` method creates a new string with all letters converted to lowercase. The `trim()` method, on the other hand, creates a new string where empty characters such as spaces at the beginning and end have been removed.
@@ -337,8 +335,8 @@ null
 
 In the above example, we adhered to the DRY (Don't Repeat Yourself) principle according to which code duplication should be avoided. Sanitizing a string, i.e., changing it to lowercase, and *trimming*, i.e., removing empty characters from the beginning and end, would have been repeated many times in our library class without the `sanitizedString` method. Repetitive code is often not noticed until it has already been written, which means that it almost always makes its way into the code. There's nothing wrong with that - the important thing is that the code is cleaned up so that places that require tidying up are noticed.
 
-## Going Through A Hash Map's Keys
-We may sometimes want to search for a book by a part of its title. The `get` method in the hash map is not applicable in this case as it's used to search by a specific key. Searching by a part of a book title is not possible with it.
+#### Going Through A Hash Map's Keys
+We may sometimes want to search for a book by a part of its title. The `get` method in the hash map is not applicable in this case, as it's used to search by a specific key. Searching by a part of a book title is not possible with it.
 We can go through the values of a hash map by using a for-each loop on the set returned by the `keySet()` method of the hash map.
 Below, a search is performed for all the books whose names contain the given string.
 
@@ -366,7 +364,7 @@ public ArrayList<Book> getBookByPart(String titlePart) {
 
 This way, however, we lose the speed advantage that comes with the hash map. The hash map is implemented in such a way that searching by a single key is extremely fast. The example above goes through all the book titles when looking for the existence of a single book using a particular key.
 
-## Going Through A Hash map's Values
+#### Going Through A Hash map's Values
 The preceding functionality could also be implemented by going through the hash map's values. The set of values can be retrieved with the hash map's `values​​()` method. This set of values can also be iterated over with a for-each loop.
 
 ```java
@@ -404,3 +402,8 @@ It has the following constructors:
 - public TreeMap() { … }
 - public TreeMap(Comparator<? super K> comparator) { … }
 - public TreeMap(Map<? extends K, ? extends V> m) { … }
+
+
+Finally, we provide you with a full overview of the interfaces and classes we have learned about this week:
+
+<img width="744" alt="a visual summary of the Collections, Maps and Sets interfaces and inheritances is provided here. The information is not new from this week's text." src="https://user-images.githubusercontent.com/67587903/129039074-6c5b1469-7394-41a4-84b2-1b0a69044ede.PNG">
