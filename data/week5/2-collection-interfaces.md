@@ -1,5 +1,5 @@
 ---
-path: '/week5/1-collection-interfaces'
+path: '/week5/2-collection-interfaces'
 title: 'Collection interfaces'
 hidden: false
 ---
