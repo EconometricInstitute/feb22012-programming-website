@@ -1,7 +1,7 @@
 ---
 path: '/week5/2-hashmap'
 title: 'ArrayList and hash table'
-hidden: false
+hidden: true
 ---
 
 <!-- <text-box variant='learningObjectives' name='Oppimistavoitteet'> -->
