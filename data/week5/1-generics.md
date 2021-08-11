@@ -1,5 +1,5 @@
 ---
-path: '/week5/2-generics'
+path: '/week5/1-generics'
 title: 'Generics'
 hidden: false
 ---
