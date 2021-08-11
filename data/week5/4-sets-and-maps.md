@@ -1,5 +1,5 @@
 ---
-path: '/week5/3-sets-and-maps'
+path: '/week5/4-sets-and-maps'
 title: 'Sets and Maps'
 hidden: false
 ---
