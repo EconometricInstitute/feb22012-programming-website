@@ -5,6 +5,8 @@ hidden: false
 information_page: true
 ---
 
+In Introduction to Programming, you are expected to have installed IntelliJ. If you have done so, you can skip this page and its description. However, if you bought a new laptop or lost the program somehow, you can follow the installation guide here.
+
 In this page, we will guide you through the installation of IntelliJ on your personal computer.
 IntelliJ will be the default programming environment, the program in which you will write the code, that we use for this course.
 It comes pre-installed on university computers, so if you plan to only work from those you can skip the remainder of this page.
