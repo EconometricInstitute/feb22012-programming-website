@@ -6,7 +6,7 @@ information_page: true
 banner: true
 ---
 
-Welcome to the course page of the Introduction to Programming course! This course provides an introduction to the Java Programming Language and will make you familiar with some of the concepts that are fundamental to functional and object-oriented programming languages.
+Welcome to the course page of the Programming course! This course is a continuation of the course Introduction to Programming, in which you have already learned the basics of the Java Programming Language and will make you familiar with some of the concepts that are fundamental to functional and object-oriented programming languages.
 
 This course page will act as the main reference for the course and contains practice assignments to make you familiar with the topics that are studied. You are able to test yourself on these assignments through the `IntelliJ EduTools` plugin. Completing these practice assignments will help you to become familiar with the language and train you on how to tackle problems by means of computer programs.
 
