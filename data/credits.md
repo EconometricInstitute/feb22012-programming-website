@@ -11,11 +11,12 @@ The course material is licensed under a [Creative Commons BY-NC-SA 4.0](https://
 
 ## Contributors to this Derivative Work
 
-The following individuals have contributed to creating this course page for the Introduction to Programming course at the Erasmus University:
+The following individuals have contributed to creating this course page for the Programming course at the Erasmus University:
 
-* Rowan Hoogervorst
+* Paul Bouman
 * Marja van der Wind
 * Nick Koning
+* Rowan Hoogervorst
 
 ## Contributors Original Course Material
 
