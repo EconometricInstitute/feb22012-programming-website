@@ -30,7 +30,7 @@ For an overview of when the sessions take place, see the online timetable: [EN](
 Moreover, additional help can be obtained by posting questions on the course `Canvas Discussion Board` page.
 
 ### Lecture videos
-There will not be a regular lecture for this course. Instead, every week has a series of videos that become available on Monday through Canvas. Most videos are around 10-20 minutes in length, and each video discusses a topic from that week. You are recommended to watch the videos on Monday, as they are intended to get you started with the material of the week, and provide some further depth. After watching the videos, you should be well prepared to go through the material and practice exercises of the week.
+This course is organized with flipping the classroom. Every week has a series of videos that become available on Monday through Canvas, please watch them on Panopto before coming to the lecture. They are intended to get you started with the material of the week. After watching the videos, you should be well prepared to go through the material and practice exercises of the week. The lectures in the schedule are interactive Q&A sessions, where attendance is not mandatory. You can ask questions about the lecture of that week.
 
 ### Question Hours
 As asking questions is not possible during the lecture, there is a weekly question hour on to ask questions about the material. In the first week, there will be an additional question hour where you can ask questions about the setup of the course. The question hours last 45 minutes and take place via `Microsoft Teams`. You will automatically be added to the Teams page of this course, from where the question hour will be started. For installing and logging in to Teams, see the [manuals provided by the University](https://my.eur.nl/en/eur/ict-1/teams-chat-and-presence). 
@@ -43,6 +43,8 @@ The idea is that you will work on the hand-in exercises during the tutorial. How
 
 ### Discussion Board
 If additional question pop up, that you were not be able to ask during the question hour or tutorial sessions, you can ask them on the `Canvas Discussion Board` of the course. We will try to regularly check the discussion board and answer any questions that pop-up. Note that if you ask a question here, all students in the course can see it and benefit from the answer. However, this also means that you have to make sure not to include any personal information or any part of a solution for an assignment in these questions.
+
+Please do not ask personal questions/questions about your assignment work in private channels. Also, do not contact the course coordinator or your TA’s using MS Teams outside the official contact hourse. If you violate this rule, we reserve the right to block all MS Teams communication with you.
 
 ### Email
 For any personal matters you could [send me an email](mailto:bouman@ese.eur.nl). However, the number of participants of the course is large, I would kindly ask you not to email about questions regarding the assignments or content of the course. If it turns out that there are too many questions to answer during the question hour, then I will organize additional question hours.
