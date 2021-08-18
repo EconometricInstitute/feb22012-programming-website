@@ -33,8 +33,6 @@ A class thus specifies what the objects instantiated from it are like.
 
 If you make your own class, you should write Javadoc style comments that start with `/**` for every method in the class, but also for the class itself. Within the class Javadoc comment, you should also state who the author is, using the `@author` annotation. For public methods, you explain the use of the method, the parameters and return types.
 
-<!-- TODO: misschien overview week 1 slide 37 over wat objects/statements/methods zijn enzo -->.
-
 Let's create a class named `Person`. For this class, we create a separate file named `Person.java`. Our program now consists of two separate files, since the main program is also in its own file. The `Person.java` file initially contains the class definition **public class Person** and the curly brackets that confine the contents of the class.
 A class defines the attributes and behaviors of objects that are created from it. Let's decide that each person object has a name and an age. It's natural to represent the name as a string, and the age as an integer. We'll go ahead and add these to our blueprint:
 
@@ -46,6 +44,10 @@ public class Person {
 ```
 We specify above that each object created from the `Person` class has a `name` and an `age`. Variables defined inside a class are called _instance variables_.
 Instance variables are written on the lines following the class definition `public class Person {`. Each variable is preceded by the keyword private. The keyword **private** means that the variables are "hidden" inside the object, which is known as _encapsulation_. **Public** variables, on the other hand, are variables that are visible from outside the class.
+
+Lastly, in the following picture, a brief overview of the relations between statements, variables, methods, objects and classes are depicted and explained:
+
+<img width="618" alt="In the visual representation, two parts are depicted: operations and memory. Operations are triggered by statements that are grouped in methods, which on their turn are grouped in a class. The statements modify the variables, which are part of the memory and are grouped in objects. The methods operate on the objects and objects have a class as a type. The operations thus influence the memory and both operations and memory are part of the class." src="https://user-images.githubusercontent.com/67587903/129898218-de6a477f-f90b-41e0-97cf-7b7d5d0f7419.PNG">
 
 ## Defining a Constructor
 We want to set an initial state for an object that's created. Custom objects are created the same way as objects from pre-made Java classes, such as `ArrayList`, using the `new` keyword. It'd be convenient to pass values to the variables of that object as it's being created. For example, when creating a new person object, it's useful to be able to provide it with a name:
@@ -89,12 +91,6 @@ On the left, a list of all public classes is presented. If you choose the `Strin
 For instance, the methods length(), toLowerCase(), toUpperCase(), charAt(), split() and replaceAll() are mentioned here.
 If you place your cursor on the word `String` at the definition of a String object and press `Ctrl + Shift + i` on Windows or `Cmd + Shift + i` on Mac, you can find the implementation of all these methods in the pop-up.
 
-### Static versus Non-Static
-**TODO:** deze uitleg kan verwarrend zijn, omdat objecten wel degelijke bij instance variabelen kunnen zolang het maar via een referentie naar een object gaat. Het punt is vooral dat er geen `this` bestaat, wat een argument zou kunnen zijn om `this` eerst uit te leggen?
-
-Static methods are not associated with an object and cannot access instance variables, but only static variables. A static variable belongs to a class and is global. Thus, methods in two different objects can access and change the same variable.
-Instance variables are non-static. Each object has his own copy of the instance variables. Non-static methods can access both static and non-static variables.
-
 ## Objects and references
 In Java, variables that do not actually hold objects, merely hold a **reference** to the object, which is a location of the object within the computer's memory. When a variable contains the memory location of an object, it _refers_ to that object.
 For instance, in the following code, two variables `a` and `b` refer to the same `ArrayList` object.
@@ -108,7 +104,14 @@ System.out.println(a);
 Since they refer to the same object, an adjustment performed via reference `b` is also visible via reference `a`, such that now `[5, 10]` will be printed.
 This shows a clear distinction between primitive and non-primitive variables. Object variables are non-primitive and hold references. Primitive variables, however, store data, not references. In the following example, the two variables _a_ and _b_ can thus be adjusted separately without impacting each other.
 
+In the image below, you can see how the memory processes the storage and adaption of the statements in the code above:
+
+<img width="527" alt="The image shows variables a and b both pointing to the same ArrayList. The arraylist has a size of 2 and has to spaces with pointers in them, which each point to an Integer object. The Integer objects contain the values 5 and 10." src="https://user-images.githubusercontent.com/67587903/129902561-bc38d276-c000-4205-a297-ea462b95359b.PNG">
+
 If an object does not refer to anything at all, the object reference has the special value `null`.
 Another used reference is `this`. This reference is used by methods to refer to the object that the method is called on.
+If you need refreshment on these two special object references, please have a look at the Introduction to Programming matter of [week 5](https://feb21011.ese.eur.nl/week-5/5-objects-and-references).
 
-**TODO**: het is wellicht nog mooi iets met memory state diagrams toe te voegen aan deze sectie, of dit stukje daarmee uit te breiden?
+### Static versus Non-Static
+Static methods can _not_ be invoked on objects and are general. It means that the `this` keyword does not exist for these methods, while it does for non-static methods. Since static methods are not associated with an object, they can not evoke instance variables directly. If a static method makes use of an instance variable, it is done via a reference to the object. Ofcourse, static methods can acces static variables right away, since a static variable belongs to a class and is global. Thus, methods in two different objects can access and change the same variable.
+Non-static methods are also called `instance` methods. Instance variables thus are non-static, and each object has his own copy of the instance variables. Non-static methods can access both static and non-static variables.
