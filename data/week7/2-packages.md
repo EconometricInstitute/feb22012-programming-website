@@ -1,5 +1,5 @@
 ---
-path: '/week7/1-packages'
+path: '/week7/2-packages'
 title: 'Packages'
 hidden: false
 ---
