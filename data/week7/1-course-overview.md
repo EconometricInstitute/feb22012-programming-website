@@ -91,4 +91,213 @@ For instance, the constructors of `Scanner`, `PrintWriter` and `FileInputStream`
 This is not indicated in the reference you have available at the exam, so you should remember it!
 
 ## Interfaces
-dia 10
+Interfaces are one of the ways to achieve _polymorphism_. An `interface` introduces a new type, for which you can specify methods that must be implemented by classes implementing the interface.
+A class indicates it is implementing an interface with the keyword `implements` in the class header and must implement its methods.
+Objects of classes implementing the interface also have the type of the interface (the interface is a supertype and the class a subtype). Classes can extend at most one class, but can have any number of interfaces as a supertype.
+
+### Inheritance
+The second way to achieve _polymorphism_ is by using _inheritance_. It is indicated with the keyword `extends` in the class header and can be either for classes or interfaces.
+In case of classes we have a relation between the _superclass_ and the _subclass_ (which is just a special type of supertype/subtype relation). Instance variables and method implementations are _inherited_ from the super class (and can be called and used if they are public or protected).
+Methods can be overridden, redefining the implementation of certain methods. It is still possible to call the methods or constructors of the super class using the `super` keyword.
+A class can _extend_ at most one class, but implement multiple interfaces.
+
+### Abstract classes
+In some cases we want to implement part of a class, but leave some methods open for subclasses to implement. This can be achieved with an _abstract class_. Such as class has the keyword `abstract` in the class header.
+Methods without an implementation must be denoted with the `abstract` keyword as well. Other methods in the abstract class may call the abstract methods and operate on instance variables like normal classes. It is not possible to create objects of an abstract class by directly calling the constructor using `new`.
+
+### Object
+<!-- Here, I found it difficult which type of header to use. The object class is about extending classes, so the above info (which would suggest ###), but the Object class is also an introduction to the comparator and so on (which would suggest ##). -->
+If a class does not explicitly extend another class, it implicitly
+extends Object. You need to know about three methods in Object what they do:
+`toString()`, `hashCode()` and `equals()`. 
+By default, these methods use the memory address of an object (e.g. to determine whether two objects are equal). So even if two separate objects have the same values stored in their instance variables, the `equals()` method will return false (just as the == operator does).
+It can be very useful to override them, but with hashCode() and equals() you have to make sure you adhere to their contract. Many classes from the standard library override these methods already.
+
+## Collections
+### Comparator and Comparable
+Sometimes we want to sort objects according to some order. In case a _natural order_ is available, a class can implement the `Comparable<E>` interface. It requires the method `public int compareTo(E other);`. A number of classes from the standard library do this, like `String`, `Integer`, `BigInteger`, `Double`, etc.
+We can also use a separate class to define an _ad-hoc order_ using the `Comparator<E>` interface. This requires the method `public int compare(E left, E right);`.
+
+We can use the static method `Collections.sort()` to sort a list of elements which implement the `Comparable` interface. We can also pass a `Comparator` as a second argument to sort according to some ad-hoc order.
+Suppose we get an int `c` from either `left.compareTo(right)` or `myComp.compare(left, right)`
+- If c < 0 then the object left comes before right in a sorted list.
+- If c > 0 then the object left comes after right in a sorted list.
+- If c == 0 then the objects are regarded as equal by this order.
+
+Consider a `List<Integer>` with numbers 1,2, … , 10. When we call `Collections.sort()` on this list, the order will indeed be 1,2,3,4,5,6,7,8,9,10 (this is easy to remember).
+Objects of the following class will be sorted in the same way:
+```java
+public class MyInteger implements Comparable<MyInteger> {
+    private int value;
+    @Override
+    public int compareTo(MyInteger other) {
+        return this.value - other.value;
+    }
+}
+```
+
+Sometimes it is also useful to call another `compareTo` method:
+```java
+public class Student implements Comparable<Student> {
+    private String name;
+    @Override
+    public int compareTo(Student other) {
+        return name.compareTo(other.name);
+    }
+}
+```
+
+### Collections Framework
+A very useful framework that allows you to store and access collections of objects in a number of ways. There are three different types: Lists, Sets and Maps.
+The `Collection<E>` interface extends the `Iterable<E>` interface. This means that you can use the enhanced for-loop on Lists and Sets.
+
+#### List
+A `List` stores data sequentially. The same element can occur multiple times and the order of elements is part of the list semantics.
+An `ArrayList<E>` uses an array to model a list. It is very efficient to access elements anywhere in the list, but adding at the front or removing an element halfway requires a lot of elements to be moved.
+A `LinkedList<E>` uses a container object for each element, with pointers to the next and previous container. This makes adding and removing at both the front and back very efficient, but access of elements in the middle is costly.
+
+#### Set
+A `Set<E>` or `SortedSet<E>` is used to store elements if we are only interested in knowing whether an element is or is not in the set. Elements are never repeated and the order in which elements are added has no special meaning.
+A `HashSet<E>` stores elements using both the `hashCode()` and `equals()` methods and requires that these are consistent.
+A `TreeSet<E>` stores elements in a binary tree and requires a either a
+`Comparable` or `Comparator` interface that is consistent with `equals()`.
+
+#### Map
+A `Map<K,V>` is used to store key-value pairs. The keys form a set (i.e. they are unique) and every key is associated with a value.
+A `HashMap<K,V>` stores elements using both the `hashCode()` and `equals()` methods and requires that these are consistent.
+A `TreeMap<K,V>` stores elements in a binary tree and requires a either a Comparable or Comparator interface that is consistent with `equals()`.
+
+### Lambda Expressions
+_Functional interfaces_ are interface with one unimplemented method.
+_Lambda expressions_ are used to implement a functional interface. The syntax is something like this: `input definition -> output definition`.
+_A method reference_ is a special lambda expression for situations where a single method is called. The syntax looks like: `ClassName::methodName` or `expression::methodName`.
+
+For instance:
+```java
+public static void sortCoursesByTeacherLambda3(List<Course> courses) {
+    Comparator<Course> comp;
+    comp = (o1, o2) -> o1.getTeacher().compareTo(o2.getTeacher());
+    Collections.sort(courses, comp);
+}
+```
+
+In the following table, you can review the relation between types, method references and lambda expressions:
+
+|Type       | Method reference           | Lambda Expression                    |
+|-----------|----------------------------|--------------------------------------|
+|Static     |MyClass::myStaticMethod     |(args) -> MyClass.myStaticMethod(args)|
+|Bound      |var::myMethod               |(args) -> var.myMethod(args)          |
+|Unbound    |MyClass::myMethod           |(obj, args) -> obj.myMethod(args)     |
+|Constructor|MyClass::new                |(args) -> new MyClass(args)           |
+|Array      |int[]::new                  |(len) -> new int[len]                 |
+
+### Functional interfaces
+With the new built-in functional interfaces we can model common patterns, such as:
+- Doing something with an object (Consumer)
+- Checking a property/condition (Predicate)
+- Transforming an object (Function, UnaryOperator)
+- Combining two objects into one (BinaryOperator)
+
+Here are the new functional interfaces:
+| Interface                    | Input arguments | Output  | Interpretation |  
+|------------------------------|-----------------|---------|----------------|
+| Comparator                  | (T o1, T o2) | int | Define an order on T's |
+| BinaryOperator    |  (T left, T right) | T | Combine two T's into one T.  |
+| Consumer                    | (T arg) | void | Do something with argument |
+| BiConsumer    | (T arg1, U arg2) | void | Do something with the arguments |
+| Function                          | (T arg) | R | Transform a T into an R |
+| BiFunction         | (T arg1, U arg2) | R | Transform a T and U into an R |
+| Predicate               | (T arg) | boolean | Check if a T has a property |
+| Supplier                             | () | T | Produces object of type T |
+| UnaryOperator                       | (T arg) | T | Transforms a T to a T |
+| Runnable                                     | () | void | Execute a task |
+
+They are useful to construct methods that are generic. Rather than hardcoding these tasks, we can pass them as an argument. Calling is easy due to lambda expressions and method references.
+
+### Default interface methods
+In Java 8, we are allowed to write method implementations in an interface (but
+we can not define any instance variables). In case we do, the `default` keyword is mandatory.
+Subclasses do not need to implement the default methods (but they may
+override them).
+Functional interfaces can have any number of default methods, but must have
+exactly one non-default (unimplemented or abstract) method.
+Please have a look at the example code below:
+```java
+public interface Point2D {
+    public double getX(); //Traditional interface method
+    public double getY(); //Traditional interface method
+    public default double distanceTo(Point2D other) { // Default method
+        double dx = getX() - other.getX(); // Calls to unimplemented method.
+        double dy = getY() - other.getY();
+        return Math.sqrt(dx*dx + dy*dy);
+    }
+}
+```
+
+### Static interface methods
+In Java 8, it is now also possible to define static utility methods within an interface (much like Collections.sort, or Math.max). For example, the Comparator interface has a number of useful static methods:
+```java
+// Function based Comparators
+public static <T> Comparator<T> comparing(Function<T,Comparable> keyExtractor)
+public static <T,U> Comparator<T> comparing(Function<T,U> keyExtractor, Comparator<U> keyComparator)
+// Natural order based Comparators
+public static <T extends Comparable> Comparator<T> naturalOrder()
+public static <T extends Comparable> Comparator<T> reverseOrder()
+```
+
+And also some default methods:
+```java
+// Composition of Comparators
+public default <T> Comparator<T> thenComparing(Comparator<T> other)
+public default <T> Comparator<T> thenComparing(Function<T,Comparable> keyExtractor)
+public default <T,U> Comparator<T> thenComparing(Function<T,U> keyExtractor, Comparator<U> keyComparator)
+```
+### Writing shorter Comparators
+```java
+public static int compareCourses(Course left, Course right) {
+    if (left.getTeacher().equals(right.getTeacher())) {
+        return left.getTeacher().compareTo(right.getTeacher());
+    }
+    if (left.getCourseYear() != right.getCourseYear()) {
+        return right.getCourseYear() - left.getCourseYear();
+    }
+    return left.getCourseName().compareTo(right.getCourseName());
+}
+
+public static void sortCourses(List<Course> courses) {
+    Collections.sort(courses, MyClass::compareCourses);
+}
+```
+
+```java
+Comparator<Course> compTeacher = Comparator.comparing(Course::getTeacher);
+Comparator<Course> compYear = Comparator.comparing(Course::getCourseYear, Comparator.reverseOrder());
+Comparator<Course> compName = Comparator.comparing(Course::getCourseName);
+// Combine the three separate comparators into one:
+Comparator<Course> comp = compTeacher.thenComparing(compYear).thenComparing(compName);
+```
+
+```java
+Comparator<Course> comp = Comparator.comparing(Course::getTeacher)
+                                    .thenComparing(Course::getCourseYear, Comparator.reverseOrder())
+                                    .thenComparing(Course::getCourseName);
+Collections.sort(courses, comp);
+```
+
+### The `Optional<T>` class
+An object of `Optional<T>` either: holds a single value of type T, or holds no value at all. It can be used to avoid returning null values and forces the user to deal
+with potential absence of a result.
+Static methods that can be used to obtain an `Optional` object:
+```java
+public static <T> Optional<T> empty()
+public static <T> Optional<T> of(T elem)
+public static <T> Optional<T> ofNullable(T elem)
+```
+
+The following methods are available on an `Optional` object:
+```java
+public T get()
+public void ifPresent(Consumer<T> action)
+public boolean isPresent()
+public T orElse(T alternative)
+```
