@@ -82,7 +82,6 @@ The use of types in Java both has advantages and disadvantages, which are listed
 
 
 ## Primitive types
-
 In Java, exactly eight primitive types exist, which you already know: `byte`, `short`, `int`, `long`, `float`, `double`, `char` and `boolean`. Primitive types are not considered as objects and they just represent raw values.
 All other types are non-primitive, such as `String`, `List` and arrays, including arrays of non-primitive types, for example `double []` or `int [][]`.
 
@@ -91,6 +90,7 @@ Sometimes, it is necessary to convert between types. In some cases, this can be 
 int number = 233;
 double sameNumber = number; //sameNumber holds 233.0 now
 ```
+
 This type of conversion is called **implicit casting**, because casting is done automatically without us telling explicitly that the compiler should cast one type to another type.
 In the above case, this is always possible, because for every `int` value there is a corresponding `double` value. You could say that the set of `double` values _generalizes_ the set of `int` values.
 In other cases, however, this is not possible, such as in this case:
@@ -98,6 +98,7 @@ In other cases, however, this is not possible, such as in this case:
 double number = 123.0;
 int sameNumber = number; //this will give an error
 ```
+
 In this example, the compiler doesn't want to take the risk to do an automatic conversion, since some double values, such as `0.5`, do not have a corresponding `int` value.
 
 In general, **automatic conversion is only possible if the conversion goes from a more specific to a more general type**. This way, the compiler saves you from _loss of precision_ without realizing.
@@ -126,15 +127,16 @@ The reason for this output is that `byte` values can only store numbers between 
 This type of behavior is called an *overflow*. When you write an explicit cast, you should be aware of potential issues and if needed, write additional code to safeguard yourself against such unexpected behavior.
 
 ## Non-Primitive Types
-
 All types that are not primitive types are non-primitive types. Examples of these are `String`, `Scanner`, `int[]`, and the classes you create yourself result in new non-primitive types such as `Student` and `Course`.
-Since Java 5 we can also construct type-of-type things like `ArrayList<String>`. The rule to determine if a type is a primitive or non-primitive type, all you need to do is check whether the type is one of
-the eight primitive types. If it is not, it has to be a non-primitive type.
+Since Java 5 we can also construct type-of-type things like `ArrayList<String>`. The rule to determine if a type is a primitive or non-primitive type, all you need to do is check whether the type is one of the eight primitive types. If it is not, it has to be a non-primitive type.
+
+For every primitive type there is an associated non-primitive type, spelled with an uppercase letter: `Byte`, `Short`, `Integer`, `Long`, `Float`, `Double`, `Character`, `Boolean`. 
+This is because in Java, you cannot directly insert primitive type values (numbers, characters or boolean values) into array lists. For example, you cannot form an `ArrayList<double>`. 
+Instead, you must use the related non-primitive type, which is also called the _wrapper_. To collect `double` values in an array list, you use an `ArrayList<Double>`.
+Note that the wrapper class names start with uppercase letters, and that two of them differ from the names of the corresponding primitive integer types: `Integer` and `Character`.
 
 ### Autoboxing
-
-Lastly, for every primitive type there is an associated non-primitive type, spelled with an uppercase letter: `Byte`, `Short`, `Integer`, `Long`, `Float`, `Double`, `Character`, `Boolean`. 
-For these special types, primitive types and their corresponding non-primitive types can be mixed. Type conversion then makes use of something called **autoboxing**.
+For these special types that have both a primitive and non-primitive version, primitive types and their corresponding non-primitive types can be mixed. Type conversion then makes use of something called **autoboxing**.
 Autoboxing is the automatic conversion that the Java compiler makes between primitive types and their corresponding non-primitive types. 
 For example, converting and `int` to an `Integer` is done automatically by autoboxing. If the conversion goes the other way, it is called unboxing.
 The Java compiler applies autoboxing when a primitive value is passed as a parameter to a method that expects its corresponding non-primitive type, or when a primitive value is assigned to a non-primitive typed variable.
@@ -158,5 +160,6 @@ Note that the remainder `%` and unary plus `+=` operators do not apply to `Integ
   * It also lets you use primitive and non-primitive types interchangeably, which is convenient.
 </text-box>
 
-**TODO: more on autoboxing rules here** <!-- Couldn't find it -->
-For instance, conversion from `Integer` to `double` is done automatically, but from `int` to Double is not possible.
+Autoboxing and unboxing also work between non-associated primitive and non-primitive types, but only one way around. For instance, conversion from `Integer` to `double` is done automatically, but from `int` to Double is not possible.
+The second case is not possible, because the boxing conversion is exectuted first and will autobox the `int` into an `Integer`. Since it is nog possible to cast between non-primitive types, this cannot be (implicitly) casted to Double. 
+The first case, however, can be done, since the compiler would first autobox `Integer` into an `int`, which can implicitly be casted to a `double` value.
