@@ -16,7 +16,7 @@ hidden: false
 ## Ordering objects
 When it comes to numbers, we have a perfect natural ordering, for instance: 
 
-1 &leq 3.14 &leq 5 &leq 6 &leq 7 &leq <sup>16</sup>&frasl;<sub>2</sub> &leq 12 &leq 386 &leq 1001 + <sup>1</sup>&frasl;<sub>3</sub> &leq 5302 &leq ...
+1 &leq; 3.14 &leq; 5 &leq; 6 &leq; 7 &leq; <sup>16</sup>&frasl;<sub>2</sub> &leq; 12 &leq; 386 &leq; 1001 + <sup>1</sup>&frasl;<sub>3</sub> &leq; 5302 &leq; ...
 
 When it comes to text, there is also a general consensus of how text should be ordered, such as:
 
@@ -238,7 +238,7 @@ The name of the `Student` is a String, which implements `Comparable` itself. You
 ## Comparator interface
 Now, we will have a look at the `Comparator` interface, which is obviously slightly different from the `Comparable` and defines the following method: `public int compare(E left, E right);`.
 It should also behave very similar to `compareTo`, but now you are comparing `left` with `right`. The big difference between the two is the following:
-**The compareTo() method of the Comparable interface defines a _natural order_, while the compare() method of the Comparator interface defines an ad-hoc order!**
+**The compareTo() method of the Comparable interface defines a _natural order_, while the compare() method of the Comparator interface defines an _ad-hoc order_!**
 
 Here is an extensive example of an implementation of the compare method:
 ```java
