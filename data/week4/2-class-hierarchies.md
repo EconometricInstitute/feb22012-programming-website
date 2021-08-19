@@ -16,18 +16,15 @@ In your own small projects, you may end up with a few classes which use inherita
 
 In these diagrams, we follow the following conventions:
 
-<img width="759" alt="week4-classhierarchies-conventions1" src="https://user-images.githubusercontent.com/67587903/128322543-447d0abd-831d-43c4-91b4-3fdef2a050d1.PNG">
+<img width="759" alt="a class is depicted as a rectangle, an abstract class as a parallelogram, and an interface as a rhombus." src="https://user-images.githubusercontent.com/67587903/128322543-447d0abd-831d-43c4-91b4-3fdef2a050d1.PNG">
 
-Thus, a class is depicted as a rectangle, an abstract class as a parallelogram, and an interface as a rhombus.
+<img width="471" alt="Also, an arrow depicts the superclass/subclass or supertype/subtype relationship by pointing towards the superclass or supertype." src="https://user-images.githubusercontent.com/67587903/128322544-828b4d41-320f-44f1-8230-aeb8c7d89b07.PNG">
 
-<img width="471" alt="week4-classhierarchies-conventions2" src="https://user-images.githubusercontent.com/67587903/128322544-828b4d41-320f-44f1-8230-aeb8c7d89b07.PNG">
-
-Also, an arrow depicts the superclass/subclass or supertype/subtype relationship by pointing towards the superclass or supertype.
-Note that the superclass in the picture is an abstract class, whilst the subclass is a class.
+Note that the superclass has the form of a rhombus and is thus an abstract class here, whilst the subclass has the form of a rectangle and is therefore a regular class.
 
 We will now consider one class hierarchies from the standard library: the Exception class hierarchy. We hope that this will give you even more insight on the exceptions we learned about last week.
 
-<img width="789" alt="classhierarchy example" src="https://user-images.githubusercontent.com/67587903/128322542-70b1c15f-76cc-4004-8817-cb790e80f9c0.PNG">
+<img width="789" alt="The picture gives an overview of the relations between different sorts of exceptions and errors. These have also been described in the text." src="https://user-images.githubusercontent.com/67587903/128322542-70b1c15f-76cc-4004-8817-cb790e80f9c0.PNG">
 
 NB. Please note that you do *not* have to learn the upper hierarchy diagram by heart.
 
