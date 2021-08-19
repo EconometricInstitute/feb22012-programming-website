@@ -1,10 +1,9 @@
 ---
 path: "/week4/1-abstract-classes"
-title: "Abstract Classes and Methods"
+title: "Abstract Classes"
 hidden: false
 ---
 
-## Abstract classes
 An important aspect of interfaces is that they allow us to define methods without an implementation. In certain cases we may also want to do this with classes. 
 Sometimes, when planning a hierarchy of inheritance, there are cases when there exists a clear concept, but that concept is not a good candidate for an object in itself. The concept would be beneficial from the point of view of inheritance, since it includes variables and functionality that are shared by all the classes that would inherit it. On the other hand, you should not be able to create instances of the concept itself.
 This leads to a problem: if we allow methods without a body, the class is not finished. In that case it is problematic to use objects of the class.
