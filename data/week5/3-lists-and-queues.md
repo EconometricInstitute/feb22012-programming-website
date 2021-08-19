@@ -56,7 +56,9 @@ It has two constructors:
 Due to the way it works, adding and removing elements at the front or the end of the list is very efficient, but accessing an element at a fixed index requires it to walk over the elements in the list. Since it needs to create objects for every element it is often slower than `ArrayList` for many list-related applications.
 
 <img width="558" alt="The description of the diagram that depicts an example of a linked list, is directly under the picture." src="https://user-images.githubusercontent.com/67587903/128730017-50f2fada-1fb8-4217-8b61-bd8e9081299c.PNG">
+
 This figure shows schematically how a LinkedList works. The LinkedList object contains a reference to the first and last object of the list and an integer that represents its size. Each object contains a reference to its previous and next object and the value it contains. The reference of the first object to its previous object is null, because it is the first object. The next reference of the last object is also null, because no next object exists.
 
 Let us finally have a look at the `Collection`s hierarchy until know, which we will update during the rest of this section.
+
 <img width="529" alt="The diagram shows graphically which interfaces inherit each other, as was already described in the text." src="https://user-images.githubusercontent.com/67587903/128775590-0eaf46f5-1416-4cef-bdf8-eed6f5f633ea.PNG">
