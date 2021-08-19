@@ -6,7 +6,7 @@ hidden: false
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
- - You understand the difference between the ==-operator and the equals method.
+ - You understand the difference between the ==-operator and the equals() method.
  - You can override the equals() and/or hashCode() method or generate its code.
  - You know when to override these methods.
  - You can explain what a contract is.
@@ -43,12 +43,11 @@ Integer i1 = new Integer(12);
 Integer i2 = new Integer(12);
 Integer i3 = i2;
 ```
-<img width="400" alt="week4 object references 1" src="https://user-images.githubusercontent.com/67587903/128515240-8e271590-1110-4ac2-b8ad-22ca7309b688.PNG">
+<img width="400" alt="In the above image, you can see how the memory stores the various `Integer` values. `i1`'s reference points towards an `Integer` object that stores the value 12. The variables `i2` and `i3` both point towards the same object, but to another object than `i1` points to. This other object is also an `Integer` object, storing the value 12." src="https://user-images.githubusercontent.com/67587903/128515240-8e271590-1110-4ac2-b8ad-22ca7309b688.PNG">
 
-In the above image, you can see how the memory stores the various `Integer` values. `i1`'s reference points towards an `Integer` object that stores the value 12. The variables `i2` and `i3` both point towards the same object, but to another object than `i1` points to. This other object is also an `Integer` object, storing the value 12. 
 In practice, the memory of a computer is linear. It is a very long array of bits. Although arrows are visually appealing, when we compare references we actually compare memory addresses, like in the picture below.
 
-<img width="400" alt="week4 object references 2" src="https://user-images.githubusercontent.com/67587903/128515242-cf8a2364-b4ef-4127-97f1-3db838abbf24.PNG">
+<img width="500" alt="Picture description is right below the image." src="https://user-images.githubusercontent.com/67587903/128515242-cf8a2364-b4ef-4127-97f1-3db838abbf24.PNG">
 
 Here, the linear computer memory is displayed by a sequence of numbers and words. Since a and b are primitive types, actual values are stored in the memory. When we compare `a==b`, we compare the numbers 12 and 12.
 Since `i1` is a non-primitive, the memory address of the object it references is stored in the memory. The 49 tells it that it can be looked up from character 49 onwards. `i2` is stored in the memory from index 63 onwards. When we compare `i1==i2`, we compare 49 with 63.
