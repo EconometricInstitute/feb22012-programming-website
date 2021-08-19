@@ -22,8 +22,7 @@ In Java, the most-used Pseudo Random Number (PRN) generator is a linear congruen
 X<sub>n+1</sub> = (a X<sub>n</sub> + c) mod m
 </p>
 
-Where Java uses the constants multiplier a = 11, increment c = 25214903917 and modulus m = 2<sup>48</sup>. The starting number X<sub>0</sub> of a sequence is called a **seed**. The choices of a, c and m are made with the idea to have very long periods, so it takes a long time for the series to repeat itself, and so that it is very unlikely for the same sequence to occur twice, unless you pick the same seed. You can choose the seed yourself, which will of course always generate the same sequence of numbers. If you do not choose a seed, it will be pseudo random too and a different sequence of numbers will be used every time you run your program.
-
+<p> Where Java uses the constants multiplier a = 11, increment c = 25214903917 and modulus m = 2<sup>48</sup>. The starting number X<sub>0</sub> of a sequence is called a **seed**. The choices of a, c and m are made with the idea to have very long periods, so it takes a long time for the series to repeat itself, and so that it is very unlikely for the same sequence to occur twice, unless you pick the same seed. You can choose the seed yourself, which will of course always generate the same sequence of numbers. If you do not choose a seed, it will be pseudo random too and a different sequence of numbers will be used every time you run your program. </p>
 
 This PRN works well enough for this course, but suffers from serial correlation so that it is not the best PRN one could imagine. You will learn more on pseudo random numbers in the Simulation course (FEB22013(X)).
 
@@ -73,15 +72,10 @@ Write a program that prompts the user for how many random numbers should be gene
 <sample-output>
 
 How many random numbers should be printed?
-
 **4**
-
 9
-
 1
-
 4
-
 3
 
 </sample-output>
@@ -89,25 +83,15 @@ How many random numbers should be printed?
 <sample-output>
 
 How many random numbers should be printed?
-
 **8**
-
 9
-
 6
-
 0
-
 9
-
 10
-
 7
-
 3
-
 3
-
 </sample-output>
 
 </programming-exercise>
@@ -164,27 +148,16 @@ public class Program {
 The output could be as follows:
 
 <sample-output>
-
 1
-
 6
-
 3
-
 5
-
 3
-
 3
-
 2
-
 2
-
 6
-
 1
-
 </sample-output>
 
 </programming-exercise>
