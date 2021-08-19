@@ -90,7 +90,7 @@ Three of TreeSet’s constructors are:
 - public TreeSet(Comparator&lt;? super E&gt; comparator)
 - public TreeSet(Collection&lt;? extends E&gt; c)
 
-## Map&lt;K,V%gt; interface
+## Map&lt;K,V&gt; interface
 Another very useful type of data structure is the `Map`. In other languages, it is sometimes called a *dictionary* or a *hash table*. Maps store **key-value pairs**.
 The keys in a map are unique: the keys of a map form the **key set**. For every key in the key set, the map will contain an associated value. The values are not necessarily a set.
 Maps have many uses. Some examples include:
@@ -387,7 +387,7 @@ public ArrayList<Book> getBookByPart(String titlePart) {
 
 As with the previous example, the speed advantage that comes with the hash map is lost.
 
-## SortedMap&lt;K,V%gt; interface
+## SortedMap&lt;K,V&gt; interface
 The `SortedMap<K,V>` interface extends the `Map<K,V>` interface in the same manner `SortedSet<K>` extends `Set<K>`. It assumes there is an order defined on the keys, but the values do not need to have an order.
 The additional methods defined are:
 - SortedMap&lt;K,V&gt; subMap(K fromKey, K toKey);
