@@ -26,7 +26,7 @@ Teaching Assistants: _Tutorials_
 
 ### Support
 Support for this course will mainly be provided through scheduled sessions. 
-For an overview of when the sessions take place, see the online timetable: [EN](https://timetables.eur.nl/link?timetables.0.key=FEB22012X&timetables.0.type=module&timetables.0.source=2021&timetables.1.key=FEB22012X&timetables.1.type=examrequirement&ignoreEmpty=true&ignoreNotFound=true&view=list&term=2021:Academic%20Year).
+For an overview of when the sessions take place, see the online timetable: [EN](https://timetables.eur.nl/link?timetables.0.key=FEB22012X&timetables.0.type=module&timetables.0.source=2021&timetables.1.key=FEB22012X&timetables.1.type=examrequirement&ignoreEmpty=true&ignoreNotFound=true&view=list&term=2021:Academic%20Year) or [NL](https://timetables.eur.nl/link?timetables.0.key=FEB22012&timetables.0.type=module&timetables.0.source=2021&timetables.1.key=FEB22012&timetables.1.type=examrequirement&ignoreEmpty=true&ignoreNotFound=true&view=list&term=2021:Academic%20Year).
 Moreover, additional help can be obtained by posting questions on the course `Canvas Discussion Board` page.
 
 ### Lecture videos
