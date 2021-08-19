@@ -1,5 +1,5 @@
 ---
-path: "/week1/3-classes-and-objects-in-java"
+path: "/week1/2-classes-and-objects-in-java"
 title: "Classes and objects in Java"
 hidden: false
 ---
