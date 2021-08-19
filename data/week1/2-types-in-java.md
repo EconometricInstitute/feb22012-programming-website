@@ -25,7 +25,6 @@ hidden: false
 ## Introduction to types
 Since we began using lists, we have given data structures the type of the values that we want them to store. For example, a list that stores strings has been defined as `ArrayList<String>`. But why would we bother about types?
 
-
 <programming-exercise name="Which method?">
 
 First consider the following code:
@@ -163,3 +162,97 @@ Note that the remainder `%` and unary plus `+=` operators do not apply to `Integ
 Autoboxing and unboxing also work between non-associated primitive and non-primitive types, but only one way around. For instance, conversion from `Integer` to `double` is done automatically, but from `int` to Double is not possible.
 The second case is not possible, because the boxing conversion is exectuted first and will autobox the `int` into an `Integer`. Since it is nog possible to cast between non-primitive types, this cannot be (implicitly) casted to Double. 
 The first case, however, can be done, since the compiler would first autobox `Integer` into an `int`, which can implicitly be casted to a `double` value.
+
+## Generic types
+Until now, we have seen classes and methods for which the types used were explicitly determined in the class or method signature.
+However, we have seen `List<String>` and `List<Integer>` as two types of lists that hold different types of data.
+Can we implement a class that can contain objects of any given type, similar to the `List` type?
+
+The concept of _Generics_ allow use to do this. It allows us to write classes that store or work with objects of a freely chosen type.
+The choice is based on the generic type parameter in the definition of the classes, which makes it possible to choose the type(s) *at the moment of the object's creation*.
+Using generics is done in the following manner: after the name of the class, follow it with a chosen number of type parameters. Each of them is  placed between the 'smaller than' and 'greater than' signs, like this: `public class Class<TypeParameter1, TypeParameter2, ...>`. The type parameters are usually defined with a single character.
+
+Let's implement our own generic class `Locker` that can hold one object of any type.
+
+```java
+public class Locker<T> {
+    private T element;
+
+    public void setValue(T element) {
+        this.element = element;
+    }
+
+    public T getValue() {
+        return element;
+    }
+}
+```
+
+The definition `public class Locker<T>` indicates that the `Locker` class must be given a type parameter in its constructor. After the constructor call is executed, all the variables stored in that object are going to be of the type that was given with the constructor. Let's create a locker for storing strings.
+
+```java
+Locker<String> string = new Locker<>();
+string.setValue(":)");
+
+System.out.println(string.getValue());
+```
+
+<sample-output>
+
+:)
+
+</sample-output>
+
+
+In the program above, the **runtime** implementation of the `Locker` object named `string` looks like the following.
+
+```java
+public class Locker<String> {
+    private String element;
+
+    public void setValue(String element) {
+        this.element = element;
+    }
+
+    public String getValue() {
+        return element;
+    }
+}
+```
+
+Changing the type parameter allows for creating lockers that store objects of other types. You could store an integer in the following manner.
+
+```java
+Locker<Integer> integer = new Locker<>();
+integer.setValue(5);
+
+System.out.println(integer.getValue());
+```
+
+<sample-output>
+
+5
+
+</sample-output>
+
+There is no maximum on the number of type parameters, it's all dependent on the implementation. The programmer could implement the following `Pair` class that is able to store two objects of specified types.
+
+```java
+public class Pair<T, K> {
+    private T first;
+    private K second;
+
+    public void setValues(T first, K second) {
+        this.first = first;
+        this.second = second;
+    }
+
+    public T getFirst() {
+        return this.first;
+    }
+
+    public K getSecond() {
+        return this.second;
+    }
+}
+```
