@@ -18,9 +18,12 @@ hidden: false
 Encryption algorithms, machine learning and making computer games less predictable all require randomness. It is hard to realize randomness on a computer, since a computer can't make decisions on its own: a computer works deterministically. But, we can model randomness using pseudo random numbers.
 In Java, the most-used Pseudo Random Number (PRN) generator is a linear congruential generator, following the recursive relation of
 
+<p>
 X<sub>n+1</sub> = (a X<sub>n</sub> + c) mod m
+</p>
 
 Where Java uses the constants multiplier a = 11, increment c = 25214903917 and modulus m = 2<sup>48</sup>. The starting number X<sub>0</sub> of a sequence is called a **seed**. The choices of a, c and m are made with the idea to have very long periods, so it takes a long time for the series to repeat itself, and so that it is very unlikely for the same sequence to occur twice, unless you pick the same seed. You can choose the seed yourself, which will of course always generate the same sequence of numbers. If you do not choose a seed, it will be pseudo random too and a different sequence of numbers will be used every time you run your program.
+
 
 This PRN works well enough for this course, but suffers from serial correlation so that it is not the best PRN one could imagine. You will learn more on pseudo random numbers in the Simulation course (FEB22013(X)).
 
@@ -50,23 +53,14 @@ The program output is not always the same, unless we would have created the Rand
 <sample-output>
 
 2
-
 2
-
 4
-
 3
-
 4
-
 5
-
 6
-
 0
-
 7
-
 8
 
 </sample-output>
