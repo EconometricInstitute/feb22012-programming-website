@@ -382,9 +382,7 @@ When inheriting, the subclass receives the functionality of the superclass. If t
 
 Inheritance is not useful in every scenario. For instance, extending the class `Car` with the class `Part` (or `Engine`) would be incorrect. A car **includes** an engine and parts, but an engine or a part is not a car. More generally, **if an object owns or is composed of other objects, inheritance should not be used**.
 
-When using inheritance, you should take care to ensure that the <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle" target="_blank">Single Responsibility Principle</a> holds true. There should only be one reason for each class to change. If you notice that inheriting adds more responsibilities to a class, you should form multiple classes of the class.
-
-<br/>
+When using inheritance, you should take care to ensure that the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) holds true. There should only be one reason for each class to change. If you notice that inheriting adds more responsibilities to a class, you should form multiple classes of the class.
 
 ### Example of misusing inheritance
 Let's consider a postal service and some related classes. `Customer` includes the information related to a customer, and the class `Order` that inherits from the `Customer` class and includes the information about the ordered item. The class `Order` also has a method called `postalAddress` which represents the postal address that the order is shipped to.
