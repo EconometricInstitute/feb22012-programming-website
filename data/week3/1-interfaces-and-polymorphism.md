@@ -480,25 +480,4 @@ public interface FileServer {
 ```
 
 If an interface declares a `throws Exception` attribute to a method, so that these methods might throw an exception, the class implementing this interface must also have this attribute.
-However the class does not have to throw an error, as we can see below.
-
-```java
-public class TextServer implements FileServer {
-
-    private Map<String, String> data;
-
-    public TextServer() {
-        this.data = new HashMap<>();
-    }
-
-    @Override
-    public String load(String fileName) throws Exception {
-        return this.data.get(fileName);
-    }
-
-    @Override
-    public void save(String fileName, String textToSave) throws Exception {
-        this.data.put(fileName, textToSave);
-    }
-}
-```
+However the class does not have to throw an error.
