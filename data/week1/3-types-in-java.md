@@ -1,5 +1,5 @@
 ---
-path: '/week1/2-types-in-java'
+path: '/week1/3-types-in-java'
 title: 'Types in Java'
 hidden: false
 ---
