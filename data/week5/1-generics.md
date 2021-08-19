@@ -40,3 +40,14 @@ A significant portion of the Java data structures use type parameters, which ena
 List<String> strings = new ArrayList<>();
 Map<String, String> keyValuePairs = new HashMap<>();
 ```
+
+By convention, type parameter names are single, uppercase letters. This stands in sharp contrast to the variable naming conventions that you already know about, and with good reason: Without this convention, it would be difficult to tell the difference between a type variable and an ordinary class or interface name.
+
+The most commonly used type parameter names are:
+
+- E: Element (used extensively by the Java Collections Framework that is discussed this week)
+- K: Key
+- N: Number
+- T: Type
+- V: Value
+- S,U,V etc. - 2nd, 3rd, 4th types
