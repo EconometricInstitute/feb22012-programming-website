@@ -301,3 +301,63 @@ public void ifPresent(Consumer<T> action)
 public boolean isPresent()
 public T orElse(T alternative)
 ```
+
+## The Java 8 Stream API
+Java 8 introduce the Stream API that can be used to build and process data processing pipelines in a declarative fashion.
+The main interface is `Stream<T>`. It models an (unfinished) data processing pipeline that can emit objects of type `T`. A pipeline consists of three types of operations:
+- A single **data source**
+- Zero or more **intermediate operations**
+- A single **terminal operation**
+Objects only start flowing through the pipeline and are actually processed when they are requested by a terminal operation. The data source and intermediate operations are called **lazy operations**. The terminal operation is a non-lazy operation.
+
+The most common way to obtain a Stream is by means of a new default method that was added to the Collection interface: `public default Stream<T> stream()`. The following code examples give us Stream objects:  
+```java
+public default Stream<T> stream()
+// A stream that will emit three string objects
+Stream<String> s = Stream.of("hello", "I'm", "flowing");
+// The word "hello" infinitely many times.
+Stream<String> tooPolite = Stream.generate(() -> "hello");
+// The numbers 0, 1, 2, etcetera
+Stream<BigInteger> allInts = Stream.iterate(BigInteger.ZERO, bi -> bi.add(BigInteger.ONE));
+// Obtain a Stream from a List object
+List<String> lst = Arrays.asList("these", "are", "list", "elements");
+Stream<String> fromLst = lst.stream();
+```
+These operations are **lazy**, so no objects start flowing (yet)
+
+Intermediate operation are lazy and can be recognized from the fact the return type is also a Stream.
+This resulting Stream represents the data processing pipeline with an additional operation attached to it.
+
+|Method                         |Output              |Description                |
+|-------------------------------|--------------------|---------------------------|
+|distinct()                     |Stream&lt;T&gt;           |discards duplicate elements|
+|filter(Predicate&lt;T&gt; predicate) |Stream&lt;T&gt;           |discards false elements    |
+|limit(long n)                  |Stream&lt;T&gt;           |emits at most n elements   |
+|map(Function&lt;T,R&gt; mapper)      |Stream&lt;R&gt;           |converts objects to type R |
+|skip(long n)                   |Stream&lt;T&gt;           |discards the next n elements|
+|sorted()                       |Stream&lt;T&gt;           |sorts elements by their natural order|
+|sorted(Comparator&lt;T&gt; comparator)|Stream&lt;T&gt;          |sorts elements with the comparator|
+
+   
+When you call a terminal operation on a Stream, it starts consuming objects from the stream and objects finally start flowing through the processing pipeline.
+
+The following operations are available:
+|Method                               |Output              |Description                    |
+|-------------------------------------|--------------------|-------------------------------|
+|allMatch(Predicate&lt;T&gt; predicate)     |boolean             |Is predicate true for all      |
+|anyMatch(Predicate&lt;T&gt; predicate)     |boolean             |Is predicate true for any      |
+|count()                              |long                |Number of objects              |
+|collect(Collector&lt;T,A,R&gt; collector)  |R                   |Aggregate using the collector  |
+|findFirst()                          |Optional&lt;T&gt;         |First object emitted           |
+|forEach(Consumer&lt;T&gt; action)          |void                |Perform action on all objects  |
+|max(Comparator&lt;T&gt; comparator)        |Optional&lt;T&gt;         |Maximum according to comparator|
+|min(Comparator&lt;T&gt; comparator)        |Optional&lt;T&gt;         |Minimum according to comparator|
+|noneMatch(Predicate&lt;T&gt; predicate)    |boolean             |Is predicate false for all     |
+|reduce(BinaryOperator&lt;T&gt; accumulator)|Optional&lt;T&gt;         |Aggregate using the accumulator|
+
+The collect operation requires an object of type `Collector<T,A,R>`. 
+- A collector takes objects of type `T`.
+- Accumulates them into a (mutable) accumulator type A
+- Transforms the final accumulation into type R
+There is no need to implement them by yourself (unless you want to). The `Collectors` class provides methods to obtain many useful collectors (similar to `Comparator.comparing()`).
+`Collectors.toList()` and `Collectors.toSet()` for contructing a `List` or `Set` dataset from the elements of a `Stream`. `Collectors.joining()` is for combining strings into a single `String` (with or without delimiter, prefix and suffix). 
