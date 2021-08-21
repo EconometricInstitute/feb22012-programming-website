@@ -42,6 +42,8 @@ import CrowdSorcerer from "./CrowdSorcerer"
 import MoodleExercise from "./MoodleExercise"
 import SqlTrainerExercise from "./SqlTrainerExercise"
 import GoogleFormLink from "./GoogleFormLink"
+import Exercise from "./Exercise"
+import Solution from './Solution'
 
 import {
   Table,
@@ -108,6 +110,8 @@ const mapping = {
   h6: H6,
   hr: Hr,
   points: Points,
+  exercise: Exercise,
+  solution: Solution
 }
 
 export default () => {
