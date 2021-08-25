@@ -50,8 +50,7 @@ const FooterBackground = styled.div`
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-image: url(${BackgroundImage});
-  filter: invert(1) grayscale(1) brightness(1.5) opacity(0.5);
+  background-color: rgb(255, 215, 0);
   z-index: -50000;
 `
 
@@ -61,6 +60,7 @@ const FooterContent = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
+  color: rgb(0, 35, 40);
 `
 
 const StyledCard = styled(Card)`
@@ -101,7 +101,7 @@ class Footer extends React.Component {
             <StyledCardContent>
               <GithubContainer>
                 <OutboundLink
-                  href="https://github.com/EconometricInstitute/intro-programming-website"
+                  href="https://github.com/EconometricInstitute/feb22012-programming-website"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
