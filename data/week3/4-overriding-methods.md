@@ -1,5 +1,5 @@
 ---
-path: '/week3/3-overriding-methods'
+path: '/week3/4-overriding-methods'
 title: 'Overriding Methods'
 hidden: false
 ---
@@ -39,7 +39,7 @@ public class Polynomial extends SimpleFunction {
         super();
         factors = coefficients;
     }
-    
+
     @Override
     public double compute(double x) {
         double result = 0;
@@ -78,7 +78,7 @@ public class LoggerList extends ArrayList<Double> {
     public LoggerList() {
         super();
     }
-    
+
     @Override
     public boolean add(Double d) {
         System.out.println("Adding " + d);
