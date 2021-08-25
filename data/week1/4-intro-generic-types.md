@@ -21,7 +21,7 @@ Can we implement a class that can contain objects of any given type, similar to 
 
 The concept of _Generics_ allow use to do this. It allows us to write classes that store or work with objects of a freely chosen type.
 The choice is based on the generic type parameter in the definition of the classes, which makes it possible to choose the type(s) *at the moment of the object's creation*.
-Using generics is done in the following manner: after the name of the class, follow it with a chosen number of type parameters. Each of them is  placed between the 'smaller than' and 'greater than' signs, like this: `public class Class<TypeParameter1, TypeParameter2, ...>`. The type parameters are usually defined with a single character, such as `&lt;T&gt;`, `&lt;E&gt;`, `&lt;K&gt;` or `&lt;V&gt;`.
+Using generics is done in the following manner: after the name of the class, follow it with a chosen number of type parameters. Each of them is  placed between the 'smaller than' and 'greater than' signs, like this: `public class Class<TypeParameter1, TypeParameter2, ...>`. The type parameters are usually defined with a single character, such as `<T>`, `<E>`, `<K>` or `<V>`.
 
 Let's implement our own generic class `Locker` that can hold one object of any type.
 

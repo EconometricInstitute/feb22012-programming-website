@@ -60,6 +60,7 @@ Classes have a public part that is visible and can be used by other users and pr
 
 The private part of the methods is for internal use only, and therefore it is less important to document these parts, although it always good to explain the more complicated parts of your code in case you have to adjust or change it after not having looked at it
 for a long time.
+
 </text-box>
 
 Lastly, in the following picture, a brief overview of the relations between statements, variables, methods, objects and classes are depicted and explained:
@@ -134,6 +135,8 @@ The output is `5`. Since variables `a` and `b` hold separate values, the adjustm
 `b`'s value is not visible via variable `a`.
 
 </Solution>
+
+<br />
 
 ### References
 

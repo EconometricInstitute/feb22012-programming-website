@@ -44,6 +44,10 @@ or alternatively,
 public static void register(int student, int grade) {...}
 ```
 
+It all depends on what happens with the `student` and `grade` variables inside the method.
+Therefore, there is no way to tell the correct answer to this question as insufficient
+information is given.
+
 </Solution>
 
 </Exercise>
