@@ -40,12 +40,22 @@ In this course, you will become more experienced with some of the most important
 In essence, our aim is that you will be able to write Java programs to solve complex problems that you will encounter during your studies,
 and learn valuable concepts that allow you to easily learn more complex features of languages such as Python and R.
 
-**TODO:** Maak korte quiz met vragen over strongly typed, wat een JVm is, heel korte recap van Intro to Programming?
-
 <Exercise title="Recap Quiz">
 
 In this quiz, you can test your basic knowledge of Introduction to Programming. 
 
+### JVM
+
+What does the Java Virtual Machine do?
+
+<Solution>
+
+Java programs, as we write them, contain instructions for the Java Virtual Machine (JVM).
+The Java Virtual Machine translates these instructions to bytecode (zeros and ones) for the CPU, the Central Processing Unit (CPU), which then executes the translated instructions.
+
+</Solution>    
+    
+    
 ### For loops
 
 What is wrong with the following piece of code?
@@ -64,6 +74,28 @@ The condition and the execution block of the for loop belong together and should
 
 </Solution>    
 
+
+How does a for-each loop work?
+
+<Solution>
+
+A for each loop is called on a List and does something for every element in the list.
+For instance:
+    
+```java
+String sentence = "";
+List<String> myList = List.of("h", "el", "lo", " there", "!");
+for (String s : myList) {
+    sentence = sentence + s;
+}
+System.out.println(sentence);
+```
+
+Will print the sentence: "Hello there!"
+    
+</Solution> 
+
+    
 ### Types
 
 What is a type?
@@ -76,15 +108,28 @@ Think for instance of a String: it is a set of all words or letter combinations 
 
 </Solution>
 
-### JVM
 
-What does the Java Virtual Machine do?
+### Object Oriented Programming 
+
+What is an object?
 
 <Solution>
 
-Java programs, as we write them, contain instructions for the Java Virtual Machine (JVM).
-The Java Virtual Machine translates these instructions to bytecode (zeros and ones) for the CPU, the Central Processing Unit (CPU), which then executes the translated instructions.
+An object is an instance of a class, so from one class, several objects can be made. An object has instance variables that are specific to the internal state of that object. The object's methods specify what the object does.
+    
+Think for instance of dogs. A class can be called `Dog`. Each dog has its own characteristics (i.e. states) and behaviors. The states of a dog could be his color, name, and breed. It's behaviors could be wagging the tail, barking, or eating.
+    
+</Solution> 
+    
+    
+What is a constructor?
 
-</Solution>    
+<Solution>
 
+A constructor instantiates a new object when you use the `new` keyword.
+The object's variables are set to default or to arguments that you passed to the constructor.
+
+</Solution> 
+    
+    
 </Exercise>
