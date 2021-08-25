@@ -1,3 +1,8 @@
+---
+path: '/week7/4-java-new-features'
+title: 'Data visualization'
+hidden: false
+---
 
 <hint>
  <h3> This subject will <b>not</b> be part of the exam, but you need it for the assignment! </h3>

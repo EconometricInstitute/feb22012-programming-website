@@ -1,3 +1,8 @@
+---
+path: '/week7/5-other-languages'
+title: 'Data visualization'
+hidden: false
+---
 
 <hint>
  <h3> This subject will <b>not</b> be part of the exam, but you need it for the assignment! </h3>
@@ -15,14 +20,14 @@ The Microsoft Visual Studio Community Edition is free for students. An Open-Sour
 the Microsoft version and doesn’t have the Microsoft GUI library).
 
 ## C
-C is not an object oriented language, but code involving computations with only if statemtents and for loops that work with numeric values is syntactically similar to Java. 
+C is not an object oriented language, but code involving computations with only if statemtents and for loops that work with numeric values is syntactically similar to Java.
 You have things called structs which allows you to define a type which is a bundle of variables.
 Instead of methods that operate on objects, you can write functions in C that take a struct as a first argument (i.e. an explicit this) and do some object-based programming that way.
-However, you don’t have inheritance and overridden methods. 
+However, you don’t have inheritance and overridden methods.
 Learning some C is probably not very difficult when you know Java, but you will have to learn how pointers work in C. (Related to references)
 
 ## C++
-C++ is an Object Oriented Language, which adds a lot of features on top of C. Many C programs will compile in C++ as well (but not all). 
+C++ is an Object Oriented Language, which adds a lot of features on top of C. Many C programs will compile in C++ as well (but not all).
 C++ is even more verbose than Java but allows more precise control over memory. Some people see it as the holy grail of writing highperformance applications (but Java and C# come close for many applications).
 It has no Garbage Collection, so you have to think for yourself when you want to clean up your objects. You have both constructors and destructors that you need to call with new and delete.
 Classes are often separated over two files, header files (.h) defining the public interface and source code files (.c, .cpp).
@@ -38,7 +43,7 @@ You will probably have to read a book to learn it, but knowing Java should help 
 ## Python
 Python is more of a scripting language (but compilers exist).
 It has syntax a lot more powerful and elegant than MATLAB. Volunteers have created free modules that mimic a lot of MATLAB functionality (e.g. numpy, scipy, matplotlib).
-Python also has Object Oriented Programming features such as inheritance. 
+Python also has Object Oriented Programming features such as inheritance.
 The `this` reference, called `self`, is always passed explicitly to methods of a class, which takes some getting used to.
 It is weakly typed, so your IDE and Compiler can’t help you and check as much as when working in Java, C#, C++, C.
 It is free, but can be hard to set up all modules in Windows or on Mac (a lot easier on Linux). You can install distribution that contains many useful modules like [Anaconda](https://www.continuum.io/).
@@ -47,7 +52,7 @@ It is free, but can be hard to set up all modules in Windows or on Mac (a lot ea
 R is becoming more and more popular as a scripting language for statistical analysis.
 As far as I know it has no support for “real” Object Oriented Programming (i.e. inheritance and the like).
 There are lots of modules available for all kinds of specialized statistical analysis algorithms, and these modules can be installed easily.
-The language itself is quite old and does not have a very nice syntax compared to modern standards. It can be quirky. 
+The language itself is quite old and does not have a very nice syntax compared to modern standards. It can be quirky.
 It focuses around working with data frames, which can be regarded as matrices with labeled columns and rows. Reading and writing data from and to csv files or Excel or even SPSS is not very difficult.
 Get it for free at: [r-project](https://www.r-project.org/)
 
