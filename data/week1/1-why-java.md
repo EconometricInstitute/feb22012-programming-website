@@ -14,8 +14,8 @@ hidden: false
 
 ## Java compared to other programming languages
 Java is a member of the class of object-oriented programming languages, where objects and types offer a convenient abstraction to think about the code that you write. The use of types avoids common mistakes in other languages.
-Java is also considered a *strongly typed* language, meaning that it applies strict typing rules at compile timeOther popular programming languages such as `Javascript`, `Python`, `R` or `Matlab` are not as strongly typed as is Java and do not require users to be aware of the typing rules. If you start learning one of those languages, you would need to learn the typing rules before you can use Java. When moving from Java to one of those languages, you have learned a good structured way to avoid confusion of data types in
-a language that is more flexible. It is thus easier to move from Java to one of these than the other way around.
+Java is also considered a *strongly typed* language, meaning that it applies strict typing rules at compile time.
+Other popular programming languages such as `Javascript`, `Python`, `R` or `Matlab` are not as strongly typed as is Java and do not require users to be aware of the typing rules. If you start learning one of those languages, you would need to learn the typing rules before you can use Java. When moving from Java to one of those languages, you have learned a good structured way to avoid confusion of data types in a language that is more flexible. It is thus easier to move from Java to one of these than the other way around.
 There are, however, more languages that use objects and types, such as `C++` and `C`. Still, Java is easier to learn because it does not involve difficult memory management.
 Learning Java will thus provide you with a good basis for learning many other popular (object-oriented and procedural) programming languages.
 
@@ -41,3 +41,50 @@ In essence, our aim is that you will be able to write Java programs to solve com
 and learn valuable concepts that allow you to easily learn more complex features of languages such as Python and R.
 
 **TODO:** Maak korte quiz met vragen over strongly typed, wat een JVm is, heel korte recap van Intro to Programming?
+
+<Exercise title="Recap Quiz">
+
+In this quiz, you can test your basic knowledge of Introduction to Programming. 
+
+### For loops
+
+What is wrong with the following piece of code?
+
+```java
+for (int i = 0; i < 10; i++); {
+    System.out.println(i);
+}
+```
+
+<Solution>
+
+The semicolon behind the condition should not be there. 
+    
+The condition and the execution block of the for loop belong together and should thus not be separated by a semicolon.
+
+</Solution>    
+
+### Types
+
+What is a type?
+    
+<Solution>
+
+A type is a named set of values and the operations that can be carried out with them. 
+
+Think for instance of a String: it is a set of all words or letter combinations you can think of, and you can use it's operations, such as requesting the length of the String.
+
+</Solution>
+
+### JVM
+
+What does the Java Virtual Machine do?
+
+<Solution>
+
+Java programs, as we write them, contain instructions for the Java Virtual Machine (JVM).
+The Java Virtual Machine translates these instructions to bytecode (zeros and ones) for the CPU, the Central Processing Unit (CPU), which then executes the translated instructions.
+
+</Solution>    
+
+</Exercise>
