@@ -1,5 +1,5 @@
 ---
-path: "/week1/4-immutable-objects"
+path: "/week1/5-immutable-objects"
 title: "Immutable Objects"
 hidden: false
 ---
@@ -18,22 +18,26 @@ hidden: false
 
 In this section, you will learn what an immutable object is, how you can achieve immutability in Java and what are the advantages and disadvantages of these objects.
 
-Immutable objects **never change their state**, so that their values cannot be changed. Thus, we do not need to copy immutable objects to prevent their state from being changed, which is a large advantage of an immutable object. A String is an example of an immutable object. When concatenating two strings, we get a new String, not altering the old string objects. Other examples are the non-primitive versions of primitive types, such as `Double` and `Integer`.
+In the previous section we have seen that modifying the state of an object can lead to confusing situations when we have multiple references to them.
+Immutable objects are designed such that they **never change their state**. The values of their instance variables cannot be changed, and therefore make this type of confusion impossible.
+Thus, we do not need to copy immutable objects to prevent their state from being changed, which is a large advantage of an immutable object. A String is an example of an immutable object. When concatenating two strings, we get a new String, not altering the old string objects. Other examples are the non-primitive versions of primitive types, such as `Double` and `Integer`.
 
-First, we have a look at a `String` example, were we have `String str = "abc";`. 
-If we want the letter c as a `String` object, we need to create a new object, or explicitly overwriting the old object, basically creating a new one and throwing the old object away. 
+First, we have a look at a `String` example, were we have `String str = "abc";`.
+If we want the letter c as a `String` object, we need to create a new object, or explicitly overwriting the old object, basically creating a new one and throwing the old object away.
 For instance, we can state `String c = abc.substring(2,3);`.
-The substring method returns the letter c, which is stored in the variable with the same name. 
-On the other hand, if we would only call `abc.substring(2,3);`, nothing would happen. 
+The substring method returns the letter c, which is stored in the variable with the same name.
+On the other hand, if we would only call `abc.substring(2,3);`, nothing would happen.
 After both calls the first variable would still contain the string `"abc"`.
-If we would make the call `abc = abc.substring(2,3);`, the variable _seems_ to change, but behind the scenes it first throws the old string `"abc"` away to store the new string `"c"` in the new variable with the same name.
+If we would make the call `abc = abc.substring(2,3);`, the variable _seems_ to change, but behind the scenes it replaces the reference to the old string `"abc"` away to store a reference to the the new string `"c"` in the variable named `abc`.
 
-Another example of an immutable object is `BigInteger` which allows us to do integer calculations with numbers that are too big to fit in an `int` or `long`.
+Another example of an immutable object is `BigInteger` which allows us to do integer calculations with numbers that are too big to fit in an `int` or `long`,
+avoid the overflow that can occur with those types.
 First, you import it: `import java.math.BigInteger`. Then, take a look at this example where we use it:
 
 ```java
-/*To create an instance of BigInteger, we use a special static method valueOf, not a constructor.
-Some classes are designed this way by their programmers. **/
+// To create an instance of BigInteger,
+// we use a special static method valueOf, not a constructor.
+// Some classes are designed this way by their programmers.
 BigInteger a = BigInteger.valueOf(233);
 BigInteger addValue = Biginteger.ValueOf(144);
 BigInteger b = a;
@@ -42,7 +46,7 @@ System.out.println(a);
 System.out.println(b);
 ```
 
-The question is: what will be printed? Would you expect 233 and 377 to be printed? 
+The question is: what will be printed? Would you expect 233 and 377 to be printed?
 It may then come as a surprise that for both _a_ and _b_ the number 233 will be printed here. That is because of the definition of the add method for BigInteger objects, which you can find in the [Java documentation](https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html):
 
 > The method `add(BigInteger val)` "returns a BigInteger whose value is `(this + val)`".
