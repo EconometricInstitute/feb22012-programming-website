@@ -15,14 +15,15 @@ hidden: false
 </text-box>
 
 ## Randomness
-Encryption algorithms, machine learning and making computer games less predictable all require randomness. It is hard to realize randomness on a computer, since a computer can't make decisions on its own: a computer works deterministically. But, we can model randomness using pseudo random numbers.
-In Java, the most-used Pseudo Random Number (PRN) generator is a linear congruential generator, following the recursive relation of
+In order to make encryption algorithms, machine learning, computer games and econometric simulations less predictable all require randomness.
+It is hard to realize randomness on a computer, since a computer can't make decisions on its own: a computer works deterministically. But, we can model randomness using pseudo random numbers.
+In Java, the most-used Pseudo Random Number (PRN) generator is a *Linear Congruential Generator*, following the recurrence relation of
 
 <p>
 X<sub>n+1</sub> = (a X<sub>n</sub> + c) mod m
 </p>
 
-<p> Where Java uses the constants multiplier a = 11, increment c = 25214903917 and modulus m = 2<sup>48</sup>. The starting number X<sub>0</sub> of a sequence is called a **seed**. The choices of a, c and m are made with the idea to have very long periods, so it takes a long time for the series to repeat itself, and so that it is very unlikely for the same sequence to occur twice, unless you pick the same seed. You can choose the seed yourself, which will of course always generate the same sequence of numbers. If you do not choose a seed, it will be pseudo random too and a different sequence of numbers will be used every time you run your program. </p>
+<p> Where Java uses the constants multiplier a = 11, increment c = 25214903917 and modulus m = 2<sup>48</sup>. The starting number X<sub>0</sub> of a sequence is called a **seed**. The choices of a, c and m are made with the idea to have very long periods, so it takes a long time for the series to repeat itself, and so that it is very unlikely for the same sequence to occur twice, unless you pick the same seed. You can set a seed fixed, which will of course always generate the same sequence of numbers that appears to be randomly distributed. If you do not choose a seed, the seed will be based on some other source of randomness and a different sequence of numbers will be used every time you run your program. </p>
 
 This PRN works well enough for this course, but suffers from serial correlation so that it is not the best PRN one could imagine. You will learn more on pseudo random numbers in the Simulation course (FEB22013(X)).
 
@@ -34,7 +35,8 @@ import java.util.Random;
 
 public class Raffle {
     public static void main(String[] args) {
-        Random ladyLuck = new Random(); // create Random object ladyLuck
+        // Create Random object ladyLuck without a fixed seed
+        Random ladyLuck = new Random();
 
         for (int i = 0; i < 10; i++) {
             // Draw and print a random number
@@ -47,7 +49,7 @@ public class Raffle {
 
 Above we create an instance of the `Random` class. It has `nextInt` method, which gets an integer as a parameter. The method returns a random number from the range `[0, integer)`. Please notice that the upper bound is not included.
 
-The program output is not always the same, unless we would have created the Random ladyLuck using a seed, by `Random ladyLyck = new Random(233)` with 233 being the seed here. Obviously, we did not set a seed here, so one possible output is the following:
+The program output is not always the same, unless we would have created the Random ladyLuck using a seed, by `Random ladyLuck = new Random(233)` with 233 being the seed. Obviously, we did not set a seed here, so one possible output is the following:
 
 <sample-output>
 
@@ -186,13 +188,18 @@ public class WeatherMan {
     }
 
     public String forecast() {
+        // This gives a uniform random number in [0,1)
         double probability = this.random.nextDouble();
 
+        // 0.1 is the 10% probability threshold
         if (probability <= 0.1) {
             return "It rains";
-        } else if (probability <= 0.4) { // 0.1 + 0.3
+        // Using else if, 0.4 (0.1+0.3) gives the 30% probability threshold
+        // based on the assumption that the uniform draw was above 0.1
+        } else if (probability <= 0.4) {
             return "It snows";
-        } else { // rest, 1.0 - 0.4 = 0.6
+        // The else gives us the 1-0.4 = 60% probability threshold
+        } else {
             return "The sun shines";
         }
     }
@@ -203,7 +210,7 @@ public class WeatherMan {
 }
 ```
 
-The `makeAForecast` method is interesting in many ways. The `this.random.nextGaussian()` call is a regular method call. However what is interesting is that this method of the `Random` class returns a normally distributed number. If you are curious about other random methods in Java, take a look at the methods of the [Random class](https://docs.oracle.com/javase/8/docs/api/java/util/Random.html), using Java Documentation!
+The `makeAForecast` method is interesting in many ways. The `this.random.nextGaussian()` call is a regular method call. However what is interesting is that this method of the `Random` class returns a normally distributed number. If you are curious about other random methods in Java, take a look at the methods of the [Random class](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Random.html), using Java Documentation!
 In this method we use explicit type casting to convert doubles to integers `(int)`. We can equally convert integers to doubles with `(double) integer`.
 
 Let's now add a main which uses the `WeatherMan` class.
@@ -232,7 +239,8 @@ public class Program {
             String weatherForecast = forecaster.forecast();
             int temperatureForecast = forecaster.makeAForecast();
 
-            System.out.println(day + ": " + weatherForecast + " " + temperatureForecast + " degrees.");
+            System.out.println(day + ": " + weatherForecast + " "
+                              + temperatureForecast + " degrees.");
         }
     }
 }
@@ -359,7 +367,7 @@ On the other hand, if random numbers are used for scientific calculations, using
 One example is IBM's  <a href="https://en.wikipedia.org/wiki/RANDU" target="_blank" norel>RANDU</a> which was used for a short while in the 1960s.
 <br/>
 
-All randomness in computer programs is not pseudo random. Programs aiming for stronger randomness use, among other things, real life random phenomena to generate random numbers.
+Not all randomness in computer programs is pseudo random. Programs aiming for stronger randomness use, among other things, real life random phenomena to generate random numbers.
 For example space radiation or <a href="https://www.wired.com/2003/08/random/" target="_blank" norel>lava lamps</a> are thought to be random phenomena.
 
 <br/>
@@ -367,3 +375,6 @@ For example space radiation or <a href="https://www.wired.com/2003/08/random/" t
 You can read more about randomness from <a href="https://www.random.org/randomness/" target="_blank" norel>https://www.random.org/randomness/</a>.
 
 </text-box>
+
+Note that while the standard `Random` object of Java is good enough for this course, we will discuss how you can use pseudo random number generators
+with better statistical property at the end of the course, when we discuss the use of external libraries.
