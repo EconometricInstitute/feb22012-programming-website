@@ -1,6 +1,6 @@
 ---
 path: '/week2/3-reading-and-writing'
-title: 'Reading and Writing'
+title: 'Reading and Writing Files'
 hidden: false
 ---
 
@@ -16,38 +16,40 @@ hidden: false
 
 </text-box>
 
-## Reading files
-Computers have several different programs for browsing files. These programs are specific to the operating system. All programs used for browsing files make use of the file system of the computer in one way or another. The computer's **file system** has the responsibility of keeping track of the locations of files on the hard drive as well as providing the ability to create new files and modify them. The file system's main responsibility is abstracting the true structure of the hard drive; a user or a program using a file doesn't need to care about how, or where, the file is actually stored.
+## Introduction to Files
+Computers have several different programs for browsing files. These programs are specific to the operating system. All programs used for browsing files make use of the file system of the computer in one way or another. The computer's **file system** has the responsibility of keeping track of the locations of files on storage devices as well as providing the ability to create new files and modify them. The file system's main responsibility is abstracting the true structure of the hard drive; a user or a program using a file doesn't need to care about how, or where, the file is actually stored.
+
+During your studies, you receive, use and create a lot of **files**. Files are containers of all types of data: textual data, source code, executable program code, audio or video data, econometric data, and many other kinds. Files are organized in a tree-shaped hierarchical structure of **folders**, which can contain files or subfolders. Folders are sometimes called **directories**. A **path** tells us where a file is located in this hierachy of folders and subfolders, separated by a path separator. On Windows, the Path separator is `\`, whereas on Linux or Mac OS it is `/`. A path can be **relative** to the current folder or working directory, for example the path `myfile.txt` refers to a file in the current folder, whereas the path `data/myfile.txt` refers to a file in a subfolder `data` of the current folder. An absolute path, for example `C:\Users\Jane Doe\Documents\mydata.txt` on Windows or `/home/janedoe/documents/mydata.txt` on Linux or Mac OS does not depend on what the current folder is. However, absolute paths are likely to break once you transfer a file to another computer or user, as they will probably store the file in a different location. Therefore, in your programs you should prefer to use relative paths. However, when you have trouble locating a certain file from within your program, it is helpful to look at the absolute paths for debugging purposes.
 
 <text-box variant='hint' name='Organizing your file system'>
 
-During your studies, you receive, use and create a lot of files. We strongly advise you to organize your file system well, so that searching for files remains simple. You can do this by creating a folder `Econometrics`, then create subfolders `Year 1`, `Year 2`, `Year 3` et cetera, and in these you can create a subfolder for each course you take. Of course, you can make your own choices on this. For more inspiration on structuring your file system, watch this video on [how to structure your file system](https://www.youtube.com/watch?v=bKjRKZxr-KY&ab_channel=ThomasFrank).
+We strongly advise you to organize the file system on your personal devices well, so that searching for files remains simple. For work related to your studies can do this by creating a folder `Econometrics`, then create subfolders `Year 1`, `Year 2`, `Year 3` etcetera, and in these you can create a subfolder for each course you take. Feel free to come up with a scheme you like, but be aware that keeping all your important files in your `Download` folder is asking for trouble. For more inspiration on structuring your file system, watch this video on [how to structure your file system](https://www.youtube.com/watch?v=bKjRKZxr-KY&ab_channel=ThomasFrank).
 
-Also, we highly recommend you to back-up your files from time to time, or to use a cloud service such as [Dropbox](https://www.dropbox.com/referrals/AACmbdSW9rvTWjuelMVNPq7xaUhsi3c65ao?src=global9) or [OneDrive](https://onedrive.live.com?invref=163a01a4ac2d7121&invscr=90).
+Also, we highly recommend you to back-up your files from time to time, or to syncrhonize your local files with a cloud service such as [Dropbox](https://www.dropbox.com/referrals/AACmbdSW9rvTWjuelMVNPq7xaUhsi3c65ao?src=global9) or [OneDrive](https://onedrive.live.com?invref=163a01a4ac2d7121&invscr=90). This way, you avoid losing valuable (study) work when a device breaks down. This can save you a lot of stress, in particular when close to a study deadline.
 
 </text-box>
 
 
 ### Reading files using a Scanner
-In the Introduction to Programming course, we introduced the Reading of files to you by use of the Scanner-class. When we want to read a file using the Scanner-class, we give the path for the file we want to read as a parameter to the constructor of the class. The path to the file can be acquired using Java's `Paths.get` command, which is given the file's name in string format as a parameter: `Paths.get("filename.extension")`.
+In the Introduction to Programming course, we introduced the Reading of files to you by use of the Scanner-class. When we want to read a file using the Scanner-class, we give the path for the file we want to read as a parameter to the constructor of the class. The path to the file can be acquired using Java's `Paths.get` command, which converts a path in string format to a `Path` object representing the path. For example, you can use `Paths.get("filename.extension")`. If you want to obtain a file in a subfolder, you can pass multiple arguments to `Path.get`, for example `Paths.get("data", "week1", "mydata.txt")`, which will obtain a `Path` object for a file that is located in a subsubfolder of the local directory.
 
 When the `Scanner`-object that reads the file has been created, the file can be read using a while-loop. The reading proceeds until all the lines of the file have been read, i.e., until the scanner finds no more lines to read. Reading a file may result in an error, so that a try-catch block is necessary.
 
 ```java
-// first
+// First, import required classes
 import java.util.Scanner;
 import java.nio.file.Paths;
 
-// in the program:
+// In the program:
 
-// we create a scanner for reading the file
+// We create a Scanner for reading the file
 try (Scanner scanner = new Scanner(Paths.get("file.txt"))) {
 
-    // we read the file until all lines have been read
+    // We read the file until all lines have been read
     while (scanner.hasNextLine()) {
-        // we read one line
+        // We read one line
         String row = scanner.nextLine();
-        // we print the line that we read
+        // We print the line that we read
         System.out.println(row);
     }
 } catch (Exception e) {
@@ -62,7 +64,7 @@ Since the Scanner does not work properly on files with very long lines, you will
 The problem with long lines for the Scanner is a reported bug. When there are lines longer than 1024 characters in a file, the Scanner breaks down without giving any warning. The BufferedReader is a good alternative. We will provide you with an example here:
 
 ```java
-File f = new File("myfile.txt");
+File f = Paths.get("myfile.txt").toFile();
 try (BufferedReader reader = new BufferedReader(new FileReader(f))) {
     int numberOfLines = 0;
     int numberOfChars = 0;
@@ -118,7 +120,7 @@ public class Storer {
 }
 ```
 
-In the `writeToFile` method above, we begin by creating a `PrintWriter` object. It writes data the the file that is located at the path that the string `fileName` indicates. After this, we write the text to the file by calling the `println` method. The possible exception that the constructor throws has to be handled with a `try-catch` block or the handling responsibility has to be transferred elsewhere. In the `writeToFile` method, the responsibility to handle the exception is placed on the method that calls `writeToFile`.
+In the `writeToFile` method above, we begin by creating a `PrintWriter` object. It writes data to the file that is located at the path that the string `fileName` indicates. After this, we write the text to the file by calling the `println` method. The possible exception that the constructor throws has to be handled with a `try-catch` block or the handling responsibility has to be transferred elsewhere. In the `writeToFile` method, the responsibility to handle the exception is placed on the method that calls `writeToFile`.
 
 Let's create a `main` method that calls the `writeToFile` of a `Storer` object. There is nothing to force the `main` method to handle the exception -- it, too, can state that it might throw an exception by adding `throws Exception` to the method definition.
 
@@ -132,13 +134,15 @@ public static void main(String[] args) throws Exception {
 By calling the method above, we create a file called "diary.txt" and write the text "Dear diary, today was a good day." into it. If the file already exists, the earlier contents are erased when we store the new text.
 
 It is also possible to handle files in a way that adds the new text after the existing content. In that case, you might want to use the [FileWriter](https://docs.oracle.com/javase/8/docs/api/java/io/FileWriter.html) class.
+**TODO:**
+
 
 Other than the filename in the Storer method, it is also possible to pass a File to the constructor of the PrintWriter. Consider the following example:
 ```java
 Random ran = new Random(233);
 File f = new File("dicethrows.csv");
 try (PrintWriter pw = new PrintWriter(f)) {
-    pw.println("throw1, throw2);
+    pw.println("throw1, throw2");
     for (int t = 0; t < 100; t++) {
         int d1 = 1 + ran.nextInt(6);
         int d2 = 1 + ran.nextInt(6);
@@ -151,7 +155,7 @@ catch (FileNotFoundException e) {
 }
 ```
 
-As you can see, we have added a call to the PrintWriter's flush method. The PrintWriter maintains a buffer. If we want to be sure that all printed data is actually written to the file, we should call flush(). If the program crashes before the file is closed, non-flushed data may not have been written to the file. When the PrintWriter is closed, the flush method is called automatically. Since we have used the PrintWriter inside a `try-with-recourses` environment, the PrintWriter would already have closed after the flush line, thus automatically calling it. Here, the flush() call is thus just for demonstration purposes, but it is good to know that you should remember to close or flush a PrintWriter if you keep a file open for a longer time.
+As you can see, we have added a call to the PrintWriter's flush method. The PrintWriter maintains a buffer, as it is typically more efficien to write a lot of data to a storage device at once. If we want to be sure that all printed data is actually written to the file, we should call flush(). If the program crashes before the file is closed, non-flushed data may not have been written to the file. When the PrintWriter is closed, the flush method is called automatically. Since we have used the PrintWriter inside a `try-with-resources` environment, the PrintWriter would already have closed after the flush line, thus automatically calling it. Here, the flush() call is thus just for demonstration purposes, but it is good to know that you should remember to close or flush a PrintWriter if you keep a file open for a longer time.
 
 <programming-exercise name='Saveable Dictionary (4 parts)' nocoins='true' tmcname='part11-Part11_13.SaveableDictionary'>
 
@@ -162,7 +166,7 @@ The dictionary must also be able to translate both from Finnish to another langu
 
 For the dictionary, implement a constructor which takes no parameters, and the following methods:
 
- - `public void add(String words, String translation)` adds a word to the dictionary. Every word has just one translation, and if the same word is added for the second time, nothing happens.
+ - `public void add(String word, String translation)` adds a word to the dictionary. Every word has just one translation, and if the same word is added for the second time, nothing happens.
 
  - `public String translate(String word)` returns the translation for the given word. If the word is not in the dictionary, returns null.
 
@@ -353,3 +357,6 @@ public void filter(File in, File out, String pattern) throws IOException {
 }
 ```
 
+**TODO**: is het nog nuttig de `Files.readAllLines()` en `Files.write()` methoden te behandelen als alternatief? Of zelfs als primaire opties die in de meeste gevallen nuttig zijn?
+
+**TODO**: het gaat misschien ver, maar is een korte discussie over Charsets ook nog nuttig? Bij werken met data kan dat toch een hoop gehannes opleveren bij inlezen en wegschrijven.

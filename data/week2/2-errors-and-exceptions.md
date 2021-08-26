@@ -237,7 +237,7 @@ finally {
 }
 ```
 
-The main use case for the finally block was to make sure that resources, such as files or network connections, where released when the program is done with them.
+The main use case for the finally block was to make sure that resources, such as files or network connections, are released when the program is done with them.
 For example, you would call the `close()` method on a `Scanner` in a finally block. Since the try-with-resources block does this automatically for us, the use
 cases for a finally block are very limited nowadays.
 
