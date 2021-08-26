@@ -32,9 +32,9 @@ A class can be seen as a blueprint or the schematics of the objects that are ins
 - The object's variables (instance variables) specify the internal state of the object.
 - The object's methods specify what the object does.
 
-An object is created while the program is running, and lives in the computer's memory until it is not longer necessary. The JVM has a feature called *garbage collection* that automatically
-figures out when an object in memory is not needed by checking if there are no variables that refer to it any longer. It then recovers that memory so it can be reused for objects that are created at a later time.
-As such, the lifecycle of an object starts with the initialization via a constructor call, it then lives in the memory, at some point becomes dereferenced and finally it is cleaned up by the garbage collector.
+An object is created while the program is running, and lives in the computer's memory until it is no longer necessary. The JVM has a feature called *garbage collection* that automatically
+figures out when an object in memory is not needed by checking if there are no variables that refer to it any longer. It then recovers that memory, so it can be reused for objects that are created at a later time.
+As such, the lifecycle of an object starts with the initialization via a constructor call, it then lives in the memory, at some point becomes dereferenced, and finally it is cleaned up by the garbage collector.
 
 Let's create a class named `Person`. For this class, we create a separate file named `Person.java`. Our program now consists of two separate files, since the main program is also in its own file. The `Person.java` file initially contains the class definition **public class Person** and the curly brackets that confine the contents of the class.
 A class defines the attributes and behaviors of objects that are created from it. Let's decide that each person object has a name and an age. It's natural to represent the name as a string, and the age as an integer. We'll go ahead and add these to our blueprint:
@@ -48,7 +48,7 @@ public class Person {
 We specify above that each object created from the `Person` class has a `name` and an `age`. Variables defined inside a class are called _instance variables_.
 Instance variables are written on the lines following the class definition `public class Person {`. Each variable is preceded by the keyword private.
 The keyword **private** means that the variables are "hidden" inside the object, which is known as _encapsulation_. The idea of encapsulation is that you make the
-object user friendly for other programmers by carefully thinking about which methods and variables you want to expose as **public** to other programmers, whereas
+object user-friendly for other programmers by carefully thinking about which methods and variables you want to expose as **public** to other programmers, whereas
 the internals should be hidden away from other programmers and kept **private**. For example, you can use a Java `ArrayList` without knowing exactly how it works
 internally. This is by design: the public part of the `ArrayList` was designed for easy of use, where the internals are a complicated but efficient implementation
 for store data. In general, instance variables are almost always kept **private**, as providing access to them via methods provides more flexibility to change something
@@ -56,14 +56,13 @@ at a later point in time.
 
 <text-box name="Javadoc Comments" variant="hint">
 
-Classes have a public part that is visible and can be used by other users and programmers. If you make your own class, you should write Javadoc style comments that start with `/**` for every public method in the class to document how they can be used. Furthermore, it is also a good idea to add it for the class itself where you explain how objects of the class can be used. Within the class Javadoc comment, you should also state who the author is, using the `@author` annotation. For public methods, you explain the use of the method, the parameters and return types, so it is totally clear how a method should be used to another programmer.
+Classes have a public part that is visible and can be used by other users and programmers. If you make your own class, you should write Javadoc style comments that start with `/**` for every public method in the class to document how they can be used. Furthermore, it is also a good idea to add it for the class itself, where you explain how objects of the class can be used. Within the class Javadoc comment, you should also state who the author is, using the `@author` annotation. For public methods, you explain the use of the method, the parameters, and return types, so it is totally clear how a method should be used to another programmer.
 
-The private part of the methods is for internal use only, and therefore it is less important to document these parts, although it always good to explain the more complicated parts of your code in case you have to adjust or change it after not having looked at it
-for a long time.
+The private part of the methods is for internal use only, and therefore it is less important to document these parts. Although it is always good to explain the more complicated parts of your code in case you have to adjust or change it after not having looked at it for a long time.
 
 </text-box>
 
-Lastly, in the following picture, a brief overview of the relations between statements, variables, methods, objects and classes are depicted and explained:
+Lastly, in the following picture, a brief overview of the relations between statements, variables, methods, objects, and classes are depicted and explained:
 
 <img width="618" alt="In the visual representation, two parts are depicted: operations and memory. Operations are triggered by statements that are grouped in methods, which on their turn are grouped in a class. The statements modify the variables, which are part of the memory and are grouped in objects. The methods operate on the objects and objects have a class as a type. The operations thus influence the memory and both operations and memory are part of the class." src="https://user-images.githubusercontent.com/67587903/129898218-de6a477f-f90b-41e0-97cf-7b7d5d0f7419.PNG">
 
@@ -106,14 +105,20 @@ If the programmer does not define a constructor for a class, Java automatically 
 
 ### Standard objects
 
-For objects of standard Java classes, you can find the available methods in the [Java Documentation](https://docs.oracle.com/javase/8/docs/api/) of the API.
+For objects of standard Java classes, you can find the available methods in the [Java Documentation](https://docs.oracle.com/en/java/javase/11/docs/api/) of the API.
 It is very important and convenient to familiarize yourself with the Java Javadoc Documentation, as it tells you a lot of details of what you can do with the
-built in classes of Java.
+built-in classes of Java.
 Once you visit the documentation, a list of all public classes is presented on the left. If you choose the `String` class, you can scroll down to the Method Summary, where all methods of the String class are described.
 For instance, the methods length(), toLowerCase(), toUpperCase(), charAt(), split() and replaceAll() are mentioned here.
-If you place your cursor on the word `String` at the definition of a String object and press <kbd>Ctrl</kbd> + <kbd>Q</kbd> or <kbd>Ctrl</kbd> + <kbd>J</kbd> on Mac, you get the Javadoc documentation of the class.
-You can find the full source code of the class by pressing `Ctrl + Shift + i` on Windows or `Cmd + Shift + i` on Mac.
 
+<text-box name="Short keys" variant="hint">
+    
+If you place your cursor on the word `String` at the definition of a String object and press <kbd>Ctrl</kbd> + <kbd>Q</kbd> on Windows or <kbd>Cmd</kbd> + <kbd>J</kbd> on Mac, you get the Javadoc documentation of the class.
+You can find the full source code of the class by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>i</kbd> on Windows or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>i</kbd> on Mac.
+
+</text-box>
+    
+    
 ## Objects and references
 
 <Exercise title="Values vs References">
@@ -154,8 +159,7 @@ System.out.println(a);
 
 The output is `[5, 10]`
 
-The reason for this is that both `a` and `b` hold a reference to same object, and thus
-`b.add(10)` is performed with the same object `a` refers to.
+The reason for this is that both `a` and `b` hold a reference to the same object, and thus `b.add(10)` is performed with the same object `a` refers to.
 This is discussed in more detail below.
 
 </Solution>
@@ -185,3 +189,46 @@ All differences between static and non-static methods can be explained from the 
 When we call a non-static method (sometimes called *instance* methods), we always call it on an object and within the method the object that the method operates on can be accessed via the `this` keyword.
 A static method can only make use of an instance variable via references passed as arguments to the method.
 Static variables can be accessed from anywhere, since a static variable belongs to a class and is a single global variable, whereas each object of a class has its own copies of the instance variables of that class.
+    
+    
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter. 
+
+What is the difference between private and public variables?
+
+<Solution>
+
+The keyword private means that the variables are "hidden" inside the object, which is known as encapsulation.
+Public variables, on the other hand, are exposed as public to other programmers, whereas the internals should be hidden away from other programmers and kept private.
+In general, instance variables are almost always kept private, as providing access to them via methods provides more flexibility to change something at a later point in time.
+    
+</Solution>    
+
+    
+Can you give an example of a variable that references to an object? And also a variable that does not?
+
+<Solution>
+
+```java
+List<Integer> myList = new ArrayList<>();
+myList.add(23);
+int number = myList.get(0);
+```
+
+Here, the first value of the list references to an `Integer` object that on its turn holds the value 23.
+The `number` variable is an example of a variable that actually holds the value.
+    
+</Solution>    
+
+
+Say that you have a `Dog` class and want each dog to take certain behavior, such as barking. Assume that you do not want to let every dog bark. 
+You make a `bark()` method. Should this be a **static** or a **non-static** method?
+
+<Solution>
+
+The bark method will be called on certain dogs, so we want to be able to call the method on an object. This means that we should make the `bark()` method non-static. Now, the method can be accessed via the `this` keyword.
+    
+</Solution> 
+    
+</Exercise>
