@@ -32,13 +32,13 @@ const Page = styled.li`
     color: white;
 
     :hover {
-      background-color: #380C0E !important;
+      background-color: #E4C100 !important;
       color: white !important;
     }
   `}
 
   :hover {
-    background-color: #f5ebeb;
+    background-color: #fff2b9;
     color: black;
   }
 `
