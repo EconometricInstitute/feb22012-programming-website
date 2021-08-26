@@ -1,19 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPencilAlt as icon, faRedo } from "@fortawesome/free-solid-svg-icons"
-import { Card, CardContent, Button } from "@material-ui/core"
+import { faPencilAlt as icon } from "@fortawesome/free-solid-svg-icons"
+import { Card, CardContent } from "@material-ui/core"
 
 import { withTranslation } from "react-i18next"
-import {
-  fetchProgrammingExerciseDetails,
-  fetchProgrammingExerciseModelSolution,
-} from "../../services/moocfi"
-import LoginStateContext from "../../contexes/LoginStateContext"
 import withSimpleErrorBoundary from "../../util/withSimpleErrorBoundary"
 import { normalizeExerciseId } from "../../util/strings"
 import ExerciseDescription from "./ExerciseDescription"
-import StyledDivider from "../../components/StyledDivider"
 
 const accentColor = "#FAAA38"
 
@@ -33,11 +27,6 @@ const StyledIcon = styled(FontAwesomeIcon)`
   position: relative;
   bottom: -13px;
 `
-
-const StyledRefreshIcon = styled(FontAwesomeIcon)`
-  color: white;
-`
-
 const Header = styled.div`
   font-size: 1.3rem;
   font-weight: normal;
@@ -73,89 +62,8 @@ const Body = styled.div`
 `
 
 class ProgrammingExercise extends React.Component {
-  static contextType = LoginStateContext
-
-  // {
-  //   "id": 55219,
-  //   "available_points": [
-  //     {
-  //       "id": 619839,
-  //       "exercise_id": 55219,
-  //       "name": "01-01",
-  //       "requires_review": false
-  //     }
-  //   ],
-  //   "name": "osa01-Osa01_01.Hiekkalaatikko",
-  //   "publish_time": null,
-  //   "deadline": null,
-  //   "soft_deadline": null,
-  //   "expired": false,
-  //   "disabled": false,
-  //   "completed": false
-  // }
-  state = {
-    exerciseDetails: undefined,
-    modelSolutionModalOpen: false,
-    modelSolution: undefined,
-    render: false,
-  }
-
-  async componentDidMount() {
-    this.setState({ render: true })
-    await this.fetch()
-  }
-
-  fetch = async () => {
-    if (!this.props.tmcname) {
-      return
-    }
-    let exerciseDetails = null
-    try {
-      exerciseDetails = await fetchProgrammingExerciseDetails(
-        this.props.tmcname,
-      )
-    } catch (error) {
-      console.error(error)
-    }
-    this.setState({
-      exerciseDetails,
-    })
-  }
-
-  onShowModelSolution = async () => {
-    try {
-      let modelSolution = this.state.modelSolution
-      if (!modelSolution) {
-        modelSolution = await fetchProgrammingExerciseModelSolution(
-          this.state.exerciseDetails.id,
-        )
-      }
-
-      this.setState({ modelSolutionModalOpen: true, modelSolution })
-    } catch (err) {
-      console.error("Could not fetch model solution", err)
-    }
-  }
-
-  onModelSolutionModalClose = () => {
-    this.setState({ modelSolutionModalOpen: false })
-  }
-
-  onUpdate = async () => {
-    this.setState({
-      exerciseDetails: undefined,
-      modelSolutionModalOpen: false,
-      modelSolution: undefined,
-    })
-    await this.fetch()
-  }
-
   render() {
     const { children, name } = this.props
-
-    if (!this.state.render) {
-      return <div>Loading</div>
-    }
 
     return (
       <ProgrammingExerciseWrapper
@@ -167,21 +75,12 @@ class ProgrammingExercise extends React.Component {
             <HeaderMuted>{this.props.t("programmingExercise")} </HeaderMuted>
             <h3>{name}</h3>
           </HeaderTitleContainer>
-
-          {this.context.loggedIn && (
-            <Button onClick={this.onUpdate}>
-              <StyledRefreshIcon icon={faRedo} />
-            </Button>
-          )}
         </Header>
         <CardContent>
           <Body>
             <div>
               <div>
                 <ExerciseDescription>{children}</ExerciseDescription>
-                {this.state.exerciseDetails === null && (
-                  <div>Error loading exercise details</div>
-                )}
               </div>
             </div>
           </Body>
