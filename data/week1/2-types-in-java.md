@@ -24,14 +24,16 @@ When we declare variables, we have to be specific. For example, a list that stor
 
 <Exercise title="Which method?">
 
-First consider the following code:
+First, consider the following code:
 ```java
 int student = 36;
 int course = 45;
 register(student, course);
 ```
 
-Is this correct code? Take a moment to think which of the two options would be the correct one.
+Is this correct code? 
+Or should it say `register(course, student)`?
+Take a moment to think which of the two options would be the correct one.
 
 <Solution>
 
@@ -52,8 +54,8 @@ information is given.
 
 </Exercise>
 
-Unfortunately, in the exercise above there is no way to tell which of the two is correct! They might both be, but it depends on the way
-the actual method was implemented. This is makes it very easy to introduce nasty bugs, by accidentally swapping the two, only
+Unfortunately, in the exercise above, there is no way to tell which of the two is correct! They might both be, but it depends on the way
+the actual method was implemented. This makes it very easy to introduce nasty bugs, by accidentally swapping the two, only
 discovering your programming error when a student shows up for the wrong course.
 Problems like this are things we would like to avoid and **the best way to avoid bugs is to make them impossible.**
 Let us rewrite this code by introducing types for `Student` and `Grade`.
@@ -62,6 +64,7 @@ Student student = getStudent(36);
 Course grade = getCourse(12);
 register(student, course);
 ```
+
 This way only one register method signature is valid, and the compiler will check if we provide the right parameters.
 In the above code, we have used the `Student` and `Course` types.
 Now, if the method signature is `public static void register(Course course, Student student)` the code will not compile, but with `public static void register(Student student, Course course)` it will.
@@ -74,7 +77,7 @@ generate code and scan your code for typical errors.
 
 ### Method Overloading
 
-Another advantage of the type system, is that it allows to perform **overloading** of methods. This means
+Another advantage of the type system, is that it allows performing **overloading** of methods. This means
 that we can have multiple methods with the same name, but different types. For example, suppose we want
 to be able to check whether a number or a string has an odd length. A good name for such a method would be
 `hasOddLength`. In Java, we can do the following:
@@ -96,8 +99,8 @@ public static boolean hasOddLength(int n) {
 As you can see, we created two methods with the same name and a different implement for different data types.
 The nice thing is that the compiler already knows that for the expression `hasOddLength("hello!")` it has to
 execute the first version of the method, while for the expressions `hasOddLength(131)` it has to execute the
-second, baed on the type of the arguments. In languages that are not strongly typed, this is not possible.
-In that case, you you have to use different names such as `hasOddLengthString` and `hasOddLengthInt`,
+second, based on the type of the arguments. In languages that are not strongly typed, this is not possible.
+In that case, you have to use different names, such as `hasOddLengthString` and `hasOddLengthInt`,
 or use an `if-else` in the method to determine the type of the input, which is slower because it requires
 additional checking while the program is executed.
 
@@ -128,7 +131,7 @@ The use of types in Java both has advantages and disadvantages, which are listed
 
 
 ## Primitive types
-In Java, exactly eight primitive types exist, which you already know: `byte`, `short`, `int`, `long`, `float`, `double`, `char` and `boolean`. Primitive types are not considered as objects and they just represent raw values.
+In Java, exactly eight primitive types exist, which you already know: `byte`, `short`, `int`, `long`, `float`, `double`, `char` and `boolean`. Primitive types are not considered as objects, and they just represent raw values.
 All other types are non-primitive, such as `String`, `List` and arrays, including arrays of non-primitive types, for example `double []` or `int [][]`.
 
 Sometimes, it is necessary to convert between types. In some cases, this can be done automatically, for example:
@@ -170,7 +173,7 @@ which will result in
 </sample-output>
 
 The reason for this output is that `byte` values can only store numbers between `-128` and `127`, which is insufficient to represent the `int` value `198`.
-This type of behavior is called an *overflow*. When you write an explicit cast, you should be aware of potential issues and if needed, write additional code to safeguard yourself against such unexpected behavior.
+This type of behavior is called an *overflow*. When you write an explicit cast, you should be aware of potential issues and, if needed, write additional code to safeguard yourself against such unexpected behavior.
 Picking data-types conservatively such that they can hold all foreseeable values is a good idea. Alternatively, there are special data types that will never overflow (at the cost of requiring more memory and being slower).
 In this course, we see the `BigInteger` as an example of that.
 
@@ -217,12 +220,14 @@ public static int evenSum(List<Integer> numbersList) {
 Note that the remainder `%` and unary plus `+=` operators do not apply to `Integer` objects. However, the compiler does not generate an error, because it unboxes the objects to `int` objects at runtime.
 
 <text-box title="Advantages of Autoboxing and Unboxing">
-  * The compiler makes you write code that is easier to read, because we do not need to cast types explicitly.
-  * It also lets you use primitive and non-primitive types interchangeably, which is convenient.
+    
+- The compiler makes you write code that is easier to read, because we do not need to cast types explicitly.  
+- It also lets you use primitive and non-primitive types interchangeably, which is convenient.
+    
 </text-box>
 
 Autoboxing and unboxing also work between non-associated primitive and non-primitive types, but only one way around. For instance, conversion from `Integer` to `double` is done automatically, but from `int` to Double is not possible.
-The second case is not possible, because the boxing conversion is exectuted first and will autobox the `int` into an `Integer`. Since it is nog possible to cast between non-primitive types, this cannot be (implicitly) casted to Double.
+The second case is not possible, because the boxing conversion is executed first and will autobox the `int` into an `Integer`. Since it is not possible to cast between non-primitive types, this cannot be (implicitly) casted to Double.
 The first case, however, can be done, since the compiler would first autobox `Integer` into an `int`, which can implicitly be casted to a `double` value. If you do want to convert an `int` to a `Double`, you can use a workaround by first
 converting the `int` to `double` yourself.
 
@@ -236,3 +241,57 @@ Double b = y;
 // The following is allowed.
 Double c = (double) y;
 ```
+
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter. 
+
+Why do we use types in Java?
+
+<Solution>
+
+Firstly, a powerful type system helps to prevent bugs. 
+Also, it allows overloading of methods.
+Moreover, the code is easier to read and to refactor. 
+More advantages can be found in the advantages text box.
+
+</Solution>    
+
+    
+What is method overloading?
+
+
+<Solution>
+
+When the same method name is used for more than one method, the name is **overloaded**.
+In Java, you can overload method names provided that the parameter types are different. For example, you can declare two methods, both called `print`:
+
+`public void print(String s)`
+`public void print(int i)`
+    
+When the `print` method is called, `print(x);`, the compiler looks at the type of `x`. If `x` is a `String`, the first method is called. If `x` is an integer value, the second method is called. If `x` is neither, the compiler generates an error. 
+    
+</Solution>    
+
+
+What is the difference between a primitive type and a non-primitive type?
+
+<Solution>
+
+A non-primitive type is an instance of a class, which is an object. 
+Primitive types, on the other hand, just hold a value (number, character or true/false).
+There are only eight primitive types, namely `byte`, `short`, `int`, `long`, `float`, `double`, `char` and `boolean`. 
+    
+</Solution> 
+
+
+Can you autobox from `Integer` to `double`? And from `int` to `Double`?
+    
+<Solution>
+
+Yes, you can autobox from `Integer` to `double`, but you cannot autobox from `int` to `Double`. Please reread the last paragraph of the text for further explanation.
+
+</Solution>
+    
+</Exercise>
