@@ -19,7 +19,7 @@ Other popular programming languages such as `Javascript`, `Python`, `R` or `Matl
 There are, however, more languages that use objects and types, such as `C++` and `C`. Still, Java is easier to learn because it does not involve difficult memory management.
 Learning Java will thus provide you with a good basis for learning many other popular (object-oriented and procedural) programming languages.
 
-Another important reason for the popularity of Java is that a Java program can be run on any platform. This means that you can easily share your written program with someone else and that this person can directly run your code without having to make changes or to transform the code to a different format. This is made possible by the `Java Compiler`, which translates the source code written by programmars to so-called *bytecode*. This bytecode is then executed by a program called the *Java Virtual Machine* (JVM), that is available for many different hardware platforms. The JVM technology is very powerful and clever, and can decide to convert the bytecode to `CPU-specific Assembly` to make the code run very efficiently .
+Another important reason for the popularity of Java is that a Java program can be run on any platform. This means that you can easily share your written program with someone else and that this person can directly run your code without having to make changes or to transform the code to a different format. That is made possible by the `Java Compiler`, which translates the source code written by programmers to so-called *bytecode*. This bytecode is then executed by a program called the *Java Virtual Machine* (JVM), that is available for many hardware platforms. The JVM technology is very powerful and clever, and can decide to convert the bytecode to `CPU-specific Assembly` to make the code run very efficiently.
 
 ## Introduction to Programming
 Earlier, you have taken the course `Introduction to Programming`. You may want to visit the [website of Introduction to Programming](https://feb21011.ese.eur.nl/) to recall things that you have learned last year. Here, you are provided with a very short recap only.
@@ -104,12 +104,12 @@ What is a type?
 
 A type is a named set of values and the operations that can be carried out with them. 
 
-Think for instance of a String: it is a set of all words or letter combinations you can think of, and you can use it's operations, such as requesting the length of the String.
+Think for instance of a String: it is a set of all words or letter combinations you can think of, and you can use its operations, such as requesting the length of the String.
 
 </Solution>
 
 
-### Object Oriented Programming 
+### Object-Oriented Programming 
 
 What is an object?
 
@@ -117,7 +117,7 @@ What is an object?
 
 An object is an instance of a class, so from one class, several objects can be made. An object has instance variables that are specific to the internal state of that object. The object's methods specify what the object does.
     
-Think for instance of dogs. A class can be called `Dog`. Each dog has its own characteristics (i.e. states) and behaviors. The states of a dog could be his color, name, and breed. It's behaviors could be wagging the tail, barking, or eating.
+Think for instance of dogs. A class can be called `Dog`. Each dog has its own characteristics (i.e. states) and behaviors. The states of a dog could be his color, name, and breed. Its behaviors could be wagging the tail, barking, or eating.
     
 </Solution> 
     
@@ -131,5 +131,13 @@ The object's variables are set to default or to arguments that you passed to the
 
 </Solution> 
     
+    
+What does a class do?
+    
+<Solution>
+
+A class contains the blueprint needed to create objects, and also defines the objects' variables and methods. An object is created on the basis of the class constructor.
+    
+</Solution>
     
 </Exercise>
