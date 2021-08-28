@@ -24,6 +24,8 @@ import { faArrowCircleUp as icon } from "@fortawesome/free-solid-svg-icons"
 import EndOfSubSection from "../components/EndOfSubSection"
 import { tryToScrollToSelector } from "../util/dom"
 
+import WorkInProgress from '../partials/WorkInProgress'
+
 const StyledIcon = styled(FontAwesomeIcon)`
   margin-right: 0.25rem;
   font-size: 1em;
@@ -87,6 +89,12 @@ export default class CourseContentTemplate extends React.Component {
       `${frontmatter.path.split(/\//g)[1].replace(/-/g, " ")}`,
     )
     const parentSectionPath = `/${frontmatter.path.split(/\//g)[1]}`
+    let wip = '';
+    console.log(data);
+    console.log(frontmatter);
+    if (frontmatter.ready !== true) {
+      wip = (<WorkInProgress />);
+    }
     return (
       <Fragment>
         <Helmet title={frontmatter.title} />
@@ -101,6 +109,7 @@ export default class CourseContentTemplate extends React.Component {
                       {parentSectionName}
                     </UpLink>
                     <h1>{frontmatter.title}</h1>
+                    {wip}
                     {renderAst(htmlAst)}
                     <EndOfSubSection />
                   </ContentWrapper>
@@ -123,6 +132,7 @@ export const pageQuery = graphql`
       frontmatter {
         path
         title
+        ready
       }
     }
     allPages: allMarkdownRemark {

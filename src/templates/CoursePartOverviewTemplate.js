@@ -18,6 +18,8 @@ import Container from "../components/Container"
 
 import { loggedIn } from "../services/moocfi"
 
+import WorkInProgress from '../partials/WorkInProgress'
+
 const ContentWrapper = styled.div`
   margin-top: 1rem;
   padding-bottom: 2rem;
@@ -57,6 +59,11 @@ export default class CoursePartOverviewTemplate extends React.Component {
       createElement: React.createElement,
       components: partials,
     }).Compiler
+    let wip = '';
+    console.log(frontmatter);
+    if (frontmatter.ready !== true) {
+      wip = (<WorkInProgress />);
+    }
     return (
       <PagesContext.Provider
         value={{
@@ -71,6 +78,7 @@ export default class CoursePartOverviewTemplate extends React.Component {
               <Container>
                 <ContentWrapper>
                   <Title>{frontmatter.title}</Title>
+                  {wip}
                   {renderAst(htmlAst)}
                 </ContentWrapper>
               </Container>
@@ -90,6 +98,7 @@ export const pageQuery = graphql`
       frontmatter {
         path
         title
+        ready
       }
     }
     allPages: allMarkdownRemark {
