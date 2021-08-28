@@ -2,6 +2,7 @@
 path: '/week1/1-why-java'
 title: 'Why Java?'
 hidden: false
+ready: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
@@ -42,7 +43,7 @@ and learn valuable concepts that allow you to easily learn more complex features
 
 <Exercise title="Recap Quiz">
 
-In this quiz, you can test your basic knowledge of Introduction to Programming. 
+In this quiz, you can test your basic knowledge of Introduction to Programming.
 
 ### JVM
 
@@ -53,9 +54,9 @@ What does the Java Virtual Machine do?
 Java programs, as we write them, contain instructions for the Java Virtual Machine (JVM).
 The Java Virtual Machine translates these instructions to bytecode (zeros and ones) for the CPU, the Central Processing Unit (CPU), which then executes the translated instructions.
 
-</Solution>    
-    
-    
+</Solution>
+
+
 ### For loops
 
 What is wrong with the following piece of code?
@@ -68,11 +69,11 @@ for (int i = 0; i < 10; i++); {
 
 <Solution>
 
-The semicolon behind the condition should not be there. 
-    
+The semicolon behind the condition should not be there.
+
 The condition and the execution block of the for loop belong together and should thus not be separated by a semicolon.
 
-</Solution>    
+</Solution>
 
 
 How does a for-each loop work?
@@ -81,7 +82,7 @@ How does a for-each loop work?
 
 A for each loop is called on a List and does something for every element in the list.
 For instance:
-    
+
 ```java
 String sentence = "";
 List<String> myList = List.of("h", "el", "lo", " there", "!");
@@ -92,36 +93,36 @@ System.out.println(sentence);
 ```
 
 Will print the sentence: "Hello there!"
-    
-</Solution> 
 
-    
+</Solution>
+
+
 ### Types
 
 What is a type?
-    
+
 <Solution>
 
-A type is a named set of values and the operations that can be carried out with them. 
+A type is a named set of values and the operations that can be carried out with them.
 
 Think for instance of a String: it is a set of all words or letter combinations you can think of, and you can use its operations, such as requesting the length of the String.
 
 </Solution>
 
 
-### Object-Oriented Programming 
+### Object-Oriented Programming
 
 What is an object?
 
 <Solution>
 
 An object is an instance of a class, so from one class, several objects can be made. An object has instance variables that are specific to the internal state of that object. The object's methods specify what the object does.
-    
+
 Think for instance of dogs. A class can be called `Dog`. Each dog has its own characteristics (i.e. states) and behaviors. The states of a dog could be his color, name, and breed. Its behaviors could be wagging the tail, barking, or eating.
-    
-</Solution> 
-    
-    
+
+</Solution>
+
+
 What is a constructor?
 
 <Solution>
@@ -129,15 +130,15 @@ What is a constructor?
 A constructor instantiates a new object when you use the `new` keyword.
 The object's variables are set to default or to arguments that you passed to the constructor.
 
-</Solution> 
-    
-    
+</Solution>
+
+
 What does a class do?
-    
+
 <Solution>
 
 A class contains the blueprint needed to create objects, and also defines the objects' variables and methods. An object is created on the basis of the class constructor.
-    
+
 </Solution>
-    
+
 </Exercise>

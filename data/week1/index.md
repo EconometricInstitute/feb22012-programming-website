@@ -3,6 +3,7 @@ path: '/week1'
 title: 'Week 1'
 overview: true
 hidden: false
+ready: true
 ---
 
 In this first week of the course, we will focus on getting to know what programming is and write some first code. Moreover, you will learn what variables are and how you can perform calculations with them.
