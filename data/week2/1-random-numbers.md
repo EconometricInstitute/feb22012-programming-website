@@ -23,7 +23,7 @@ In Java, the most-used Pseudo Random Number (PRN) generator is a *Linear Congrue
 X<sub>n+1</sub> = (a X<sub>n</sub> + c) mod m
 </p>
 
-<p> Where Java uses the constants multiplier a = 11, increment c = 25214903917 and modulus m = 2<sup>48</sup>. The starting number X<sub>0</sub> of a sequence is called a **seed**. The choices of a, c and m are made with the idea to have very long periods, so it takes a long time for the series to repeat itself, and so that it is very unlikely for the same sequence to occur twice, unless you pick the same seed. You can set a seed fixed, which will of course always generate the same sequence of numbers that appears to be randomly distributed. If you do not choose a seed, the seed will be based on some other source of randomness and a different sequence of numbers will be used every time you run your program. </p>
+<p> Where Java uses the constants multiplier a = 11, increment c = 25214903917 and modulus m = 2<sup>48</sup>. The starting number X<sub>0</sub> of a sequence is called a <b>seed</b>. The choices of a, c and m are made with the idea to have very long periods, so it takes a long time for the series to repeat itself. Also, it is meant to prevent the same sequence to occur twice, unless you pick the same seed. You can set a seed fixed, which will of course always generate the same sequence of numbers that appears to be randomly distributed. If you do not choose a seed, the seed will be based on some other source of randomness and a different sequence of numbers will be used every time you run your program. </p>
 
 This PRN works well enough for this course, but suffers from serial correlation so that it is not the best PRN one could imagine. You will learn more on pseudo random numbers in the Simulation course (FEB22013(X)).
 
@@ -66,38 +66,6 @@ The program output is not always the same, unless we would have created the Rand
 
 </sample-output>
 
-
-<programming-exercise name='Numbers' tmcname='part12-Part12_06.Numbers'>
-
-Write a program that prompts the user for how many random numbers should be generated and then prints the numbers. The printed numbers should be within the range `[0, 10]`. Below are some examples.
-
-<sample-output>
-
-How many random numbers should be printed?
-**4**
-9
-1
-4
-3
-
-</sample-output>
-
-<sample-output>
-
-How many random numbers should be printed?
-**8**
-9
-6
-0
-9
-10
-7
-3
-3
-</sample-output>
-
-</programming-exercise>
-
 We can use the `nextInt` method to create diverse randomness.
 For example, we might need a program to give us a temperature between [-30,50].
 We can do this by first creating a random number between 0 and 80 and then subtracting 30 from it.
@@ -107,62 +75,6 @@ Random weatherMan = new Random();
 int temperature = weatherMan.nextInt(81) - 30;
 System.out.println(temperature);
 ```
-
-<programming-exercise name='Die' tmcname='part12-Part12_07.Die'>
-
-The exercise template contains a class `Die`, which has the following body:
-
-```java
-import java.util.Random;
-
-public class Die {
-    private Random random;
-    private int numberOfFaces;
-
-    public Die(int numberOfFaces) {
-        this.random = new Random();
-        // Initialize the value of numberOfFaces here
-    }
-
-    public int throwDie() {
-        // generate a random number which may be any number
-        // between one and the number of faces, and then return it
-    }
-}
-```
-
-Modify the class, such that the constructor `Die(int numberOfFaces)` creates a new die-object with the given number of faces (i.e., the number of "sides" with a number). Also, modify the method `throwDie` so it returns the result of a random throw of the die, which should be a value withing the range `1 ... number of faces`.
-
-The following is a main program for testing the die:
-
-```java
-public class Program {
-    public static void main(String[] args) {
-        Die die = new Die(6);
-
-        for (int i = 0; i < 10; i++) {
-            System.out.println(die.throwDie());
-        }
-    }
-}
-```
-
-The output could be as follows:
-
-<sample-output>
-1
-6
-3
-5
-3
-3
-2
-2
-6
-1
-</sample-output>
-
-</programming-exercise>
 
 ## Random probabilities
 A Random object can also be used to create random doubles. These can for example be used for calculating probabilities. Computers often simulate probabilities using doubles between [0,1].
@@ -210,8 +122,8 @@ public class WeatherMan {
 }
 ```
 
-The `makeAForecast` method is interesting in many ways. The `this.random.nextGaussian()` call is a regular method call. However what is interesting is that this method of the `Random` class returns a normally distributed number. If you are curious about other random methods in Java, take a look at the methods of the [Random class](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Random.html), using Java Documentation!
-In this method we use explicit type casting to convert doubles to integers `(int)`. We can equally convert integers to doubles with `(double) integer`.
+The `makeAForecast` method is interesting in many ways. The `this.random.nextGaussian()` call is a regular method call. However, what is interesting is that this method of the `Random` class returns a normally distributed number. If you are curious about other random methods in Java, take a look at the methods of the [Random class](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Random.html), using Java Documentation!
+In this method, we use explicit type casting to convert doubles to integers `(int)`. We can equally convert integers to doubles with `(double) integer`.
 
 Let's now add a main which uses the `WeatherMan` class.
 
@@ -268,94 +180,6 @@ Sun: The sun shines -5 degrees
 
 </sample-output>
 
-<programming-exercise name='Lottery' tmcname='part12-Part12_08.Lottery'>
-
-Your assignment is to complete the class `LotteryRow`, which is used to draw the week's winning numbers. The numbers are in range 1--40, and 7 numbers will be drawn in total. In other words, a lottery row consists of seven different numbers that are all in range 1--40.
-
-We wish to implement the following functions in the class:
-
-- the constructor `LotteryRow` creates a new LotteryRow object that contains new randomized numbers.
-
-- the method `numbers` returns the drawn lottery numbers of this lottery row
-
-- the method `containsNumber` tells whether the given number is included in the drawn numbers
-
-- the method `randomizeNumbers` randomizes new numbers for the lottery row.
-
-The basic structure of the class is as follows:
-
-```java
-import java.util.ArrayList;
-import java.util.Random;
-
-    public class LotteryRow {
-    private ArrayList<Integer> numbers;
-
-    public LotteryRow() {
-        this.randomizeNumbers();
-    }
-
-    public ArrayList<Integer> numbers() {
-        return this.numbers;
-    }
-
-    public boolean containsNumber(int number) {
-        // Tests whether the number is already among the randomized numbers
-        return false;
-    }
-
-    public void randomizeNumbers() {
-        // initialize the list for numbers
-        this.numbers = new ArrayList<>();
-        // Implement the randomization of the numbers by using the method containsNumber() here
-    }
-
-    public boolean equals(Object other) {
-        return false;
-    }
-}
-```
-
-The following main program is supplied in the exercise base:
-
-```java
-import java.util.ArrayList;
-
-public class Program {
-    public static void main(String[] args) {
-        LotteryRow row = new LotteryRow();
-        ArrayList<Integer> lotteryNumbers = row.numbers();
-
-        System.out.println("Lottery numbers:");
-        for (int number: lotteryNumbers) {
-            System.out.print(number + " ");
-        }
-
-        System.out.println("");
-    }
-}
-```
-
-Here are a few possible outputs of the program:
-
-<sample-output>
-
-Lottery numbers:
-3 5 10 14 15 27 37
-
-</sample-output>
-
-
-<sample-output>
-
-Lottery numbers:
-2 9 11 18 23 32 34
-
-</sample-output>
-
-**NB!** The same number can only appear once in a lottery row. The numbers don't need to be ordered.
-
-</programming-exercise>
 
 <text-box variant='hint' name='On randomness of numbers'>
 
@@ -368,7 +192,7 @@ One example is IBM's  <a href="https://en.wikipedia.org/wiki/RANDU" target="_bla
 <br/>
 
 Not all randomness in computer programs is pseudo random. Programs aiming for stronger randomness use, among other things, real life random phenomena to generate random numbers.
-For example space radiation or <a href="https://www.wired.com/2003/08/random/" target="_blank" norel>lava lamps</a> are thought to be random phenomena.
+For example, space radiation or <a href="https://www.wired.com/2003/08/random/" target="_blank" norel>lava lamps</a> are thought to be random phenomena.
 
 <br/>
 
@@ -376,5 +200,4 @@ You can read more about randomness from <a href="https://www.random.org/randomne
 
 </text-box>
 
-Note that while the standard `Random` object of Java is good enough for this course, we will discuss how you can use pseudo random number generators
-with better statistical property at the end of the course, when we discuss the use of external libraries.
+Note that while the standard `Random` object of Java is good enough for this course, we will discuss how you can use pseudo random number generators with better statistical property at the end of the course, when we discuss the use of external libraries.
