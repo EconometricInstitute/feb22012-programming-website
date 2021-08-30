@@ -11,7 +11,7 @@ import withSimpleErrorBoundary from "../util/withSimpleErrorBoundary"
 
 const Wrapper = styled.aside`
   padding 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
   border-left: 0.2rem solid var(--color);
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
@@ -70,7 +70,7 @@ class Solution extends React.Component {
     return (
       <>
       {toggle}
-      <Wrapper style={{ "--color": '#f9e076', 'marginBottom': '0'}}>
+      <Wrapper style={{ "--color": '#f9e076'}}>
         <Header>
           <StyledIcon icon={faEye} size="1x" />
           Solution

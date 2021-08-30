@@ -80,7 +80,6 @@ const HeaderMuted = styled.span`
 
 const Body = styled.div`
   padding-bottom: 0.5rem;
-  min-height: 300px;
 `
 
 const DescriptionWrapper = styled.div``
