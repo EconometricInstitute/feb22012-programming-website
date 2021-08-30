@@ -52,16 +52,16 @@ public static void main(String args[]) {
 ```
 
 Other examples are:
-- The ArrayIndexOutOfBoundsException: you request an item from a negative index or an index greater or equal the size of the array.
+- The ArrayIndexOutOfBoundsException: you request an item from a negative index or an index greater or equal to the size of the array.
 - The NullPointerException: you call a method on an object that references to null.
-- The OutOfMemoryError: you exceed the memory space allocated to the JVM. Most likely, this is due to an infinite loop. For instance a `while(true)` without any stopping criterion inside where you create new objects that can not be garbage collected, e.g. by adding them to a `List`.
+- The OutOfMemoryError: you exceed the memory space allocated to the JVM. Most likely, this is due to an infinite loop. For instance, a `while(true)` without any stopping criterion inside where you create new objects that can not be garbage collected, e.g. by adding them to a `List`.
 - The StackOverflowError: you exceed the memory allocated to the stack of the JVM. This is the memory space which keeps track of where you are in your program and local variables. This happens for instance if you let a method call itself too often.
-- The InputMismatchException: you expect another type of variable than the user provides you with. For example, the user enters a string and you call `scanner.nextDouble();`.
+- The InputMismatchException: you expect another type of variable than the user provides you with. For example, the user enters a string, and you call `scanner.nextDouble();`.
 - The NumberFormatException: you try to format a number, for instance from string to int, but the string does not contain a (integer) number.
 
 To solve these runtime errors, run, test, and improve your code. Also, you should _handle exceptions_. The topic of exception-handling is covered in the next paragraph.
 
-The third and last type of error is the most challenging and annoying one: the logical error. Your computer can not recognize a locic error for you, since the program compiles and executes as it should. In such a case, the error is that it does the wrong thing or returns an incorrect result (or even no output at all).
+The third and last type of error is the most challenging and annoying one: the logical error. Your computer can not recognize a logic error for you, since the program compiles and executes as it should. In such a case, the error is that it does the wrong thing or returns an incorrect result (or even no output at all).
 
 Example of a **Logical error**:
 ```java
@@ -103,7 +103,7 @@ public void withdrawMoney(int amount) throws IllegalArgumentException {
 }
 ```
 
-In the example above, a new exception object is constructed and then it's thrown. Most exception objects can be constructed with an error message, like this one.
+In the example above, a new exception object is constructed, and then it's thrown. Most exception objects can be constructed with an error message, like this one.
 Also note that you don't need an 'else' because the exception will stop the method, like a return statement does, in case the if-statement is met.
 
 ### Try - catch
@@ -288,23 +288,21 @@ A programmer can also leave the exception unhandled and shift the responsibility
 We can shift the responsibility of handling an exception forward by throwing the exception out of a method, and adding notice of this to the declaration of the method.
 This means that between the open and close parentheses that hold the arguments, and before the `{` symbol that indicates the start of the block with the implementation
 of the method, we write `throws ExceptionType` where `ExceptionType` is the type of the `Exception` that can be thrown. To indicate multiple different exception types
-can be thrown, they are separated by comma's. And example where we indicate that a method may throw a NumberFormatException is written as follows.
+can be thrown, they are separated by comma's. And example where we indicate that a method may throw a `IOException` is written as follows.
 
 ```java
-public int readNumber() throws NumberFormatException {
-    System.out.println("Please enter the amount to withdraw");
-    String line = s.nextLine();
-    int amount = Integer.parseInt(line);
-    return amount;
+public int readFile() throws FileNotFoundException {
+    String fileName = "myFile.docx";
+    Scanner in = new Scanner(New File(fileName));
+    String input = in.next();
+    int value = Integer.parseInt(input);
+    ...
 }
 ```
 
-**TODO:** Dit is niet accuraat; in het bovenstaande voorbeeld hoeft de aanroeper niets te doen in dit voorbeeld, omdat het geen checked exception is.
-Je komt dat toch uit bij een voorbeeld met een IOException, of dieper uitleggen dat dit alleen een indicate is, maar het een verplichting wordt als
-het een check exception is. Dat is wel lastig;
+The `throws` clause signals the caller of your method that it may encounter a `FileNotFoundException`. Then the caller needs to make the decision whether to handle the exception, or declare that the exception may be thrown.
+Note that you **must** specify all checked exceptions that a method may throw.
 
-
-Now the method calling the `readNumber` method has to either handle the exception in a `try-catch` block or shift the responsibility yet forward.
 Sometimes the responsibility of handling exceptions is avoided until the end, and even the `main` method can throw an exception to the caller:
 
 ```java
@@ -408,20 +406,6 @@ Exception in thread "..." java.lang.IllegalArgumentException: Grade must be betw
 
 If an exception is a runtime exception, e.g. IllegalArgumentException, we do not have to warn about throwing it on the method declaration.
 
-<programming-exercise name='Validating parameters (2 parts)' tmcname='part11-Part11_11.ValidatingParameters'>
-
-Let's practice a little parameter validation with the `IllegalArgumentException` exception. There are two classes included with the exercise base: `Person` and `Calculator`. Modify the classes in the following manner:
-
-<h2>Validating a person</h2>
-
-The constructor of the class `Person` should ensure that the name given as the parameter is not null, empty, or over 40 characters in length. The age should between 0 and 120. If some of these conditions are not met, the constructor should throw an `IllegalArgumentException`.
-
-<h2>Validating the calculator</h2>
-
-The methods of the `Calculator` class should be as follows: The method `factorial` should only work if the parameter is a non-negative number (0 or greater). The method `binomialCoefficient` should only work when the parameters are non-negative and the subset size does not exceed the set size. If these methods receive invalid parameters when they are called, they should throw an `IllegalArgumentException`
-
-</programming-exercise>
-
 ### Design principles
 Exceptions are meant to deal with **exceptional** situations. They should thus not be used for regular control flow! Throwing and handling exceptions is not optimized, as language designers assume they don't occur very often.
 
@@ -462,4 +446,31 @@ We read a stack trace from the bottom up. At the bottom is the first call, so th
 Line 29 of the main method of the `Class` class calls the `print()` method.
 Line 43 of the `print` method has thrown a `NullPointerException` exception.
 The details of an exception are very useful when trying to pinpoint where an error happens.
+
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+In the following code fragment is a mistake. This could be either a compiler error, runtime error or logic error. Think about what might be the mistake and what kind of mistake it is. 
+
+```java
+public static ArrayList<Integer> filterDivisible(int[] numbers, int divisor) {
+   ArrayList<Integer> result = new ArrayList<Integer>();
+   for (int i=0; i <= numbers.length; i++) {
+      if (numbers[i] % divisor != 0) {
+         result.add(numbers[i]);
+      }
+   }
+   return result;
+}
+```
+
+<Solution>
+
+Because arrays start indexing at 0, the index numbers.length does not exist. This will result in an out-of-bounds index in the for-loop, since it uses ≤, and not a strict < sign. When reaching the non-existent index, a runtime exception will occur.
+
+</Solution>
+
+</Exercise>
 
