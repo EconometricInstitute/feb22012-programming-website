@@ -14,8 +14,6 @@ hidden: false
 
 </text-box>
 
-**TODO:** (...) maak daarna een exercise van het BigInteger voorbeeld, waarna je inderdaad terecht uitlegt dat ze ook op moeten letten hoe je het gebruikt.
-
 In this section, you will learn what an immutable object is, how you can achieve immutability in Java and what are the advantages and disadvantages of these objects.
 
 In the previous section we have seen that modifying the state of an object can lead to confusing situations when we have multiple references to them.
@@ -30,10 +28,12 @@ On the other hand, if we would only call `abc.substring(2,3);`, nothing would ha
 After both calls the first variable would still contain the string `"abc"`.
 If we would make the call `abc = abc.substring(2,3);`, the variable _seems_ to change, but behind the scenes it replaces the reference to the old string `"abc"` away to store a reference to the the new string `"c"` in the variable named `abc`.
 
+<Exercise title="BigInteger">
+
 Another example of an immutable object is `BigInteger` which allows us to do integer calculations with numbers that are too big to fit in an `int` or `long`,
 avoid the overflow that can occur with those types.
 First, you import it: `import java.math.BigInteger`. Then, take a look at this example where we use it:
-
+  
 ```java
 // To create an instance of BigInteger,
 // we use a special static method valueOf, not a constructor.
@@ -46,12 +46,22 @@ System.out.println(a);
 System.out.println(b);
 ```
 
-The question is: what will be printed? Would you expect 233 and 377 to be printed?
+What do you will be printed here? 
+
+<Solution>
+Would you expect 233 and 377 to be printed?
+
 It may then come as a surprise that for both _a_ and _b_ the number 233 will be printed here. That is because of the definition of the add method for BigInteger objects, which you can find in the [Java documentation](https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html):
 
 > The method `add(BigInteger val)` "returns a BigInteger whose value is `(this + val)`".
-
+  
 In the previous code, we computed a new value, but did not do anything with it. Lesson learned: check the return type! If we change `b.add(addValue)` into `b = b.add(addValue);`, it will print 233 and 377.
+    
+</Solution>    
+
+    
+</Exercise>
+
 
 <text-box variant="hint" name="Store immutable values">
 When you work with objects from a class that is designed to be immutable, or with methods that produce the result
