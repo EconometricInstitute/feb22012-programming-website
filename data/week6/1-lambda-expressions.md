@@ -6,9 +6,13 @@ hidden: false
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
-- You are aware of Java's Comparable class and now how to implement it in your own classes
-- You know how to use Java's tools for sorting lists and stream elements.
-- You know how to sort list elements using multiple criteria (e.g., you know how to sort a person based on name and age).
+- You can understand and write a lambda expression.
+- You know what an anonymous class is, but you do not use it.
+- You are able to explain what is special about a functional interface.
+- You understand and write method references.
+- You know what a default method is and where it is used.
+- You can write a sorting method as a lambda expression.
+- You can sort by multiple criteria.
 
 </text-box>
 
@@ -97,7 +101,7 @@ public static void sortCourses(List<Course> courses) {
 
 By defining a `static class` within another class, we avoid the need to put the `TeacherComparator` in a separate file. But still, there is quite a bit of code necessary to express that we want to order courses based on the teacher. The essence of what we want to express is the following short expression: `o1.getTeacher().compareTo(o2.getTeacher())`.
 
-However, to be able to use this expression to sort `Course` objects, we need to define both a *class header* for the `TeacherComparator` class, as well as the *method header* of the `compare` method. Programmers sometimes refer to this kind of code as *boilerplate code*: we need to write it to let the compiler check that all our types are safe, but does not express what we want to do.
+However, to be able to use this expression to sort `Course` objects, we need to define both a *class header* for the `TeacherComparator` class, and the *method header* of the `compare` method. Programmers sometimes refer to this kind of code as *boilerplate code*: we need to write it to let the compiler check that all our types are safe, but does not express what we want to do.
 
 In this case, it is possible to use a feature of Java called an *anonymous class*. This is a class that can be defined _within a method_. Unfortunately, it still looks rather cumbersome:
 
@@ -114,18 +118,21 @@ public static void sortCourses(List<Course> courses) {
 }
 ```
 
-In this course, we **advice against using anonymous classes**. When they are used, the code is often hard to read and understand. For example, it is rather confusing that it results in a *method definition* within a *method definition*. The number of nested curly braces also blows up fast, making it complicated to grasp the structure of the program.
+In this course, we **advise against using anonymous classes**. When they are used, the code is often hard to read and understand. For example, it is rather confusing that it results in a *method definition* within a *method definition*. The number of nested curly braces also blows up fast, making it complicated to grasp the structure of the program.
 
 Prior to Java 8, the anonymous class was the shortest way to transform our teacher comparison expression into a `Comparator` object. Fortunately, Java 8 introduced a feature called **lambda expressions**, that provides a syntax that is more concise and easier to read than the anonymous class.
 
 Lambda expressions can only be used to create an object that implements an interface with a single unimplemented method. An interface with only a single unimplemented method is called a **functional interface**. This term is based on the concept of a *mathematical function*.
 
-<!-- Special function; The types of the arguments of the single method can be seen as the \emph{domain} of the function whereas the return type can be seen as the \emph{image} of the function.
+<!--- Special function; The types of the arguments of the single method can be seen as the \emph{domain} of the function whereas the return type can be seen as the \emph{image} of the function. --->
  
-\begin{info}[Functional Programming]
-Most Computer Science bachelor programs contain a course called \emph{functional programming} dedicated to a programming language that focuses on the composition of functions, rather than given step-by-step descriptions of what the computer should do. The first and oldest functional programming language is \emph{Lisp}, and more modern functional languages are \emph{Haskell}, \emph{Scala}, \emph{F\#} and \emph{OCaml}. One of the advantages of functional programming, is that it makes it easier to write programs that can be distributed over multiple computers or processors. With the rise of multi-core processors (most mobile phones already have four or eight cores) and the popularity of \emph{distributed} computing where data analysis tasks must be spread out over datasets that are stored on a number of different.
-\end{info}
--->
+<text-box name="Functional Programming" variant="hint">
+    
+Most Computer Science bachelor programs contain a course called _functional programming_ dedicated to a programming language that focuses on the composition of functions, rather than given step-by-step descriptions of what the computer should do. 
+The first and oldest functional programming language is _Lisp_, and more modern functional languages are _Haskell_, _Scala_, _F\#_ and _OCaml_. One of the advantages of functional programming, is that it makes it easier to write programs that can be distributed over multiple computers or processors. 
+With the rise of multicore processors (most mobile phones already have four or eight cores) and the popularity of _distributed_ computing, where data analysis tasks must be spread out over datasets that are stored on a number of different.
+    
+</text-box>
 
 The `Comparator` interface contains only a single unimplemented method:
 `compare`. For our example, we can turn our expression
@@ -140,10 +147,10 @@ Comparator<Course> comp = (Course o1, Course o2) ->    {
 
 A *lambda expression* can be recognized by the arrow, written as `->`. Before this arrow, parameter variables are defined that will be available inside the body of the lambda expression. After the arrow, we have a block or expression, that contains regular code. 
 It is required that the types and the number of the parameter variables match those of the single method of the functional interface. 
-For a `Comparator<Course>`, the `compare` method expects two `Course` objects as input, which matches the arguments of our lambda expression. The type of the code after the arrow, must match the return type of the functional interface method. 
+For a `Comparator<Course>`, the `compare` method expects two `Course` objects as input, which matches the arguments of our lambda expression. The type of the code, after the arrow, must match the return type of the functional interface method. 
 Since the return type of the `compare` method is `int`, we are required to return an `int` in our case. Fortunately, the `compareTo` method produces an `int`, and so the compiler is happy that our lambda expression matches the `compare` method.
 
-Since the parameter and return types of the lambda expressions are required to match the parameter and return types of the functional interface, the compiler often does not need the explicit input types of the lambda expression, and can use *type inference* to determine what the types of the lambda expression’s inputs will be. As a result, we can shorten our example:
+Since the parameter and return types of the lambda expressions are required to match the parameter and return types of the functional interface, the compiler often does not need the explicit input types of the lambda expression. It can use *type inference* (i.e. automatic detection of types used) to determine what the types of the lambda expression’s inputs will be. As a result, we can shorten our example:
 
 ```java
 Comparator<Course> comp = (o1,o2) -> {
@@ -153,7 +160,7 @@ Comparator<Course> comp = (o1,o2) -> {
 
 There is another useful trick we can use here. Notice that the only code within the lambda is a single return statement. If only a single expression is returned, we are allowed to omit the curly braces and return statement and only write the expression. This provides an extremely concise syntax to create our `Comparator`: `Comparator<Course> comp = (o1,o2) -> o1.getTeacher().compareTo(o2.getTeacher());`
 
-While this is great for a `Comparator` that compares a single attribute of our `Course` object, it is not sufficient for more complex `Comparator` object. Take for example the order in which we first compare the teacher. If the teachers are equal, we compare the course year. If the course years are also equal, we finally compare the names of the courses in alphabetical order. In that case, we should still use a more verbose lambda expression with explicit return statements.
+While this is great for a `Comparator` that compares a single attribute of our `Course` object, it is not sufficient for a more complex `Comparator` object. Take, for example, the order in which we first compare the teacher. If the teachers are equal, we compare the course year. If the course years are also equal, we finally compare the names of the courses in alphabetical order. In that case, we should still use a more verbose lambda expression with explicit return statements.
 
 ```java
 Comparator<Course> comp = (o1, o2) -> {
@@ -180,7 +187,7 @@ In the terminology of *functional programming*, a function that accepts another 
 ### Consumer
 With the introduction of `Java 8`, the creators of the language added a number of new built-in interfaces that are meant to be used by such higher order functions, representing certain patterns that occur frequently in Java programs. One such interface is the `Consumer<T>` interface, which represents a function that does something with an argument of type `T`, but returns nothing. The single unimplemented method of this interface is defined as follows: `public void accept(T t);`.
 
-Arguably the most commonly used method in Java that accepts a single argument and returns nothing is the `System.out.println` method. We will now rewrite a traditional method that prints the names of all courses to use this interface.
+Arguably, the most commonly used method in Java that accepts a single argument and returns nothing is the `System.out.println` method. We will now rewrite a traditional method that prints the names of all courses to use this interface.
 
 ```java
 public static void printCourseNames(List<Course> courses) {
@@ -190,7 +197,7 @@ public static void printCourseNames(List<Course> courses) {
 }
 ```
 
-The creators of `Java 8` added a new method to the `Iterable` interface called `forEach`. Since all `Collection` is a super-type of `Iterable`, and `List` and `Set` are both sub-types of `Collection`, this methods can also be used `List` and `Set` objects. The `forEach` method is defined as follows: `public void forEach(Consumer<? super T> action);`.
+The creators of `Java 8` added a new method to the `Iterable` interface called `forEach`. Since all `Collection` is a supertype of `Iterable`, and `List` and `Set` are both subtypes of `Collection`, this methods can also be used `List` and `Set` objects. The `forEach` method is defined as follows: `public void forEach(Consumer<? super T> action);`.
 
 Notice that the expression `System.out.println(c.getCourseName())` depends on a single variable `c` and returns nothing. We can use a lambda expression to turn this expression into a `Consumer<Course>`, like this: `Consumer<Course> printer = c -> System.out.println(c.getCourseName());`
 
@@ -203,7 +210,7 @@ public static void printCourseNames(List<Course> courses) {
 
 ### Function
 When we think about the implementation of our `Comparator<Course>`, we typically extract a property from two `Course` objects than can be compared, and return an answer based on the result of that comparison. 
-This is a very common pattern in `Comparator` implementations, and we can think about it in a different way: we want to **transform** two `Course` objects into two objects that have a *natural order*, and then use that natural order to determine our result.
+This is a very common pattern in `Comparator` implementations, and we can think about it differently: we want to **transform** two `Course` objects into two objects that have a *natural order*, and then use that natural order to determine our result.
 
 In `Java 8`, there is a functional interface that can be used to represent a transformation called `Function`. It is defined as follows:
 ```java
@@ -261,7 +268,9 @@ public static Map<String,Integer> countOccurences(List<String> words) {
 }
 ```
 
-Notice how short our method has become! At first, the second argument of the merge method may look a little bit cryptic, but it is just one way in which we can produce a `BinaryOperator` object that represents the mathematical + symbol. The statement `result.merge(word, 1, (i,j) -> i+j)` can be read as follows: store a 1 as the value for the key `word` if that key does not occur in the map, or combine 1 with the current value in the map using the + operator and store the result as the new value for key `word`.
+**TO DO MARJA Voorbeeld result.merge!**
+
+Notice how short our method has become! At first, the second argument of the merge method may look a little cryptic, but it is just one way in which we can produce a `BinaryOperator` object that represents the mathematical + symbol. The statement `result.merge(word, 1, (i,j) -> i+j)` can be read as follows: store a 1 as the value for the key `word` if that key does not occur in the map, or combine 1 with the current value in the map using the + operator and store the result as the new value for key `word`.
 
 <!-- Note: in fact, the actual {\tt Map} interface defines the third argument of {\tt merge} as a {\tt BiFunction} which is a super type of {\tt BinaryOperator}, but in almost every case, you will pass a {\tt BinaryOperator} to this method. -->
 
@@ -283,7 +292,7 @@ The functional interfaces `Consumer`, `Function` and `BinaryOperator` are just t
 | `UnaryOperator<T>`  | `(T arg)`           | `T`       | Transforms a `T` to a `T`           |
 | `Runnable`          | `()`                | `void`    | Execute a task                      |
     
-All newly added functional interfaces are defined in the java package `java.util.function`. The package contains a large number of additional functional interfaces that are typically variants of the interfaces in the table above focused on primitive types. For example: a *predicate* that accepts an `int`, or a *function* that converts something to an `int`. At the bottom of this page, you can find a table with the definitions of some of these additional interfaces.
+All newly added functional interfaces are defined in the java package `java.util.function`. The package contains a large number of additional functional interfaces that are typically variants of the interfaces in the table above, focused on primitive types. For example: a *predicate* that accepts an `int`, or a *function* that converts something to an `int`. At the bottom of this page, you can find a table with the definitions of some of these additional interfaces.
 
 ## Method references
 As we are now familiar with lambda expressions and functional interfaces, we should be comfortable with writing code such as:
@@ -296,7 +305,7 @@ As we are now familiar with lambda expressions and functional interfaces, we sho
     
 While these are simple and elegant lambda expressions, there is still a small bit of boilerplate code left in these examples. In these examples, our intention is to use the method `System.out.println` as a `Consumer<String>`, use the `getTeacher()` method to convert a `Course` to a `String`, or use the method `Integer.sum` as a `BinaryOperator`. However, we still define variables such as `str`, `c`, `a` and `b` to utilize these methods within the functional interfaces. 
 
-An alternative to lambda expression are **method references**. A method reference is a way in which we can express the idea that the implementation of a functional interface is given by a particular method. A method reference is given using the either a class name or an object, followed by double colon operator `::` followed by the name of the method. Since we are not calling the method, but want to use it as an object of a function interface type, parenthesis and arguments are omitted. Using method references, we can write the `printer`, `courseToString` and `plus` references as follows: 
+An alternative to lambda expression are **method references**. A method reference is a way in which we can express the idea that the implementation of a functional interface is given by a particular method. A method reference is given using either a class name or an object, followed by double colon operator `::` followed by the name of the method. Since we are not calling the method, but want to use it as an object of a function interface type, parenthesis and arguments are omitted. Using method references, we can write the `printer`, `courseToString` and `plus` references as follows: 
 
 ```java
 Consumer<String> printer = System.out::println;
@@ -325,9 +334,9 @@ public class ComparatorExamples {
     }
 }    
 ```
-The advantage of this approach over writing a lambda expression, is that it is now easier to write test cases that call the `compareCourses` method directly. It also makes the code a bit easier to read: we have fewer nested blocks. In fact, the only Java 8 style syntax we are using here is a single method reference.
+The advantage of this approach, over writing a lambda expression, is that it is now easier to write test cases that call the `compareCourses` method directly. It also makes the code a bit easier to read: we have fewer nested blocks. In fact, the only Java 8 style syntax we are using here is a single method reference.
 
-The are some variants of the method references, based on whether you write a class name or object before the `::` and whether the method name after the `::` is `static` or not. Table [1][] shows all five types of method references, together with their equivalent lambda expressions. 
+There are some variants of the method references, based on whether you write a class name or object before the `::` and whether the method name after the `::` is `static` or not. Table [1][] shows all five types of method references, together with their equivalent lambda expressions. 
 
 | Type        | Method Reference          | Lambda Expression                      |
 |:------------|:--------------------------|:---------------------------------------|
@@ -346,7 +355,7 @@ If you paid attention, you may have noticed that we referred to functional inter
 
 Writing a *default* method implementation in an interface is very similar to writing a regular method implementation, with the main different being the keyword `default` in the method header. We are allowed to call other methods defined in the interface, even if those methods have no method implementation.
 
-The following is an example of an interface for two dimensional points in the Euclidean plane.
+The following is an example of an interface for two-dimensional points in the Euclidean plane.
 
 ```java
     public interface Point2D
@@ -362,7 +371,7 @@ The following is an example of an interface for two dimensional points in the Eu
     }
  ```
 
-Now any non-abstract class that implements the `Point2D` interface is required to implement both the `getX()` and `getY()` method, but is not required to implement the `distanceTo` method. If no implementation of the `distanceTo` method is written in the class, the default implementation of the `distanceTo` method is written in the class, the default implementation provided in the interface is used.
+Now, any non-abstract class that implements the `Point2D` interface is required to implement both the `getX()` and `getY()` method, but is not required to implement the `distanceTo` method. If no implementation of the `distanceTo` method is written in the class, the default implementation of the `distanceTo` method is written in the class, the default implementation provided in the interface is used.
 
 In Java versions prior to version 8, the language creators almost never dared to add additional methods to existing interfaces, at it would break compatibility with all classes implementing that interface. With the introduction of default method implementations in interface, many new helpful methods were added to existing interfaces, including `Map` and `List`. The `merge` method of the `Map` interface mentioned in the section on Binary Operators is one example of a new default method implementation.
 
@@ -389,7 +398,7 @@ Comparator<Course> reversed = comp.reversed();
 courses.sort(reversed); 
 ```
 
-Besides methods with *default* implementations, Java 8 now also allows the definition of `static` methods within interfaces. The main purpose of static methods is to provide utility methods, such as `Math.max()`, `Math.sin()` and `Collections.sort()`. For functional interfaces it may be convenient to include helpful utility methods in the interface, rather than in separate classes such as `Collections` (which provides utility methods that deal with `Collection` types). The method `Comparator.comparing` is an example of such a static method. In the next section, we will have a closer look at the default and utility methods that were added to the `Comparator` interface, and see some nice examples that show how we can use them to write readable, declarative `Comparator`s.
+Besides methods with *default* implementations, Java 8 now also allows the definition of `static` methods within interfaces. The main purpose of static methods is to provide utility methods, such as `Math.max()`, `Math.sin()` and `Collections.sort()`. For functional interfaces, it may be convenient to include helpful utility methods in the interface, rather than in separate classes such as `Collections` (which provides utility methods that deal with `Collection` types). The method `Comparator.comparing` is an example of such a static method. In the next section, we will have a closer look at the default and utility methods that were added to the `Comparator` interface, and see some nice examples that show how we can use them to write readable, declarative `Comparator`s.
 
 # Writing Functional Comparators
 Using lambda expressions and method references, we have great tools to write concise and declarative implementations of the `Comparator` interface. A good example is that we can obtain a `Comparator` object that defines an order on `Course` objects based on their teacher: `Comparator<Course> comp = (o1,o2) -> o1.getTeacher().compareTo(o2.getTeacher());`.
@@ -419,7 +428,7 @@ public static Comparator<T extends Comparable> naturalOrder();
 public static Comparator<T extends Comparable> reverseOrder();
 ```
 
-For example, we can obtain an comparator for the reverse order of `String` objects using the `reverseOrder()` method. Suppose we want to sort our courses by the reverse alphabetical order of their teach name. We can use the following code for this:
+For example, we can obtain a comparator for the reverse order of `String` objects using the `reverseOrder()` method. Suppose we want to sort our courses by the reverse alphabetical order of their teach name. We can use the following code for this:
 
 ```java
 // Obtain a reverse alphabetic order comparator
@@ -463,19 +472,19 @@ comp = Comparator.comparing(Course::getTeacher)
 ```
 
 # Effectively Final
-It is allowed to use any variables that are in score in a lambda expression, as long as they are declared as inputs for the lambda expressions, or are **effectively final**. A variabele is considered to be effectively final, if it would be possible to add the `final` keyword to the declaration of the variable without the compiler complaining about it.
-The following is an example code fragment that violates the pricinple of using a variable within a lambda expression that is not effectively final:
+It is allowed to use any variables that are in score in a lambda expression, as long as they are declared as inputs for the lambda expressions, or are **effectively final**. A variable is considered to be effectively final, if it would be possible to add the `final` keyword to the declaration of the variable without the compiler complaining about it.
+The following is an example code fragment that violates the principle of using a variable within a lambda expression that is not effectively final:
 ```java
 List<Predicate<Integer>> predList = new ArrayList<>();
 for (int i=1; i <= 10; i++) {
-    // The following is illegal since variable i is not effectively final!
-    // The reason is that i is incremented at the end of each loop, and
-    // thus changes in every iteration.
     Predicate<Integer> p = v -> v >= i;
     predList.add(p);
 }
 ```
+
+The above is illegal since variable i is not effectively final! The reason is that i is incremented at the end of each loop, and thus changes in every iteration.
 Often, it is relatively easy to fix this issue by the introduction of a new variable:
+
 ```java
 List<Predicate<Integer>> predList = new ArrayList<>();
 for (int i=1; i <= 10; i++) {
@@ -487,7 +496,7 @@ for (int i=1; i <= 10; i++) {
 }
 ```
 
-<!-- From here it is the Fins mooc -->
+<!-- FROM HERE ON ITS NOT THE READER BUT THE FINNISH MOOC! -->
 
 ## Sorting Method as a Lambda Expression
 Let's assume that we have the following Person class for use.
@@ -591,49 +600,6 @@ Mary Coombs
 
 </sample-output>
 
-<programming-exercise name='Literacy comparison (2 parts)' tmcname='part10-Part10_13.LiteracyComparison'>
-
-This exercise uses open data about literacy levels, provided by UNESCO. The data includes statistics of estimated or reported levels of literacy for various countries for the past two years.
-File `literacy.csv`, included with the exercise template, includes the literacy estimates for women and men over 15 years of age. Each line in the file `literacy.csv` is as follows:
-"theme, age group, gender, country, year, literacy percent. Below are the first five lines as an example.
-
-<pre>
-Adult literacy rate, population 15+ years, female (%),United Republic of Tanzania,2015,76.08978
-Adult literacy rate, population 15+ years, female (%),Zimbabwe,2015,85.28513
-Adult literacy rate, population 15+ years, male (%),Honduras,2014,87.39595
-Adult literacy rate, population 15+ years, male (%),Honduras,2015,88.32135
-Adult literacy rate, population 15+ years, male (%),Angola,2014,82.15105
-</pre>
-
-Create a program that first reads the file `literacy.csv` and then prints the contents from the lowest to the highest ranked on the literacy rate. The output must be exactly as in the following example. The example shows the first five  of the expected rows.
-
-<sample-output>
-
-Niger (2015), female, 11.01572
-Mali (2015), female, 22.19578
-Guinea (2015), female, 22.87104
-Afghanistan (2015), female, 23.87385
-Central African Republic (2015), female, 24.35549
-
-</sample-output>
-
-This exercise is worth two points.
-
-Tip! Here's how to split a string into an array by each comma.
-
-```java
-String string = "Adult literacy rate, population 15+ years, female (%),Zimbabwe,2015,85.28513";
-String[] pieces = string.split(",");
-// now pieces[0] equals "Adult literacy rate"
-// pieces[1] equals " population 15+ years"
-// etc.
-
-// to remove whitespace, use the trim() method:
-pieces[1] = pieces[1].trim();
-```
-
-</programming-exercise>
-
 ## Sorting By Multiple Criteria
 We sometimes want to sort items based on a number of things. Let's look at an example in which films are listed in order of their name and year of release. We'll make use of Java's <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html" target="_blank" norel>Comparator</a> class here, which offers us the functionality required for sorting. Let's assume that we have the class `Film` at our disposal.
 
@@ -700,99 +666,3 @@ D (2000)
 C (2001)
 
 </sample-output>
-
-<programming-exercise name='Literature (3 parts)' tmcname='part10-Part10_14.Literature'>
-
-Write a program that reads user input for books and their age recommendations.
-
-The program asks for new books until the user gives an empty String (only presses enter). After this, the program will print the number of books, their names, and their recommended ages.
-
-<h2>Reading and printing the books</h2>
-
-Implement the reading and printing the books first, the ordering of them doesn't matter yet.
-
-<sample-output>
-
-Input the name of the book, empty stops: **The Ringing Lullaby Book**
-Input the age recommendation: **0**
-
-Input the name of the book, empty stops: **The Exiting Transpotation Vehicles**
-Input the age recommendation: **0**
-
-Input the name of the book, empty stops: **The Snowy Forest Calls**
-Input the age recommendation: **12**
-
-Input the name of the book, empty stops: **Litmanen 10**
-Input the age recommendation: **10**
-
-Input the name of the book, empty stops:
-
-4 books in total.
-
-Books:
-The Ringing Lullaby Book (recommended for 0 year-olds or older)
-The Exiting Transpotation Vehicles (recommended for 0 year-olds or older)
-The Snowy Forest Calls (recommended for 12 year-olds or older)
-Litmanen 10 (recommended for 10 year-olds or older)
-
-</sample-output>
-
-<h2>Ordering books based on their age recommendation</h2>
-
-Expand your program so, that the books are sorted based on their age recommendations when they are printed. If two (or more) books share the same age recommendations the order between them does not matter.
-
-<sample-output>
-
-Input the name of the book, empty stops: **The Ringing Lullaby Book**
-Input the age recommendation: **0**
-
-Input the name of the book, empty stops: **The Exiting Transpotation Vehicles**
-Input the age recommendation: **0**
-
-Input the name of the book, empty stops: **The Snowy Forest Calls**
-Input the age recommendation: **12**
-
-Input the name of the book, empty stops: **Litmanen 10**
-Input the age recommendation: **10**
-
-Input the name of the book, empty stops:
-
-4 books in total.
-
-Books:
-The Ringing Lullaby Book (recommended for 0 year-olds or older)
-The Exiting Transpotation Vehicles (recommended for 0 year-olds or older)
-Litmanen 10 (recommended for 10 year-olds or older)
-The Snowy Forest Calls (recommended for 12 year-olds or older)
-
-</sample-output>
-
-<h2>Ordering books based on their age recommendation and name</h2>
-Expand your program, so that it sorts the books with the same age recommendation based on their name alphabetically.
-
-<sample-output>
-
-Input the name of the book, empty stops: **The Ringing Lullaby Book**
-Input the age recommendation: **0**
-
-Input the name of the book, empty stops: **The Exiting Transpotation Vehicles**
-Input the age recommendation: **0**
-
-Input the name of the book, empty stops: **The Snowy Forest Calls**
-Input the age recommendation: **12**
-
-Input the name of the book, empty stops: **Litmanen 10**
-Input the age recommendation: **10**
-
-Input the name of the book, empty stops:
-
-4 books in total.
-
-Books:
-The Exiting Transpotation Vehicles (recommended for 0 year-olds or older)
-The Ringing Lullaby Book (recommended for 0 year-olds or older)
-Litmanen 10 (recommended for 10 year-olds or older)
-The Snowy Forest Calls (recommended for 12 year-olds or older)
-
-</sample-output>
-</programming-exercise>
