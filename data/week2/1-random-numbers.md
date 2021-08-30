@@ -15,7 +15,7 @@ hidden: false
 </text-box>
 
 ## Randomness
-In order to make encryption algorithms, machine learning, computer games and econometric simulations less predictable all require randomness.
+In order to make encryption algorithms, machine learning, computer games and econometric simulations less predictable, we require randomness.
 It is hard to realize randomness on a computer, since a computer can't make decisions on its own: a computer works deterministically. But, we can model randomness using pseudo random numbers.
 In Java, the most-used Pseudo Random Number (PRN) generator is a *Linear Congruential Generator*, following the recurrence relation of
 
@@ -76,12 +76,10 @@ int temperature = weatherMan.nextInt(81) - 30;
 System.out.println(temperature);
 ```
 
-## Random probabilities
-A Random object can also be used to create random doubles. These can for example be used for calculating probabilities. Computers often simulate probabilities using doubles between [0,1].
+## Random events
+A Random object can also be used to create random doubles, using the `nextDouble` method of the Random class. For example, this allows us to generate a random variable that is uniformly distributed over the interval [0, 1]. Such a random variable can be used to simulate random events, as follows
 
-The `nextDouble` method of the Random class creates random doubles.
-Let's assume the weather follows these probabilities:
-
+Suppose that
 - There is 0.1 probability it rains (10%)
 - There is 0.3 probability it snows (30%)
 - There is 0.6 probability the sun shines (60%)
@@ -122,7 +120,7 @@ public class WeatherMan {
 }
 ```
 
-The `makeAForecast` method is interesting in many ways. The `this.random.nextGaussian()` call is a regular method call. However, what is interesting is that this method of the `Random` class returns a normally distributed number. If you are curious about other random methods in Java, take a look at the methods of the [Random class](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Random.html), using Java Documentation!
+The `makeAForecast` method is interesting in many ways. The `this.random.nextGaussian()` call is a regular method call. However, what is interesting is that this method of the `Random` class returns a value drawn from the normal distribution. If you are curious about other random methods in Java, take a look at the methods of the [Random class](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Random.html), using Java Documentation!
 In this method, we use explicit type casting to convert doubles to integers `(int)`. We can equally convert integers to doubles with `(double) integer`.
 
 Let's now add a main which uses the `WeatherMan` class.
