@@ -73,11 +73,25 @@ public double otherAngle(double angle1, double angle2) {
 To solve these logical errors, test, reason and prove your code is correct. By going through all the steps of your code again, you can find your own mistakes. Also, make sure you understand how to use a debugger, as it allows you to go through the execution of your program step-by-step. That is a very convenient way to figure out at what point your program does something that is unexpected.
 
 ## Exceptions
-When program execution ends with an error, an exception is thrown. For example, a program might call a method with a *null* reference and throw a `NullPointerException`, or the program might try to refer to an element outside an array and result in an `IndexOutOfBoundsException`, and so on.
+When program execution ends with an error, the runtime error is so severe that an exception is thrown. For example, a program might call a method with a *null* reference and throw a `NullPointerException`, or the program might try to refer to an element outside an array and result in an `IndexOutOfBoundsException`, and so on.
 Some exceptions we have to always prepare for, such as errors when reading from a file or errors related to problems with a network connection. On the other hand, we do not have to prepare for runtime exceptions, such as the NullPointerException, beforehand. Java will always let you know if your code has a statement or an expression which can throw an error you have to prepare for.
 Java has special features incorporated into the language that can pass control to a handler, from the point a runtime error was detected.
 
+<text-box variant='hint' name='Default Constructor'>
+
+Mostly, if programs terminate and report an exception, quite a few students give up at that point, without actually reading the error message. Admittedly, the format of the exception report is not very friendly, but with some practice it is easy to decipher it.
+
+There are two pieces of useful information:
+
+ 1. The name of the exception, such as `ArrayIndexOutOfBoundsException`
+ 2. The stack trace; the method calls that led to the exception, such as `Homework1.java:15` tells us we have to look at line 15 in the Homework1 file.
+
+</text-box>
+
 ## Handling exceptions
+In Java, _exception handling_ provides a flexible mechanism for passing control from the point of error detection to a handler that can deal with the error. In the following paragraphs, we will cover throwing and catching exceptions.
+
+### Throwing exceptions
 You can raise an exception with the `throw` keyword. It is good to indicate that something can go wrong in your method by defining throws in the method signature.
 Here is an example:
 ```java
@@ -89,7 +103,8 @@ public void withdrawMoney(int amount) throws IllegalArgumentException {
 }
 ```
 
-In the example above, you don't need an 'else' because the exception will stop the method, like a return statement does, in case the if-statement is met.
+In the example above, a new exception object is constructed and then it's thrown. Most exception objects can be constructed with an error message, like this one.
+Also note that you don't need an 'else' because the exception will stop the method, like a return statement does, in case the if-statement is met.
 
 ### Try - catch
 We use the `try {} catch (Exception e) {}` block structure to handle exceptions. The keyword `try` starts a block containing the code which *might* throw an exception. The block starting with the keyword `catch` defines what happens if an exception is thrown within the `try` block. We use the keyword `catch`, because causing an exception is referred to as `throw`ing an exception. The keyword `catch` is followed by the type of the exception handled by that block, for example:
@@ -119,23 +134,23 @@ Possible output could be:
 
 <sample-output>
 
-_Please enter the amount to withdraw._
+Please enter the amount to withdraw.
 
 **Twenty**
 
-_Input was not a valid number. Please try again._
+Input was not a valid number. Please try again.
 
 **80**
 
-_Amount exceeds balance of 50. Please try again._
+Amount exceeds balance of 50. Please try again.
 
 **20**
 
-_Balance is now: 30_
+Balance is now: 30
 
 </sample-output>
 
-You can also choose to catch all exceptions at once with the general statement `catch (Exception e)`. Here is an example in which we look at the situation of parsing strings to integers.
+In the code above, two catch blocks appear. We place more specific exceptions before more general ones. You can also choose to catch all exceptions at once with the general statement `catch (Exception e)`. Here is an example in which we look at the situation of parsing strings to integers.
 The method throws a `NumberFormatException` if the string it has been given cannot be parsed into an integer.
 
 ```java
