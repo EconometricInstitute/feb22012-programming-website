@@ -2,6 +2,7 @@
 path: '/week1/2-types-in-java'
 title: 'Types in Java'
 hidden: false
+ready: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
@@ -31,7 +32,7 @@ int course = 45;
 register(student, course);
 ```
 
-Is this correct code? 
+Is this correct code?
 Or should it say `register(course, student)`?
 Take a moment to think which of the two options would be the correct one.
 
@@ -220,10 +221,10 @@ public static int evenSum(List<Integer> numbersList) {
 Note that the remainder `%` and unary plus `+=` operators do not apply to `Integer` objects. However, the compiler does not generate an error, because it unboxes the objects to `int` objects at runtime.
 
 <text-box title="Advantages of Autoboxing and Unboxing">
-    
-- The compiler makes you write code that is easier to read, because we do not need to cast types explicitly.  
+
+- The compiler makes you write code that is easier to read, because we do not need to cast types explicitly.
 - It also lets you use primitive and non-primitive types interchangeably, which is convenient.
-    
+
 </text-box>
 
 Autoboxing and unboxing also work between non-associated primitive and non-primitive types, but only one way around. For instance, conversion from `Integer` to `double` is done automatically, but from `int` to Double is not possible.
@@ -245,20 +246,20 @@ Double c = (double) y;
 
 <Exercise title="Test your knowledge">
 
-In this quiz, you can test your knowledge on the subjects covered in this chapter. 
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
 
 Why do we use types in Java?
 
 <Solution>
 
-Firstly, a powerful type system helps to prevent bugs. 
+Firstly, a powerful type system helps to prevent bugs.
 Also, it allows overloading of methods.
-Moreover, the code is easier to read and to refactor. 
+Moreover, the code is easier to read and to refactor.
 More advantages can be found in the advantages text box.
 
-</Solution>    
+</Solution>
 
-    
+
 What is method overloading?
 
 
@@ -269,29 +270,29 @@ In Java, you can overload method names provided that the parameter types are dif
 
 `public void print(String s)`
 `public void print(int i)`
-    
-When the `print` method is called, `print(x);`, the compiler looks at the type of `x`. If `x` is a `String`, the first method is called. If `x` is an integer value, the second method is called. If `x` is neither, the compiler generates an error. 
-    
-</Solution>    
+
+When the `print` method is called, `print(x);`, the compiler looks at the type of `x`. If `x` is a `String`, the first method is called. If `x` is an integer value, the second method is called. If `x` is neither, the compiler generates an error.
+
+</Solution>
 
 
 What is the difference between a primitive type and a non-primitive type?
 
 <Solution>
 
-A non-primitive type is an instance of a class, which is an object. 
+A non-primitive type is an instance of a class, which is an object.
 Primitive types, on the other hand, just hold a value (number, character or true/false).
-There are only eight primitive types, namely `byte`, `short`, `int`, `long`, `float`, `double`, `char` and `boolean`. 
-    
-</Solution> 
+There are only eight primitive types, namely `byte`, `short`, `int`, `long`, `float`, `double`, `char` and `boolean`.
+
+</Solution>
 
 
 Can you autobox from `Integer` to `double`? And from `int` to `Double`?
-    
+
 <Solution>
 
 Yes, you can autobox from `Integer` to `double`, but you cannot autobox from `int` to `Double`. Please reread the last paragraph of the text for further explanation.
 
 </Solution>
-    
+
 </Exercise>

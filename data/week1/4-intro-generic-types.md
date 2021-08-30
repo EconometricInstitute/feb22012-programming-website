@@ -2,6 +2,7 @@
 path: '/week1/4-intro-generic-types'
 title: 'Introduction to Generic Types'
 hidden: false
+ready: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
@@ -118,7 +119,7 @@ We will look at generic types in more detail when we cover the Collections API.
 <text-box name="The Var keyword" variant="hint">
 
 The var keyword was introduced in Java 10. Type inference is used in `var` keyword, in which it detects automatically the datatype of a variable based on the surrounding context. The below examples explain where var is used, and it is also explained where you can’t use it.
-  
+
 ```java
 public static void main(String[] args) {
     // int
@@ -126,7 +127,7 @@ public static void main(String[] args) {
 
     // double
     var y = 1.90;
-  
+
     // char
     var z = 'a';
 
@@ -135,7 +136,7 @@ public static void main(String[] args) {
 
     // boolean
     var q = false;
-  
+
     // type inference is used in var keyword in which it
     // automatically detects the datatype of a variable
     System.out.println(x);
@@ -146,28 +147,28 @@ public static void main(String[] args) {
 }
 ```
 
-Unfortunately, `var` cannot be used var cannot be used for method parameters and return type. 
+Unfortunately, `var` cannot be used var cannot be used for method parameters and return type.
 Neither, it can be used as a Generic type, or with a Generic type.
 Thus, both `List<var> myList` and `var<Integer> myVar` are invalid.
 Lastly, `var` cannot be used without explicit initialization.
-    
-Although `var` can be very handy in some situations, it has also many restrictions. Therefore, we suggest not to use it for now. 
-    
-_Source: [Geeks for Geeks](https://www.geeksforgeeks.org/var-keyword-in-java/)_    
-   
+
+Although `var` can be very handy in some situations, it has also many restrictions. Therefore, we suggest not to use it for now.
+
+_Source: [Geeks for Geeks](https://www.geeksforgeeks.org/var-keyword-in-java/)_
+
 </text-box>
-    
+
 <Exercise title="Test your knowledge">
 
-In this quiz, you can test your knowledge on the subjects covered in this chapter. 
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
 
 What are generic types?
 
 <Solution>
 
-A generic type is a generic class or interface that is parameterized over types. 
+A generic type is a generic class or interface that is parameterized over types.
 Essentially, generic types allow you to write a general, generic class (or method) that works with different types, allowing for code re-use.
 
 </Solution>
-    
+
 </Exercise>

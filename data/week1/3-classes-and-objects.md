@@ -2,6 +2,7 @@
 path: "/week1/3-classes-and-objects-in-java"
 title: "Classes and objects in Java"
 hidden: false
+ready: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
@@ -112,13 +113,13 @@ Once you visit the documentation, a list of all public classes is presented on t
 For instance, the methods length(), toLowerCase(), toUpperCase(), charAt(), split() and replaceAll() are mentioned here.
 
 <text-box name="Short keys" variant="hint">
-    
+
 If you place your cursor on the word `String` at the definition of a String object and press <kbd>Ctrl</kbd> + <kbd>Q</kbd> on Windows or <kbd>Cmd</kbd> + <kbd>J</kbd> on Mac, you get the Javadoc documentation of the class.
 You can find the full source code of the class by pressing <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>i</kbd> on Windows or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>i</kbd> on Mac.
 
 </text-box>
-    
-    
+
+
 ## Objects and references
 
 <Exercise title="Values vs References">
@@ -189,11 +190,11 @@ All differences between static and non-static methods can be explained from the 
 When we call a non-static method (sometimes called *instance* methods), we always call it on an object and within the method the object that the method operates on can be accessed via the `this` keyword.
 A static method can only make use of an instance variable via references passed as arguments to the method.
 Static variables can be accessed from anywhere, since a static variable belongs to a class and is a single global variable, whereas each object of a class has its own copies of the instance variables of that class.
-    
-    
+
+
 <Exercise title="Test your knowledge">
 
-In this quiz, you can test your knowledge on the subjects covered in this chapter. 
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
 
 What is the difference between private and public variables?
 
@@ -202,10 +203,10 @@ What is the difference between private and public variables?
 The keyword private means that the variables are "hidden" inside the object, which is known as encapsulation.
 Public variables, on the other hand, are exposed as public to other programmers, whereas the internals should be hidden away from other programmers and kept private.
 In general, instance variables are almost always kept private, as providing access to them via methods provides more flexibility to change something at a later point in time.
-    
-</Solution>    
 
-    
+</Solution>
+
+
 Can you give an example of a variable that references to an object? And also a variable that does not?
 
 <Solution>
@@ -218,17 +219,17 @@ int number = myList.get(0);
 
 Here, the first value of the list references to an `Integer` object that on its turn holds the value 23.
 The `number` variable is an example of a variable that actually holds the value.
-    
-</Solution>    
+
+</Solution>
 
 
-Say that you have a `Dog` class and want each dog to take certain behavior, such as barking. Assume that you do not want to let every dog bark. 
+Say that you have a `Dog` class and want each dog to take certain behavior, such as barking. Assume that you do not want to let every dog bark.
 You make a `bark()` method. Should this be a **static** or a **non-static** method?
 
 <Solution>
 
 The bark method will be called on certain dogs, so we want to be able to call the method on an object. This means that we should make the `bark()` method non-static. Now, the method can be accessed via the `this` keyword.
-    
-</Solution> 
-    
+
+</Solution>
+
 </Exercise>

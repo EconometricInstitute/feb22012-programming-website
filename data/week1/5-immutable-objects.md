@@ -2,6 +2,7 @@
 path: "/week1/5-immutable-objects"
 title: "Immutable Objects"
 hidden: false
+ready: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
@@ -13,8 +14,6 @@ hidden: false
 - You know the advantages and disadvantages of immutable objects.
 
 </text-box>
-
-**TODO:** (...) maak daarna een exercise van het BigInteger voorbeeld, waarna je inderdaad terecht uitlegt dat ze ook op moeten letten hoe je het gebruikt.
 
 In this section, you will learn what an immutable object is, how you can achieve immutability in Java and what are the advantages and disadvantages of these objects.
 
