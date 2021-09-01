@@ -17,15 +17,16 @@ hidden: false
 </text-box>
 
 ## Introduction to Files
-Computers have several different programs for browsing files. These programs are specific to the operating system. All programs used for browsing files make use of the file system of the computer in one way or another. The computer's **file system** has the responsibility of keeping track of the locations of files on storage devices as well as providing the ability to create new files and modify them. The file system's main responsibility is abstracting the true structure of the hard drive; a user or a program using a file doesn't need to care about how, or where, the file is actually stored.
+Computers have several programs for browsing files. These programs are specific to the operating system. All programs used for browsing files make use of the file system of the computer in one way or another. The computer's **file system** has the responsibility of keeping track of the locations of files on storage devices, as well as providing the ability to create new files and modify them. The file system's main responsibility is abstracting the true structure of the hard drive; a user or a program using a file doesn't need to care about how, or where, the file is actually stored.
 
-During your studies, you receive, use and create a lot of **files**. Files are containers of all types of data: textual data, source code, executable program code, audio or video data, econometric data, and many other kinds. Files are organized in a tree-shaped hierarchical structure of **folders**, which can contain files or subfolders. Folders are sometimes called **directories**. A **path** tells us where a file is located in this hierachy of folders and subfolders, separated by a path separator. On Windows, the Path separator is `\`, whereas on Linux or Mac OS it is `/`. A path can be **relative** to the current folder or working directory, for example the path `myfile.txt` refers to a file in the current folder, whereas the path `data/myfile.txt` refers to a file in a subfolder `data` of the current folder. An absolute path, for example `C:\Users\Jane Doe\Documents\mydata.txt` on Windows or `/home/janedoe/documents/mydata.txt` on Linux or Mac OS does not depend on what the current folder is. However, absolute paths are likely to break once you transfer a file to another computer or user, as they will probably store the file in a different location. Therefore, in your programs you should prefer to use relative paths. However, when you have trouble locating a certain file from within your program, it is helpful to look at the absolute paths for debugging purposes.
+During your studies, you receive, use and create a lot of **files**. Files are containers of all types of data: textual data, source code, executable program code, audio or video data, econometric data, and many other kinds. Files are organized in a tree-shaped hierarchical structure of **folders**, which can contain files or subfolders. Folders are sometimes called **directories**. A **path** tells us where a file is located in this hierarchy of folders and subfolders, separated by a path separator. On Windows, the Path separator is `\`, whereas on Linux or macOS it is `/`. A path can be **relative** to the current folder or working directory, for example the path `myfile.txt` refers to a file in the current folder, whereas the path `data/myfile.txt` refers to a file in a subfolder `data` of the current folder. An absolute path, for example `C:\Users\Jane Doe\Documents\mydata.txt` on Windows or `/home/janedoe/documents/mydata.txt` on Linux or macOS, does not depend on what the current folder is. 
+However, absolute paths are likely to break once you transfer a file to another computer or user, as they will probably store the file in a different location. Therefore, in your programs, you should prefer to use relative paths. However, when you have trouble locating a certain file from within your program, it is helpful to look at the absolute paths for debugging purposes.
 
 <text-box variant='hint' name='Organizing your file system'>
 
 We strongly advise you to organize the file system on your personal devices well, so that searching for files remains simple. For work related to your studies can do this by creating a folder `Econometrics`, then create subfolders `Year 1`, `Year 2`, `Year 3` etcetera, and in these you can create a subfolder for each course you take. Feel free to come up with a scheme you like, but be aware that keeping all your important files in your `Download` folder is asking for trouble. For more inspiration on structuring your file system, watch this video on [how to structure your file system](https://www.youtube.com/watch?v=bKjRKZxr-KY&ab_channel=ThomasFrank).
 
-Also, we highly recommend you to back-up your files from time to time, or to syncrhonize your local files with a cloud service such as [Dropbox](https://www.dropbox.com/referrals/AACmbdSW9rvTWjuelMVNPq7xaUhsi3c65ao?src=global9) or [OneDrive](https://onedrive.live.com?invref=163a01a4ac2d7121&invscr=90). This way, you avoid losing valuable (study) work when a device breaks down. This can save you a lot of stress, in particular when close to a study deadline.
+Also, we highly recommend you to back up your files from time to time, or to synchronize your local files with a cloud service such as [Dropbox](https://www.dropbox.com/referrals/AACmbdSW9rvTWjuelMVNPq7xaUhsi3c65ao?src=global9) or [OneDrive](https://onedrive.live.com?invref=163a01a4ac2d7121&invscr=90). This way, you avoid losing valuable (study) work when a device breaks down. This can save you a lot of stress, in particular when close to a study deadline.
 
 </text-box>
 
@@ -90,7 +91,7 @@ Lastly, note that not only a FileNotFoundException is possible, but we must catc
 
 - Reading a local file that was no longer available.
 
-- Trying to read/write a file, but don't have permission (for instance because the file is still opened).
+- Trying to read/write a file, but don't have permission (for instance because the file is still open).
 
 - Trying to write to a file, but disk space was no longer available.
 
@@ -105,7 +106,7 @@ writer.print("And a little extra"); // writes the string "And a little extra" to
 writer.close(); //closes the file and ensures that the written text is saved to the file
 ```
 
-In the example above, we write to the file "file.txt" the string "Hello file!", followed by a line change and some additional text. Take notice that when writing to the file the method `print` does not add line changes, and you have to add them yourself. In contrast, the method `println` adds a new line change at the end of the parameter string it receives. You are already very familiar with this use because of `System.out.println()`.
+In the example above, we write to the file "file.txt" the string "Hello file!", followed by a line change and some additional text. Take notice that when writing to the file, the method `print` does not add line changes, and you have to add them yourself. In contrast, the method `println` adds a new line change at the end of the parameter string it receives. You are already very familiar with this use because of `System.out.println()`.
 
 The constructor of the `PrintWriter` class might throw an exception that must be either handled or thrown so that it is the responsibility of the calling method. Here is what a method that receives as its parameters a file name and the text contents to write into it could look like.
 
@@ -120,7 +121,7 @@ public class Storer {
 }
 ```
 
-In the `writeToFile` method above, we begin by creating a `PrintWriter` object. It writes data to the file that is located at the path that the string `fileName` indicates. After this, we write the text to the file by calling the `println` method. The possible exception that the constructor throws has to be handled with a `try-catch` block or the handling responsibility has to be transferred elsewhere. In the `writeToFile` method, the responsibility to handle the exception is placed on the method that calls `writeToFile`.
+In the `writeToFile` method above, we begin by creating a `PrintWriter` object. It writes data to the file that is located at the path that the string `fileName` indicates. After this, we write the text to the file by calling the `println` method. The possible exception that the constructor throws has to be handled with a `try-catch` block, or the handling responsibility has to be transferred elsewhere. In the `writeToFile` method, the responsibility to handle the exception is placed on the method that calls `writeToFile`.
 
 Let's create a `main` method that calls the `writeToFile` of a `Storer` object. There is nothing to force the `main` method to handle the exception -- it, too, can state that it might throw an exception by adding `throws Exception` to the method definition.
 
@@ -153,7 +154,7 @@ catch (FileNotFoundException e) {
 }
 ```
 
-As you can see, we have added a call to the PrintWriter's flush method. The PrintWriter maintains a buffer, as it is typically more efficien to write a lot of data to a storage device at once. If we want to be sure that all printed data is actually written to the file, we should call flush(). If the program crashes before the file is closed, non-flushed data may not have been written to the file. When the PrintWriter is closed, the flush method is called automatically. Since we have used the PrintWriter inside a `try-with-resources` environment, the PrintWriter would already have closed after the flush line, thus automatically calling it. Here, the flush() call is thus just for demonstration purposes, but it is good to know that you should remember to close or flush a PrintWriter if you keep a file open for a longer time.
+As you can see, we have added a call to the PrintWriter's flush method. The PrintWriter maintains a buffer, as it is typically more efficient to write a lot of data to a storage device at once. If we want to be sure that all printed data is actually written to the file, we should call flush(). If the program crashes before the file is closed, non-flushed data may not have been written to the file. When the PrintWriter is closed, the flush method is called automatically. Since we have used the PrintWriter inside a `try-with-resources` environment, the PrintWriter would already have closed after the flush line, thus automatically calling it. Here, the flush() call is thus just for demonstration purposes, but it is good to know that you should remember to close or flush a PrintWriter if you keep a file open for a longer time.
 
 ## Filtering a file
 Sometimes we want to read a file line by line and write it to another file line by line, filtering out the lines that we do not want to take.
@@ -175,6 +176,53 @@ public void filter(File in, File out, String pattern) throws IOException {
 }
 ```
 
-**TODO**: is het nog nuttig de `Files.readAllLines()` en `Files.write()` methoden te behandelen als alternatief? Of zelfs als primaire opties die in de meeste gevallen nuttig zijn? JA dinsdag 31/8
+## Files class
+An alternative for reading files is given in the `Files` class. This class is extremely convenient for reading files. 
+As you can see in the [Documentation](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/file/Files.html), the methods `Files.readAllLines(Path path)` and `Files.readAllLines(Path path, Charset cs)` are provided, that both read all the lines of a file and puts them into a `List<String>`.
+This class also provides methods for writing, such as `write(Path path, byte[] bytes, OpenOption... options)`.
+Below, a simple example of the use of this class is provided:
 
-**TODO**: het gaat misschien ver, maar is een korte discussie over Charsets ook nog nuttig? Bij werken met data kan dat toch een hoop gehannes opleveren bij inlezen en wegschrijven. Hmm twijfel, misschien week 7?
+```java
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+
+public class ReadAllLinesExample {
+    public static void main(String[] args) throws IOException {
+        Path path = Files.createTempFile("test-file", ".txt");
+        Files.write(path, "Hello there!\n I love programming!\n".getBytes());
+        List<String> lines = Files.readAllLines(path);
+        for(String line : lines) {
+           System.out.println(line);
+        }
+    }
+}
+```
+
+In this example, a few things stand out. Firstly, the method throws an `IOException`, because there could occur quite some problems when writing and reading files. The exception is passed to the handler, who is in this case the programmer using the code. 
+Also, the file that is written in the second line, contains some `\n` arguments, that are equivalent to `enter`s.
+After all lines from the just-made file are read, they are printed in a for-each loop.
+The expected output is the following:
+
+<sample-output>
+
+Hello there!
+I love programming!
+    
+    
+</sample-output>
+   
+<text-box variant='hint' name='Charset'>
+
+As you might have noticed, one of the read methods that are provided by the `Files` class, takes a [Charset](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/nio/charset/Charset.html) as an argument. 
+The Charset defines charsets, decoders, and encoders, for translating between bytes and Unicode characters. 
+    
+Computers can only understand binary representations like 1 and 0. Processing anything else requires some kind of mapping from the real-world text to its binary representation. This mapping is what we know as character encoding, or simply just as encoding. For example, the letter T encodes to '01010100' in US-ASCII. [US-ASCII](https://nl.wikipedia.org/wiki/ASCII_(tekenset)) is a widely used encoding and decoding set to translate bytes to characters and the other way around.
+The mapping of characters to their binary representations can vary greatly in terms of the characters they include. The number of characters included in a mapping can vary from only a few to all the characters in practical use. The set of characters that are included in a mapping definition is formally called a charset.
+
+It makes a huge difference which charset you use for decoding. If you used a charset that consists of the 26 letters of the alphabet only, you would not be able to read any letters with accents, such as é, è, ê, etc..
+    
+_This information was adapted from_: [Bealdung](https://www.baeldung.com/java-char-encoding)
+    
+</text-box>
