@@ -150,7 +150,10 @@ Balance is now: 30
 
 </sample-output>
 
-In the code above, two catch blocks appear. We place more specific exceptions before more general ones. You can also choose to catch all exceptions at once with the general statement `catch (Exception e)`. Here is an example in which we look at the situation of parsing strings to integers.
+In the code above, two catch blocks appear. We place more specific exceptions before more general ones. You can also choose to catch all exceptions at once with the general statement `catch (Exception e)`. 
+**Although this seems very convenient, you are obliged to be as specific as possible in declaring catch statements.** Thus, you should not use anything like `Exception e`, but rather somethin like an `IllegalArgumentException`.
+
+Here is an example in which we look at the situation of parsing strings to integers.
 The method throws a `NumberFormatException` if the string it has been given cannot be parsed into an integer.
 
 ```java
