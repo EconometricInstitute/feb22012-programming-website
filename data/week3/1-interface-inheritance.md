@@ -6,15 +6,25 @@ hidden: false
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
-- You understand the concept of inheritance in the context of interfaces
+- You understand the concept of inheritance in the context of interfaces.
+- You understand how interfaces are used as variable types.
+- You know how to use interfaces as method parameters.
+- You can use an interface as a return type.
 
 </text-box>
 
-**TODO:** meer leerdoelen toevoegen
+## Introduction to inheritance
+Inheritance is a mechanism that copies all the properties and behaviors of a parent object to a child object. This way, new classes can be built upon existing classes. 
+For instance, if you build a general `Animal` class and define their characteristics, you may want to build subclasses for specific animals later. For example, think of the classes `Dog`, `Horse`, etc.. These classes need all the characteristics from `Animal`, and may add some other, more specific, methods or characteristics.
+This week, you will learn more about inheritance in multiple applications.
 
-**TODO:** heel korte recap van polymorfisme en interfaces uit vorige week
-
-**TODO:** heel korte uitleg van het algemene concept inheritance, omdat dit het grote onderwerp is deze week
+<text-box variant='hint' name='Recap on polymorphism and interfaces'>
+We can use interfaces to define behavior that's required from a class, i.e., its methods. Thus, interfaces are used to guarantee that an object has one or more methods available. Polymorphism is the use of a single interface to entities of different types, so that an object can take on multiple forms. For instance, a Dog could also be classified as an Animal.
+    
+In short, inheritance lets us inherit attributes and methods from another class. Polymorphism uses those methods to perform different tasks. This allows us to perform a single action in different ways.
+    
+If you do not remember the concepts of polymorphism and interfaces well enough, please reread the broader explanations of these topics, given in the previous weeks. 
+</text-box>
 
 ### Interface inheritance
 Since the bank has an advantage in some types of games, we want to be able to detect whether a value was obtained by the bank or someone else. We could add a method `public boolean fromBank();` to the GameValue interface, but then all our classes would need to add a second method, while some of the games may not even have a bank.
@@ -27,31 +37,6 @@ To solve this problem, we let the interface `BankScore` inherit the interface `G
 Now, the type `BankScore` can be used as a `GameValue` and classes that implement `BankScore` must have both `getValue()` and `fromBank()` methods. The `getValue()` method is inherited from `GameValue`.
 
 We say that `BankScore` is a **subtype** of `GameValue` and that `GameValue` is a **supertype** of `BankScore`. A subtype can always do at least as much as its supertype. This terminology is based on _set theory_: the set of `BankScore` objects is a subset of the set of `GameValue` objects. The set of `GameValue` objects is a superset of the set of `BankScore` objects. Also supertype and subtype relations are **transitive**.
-
-<programming-exercise name='TacoBoxes (2 parts)' tmcname='part09-Part09_05.TacoBoxes'>
-
-In the exercise template you'll find Interface `TacoBox` ready for your use. It has the following methods:
-
-- the method `int tacosRemaining()` return the number of tacos remaining in the box.
-
-- the method `void eat()` reduces the number of tacos remaining by one. The number of tacos remaining can't become negative.
-
-```java
-public interface TacoBox {
-    int tacosRemaining();
-    void eat();
-}
-```
-
-<h2>Triple taco box</h2>
-
-Implement the class `TripleTacoBox`, that implements the `TacoBox` interface. `TripleTacobox` has a constructor with no parameters. `TripleTacobox` has an object variable `tacos` which is initialized at 3 when the constructor is called.
-
-<h2>Custom taco box</h2>
-
-Implement the class `CustomTacoBox`, that implements the `TacoBox` interface. `CustomTacoBox` has a constructor with one parameter defining the initial number of tacos in the box(`int tacos`).
-
-</programming-exercise>
 
 ### Interface as Variable Type
 The type of a variable is always stated as its introduced. There are two kinds of type, the primitive-type variables (int, double, ...) and reference-type variables (all objects). We've so far used an object's class as the type of a reference-type variable.
@@ -84,7 +69,6 @@ Type conversion succeeds if, and only if, the variable is of the type that it's 
 ### Interfaces as Method Parameters
 The true benefits of interfaces are reaped when they are used as the type of parameter provided to a method. Since an interface can be used as a variable's type, it can also be used as a parameter type in method calls. For example, the `getValue` method of the class below gets a variable of type `GameValue`.
 
-<!--- Hi Paul, can you have a look at this code, to check if I did it right? I had to change this example into the terms that fit to your example, but it was a bit confusing--->
 ```java
 public class GameValue {
     public void getValue(GameValue gameValue) {
@@ -94,120 +78,6 @@ public class GameValue {
 ```
 
 The value of the `getValue` method of the `GameValue` class lies in the fact that it can be given *any* class that implements the `GameValue` interface as a parameter. Were we to call the method with any object instantiated from a class that inherits the GameValue class, the method would function as desired.
-
-<programming-exercise name='Interface In A Box (4 parts)' tmcname='part09-Part09_06.InterfaceInABox' nocoins='true'>
-
-<h2>Packables</h2>
-
-Moving houses requires packing all your belongings into boxes. Let's imitate that with a program. The program will have boxes, and items to pack into those boxes. All items must implement the following Interface:
-
-```java
-public interface Packable {
-    double weight();
-}
-```
-
-Add the Interface to your program. Adding a new Interface is quite similar to adding a new class. Instead of selecting <i>new Java class</i> just select <i>new Java interface</i>.
-
-Create classes `Book` and `CD`, which implement the Interface. Book has a constructor which  is given the author (String), name of the book (String), and the weight of the book (double) as parameters. CD has a constructor which is given the artist (String), name of the CD (String), and the publication year (int). The weight of all CDs is 0.1 kg.
-
-Remember to implement the Interface `Packable` in both of the classes. The classes must work as follows:
-
-```java
-public static void main(String[] args) {
-    Book book1 = new Book("Fyodor Dostoevsky", "Crime and Punishment", 2);
-    Book book2 = new Book("Robert Martin", "Clean Code", 1);
-    Book book3 = new Book("Kent Beck", "Test Driven Development", 0.5);
-
-    CD cd1 = new CD("Pink Floyd", "Dark Side of the Moon", 1973);
-    CD cd2 = new CD("Wigwam", "Nuclear Nightclub", 1975);
-    CD cd3 = new CD("Rendezvous Park", "Closer to Being Here", 2012);
-
-    System.out.println(book1);
-    System.out.println(book2);
-    System.out.println(book3);
-    System.out.println(cd1);
-    System.out.println(cd2);
-    System.out.println(cd3);
-}
-```
-
-Prints:
-
-<sample-output>
-
-Fyodor Dostoevsky: Crime and Punishment
-Robert Martin: Clean Code
-Kent Beck: Test Driven Development
-Pink Floyd: Dark Side of the Moon (1973)
-Wigwam: Nuclear Nightclub (1975)
-Rendezvous Park: Closer to Being Here (2012)
-
-</sample-output>
-
-NB: The weight is not printed
-
-<h2>Box</h2>
-
-Make a class called `Box`. Items implementing the `Packable` interface can be packed into a box. The `Box` constructor takes the maximum capacity of the box in kilograms as a parameter. The combined weight of all items in a box cannot be more than the maximum capacity of the box.
-
-Below is an example of using a box:
-
-```java
-public static void main(String[] args) {
-    Box box = new Box(10);
-
-    box.add(new Book("Fyodor Dostoevsky", "Crime and Punishment", 2)) ;
-    box.add(new Book("Robert Martin", "Clean Code", 1));
-    box.add(new Book("Kent Beck", "Test Driven Development", 0.7));
-
-    box.add(new CD("Pink Floyd", "Dark Side of the Moon", 1973));
-    box.add(new CD("Wigwam", "Nuclear Nightclub", 1975));
-    box.add(new CD("Rendezvous Park", "Closer to Being Here", 2012));
-
-    System.out.println(box);
-}
-```
-
-Prints
-
-<sample-output>
-
-Box: 6 items, total weight 4.0 kg
-
-</sample-output>
-
-NB: As the weights are saved as a double, the calculations might have some small rounding errors. You don't need to worry about them.
-
-<h2>Box weight</h2>
-
-If you made an class variable `double weight` in the Box class, replace it with a method which calculates the weight of the box:
-
-```java
-public class Box {
-    //...
-
-    public double weight() {
-        double weight = 0;
-        // calculate the total weight of the items in the box
-        return weight;
-    }
-}
-```
-
-When you need the weight of the box, for example when adding a new item to the box, you can just call the weight method.
-
-The method could also return the value of an object variable. However here we are practicing a situation, where we do not have to maintain an object variable explicitly, but can calculate its value as needed. After the next exercise storing the weight as an object variable would not necessary work anyway. After completing the exercise have a moment to think why that is.
-
-<h2>A Box is packable too!</h2>
-
-Implementing the `Packable` Interface requires a class to have the method `double weight()`. We just added this method to the Box class. This means we can make the Box packable as well!
-
-Boxes are objects, which can contain objects implementing the `packable` Interface. Boxes implement this Interface as well. So **a box can contain other boxes!**
-
-Try this out. Make some boxes containing some items, and add some smaller boxes to a bigger box. Try what happens, when you put a box in itself. Why does this happen?
-
-</programming-exercise>
 
 ### Interface as a return type of a method
 Interfaces can be used as return types in methods -- just like regular variable types. In the next example is a class `Factory` that can be asked to construct differerent objects that implement the `Packable` interface.
