@@ -16,7 +16,7 @@ hidden: false
 
 ## Motivation to use Interfaces
 An important reason to use Object-oriented programming, is that we prevent duplication of code. With this in the back of your mind, consider a simple dice game:
-We throw two dice. If they have the same value, we multiply any one of them by hundred. In case of different values, we multiply the highest by then and add the lowest. Or, in case we have a one and a two, it's worth a thousand.
+We throw two dice. If they have the same value, we multiply any one of them by a hundred. In case of different values, we multiply the highest by then and add the lowest. Or, in case we have a one and a two, it's worth a thousand.
 This game can be implemented as follows:
 ```java
 public class Dice {
@@ -43,7 +43,7 @@ public class Dice {
 Now we want to sort a list of `Dice` objects to rank them. Take a look at the following code:
 ```java
 public static void sort(ArrayList<Dice> input) {
-    // For every position in the list we will find the greatest
+    // For every position in the list, we will find the greatest
     for (int i = 0; i < input.size(); i++) {
         int greatest = i;
         Dice greatestDice = input.get(i);
@@ -87,10 +87,10 @@ public static void sort(ArrayList<PokerHand> input) {
 ```
 
 If you want to sort other objects too, at this point you realize that you need to change something in your algorithm. Copy-pasting of code is not a good idea! We have an alternative way to do this, because our sorting algorithm does not care what is being sorted, as long as we have a way to obtain their value in the game.
-We want to achieve **polymorphism**: treating objects of completely different classes in a uniform way. One way to achieve this, is by using **interfaces**.
+We want to achieve **polymorphism**: treating objects of completely different classes uniformly. One way to achieve this, is by using **interfaces**.
 
 ## Interfaces: definition and use
-We can use interfaces to define behavior that's required from a class, i.e., its methods. In other words, interfaces are used to guarantee that an object has one or more methods available. They're defined the same way that regular Java classes are, but "`public interface ...`" is used instead of "`public class ... `" at the beginning of the class. So they are defined in their own `.java` files. Interfaces define behavior through method names and their return values. However, they don't always include the actual implementations of the methods, but the signature ends with a semicolon. A visibility attribute on interfaces is not marked explicitly as they're always `public`. Let's examine a *GameValue* interface that describes the value.
+We can use interfaces to define behavior that's required from a class, i.e., its methods. In other words, interfaces are used to guarantee that an object has one or more methods available. They're defined the same way that regular Java classes are, but "`public interface ...`" is used instead of "`public class ... `" at the beginning of the class. So they are defined in their own `.java` files. Interfaces define behavior through method names and their return values. However, they don't always include the actual implementations of the methods, but the signature ends with a semicolon. A visibility attribute on interfaces is not marked explicitly, as they're always `public`. Let's examine a *GameValue* interface that describes the value.
 
 ```java
 public interface GameValue {
@@ -98,7 +98,7 @@ public interface GameValue {
 }
 ```
 
-The `GameValue` interface declares a `getValue()` method, which returns a int-type value. The classes that implement the interface decide *how* the methods defined in the interface are implemented. A class implements the interface by adding the keyword *implements* after the class name followed by the name of the interface being implemented. Let us see how that works out in our Dice class.
+The `GameValue` interface declares a `getValue()` method, which returns an int-type value. The classes that implement the interface decide *how* the methods defined in the interface are implemented. A class implements the interface by adding the keyword *implements* after the class name, followed by the name of the interface being implemented. Let us see how that works out in our Dice class.
 
 ```java
 public class Dice implements GameValue {
@@ -165,7 +165,7 @@ public static void sort(ArrayList<GameValue> input) {
 
 **NB: do not use this algorithm in practice, it is very inefficient.**
 
-<text-box variant='hint' name='An Interface Is a Contract of Behaviour'>
+<text-box variant='hint' name='An Interface Is a Contract of Behavior'>
 
 When a class implements an interface, it signs an agreement. The agreement dictates that the class will implement the methods defined by the interface. If those methods are not implemented in the class, the program will not function.
 
