@@ -1,7 +1,8 @@
 ---
-path: '/week2/4-introduction-interfaces'
+path: '/week2/5-introduction-interfaces'
 title: 'Introduction to Interfaces'
 hidden: false
+ready: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
@@ -60,9 +61,8 @@ public static void sort(ArrayList<Dice> input) {
         input.set(i, greatestDice);
     }
 }
+// **NB: do not use this algorithm in practice, it is very inefficient.**
 ```
-
-**NB: do not use this algorithm in practice, it is very inefficient.**
 
 Now, let's say we would also want to sort `PokerHand` objects. We would then copy/paste the code, only changing the object types.
 ```java
@@ -161,9 +161,8 @@ public static void sort(ArrayList<GameValue> input) {
         input.set(i, greatestDice);
     }
 }
+// **NB: do not use this algorithm in practice, it is very inefficient.**
 ```
-
-**NB: do not use this algorithm in practice, it is very inefficient.**
 
 <text-box variant='hint' name='An Interface Is a Contract of Behavior'>
 

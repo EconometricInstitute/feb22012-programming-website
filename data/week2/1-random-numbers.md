@@ -2,6 +2,7 @@
 path: '/week2/1-random-numbers'
 title: 'Random numbers'
 hidden: false
+ready: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
@@ -77,12 +78,12 @@ System.out.println(temperature);
 ```
 
 ## Random events
-A Random object can also be used to create random doubles, using the `nextDouble` method of the Random class. For example, this allows us to generate a random variable that is uniformly distributed over the interval [0, 1]. Such a random variable can be used to simulate random events, as follows
+A Random object can also be used to create random doubles, using the `nextDouble` method of the Random class. For example, this allows us to generate a random variable that is uniformly distributed over the half-open interval [0, 1) (the upper bound is not included). Such a random variable can be used to simulate random events, as follows
 
 Suppose that
-- There is 0.1 probability it rains (10%)
-- There is 0.3 probability it snows (30%)
-- There is 0.6 probability the sun shines (60%)
+- There is a 0.1 probability it rains (10%)
+- There is a 0.3 probability it snows (30%)
+- There is a 0.6 probability the sun shines (60%)
 
 Let's create a weather forecast using these probabilities.
 
