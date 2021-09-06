@@ -25,9 +25,11 @@
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/2-class-inheritance</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/1-interface-inheritance</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/4-introduction-interfaces</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/3-reading-and-writing</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/2-errors-and-exceptions</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/6-character encoding</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/5-introduction-interfaces</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/4-reading-and-writing</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/3-exception-mechanism</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/2-programming-errors</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/1-random-numbers</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week1/5-immutable-objects</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
