@@ -25,6 +25,7 @@ import EndOfSubSection from "../components/EndOfSubSection"
 import { tryToScrollToSelector } from "../util/dom"
 
 import WorkInProgress from '../partials/WorkInProgress'
+import BackgroundMaterial from "../partials/BackgroundMaterial"
 
 const StyledIcon = styled(FontAwesomeIcon)`
   margin-right: 0.25rem;
@@ -90,10 +91,12 @@ export default class CourseContentTemplate extends React.Component {
     )
     const parentSectionPath = `/${frontmatter.path.split(/\//g)[1]}`
     let wip = '';
-    console.log(data);
-    console.log(frontmatter);
     if (frontmatter.ready !== true) {
       wip = (<WorkInProgress />);
+    }
+    let bgTopic = '';
+    if (frontmatter.extra === true) {
+      bgTopic = (<BackgroundMaterial />);
     }
     return (
       <Fragment>
@@ -110,6 +113,7 @@ export default class CourseContentTemplate extends React.Component {
                     </UpLink>
                     <h1>{frontmatter.title}</h1>
                     {wip}
+                    {bgTopic}
                     {renderAst(htmlAst)}
                     <EndOfSubSection />
                   </ContentWrapper>
@@ -133,6 +137,7 @@ export const pageQuery = graphql`
         path
         title
         ready
+        extra
       }
     }
     allPages: allMarkdownRemark {

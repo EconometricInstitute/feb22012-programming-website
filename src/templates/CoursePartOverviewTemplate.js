@@ -19,6 +19,7 @@ import Container from "../components/Container"
 import { loggedIn } from "../services/moocfi"
 
 import WorkInProgress from '../partials/WorkInProgress'
+import BackgroundMaterial from "../partials/BackgroundMaterial"
 
 const ContentWrapper = styled.div`
   margin-top: 1rem;
@@ -60,9 +61,12 @@ export default class CoursePartOverviewTemplate extends React.Component {
       components: partials,
     }).Compiler
     let wip = '';
-    console.log(frontmatter);
     if (frontmatter.ready !== true) {
       wip = (<WorkInProgress />);
+    }
+    let bgTopic = '';
+    if (frontmatter.extra === true) {
+      bgTopic = (<BackgroundMaterial />);
     }
     return (
       <PagesContext.Provider
@@ -79,6 +83,7 @@ export default class CoursePartOverviewTemplate extends React.Component {
                 <ContentWrapper>
                   <Title>{frontmatter.title}</Title>
                   {wip}
+                  {bgTopic}
                   {renderAst(htmlAst)}
                 </ContentWrapper>
               </Container>
@@ -99,6 +104,7 @@ export const pageQuery = graphql`
         path
         title
         ready
+        extra
       }
     }
     allPages: allMarkdownRemark {

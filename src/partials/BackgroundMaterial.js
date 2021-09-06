@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import { Card, CardContent } from "@material-ui/core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faSnowplow as icon } from "@fortawesome/free-solid-svg-icons"
+import { faBookOpen as icon } from "@fortawesome/free-solid-svg-icons"
 import withSimpleErrorBoundary from "../util/withSimpleErrorBoundary"
 
 const ExerciseWrapper = styled(Card)`
@@ -26,7 +26,7 @@ const Header = styled.div`
   font-weight: normal;
   padding 1rem 0;
   border-bottom: 1px solid #f7f7f9;
-  background-color: #ffc107;
+  background-color: #17a2b8;
   display: flex;
   flex-direction: row;
   align-items: 0;
@@ -51,20 +51,34 @@ const Content = styled(CardContent)`
 class WorkInProgress extends React.Component {
 
   render() {
+    /*
+    const body = this.props.children;
+
+    return (
+      <Wrapper style={{ "--color": '#528afc'}}>
+      <Header>
+        <StyledIcon icon={faPencilAlt} size="1x" />
+        {this.props.title}
+      </Header>
+      <Body>
+        {body}
+      </Body>
+    </Wrapper>
+    )
+    */
     return (
       <ExerciseWrapper>
         <Header>
           <StyledIcon icon={icon} size="2x" />
-          <h2>Work In Progress</h2>
+          <h2>Background Material</h2>
         </Header>
         <Content>
           <Body>
             <DescriptionWrapper>
-              This course content is still work in progress! Feel free to browse around,
-              but please be aware that the content may still change until we reach this
-              topic during the course.
+              This section provides an in-depth description of topics that are useful
+              and relevant to the course and may help you during work on assignments.
+              However, you do not need to learn this section for the exam.
             </DescriptionWrapper>
-            <h4>Proceed at your own risk!</h4>
           </Body>
         </Content>
       </ExerciseWrapper>
