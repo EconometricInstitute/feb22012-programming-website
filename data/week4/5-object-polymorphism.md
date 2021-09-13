@@ -1,8 +1,32 @@
 ---
-path: '/week3/3-object-polymorphism'
+path: '/week4/5-object-polymorphism'
 title: 'Object polymorphism'
 hidden: true
 ---
+
+<!-- Paul - this is also possibly interesting material from last week -->
+
+
+## Inheritance from the Object class
+Classes are used to clarify the concepts of the problem domain in object-oriented programming. Every class we create adds functionality to the programming language. This functionality is needed to solve the problems that we encounter. An essential idea behind object-oriented programming is that **solutions rise from the interactions between objects which are created from classes**. An object in object-oriented programming is an independent unit that has a state, which can be modified by using the methods that the object provides. Objects are used in cooperation; each has its own area of responsibility. For instance, our user interface classes have so far made use of `Scanner` objects.
+
+Every Java class extends the class Object, which means that every class we create has at its disposal all the methods defined in the Object class. If we want to change how these methods are defined in Object function, they must be overriden by defining a new implementation for them in the newly created class. The objects we create receive the methods `equals` and `hashCode`, among others, from the Object class.
+
+Every class derives from `Object`, but it's also possible to derive from other classes. When we examine the API (Application Programming Interface) of Java's [ArrayList](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ArrayList.html), we notice that `ArrayList` has the  superclass `AbstractList`. `AbstractList`, in turn, has the class `Object` as its superclass.
+
+<br/>
+
+<pre>
+  <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html" target="_blank" rel="noopener">java.lang.Object</a>
+  <img src="../img/material/perinta.gif" /><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/AbstractCollection.html" target="_blank" rel="noopener">java.util.AbstractCollection</a>&lt;E&gt;
+    <img src="../img/material/perinta.gif" /><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/AbstractList.html" target="_blank" rel="noopener">java.util.AbstractList</a>&lt;E&gt;
+      <img src="../img/material/perinta.gif" /> java.util.ArrayList&lt;E&gt;
+</pre>
+
+Each class can directly extend only one class. However, a class indirectly inherits all the properties of the classes it extends. So the `ArrayList` class derives from the class `AbstractList`, and indirectly derives from the classes `AbstractCollection` and `Object`. So `ArrayList` has at its disposal all the variables and methods of the classes `AbstractList`, `AbstractCollection`, and `Object`.
+
+You use the keyword `extends` to inherit the properties of a class. The class that receives the properties is called the subclass, and the class whose properties are inherited is called the superclass.
+
 
 <!-- @PAUL this whole file is currently out of use, but could come in use later -->
 
