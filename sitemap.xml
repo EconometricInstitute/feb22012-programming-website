@@ -21,9 +21,12 @@
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week4/2-class-hierarchies</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week4/1-abstract-classes</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week4</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/6-when-to-use-inheritance</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/5-object-superclass</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/4-overriding-methods</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/2-class-inheritance</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/1-interface-inheritance</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/3-class-inheritance</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/2-interface-inheritance</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3/1-interface-types</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/6-character encoding</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week2/5-introduction-interfaces</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
