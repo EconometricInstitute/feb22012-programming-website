@@ -81,7 +81,7 @@ This method should filter an array of numbers to a list that only contains the n
 public static ArrayList<Integer> filterDivisible(int[] numbers, int divisor) {
    ArrayList<Integer> result = new ArrayList<Integer>();
    for (int i=0; i <= numbers.length; i++) {
-      if (numbers[i] % divisor != 0) {
+      if (numbers[i] % divisor == 0) {
          result.add(numbers[i]);
       }
    }
