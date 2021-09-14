@@ -1,6 +1,7 @@
 ---
 path: '/week3/4-overriding-methods'
 title: 'Overriding Methods'
+ready: true
 hidden: false
 ---
 

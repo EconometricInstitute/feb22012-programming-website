@@ -2,6 +2,7 @@
 path: '/week3/2-interface-inheritance'
 title: 'Interface Inheritance'
 hidden: false
+ready: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>

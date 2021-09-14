@@ -2,6 +2,7 @@
 path: '/week3/6-when-to-use-inheritance'
 title: 'When to use inheritance'
 hidden: false
+ready: true
 extra: true
 ---
 

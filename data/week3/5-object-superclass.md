@@ -1,6 +1,7 @@
 ---
 path: '/week3/5-object-superclass'
 title: 'Object, the Cosmic Superclass'
+ready: true
 hidden: false
 ---
 

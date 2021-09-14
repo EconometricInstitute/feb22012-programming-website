@@ -2,6 +2,7 @@
 path: '/week3/3-class-inheritance'
 title: 'Class Inheritance'
 hidden: false
+ready: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>

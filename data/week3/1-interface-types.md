@@ -2,6 +2,7 @@
 path: '/week3/1-interface-types'
 title: 'Interface Types'
 hidden: false
+ready: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
