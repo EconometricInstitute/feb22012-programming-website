@@ -164,7 +164,7 @@ If a file has millions of lines, software such as Excel will try to read everyth
 
 ```java
 public void filter(File in, File out, String pattern) throws IOException {
-    try (BufferedReader br = new BufferedReader(new FileReader(in)), PrintWriter pw = new PrintWriter(out)) {
+    try (BufferedReader br = new BufferedReader(new FileReader(in)); PrintWriter pw = new PrintWriter(out)) {
         String line = br.readLine();
         while (line != null) {
             if (line.contains(pattern)) {
