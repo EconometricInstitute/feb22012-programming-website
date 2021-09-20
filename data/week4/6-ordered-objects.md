@@ -1,7 +1,8 @@
 ---
-path: '/week4/4-ordered-objects'
+path: '/week4/6-ordered-objects'
 title: 'Ordered Objects'
 hidden: false
+ready: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
@@ -14,7 +15,7 @@ hidden: false
 </text-box>
 
 ## Ordering objects
-When it comes to numbers, we have a perfect natural ordering, for instance: 
+When it comes to numbers, we have a perfect natural ordering, for instance:
 
 1 &leq; 3.14 &leq; 5 &leq; 6 &leq; 7 &leq; <sup>16</sup>&frasl;<sub>2</sub> &leq; 12 &leq; 386 &leq; 1001 + <sup>1</sup>&frasl;<sub>3</sub> &leq; 5302 &leq; ...
 
@@ -22,7 +23,8 @@ When it comes to text, there is also a general consensus of how text should be o
 
 "0123" - "20" - "9" - "app" - "apple" - "programming"
 
-But for new classes, things are usually not so clear. For instance, considering the following class:
+But for new classes, things are usually not so clear. For instance, considering the following class that models a mobile phone subscription with a
+price per month and an data limit per month:
 ```java
 public class Subscription {
     private double price;
@@ -43,15 +45,23 @@ new Subscription(5,20);
 new Subscription(10, 15);
 ```
 
-You could give preference to either the *price* or the *dataLimit*...
+You could give preference to either the *price* or the *dataLimit*, or even come up
+with weighted sums that intend to combine both of them. In general, this is a problem
+when we have more than one attribute that we might consider to determine an order.
+
+Java has two important interfaces that make it easy to make objects of our classes
+ordered. The `Comparable` interface can be used for *natural* orders that serve as
+a default order for objects of a class, whereas the `Comparator` interface can be used
+to define an ad-hoc order by creating objects that can determine the order of objects
+of another class.
 
 ## The Comparable interface
 If we want to define a natural ordering (or an ordering that is at least more natural than others), we can implement the `Comparable` interface.
-Before, we have already looked at interfaces in general. The [Comparable interface](http://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html) is another one of Java's ready-made interfaces. 
+Before, we have already looked at interfaces in general. The [Comparable interface](http://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html) is another one of Java's ready-made interfaces.
 For example: `public class Subscription implements Comparable<Subscription>`.
 
 The `Comparable` interface defines the `compareTo` method used to compare objects: `public int compareTo(E other);`. If a class implements the Comparable interface, objects created from that class can be sorted using Java's sorting algorithms.
-The `compareTo` method required by the Comparable interface receives as its parameter the object to which the "this" object is compared. If the "this" object comes before the object received as a parameter in terms of sorting order, the method should return a negative number. If, on the other hand, the "this" object comes after the object received as a parameter, the method should return a positive number. Otherwise, 0 is returned. The sorting resulting from the `compareTo` method is called *natural ordering*.
+The `compareTo` method required by the Comparable interface receives as its parameter the object to which the `this` object is compared. If the `this` object comes before the object received as a parameter in terms of sorting order, the method should return a negative number. If, on the other hand, the `this` object comes after the object received as a parameter, the method should return a positive number. Otherwise, 0 is returned. The sorting resulting from the `compareTo` method is called *natural ordering*.
 
 The `Comparable` interface has the following rules in its contract:
 
@@ -86,7 +96,7 @@ public class MyDouble implements Comparable<MyDouble> {
 
     @Override
     public int compareTo(MyDouble other) {
-        return (int)Math.signum(value - other.value);
+        return Double.compare(value, other.value);
     }
 }
 ```
@@ -105,6 +115,16 @@ public class MyText implements Comparable<MyText> {
     }
 }
 ```
+
+<text-box variant='hint' name='Many classes already implement Comparable'>
+
+Many classes in the Java standard library, including `String`, but also classes like
+`BigInteger`,  `Integer` and `Double` implement the `Comparable` interface so we can easily
+sort a list of these types of objects. Furthermore, we can call `compareTo` on these objects
+in our own code. For example, if we want to do something with two given `String` objects
+only if `str1` comes before `str2`, we can write `if (str1.compareTo(str2) < 0)`.
+
+</text-box>
 
 Let us also take a look at this with the help of a Member class that represents a child or youth who belongs to a club. Each club member has a name and height. The club members should go to eat in order of height, so the Member class should implement the `Comparable` interface. The Comparable interface takes as its type parameter the class that is the subject of the comparison. We'll use the same `Member` class as the type parameter.
 
@@ -159,19 +179,20 @@ If a programmer wants to organize the original list, the `sort` method of the `C
 Sorting club members is straightforward now.
 
 ```java
-List<Member> member = new ArrayList<>();
-member.add(new Member("mikael", 182));
-member.add(new Member("matti", 187));
-member.add(new Member("ada", 184));
+List<Member> members = new ArrayList<>();
+members.add(new Member("mikael", 182));
+members.add(new Member("matti", 187));
+members.add(new Member("ada", 184));
 
-member.stream().forEach(m -> System.out.println(m);
+for (Member m : members) {
+    System.out.println(m);
+}
 System.out.println();
 // sorting the stream that is to be printed using the sorted method
-member.stream().sorted().forEach(m -> System.out.println(m);
-member.stream().forEach(m -> System.out.println(m);
-// sorting a list with the sort-method of the Collections class
-Collections.sort(member);
-member.stream().forEach(m -> System.out.println(m);
+Collections.sort(members);
+for (Member m : members) {
+    System.out.println(m);
+}
 ```
 
 <sample-output>
@@ -184,17 +205,14 @@ mikael (182)
 ada (184)
 matti (187)
 
-mikael (182)
-matti (187)
-ada (184)
-
-mikael (182)
-ada (184)
-matti (187)
-
 </sample-output>
 
-However, sometimes the user may want to choose how to sort. Either this compareTo method is used in the Subscription class we have seen before:
+
+Returning to the example of the `Subscription` class for the mobile phone subscripts,
+we can observe that a user may want to choose how to sort the different subscriptions.
+For an implementation of the `compareTo` methods it is difficult to choose which one
+of the following two implementations is the most *natural*:
+
 ```java
 @Override
 public int compareTo(Subscription other) {
@@ -221,19 +239,7 @@ public int compareTo(Subscription other) {
 }
 ```
 
-<programming-exercise name='Wage order' tmcname='part10-Part10_11.WageOrder'>
-
-You are provided with the class Human. A human has a name and wage information. Implement the interface `Comparable` in a way, such that the overridden `compareTo` method sorts the humans according to wage from largest to smallest salary.
-
-</programming-exercise>
-
-<programming-exercise name='Students on alphabetical order' tmcname='part10-Part10_12.StudentsOnAlphabeticalOrder'>
-
-The exercise template includes the class `Student`, which has a name. Implement the `Comparable` interface in the Student class in a way, such that the `compareTo` method sorts the students in alphabetical order based on their names.
-
-The name of the `Student` is a String, which implements `Comparable` itself. You may use its `compareTo` method when implementing the method for the `Student` class. Note that `String.compareTo()` also treats letters according to their size, while the `compareToIgnoreCase` method of the same class ignores the capitalization completely. You may either of these methods in the exercise.
-
-</programming-exercise>
+Fortunately, there is another interface for situations as this one.
 
 ## Comparator interface
 Now, we will have a look at the `Comparator` interface, which is obviously slightly different from the `Comparable` and defines the following method: `public int compare(E left, E right);`.
@@ -241,6 +247,7 @@ It should also behave very similar to `compareTo`, but now you are comparing `le
 **The compareTo() method of the Comparable interface defines a _natural order_, while the compare() method of the Comparator interface defines an _ad-hoc order_!**
 
 Here is an extensive example of an implementation of the compare method:
+
 ```java
 public class PriceComparator implements Comparator<Subscription> {
     @Override
@@ -281,5 +288,23 @@ it would print the following:
 <sample-output>
 [(price: 5.0, limit: 20 MB), (price: 30.0, limit: 1000 MB), (price: 10.0, limit: 15 MB), (price: 15.0, limit: 250 MB)]
 [(price: 5.0, limit: 20 MB), (price: 10.0, limit: 15 MB), (price: 15.0, limit: 250 MB), (price: 30.0, limit: 1000 MB)]
-[(price: 30.0, limit: 1000 MB), (price: 15.0, limit: 250 MB), (price: 5.0, limit: 20 MB), (price: 10.0, limit: 15 MB)]  
+[(price: 30.0, limit: 1000 MB), (price: 15.0, limit: 250 MB), (price: 5.0, limit: 20 MB), (price: 10.0, limit: 15 MB)]
 </sample-output>
+
+<!--
+<programming-exercise name='Wage order' tmcname='part10-Part10_11.WageOrder'>
+
+You are provided with the class Human. A human has a name and wage information. Implement the interface `Comparable` in a way, such that the overridden `compareTo` method sorts the humans according to wage from largest to smallest salary.
+
+</programming-exercise>
+
+<programming-exercise name='Students on alphabetical order' tmcname='part10-Part10_12.StudentsOnAlphabeticalOrder'>
+
+The exercise template includes the class `Student`, which has a name. Implement the `Comparable` interface in the Student class in a way, such that the `compareTo` method sorts the students in alphabetical order based on their names.
+
+The name of the `Student` is a String, which implements `Comparable` itself. You may use its `compareTo` method when implementing the method for the `Student` class. Note that `String.compareTo()` also treats letters according to their size, while the `compareToIgnoreCase` method of the same class ignores the capitalization completely. You may either of these methods in the exercise.
+
+</programming-exercise>
+-->
+
+

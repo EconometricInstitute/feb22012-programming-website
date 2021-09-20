@@ -2,16 +2,40 @@
 path: "/week4/1-abstract-classes"
 title: "Abstract Classes"
 hidden: false
+ready: true
 ---
 
-An important aspect of interfaces is that they allow us to define methods without an implementation. In certain cases we may also want to do this with classes. 
-Sometimes, when planning a hierarchy of inheritance, there are cases when there exists a clear concept, but that concept is not a good candidate for an object in itself. The concept would be beneficial from the point of view of inheritance, since it includes variables and functionality that are shared by all the classes that would inherit it. On the other hand, you should not be able to create instances of the concept itself.
-This leads to a problem: if we allow methods without a body, the class is not finished. In that case it is problematic to use objects of the class.
+The advantage of using interfaces is that we can define methods without an implementation,
+for which then different classes can create different implementations of those methods,
+easily allowing us to choose different types of behavior in simulations or other types
+of software. The advantage of using class inheritance, is that we can reuse the implementation of
+a super-class, such that we only have to add new methods that add new functions and behavior,
+while the objects can still be used as the type of the superclass.
 
-A solution for this is to write an abstract class. In an abstract class it is allowed to define methods without writing their body (with the purpose of letting subclasses provide the implementation).
-An abstract class combines interfaces and inheritance. You cannot create instances of them -- you can only create instances of subclasses of an abstract class. They can include normal methods which have a method body, but it's also possible to define abstract methods that only contain the method definition. Implementing the abstract methods is the responsibility of subclasses. Generally, abstract classes are used in situations where the concept that the class represents is not a clear independent concept. In such a case you shouldn't be able to create instances of it.
+With an *abstract class* we can combine both advantages: we can define methods without an
+implementation so that we are able to provide different implementations of those methods
+in subclasses, but also define instance variables and methods with behavior that will be
+shared among all subclasses. However, there is one catch: if a class has methods without
+behavior, we are not allowed to instantiate objects of such classes, since they are not
+finished - some of the methods that are defined can not be called since their behavior
+is not implemented.
 
-To define an abstract class or an abstract method the keyword `abstract` is used. An abstract class is defined with the phrase `public abstract class *NameOfClass*`; an abstract method is defined by `public abstract returnType nameOfMethod`. Let's take a look at the following abstract class called `Operation`, which offers a structure for operations and executing them. A `final abstract class` is not allowed, since it will never be finished.
+In an abstract class it is allowed to define methods without writing their body (with the purpose of letting subclasses provide the implementation).
+An abstract class combines interfaces and inheritance. You cannot create instances of them -- you can only create instances of subclasses of an
+abstract class. They can include normal methods which have a method body, but it's also possible to define abstract methods that only contain the
+method definition. Implementing the abstract methods is the responsibility of subclasses.
+
+To define an abstract class or an abstract method the keyword `abstract` is used in the class header.
+For example, you would write  `public abstract class MyAbstractClass` as the class headaer. This then
+allows you to to use the `abstract` keyword in method headers for which you do not want to provide
+an implementation. For example the method header `public abstract ReturnType nameOfMethod();`, would
+for subclasses to implement a method called `nameOfMethod` similar to when it would implement and interface.
+
+Since an abstract class is designed to be finished in a subclass, a `final abstract class` is not allowed,
+as forbidding subclasses of an abstract class would imply it can never be finished, and thus never used.
+
+Let's take a look at the following abstract class called `Operation`, which offers a structure for operations
+and executing them.
 
 ```java
 public abstract class Operation {
@@ -129,3 +153,13 @@ Choice: **0**
 </sample-output>
 
 The greatest difference between interfaces and abstract classes is that abstract classes can contain object variables and constructors in addition to methods. Since you can also define functionality in abstract classes, you can use them to define e.g. default behavior. In the user interface above storing the name of the operation used the functionality defined in the abstract `Operation` class.
+
+<text-box variant='hint' name='Abstract Classes and Constructors'>
+
+Since you are not allowed to instantiate abstract classes directly (e.g. no `new MyAbstractClass()`),
+you might think that abstract classes do not have constructors. However, they can and do have
+constructors. The purpose of this is that these constructors should be called in the constructor
+of a subclass. You could already see this in the `Operation` class introduced above, which
+specify a constructor that is called in the subclass `PlusOperation`.
+
+</text-box>
