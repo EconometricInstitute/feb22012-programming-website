@@ -1,5 +1,5 @@
 ---
-path: '/week5/2-hashmap'
+path: '/week5-old/2-hashmap'
 title: 'ArrayList and hash table'
 hidden: true
 ---
@@ -1518,3 +1518,17 @@ null
 
 
 
+### Old Exercises from other places
+
+
+<programming-exercise name='Nicknames' tmcname='part08-Part08_06.Nicknames'>
+
+In the main-method create a new HashMap&lt;String,String&rt; object. Store the names and nicknames of the following people in this hashmap so, that the name is the key and the nickname is the value. Use only lower case letters.
+
+ -  matthew's nickname is matt
+ -  michael's nickname is mix
+ -  arthur's nickname is artie
+
+Then get Matthew's nickname from the hashmap, and print it.
+
+</programming-exercise>

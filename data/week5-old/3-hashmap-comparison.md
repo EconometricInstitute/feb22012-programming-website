@@ -1,5 +1,5 @@
 ---
-path: "/week5/3-hashmap-comparison"
+path: "/week5-old/3-hashmap-comparison"
 title: "Approximate comparison with hashmap"
 hidden: true
 ---

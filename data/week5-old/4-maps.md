@@ -1,5 +1,5 @@
 ---
-path: '/week5/2-hash-map'
+path: '/week5-old/2-hash-map'
 title: 'Hash Map'
 hidden: true
 ---
