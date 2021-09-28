@@ -173,7 +173,7 @@ public int compareTo(Member member) {
 }
 ```
 
-Since the Member class implements the Comparable interface, it is possible to sort the list by using the `sorted` method. In fact, objects of any class that implement the `Comparable` interface can be sorted using the `sorted` method.
+Since the Member class implements the Comparable interface, it is possible to sort the list by using the `sort` method. In fact, objects of any class that implement the `Comparable` interface can be sorted using the `sort` method.
 If a programmer wants to organize the original list, the `sort` method of the `Collections` class should be used. This, of course, assumes that the objects on the list implement the `Comparable` interface.
 
 Sorting club members is straightforward now.

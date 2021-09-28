@@ -109,7 +109,7 @@ Consider the following example:
 
 Another rule is that a class can have any number of subclasses, unless it is defined with the keyword `final`.
 
-`public final class F extends D` means that no subclasses of `D` can be made. Classes in the standard
+`public final class F extends D` means that no subclasses of `F` can be made. Classes in the standard
 library you know well, such as `String` and `Integer` are `final` classes, and therefore you can not
 create your own subclasses for those types.
 
