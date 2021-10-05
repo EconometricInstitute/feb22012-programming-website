@@ -1,6 +1,6 @@
 ---
 path: '/week5/4-sets'
-title: 'Sets and Maps'
+title: 'Sets'
 hidden: false
 ready: true
 ---
