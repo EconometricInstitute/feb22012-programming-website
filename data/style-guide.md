@@ -16,3 +16,5 @@ For this reason, style guides are often used by companies to make it easier for 
 The style guide used in `Introduction to Programming` only contained some basic principles. In this course (FEB22012 Programming), you will face a stricter and more extensive [style guide](https://erasmusuniversityautolab.github.io/FEB22012-StyleGuide).
 
 Please reade the style guide before you start your first assignment and make yourself comfortable with it. We do not expect you to learn it by heart, but from experience we know that writing in good style becomes second nature with experience.
+
+As you could see, one of the topics mentioned in the Style Guide is that of `Javadoc` comments. You are obliged to write those in your assignments for every class, constructor and method. If you have difficulties with Javadoc comments, please consider the book `Think Java` from page 103.
