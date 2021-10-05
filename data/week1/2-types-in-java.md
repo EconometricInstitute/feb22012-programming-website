@@ -133,8 +133,30 @@ The use of types in Java both has advantages and disadvantages, which are listed
 
 ## Primitive types
 In Java, exactly eight primitive types exist, which you already know: `byte`, `short`, `int`, `long`, `float`, `double`, `char` and `boolean`. Primitive types are not considered as objects, and they just represent raw values.
+
+<text-box name="characters" variant="hint">
+
+One of the eight primitive types is a character, shortened by `char`. It holds one Unicode character (e.g. a letter or emoji) and is used for many purposes. 
+All the letters and signs that we use have a unicode number. If you are interested, you can read more about this at [Unicode.org](https://home.unicode.org/).
+In the book `Think Java`, some nice examples are covered, such as the following (from page 96) :
+
+In Unicode, each character is represented by a “code point”, which you can think of as an integer. The code points for uppercase Greek letters run from 913 to 937, so we can display the Greek alphabet like this:
+    
+```java
+System.out.print("Greek alphabet: ");
+for (int i = 913; i <= 937; i++) {
+   System.out.print((char) i);
+}
+System.out.println();
+```
+
+This example uses a type cast to convert each integer (in the range) to the corresponding character. Try running the code and see what happens.
+
+</text-box>
+
 All other types are non-primitive, such as `String`, `List` and arrays, including arrays of non-primitive types, for example `double []` or `int [][]`.
 
+#### Converting
 Sometimes, it is necessary to convert between types. In some cases, this can be done automatically, for example:
 ```java
 int number = 233;
