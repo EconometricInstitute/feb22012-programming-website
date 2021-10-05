@@ -17,4 +17,4 @@ The style guide used in `Introduction to Programming` only contained some basic 
 
 Please reade the style guide before you start your first assignment and make yourself comfortable with it. We do not expect you to learn it by heart, but from experience we know that writing in good style becomes second nature with experience.
 
-As you could see, one of the topics mentioned in the Style Guide is that of `Javadoc` comments. You are obliged to write those in your assignments for every class, constructor and method. If you have difficulties with Javadoc comments, please consider the book `Think Java` from page 103.
+As you could see, one of the topics mentioned in the Style Guide is that of `Javadoc` comments. You are obliged to write those in your assignments for every class, constructor and method. If you have difficulties with Javadoc comments, please consider the book `Think Java` from page 311.
