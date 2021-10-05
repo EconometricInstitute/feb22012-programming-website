@@ -1,6 +1,6 @@
 ---
 path: '/week7/4-java-new-features'
-title: 'Data visualization'
+title: 'Java: new Features'
 hidden: false
 ---
 
