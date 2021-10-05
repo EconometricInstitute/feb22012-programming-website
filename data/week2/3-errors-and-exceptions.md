@@ -421,3 +421,10 @@ Exceptions are meant to deal with **exceptional** situations. They should thus n
 
 You should **throw early, catch late**. It means that you should check the input of a method before you start doing computations. If the input is not okay, throw an exception.
 If an exception can occur within a method that is not able to provide a good solution to the problem, the exception should be thrown to the caller.
+
+<text-box name="exceptions tutorial" variant="hint">
+
+If you still feel like you are struggling with the understanding of exceptions, feel free to check this [tutorial](https://docs.oracle.com/javase/tutorial/essential/exceptions/).
+Note that it also includes some nice exercises at the bottom of the page. The blue paragraph titles are clickable.
+
+</text-box>
