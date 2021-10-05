@@ -1,6 +1,6 @@
 ---
 path: '/week7/5-other-languages'
-title: 'Data visualization'
+title: 'Other languages'
 hidden: false
 ---
 
