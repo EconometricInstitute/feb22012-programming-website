@@ -45,7 +45,7 @@ Note that if we insert elements at the front of the queue and remove them at the
 the have a *first in, first out* (FIFO) order. For example:
 
 ```java
-Dequeue<String> q = new ArrayDeque<>();
+Deque<String> q = new ArrayDeque<>();
 q.addFirst("Hello");
 q.addFirst("World");
 System.out.println(q.removeLast());
@@ -106,7 +106,8 @@ As you can see, all these methods involve some `int` that refers to an index.
 While you can just perform `add` without an index on a `List`, that particular
 method actually comes from the `Collection` interface and is not specific to
 `List` types. However, inserting an item at a specific index, or retrieving
-an item from a
+an item stored a specific index can not be performed with all types of `Collection`,
+and therefore, these methods are only included in `List` types.
 
 ### ArrayList&lt;E&gt; class
 The List you are most familiar with is the ArrayList. It implements the `List<E>` interface.
