@@ -85,7 +85,13 @@ severe mistake if you use the index-based loop on anything else than a `List`.
 
 </text-box>
 
-Note that HashSet in no way assumes the order of a set of elements. If objects created from custom classes are added to the HashSet object, they must have both the `equals` and `hashCode` methods defined.
+Note that Set does not assume or guarantee anything about the order of a set of elements.
+A `Set` only knows which elements are contained in the `Set`, and which elements are
+not.
+If you iterate over a `Set`, the elements may show up in a completely different order
+than the order in which you added them, and for some types of `Set` it maybe even
+seem different every time you run your program. This is very different from `List`
+objects, where the order of the elements is dictated by their *indices*.
 
 ### HashSet&lt;E&gt; class
 As an example, the set interface is implemented by `HashSet`. In order to check if an element is already in the set, you could iterate over all elements in the set.
@@ -159,8 +165,8 @@ However, `HashSet` is not the only `Set` offered in the Collections framework.
 `TreeSet<E>` implements the `SortedSet<E>` interface and requires some order of the elements of type `E`. This can be the natural order, if E implements `Comparable<E>`, or it can be provided by passing a `Comparator<E>` to the constructor.
 The `TreeSet` stores its elements in the nodes of a binary tree, such that the following properties hold at all time:
 
-- All nodes in the left subtree of the node hold smaller (or equal) elements
-- All nodes in the right subtree of the node hold greater (or equal) elements
+- All nodes in the left subtree of the node hold smaller elements
+- All nodes in the right subtree of the node hold greater elements
 
 The advantage of this way to organize the data is that if the tree is balanced, i.e. for each node the subtree on its left side contains roughly as many nodes as the subtree on its right side, in every step half of the remaining elements
 in the tree can be ignored. The number of steps needed to detect if an element is present or not then becomes the base-2 logarithm of the number of elements stored in the tree.
