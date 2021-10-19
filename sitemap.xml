@@ -6,10 +6,14 @@
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week7/2-packages</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week7/1-course-overview</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week7</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/3-libraries</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/2-functional-interfaces-data-processing</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/8-packages-libraries-maven</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/7-streams-terminal</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/6-stream-intermediate</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/5-data-processing-pipelines</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/4-default-methods</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/3-method-references</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/2-functional-interfaces</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/1-lambda-expressions</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6/1-handling-collections-as-streams</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week6</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week5/6-collections-utilities</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://econometricinstitute.github.io/feb22012-programming-website/week5/5-maps</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
