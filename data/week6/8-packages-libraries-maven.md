@@ -38,7 +38,7 @@ When the Java Runtime Environment needs to create objects, it searches for the c
 
 In particular when you want to use multiple libraries, or in case some of your libraries require other libraries themselves, manually downloading jar files becomes cumbersome. Many popular languages, including Python and R, provide nice ways to define which libraries you want to use, and then automatically download the required files and add them to your project.
 
-One tool that can do that for your Java projects is *Maven* ([http://maven.apache.org/][]) (the most popular alternative being *Gradle*, [https://gradle.org]). Most good IDE’s, including Eclipse, have Maven support built in, so you typically don’t need to install Maven yourself. Maven is a project management tool with *dependency management* as one of the features. Dependency management allows you to define on which projects/libraries your project *depends*, and can handle the hard work of downloading those libraries and configuring your project to make those libraries available. Even if the libraries you depend on have other dependencies themselves, *Maven* will be able to figure out which `.jar` files are required, download everything that is necessary, and configure your project as required.
+One tool that can do that for your Java projects is *Maven* [http://maven.apache.org/](http://maven.apache.org/) (the most popular alternative being *Gradle*, [https://gradle.org](https://gradle.org). Most good IDE’s, including Eclipse, have Maven support built in, so you typically don’t need to install Maven yourself. Maven is a project management tool with *dependency management* as one of the features. Dependency management allows you to define on which projects/libraries your project *depends*, and can handle the hard work of downloading those libraries and configuring your project to make those libraries available. Even if the libraries you depend on have other dependencies themselves, *Maven* will be able to figure out which `.jar` files are required, download everything that is necessary, and configure your project as required.
 
 When a Java project is configured as a *Maven* project, the root folder of the project will contain a file `pom.xml`, which refers to the *project object model*: data that describes all relevant information for your project. Every Maven project has at least the following three properties:
 
@@ -48,7 +48,7 @@ When a Java project is configured as a *Maven* project, the root folder of the p
 
 Every project or library that you create, or which you can import as a dependency, defines these properties in its `pom.xml` file. Eclipse provides a graphical editor when you open the `pom.xml` file for your project. You can also edit the raw source code of the file. Typically, in the first section of the file, you will see something that looks as follows:
 
-``` xml
+```xml
 <modelVersion>4.0.0</modelVersion>
 <groupId>nl.eur.ese.feb22012</groupId>
 <artifactId>assignment3</artifactId>
@@ -58,14 +58,14 @@ Every project or library that you create, or which you can import as a dependenc
 ```
 
 As you can see, it contains a definition of the groupId, the artifactId and version of the project. In addition, it defines the version used in the model file, and gives a more readable name and description to the project.
-The latter are useful, since no spaces or special characters are allowed in the groupId and artifactId. Note that the version definition in this example mentions the word <span class="smallcaps">SNAPSHOT</span>.
+The latter are useful, since no spaces or special characters are allowed in the groupId and artifactId. Note that the version definition in this example mentions the word SNAPSHOT.
 This is usually indicate that the current version is still work in progress. When developers of software projects and libraries are satisfied with a version of their project, they can archive a copy of the project and remove the *SNAPSHOT* part of the version to indicate a final release of a certain version.
 Note that in your private project and your assignment work, this is not necessary: you can leave the version on `0.0.1-SNAPSHOT` as long as you like.
 
 In the next section, there are usually some project properties defined. One useful property to define is the version you intend to use. The official names assigned to versions 5 to 8 are `1.5`, `1.6`, …`1.8`.
 For Java versions after , the official versions are `9`, `10`, `11`, etcetera. Hence we can configure a Maven project to be a project as follows:
 
-``` xml
+```xml
 <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -338,6 +338,7 @@ In order to create a new `xlsx` file that can be opened using Microsoft Excel, i
 The `Workbook` interface has a method ` write(OutputStream os)`, that can be used to write a `Workbook` object to a file. A `XSSFWorkbook` object is considered a *resource*, so it is advisable to use a try-with-resources block when we want to write or read spreadsheet files.
 The following example code opens a `FileOutputStream` for the file `myfile.xlsx`, creates a new workbook with a single sheet that has a single row with two cells, and writes that workbook to this file.
 
+```java
 try (Workbook wb = new XSSFWorkbook(); OutputStream out = new FileOutputStream(new File("myfile.xlsx")))
     {
        Sheet mySheet = wb.createSheet();
@@ -349,6 +350,7 @@ try (Workbook wb = new XSSFWorkbook(); OutputStream out = new FileOutputStream(n
 
        wb.write(out);
     }
+```
 
 ### Reading Spreadsheet
 In order to read data from an `xlsx` file, we can pass a `InputStream` object to the constructor of the `XSSFWorkbook` class.
