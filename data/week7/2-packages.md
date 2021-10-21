@@ -2,6 +2,7 @@
 path: '/week7/2-packages'
 title: 'More on packages'
 hidden: false
+extra: true
 ---
 
 
