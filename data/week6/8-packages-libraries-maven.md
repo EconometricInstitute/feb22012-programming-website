@@ -38,7 +38,7 @@ When the Java Runtime Environment needs to create objects, it searches for the c
 
 In particular when you want to use multiple libraries, or in case some of your libraries require other libraries themselves, manually downloading jar files becomes cumbersome. Many popular languages, including Python and R, provide nice ways to define which libraries you want to use, and then automatically download the required files and add them to your project.
 
-One tool that can do that for your Java projects is *Maven* [http://maven.apache.org/](http://maven.apache.org/) (the most popular alternative being *Gradle*, [https://gradle.org](https://gradle.org). Most good IDE’s, including Eclipse, have Maven support built in, so you typically don’t need to install Maven yourself. Maven is a project management tool with *dependency management* as one of the features. Dependency management allows you to define on which projects/libraries your project *depends*, and can handle the hard work of downloading those libraries and configuring your project to make those libraries available. Even if the libraries you depend on have other dependencies themselves, *Maven* will be able to figure out which `.jar` files are required, download everything that is necessary, and configure your project as required.
+One tool that can do that for your Java projects is *Maven* [https://maven.apache.org/](https://maven.apache.org/) (the most popular alternative being *Gradle*, [https://gradle.org](https://gradle.org). Most good IDE’s, including Eclipse, have Maven support built in, so you typically don’t need to install Maven yourself. Maven is a project management tool with *dependency management* as one of the features. Dependency management allows you to define on which projects/libraries your project *depends*, and can handle the hard work of downloading those libraries and configuring your project to make those libraries available. Even if the libraries you depend on have other dependencies themselves, *Maven* will be able to figure out which `.jar` files are required, download everything that is necessary, and configure your project as required.
 
 When a Java project is configured as a *Maven* project, the root folder of the project will contain a file `pom.xml`, which refers to the *project object model*: data that describes all relevant information for your project. Every Maven project has at least the following three properties:
 
@@ -129,11 +129,11 @@ Finally, an important piece of advice is: experiment! Try writing short programs
 Sometimes libraries seem to be intuitive in their usage, but they may exhibit unexpected behavior, in particular if you do not inspect that documentation that describes the behavior of the classes in the library.
 
 ## Apache Commons Math
-The [https://commons.apache.org/proper/commons-math/](Apache Commons Math) library provides many classes to perform various mathematical tasks. While it is not in all cases the fastest or most accurate library available, it provides a versatile set of methods that are often decent and typically easy to use.
+The [Apache Commons Math](https://commons.apache.org/proper/commons-math/) library provides many classes to perform various mathematical tasks. While it is not in all cases the fastest or most accurate library available, it provides a versatile set of methods that are often decent and typically easy to use.
 An advantage is also that it is a pure Java library: all the code is written in Java, and runs on all devices that can run Java.
 There exist libraries that provide faster linear algebra computations, but those often rely on highly optimized non-Java code, which must be adapted for different devices and operating systems you may want to run the code on.
 
-The website of the Math Commons project contains a decent [https://commons.apache.org/proper/commons-math/userguide/index.html](User Guide). The library contains a number of interesting packages, some of which we will discuss in the following sections.
+The website of the Math Commons project contains a decent [User Guide](https://commons.apache.org/proper/commons-math/userguide/index.html). The library contains a number of interesting packages, some of which we will discuss in the following sections.
 
 ### Linear Algebra
 Apache Math Commons contains a package for linear algebra, `org.apache.commons.math3.linear`.
@@ -225,9 +225,9 @@ which should print:
 </sample-output>
 
 ## XChart
-Another feature commonly required when working with quantitative data is plotting functionality. One Java library that provides ways to plot data is the [https://knowm.org/open-source/xchart/](XChart) library, which is relatively easy to use to make plots, but also has many options for customization of the plots.
+Another feature commonly required when working with quantitative data is plotting functionality. One Java library that provides ways to plot data is the [XChart](https://knowm.org/open-source/xchart/) library, which is relatively easy to use to make plots, but also has many options for customization of the plots.
 
-The main classes of the library can be found in the package `org.knowm.xchart`, for which [https://knowm.org/javadocs/xchart/org/knowm/xchart/package-summary.html](Javadoc documentation) is available.
+The main classes of the library can be found in the package `org.knowm.xchart`, for which [Javadoc documentation](https://knowm.org/javadocs/xchart/org/knowm/xchart/package-summary.html) is available.
 
 In general charts have many customization options, which makes defining constructors for them sometimes rather complicated, as they would require many arguments. The disadvantage of having constructors with many arguments that have similar types, is that it becomes hard to remember for a user of that class in which order all arguments should be passed. A common way to avoid that issue is to use the **Builder** pattern.
 
@@ -286,12 +286,12 @@ Note that we need to deal with a potential `IOException` when calling this metho
 
 For the creation of a *histogram*, you should use a `CategoryChart` object that can be constructed using a `CategoryChartBuilder`.
 In order to convert a `double []` to series data that can be pass to a `CategoryChart`, the `Histogram` class can help to construct a plot based on a given number of bins.
-The [https://knowm.org/open-source/xchart/xchart-example-code/](website of XChart) contains example code for this and many other kinds of plots. It is highly recommended to investigate these examples if you are interested in plotting using this library.
+The [website of XChart](https://knowm.org/open-source/xchart/xchart-example-code/) contains example code for this and many other kinds of plots. It is highly recommended to investigate these examples if you are interested in plotting using this library.
 
 ## Apache POI
 The final library we discuss is the Apache POI library, which provides a Java API for Microsoft Office Documents. If you work with quantitative data and want to be able to open your data using Microsoft Excel (or similar Spreadsheet software), you can use `csv` files. However, those files have a disadvantage, as the way they are treated by Excel depends on the regional settings of the operating system.
 Thus, a computer that has its regional settings configured to *United States* may read in different numbers and values than a computer that has its regional settings configured to *The Netherlands*.
-This issue can be avoided by using the default file format of Microsoft Excel, `xlsx`, but this is too complicated to read and write by hand. The Apache POI library can take care of this. It website has many [https://poi.apache.org/components/spreadsheet/quick-guide.html](code examples) that showcase its many features. It is also possible to read more details in the [https://poi.apache.org/apidocs/4.1/](Javadoc documentation) of the library.
+This issue can be avoided by using the default file format of Microsoft Excel, `xlsx`, but this is too complicated to read and write by hand. The Apache POI library can take care of this. It website has many [code examples](https://poi.apache.org/components/spreadsheet/quick-guide.html) that showcase its many features. It is also possible to read more details in the [Javadoc documentation](https://poi.apache.org/apidocs/4.1/) of the library.
 
 Microsoft Excel is the world’s most popular *Spreadsheet* application. Spreadsheets consist of three main components: a **workbook** corresponds to a spreadsheet file, which may contain multiple **sheets** that appear in Excel as tabs at the bottom of the application. Each sheet contains a table of **cell**s. Each cell has a row and column index that make up the address of the cell, and can contain either a value (textual or numeric), or a formula that defines how the value should be computed based on other cells. The figure below shows a screenshot of an Microsoft Excel workbook and points out where you can choose the active sheet, and highlights a single cell.
 
