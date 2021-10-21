@@ -3,6 +3,7 @@ path: '/week6/8-packages-libraries-maven'
 title: 'Packages, Libraries and Maven'
 hidden: false
 ready: true
+extra: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
@@ -13,10 +14,6 @@ ready: true
  - Know that an application can be packaged and shared with others, and that applications shared this way do not require a development environment to work.
 
 </text-box>
-
-<hint>
- <h3> This subject will <b>not</b> be part of the exam, but you need it for the assignment! </h3>
-</hint>
 
 ## Introduction
 A famous quote relating to scientific progress is, attributed to Sir Isaac Newton (1676) is: "If I have seen further it is by **standing on the shoulders of giants**."
