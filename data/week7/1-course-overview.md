@@ -2,6 +2,7 @@
 path: '/week7/1-course-overview'
 title: 'Course overview'
 hidden: false
+ready: true
 ---
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
@@ -26,13 +27,13 @@ Java is a _strongly typed_ language. As a result, all variables and expressions 
 There is an important distinction between primitive types and nonprimitive types, although _Autoboxing_ converts primitive values 'automaticaly' to non-primitive values and vice-versa. To convert between types, _implicit casts_ are allowed when the compiler can reason they are safe. _Explicit casts_ are potentially unsafe.
 You have _generic types_, like `ArrayList<Integer>` or `Map<String,Integer>`, where generic types are denoted by a type variable (e.g. `ArrayList<E>` or `Map<K,V>` )
 
-You also need to understand relations between types: 
+You also need to understand relations between types:
 - Interfaces can be implemented by classes, which implies objects of that class can also be used as the type of the interface. (subtype: class, supertype: interface)
 - When working with inheritance, subclasses also are of the type of their superclass, but the other way around needs explicit casting.
 - Relations can be visualized using a class hierarchy diagram (which can also show interfaces and abstract classes).
 
 The compiler uses the type system to reason about the correctness of types in your code. You should be able to reason about types like the compiler does. This is an important skill when you are coding in a team, use libraries written by other people, etc.
-   
+
 ### Casting and instanceof
 Suppose that we have a Herbivore which is a subclass of Creature. Which of the following assignments are okay?
 
@@ -44,15 +45,15 @@ Herbivore h2 = c;
 The third line is not, because a `Herbivore` is more specific than a `Creature` by being a subclass. Thus, the `Creature` object cannot be cast into a `Herbivore` object.
 The second line, however, performs an implicit cast (it is always safe, since we go _from a subtype to a supertype_).
 It is important that you can figure out these sorts of errors for Question 3 in the practice exam!
-If we want to convert a creature to a human, we have to check the type of the creature and perform a cast afterwards.
+If we want to convert a `Creature` to a `Herbivore` in a safe way, we have to check the type of the creature and perform a cast afterwards.
 ```java
-if (c instanceof Human) {
-    Human h2 = (Human) c;
+if (c instanceof Herbivore) {
+    Herbivore h2 = (Herbivore) c;
 }
 ```
 
 ### Objects
-You should be able to instantiate objects using their constructor. 
+You should be able to instantiate objects using their constructor.
 You should understand that you can call methods on objects.
 - Within a class, you can just call the methods of the current object without using a
 period to call them. (e.g. within countFile() you can call count())
@@ -69,7 +70,7 @@ You should be able to use some basic objects used during the assignments (e.g. `
 Also, you should be able to call and use methods of classes you have not seen before, but for which an explanation is provided of how they work.
 
 ### References and (Im)mutability
-Variables of non-primitive types hold references. We can have multiple references to the same object. This can lead to confusion if you modify the object using one reference, since these modifications will also be observable via the other references. 
+Variables of non-primitive types hold references. We can have multiple references to the same object. This can lead to confusion if you modify the object using one reference, since these modifications will also be observable via the other references.
 A non-primitive variable can also hold a `null` reference. If that is the case calling a method on in or accessing an instance variables throws a `NullPointerException`.
 Some classes have been designed such that all modifications of an object are forbidden. Notable examples are `String` and `Integer`. Objects of these classes are called _immutable_. With such objects you don’t have to worry about the reference issue.
 Other classes, however, can be modified and are called _mutable_. The `Collection`s are notable examples.
@@ -109,16 +110,16 @@ Methods without an implementation must be denoted with the `abstract` keyword as
 <!-- Here, I found it difficult which type of header to use. The object class is about extending classes, so the above info (which would suggest ###), but the Object class is also an introduction to the comparator and so on (which would suggest ##). -->
 If a class does not explicitly extend another class, it implicitly
 extends Object. You need to know about three methods in Object what they do:
-`toString()`, `hashCode()` and `equals()`. 
+`toString()`, `hashCode()` and `equals()`.
 By default, these methods use the memory address of an object (e.g. to determine whether two objects are equal). So even if two separate objects have the same values stored in their instance variables, the `equals()` method will return false (just as the == operator does).
 It can be very useful to override them, but with hashCode() and equals() you have to make sure you adhere to their contract. Many classes from the standard library override these methods already.
 
 ## Collections
 ### Comparator and Comparable
-Sometimes we want to sort objects according to some order. In case a _natural order_ is available, a class can implement the `Comparable<E>` interface. It requires the method `public int compareTo(E other);`. A number of classes from the standard library do this, like `String`, `Integer`, `BigInteger`, `Double`, etc.
-We can also use a separate class to define an _ad-hoc order_ using the `Comparator<E>` interface. This requires the method `public int compare(E left, E right);`.
+Sometimes we want to sort objects according to some order. In case a _natural order_ is available, a class can implement the `Comparable<E>` interface. It requires the method `public int compareTo(E other)`. A number of classes from the standard library do this, like `String`, `Integer`, `BigInteger`, `Double`, etc.
+We can also use a separate class to define an _ad-hoc order_ using the `Comparator<E>` interface. This requires the method `public int compare(E left, E right)`.
 
-We can use the static method `Collections.sort()` to sort a list of elements which implement the `Comparable` interface. We can also pass a `Comparator` as a second argument to sort according to some ad-hoc order.
+We can use the static method `Collections.sort()` to sort a list of elements which implement the `Comparable` interface. It is overloaded in two versions: one where we only pass a list and the list is sorted according to the *natural order* of it's elements. In second option is that we pass a `Comparator` as a second argument to sort according to some ad-hoc order defined by that `Comparator` object..
 Suppose we get an int `c` from either `left.compareTo(right)` or `myComp.compare(left, right)`
 - If c < 0 then the object left comes before right in a sorted list.
 - If c > 0 then the object left comes after right in a sorted list.
@@ -128,7 +129,9 @@ Consider a `List<Integer>` with numbers 1,2, … , 10. When we call `Collections
 Objects of the following class will be sorted in the same way:
 ```java
 public class MyInteger implements Comparable<MyInteger> {
+
     private int value;
+
     @Override
     public int compareTo(MyInteger other) {
         return this.value - other.value;
@@ -139,7 +142,9 @@ public class MyInteger implements Comparable<MyInteger> {
 Sometimes it is also useful to call another `compareTo` method:
 ```java
 public class Student implements Comparable<Student> {
+
     private String name;
+
     @Override
     public int compareTo(Student other) {
         return name.compareTo(other.name);
@@ -157,15 +162,18 @@ An `ArrayList<E>` uses an array to model a list. It is very efficient to access 
 A `LinkedList<E>` uses a container object for each element, with pointers to the next and previous container. This makes adding and removing at both the front and back very efficient, but access of elements in the middle is costly.
 
 #### Set
-A `Set<E>` or `SortedSet<E>` is used to store elements if we are only interested in knowing whether an element is or is not in the set. Elements are never repeated and the order in which elements are added has no special meaning.
-A `HashSet<E>` stores elements using both the `hashCode()` and `equals()` methods and requires that these are consistent.
-A `TreeSet<E>` stores elements in a binary tree and requires a either a
+A `Set<E>` is used to store elements if we are only interested in knowing whether an element is or is not in the set. Elements are never repeated and the order in which elements are added has no special meaning.
+A `SortedSet<E>` is a subtype of `Set<E>` where the elements are stored in a particular order (either a *natural order*, or an order defined by a `Comparator`)
+A `HashSet<E>` implements `Set<E>` stores elements using both the `hashCode()` and `equals()` methods and requires that these are consistent.
+A `TreeSet<E>` implements `SortedSet<E>` stores elements in a binary tree and requires a either a
 `Comparable` or `Comparator` interface that is consistent with `equals()`.
 
 #### Map
-A `Map<K,V>` is used to store key-value pairs. The keys form a set (i.e. they are unique) and every key is associated with a value.
-A `HashMap<K,V>` stores elements using both the `hashCode()` and `equals()` methods and requires that these are consistent.
-A `TreeMap<K,V>` stores elements in a binary tree and requires a either a Comparable or Comparator interface that is consistent with `equals()`.
+A `Map<K,V>` is used to store key-value pairs. The keys form a set (i.e. they are unique) and every key is associated with a value currently stored in the map.
+There is no particular order in which the keys are stored.
+A `HashMap<K,V>` implements `Map<K,V>` and stores elements using both the `hashCode()` and `equals()` methods and requires that these are consistent.
+A `SortedMap<K,V>` is a sub-type of `Map<K,V>` and stores the key-value pairs in the order of their keys. Similar to `SortedSet` this can be a *natural order*, or an order defined by an `Comparator`.
+A `TreeMap<K,V>` implements `SorterMap<K,V>` stores elements in a binary tree and requires a either a Comparable or Comparator interface that is consistent with `equals()`. It is
 
 ### Lambda Expressions
 _Functional interfaces_ are interface with one unimplemented method.
@@ -183,13 +191,13 @@ public static void sortCoursesByTeacherLambda3(List<Course> courses) {
 
 In the following table, you can review the relation between types, method references and lambda expressions:
 
-|Type       | Method reference           | Lambda Expression                    |
-|-----------|----------------------------|--------------------------------------|
-|Static     |MyClass::myStaticMethod     |(args) -> MyClass.myStaticMethod(args)|
-|Bound      |var::myMethod               |(args) -> var.myMethod(args)          |
-|Unbound    |MyClass::myMethod           |(obj, args) -> obj.myMethod(args)     |
-|Constructor|MyClass::new                |(args) -> new MyClass(args)           |
-|Array      |int[]::new                  |(len) -> new int[len]                 |
+|Type       | Method reference           | Lambda Expression                      |
+|-----------|----------------------------|----------------------------------------|
+|Static     | `MyClass::myStaticMethod`  |`(args) -> MyClass.myStaticMethod(args)`|
+|Bound      | `var::myMethod`            |`(args) -> var.myMethod(args)`          |
+|Unbound    | `MyClass::myMethod`        |`(obj, args) -> obj.myMethod(args)`     |
+|Constructor| `MyClass::new`             |`(args) -> new MyClass(args)`           |
+|Array      | `int[]::new`               |`(len) -> new int[len]`                 |
 
 ### Functional interfaces
 With the new built-in functional interfaces we can model common patterns, such as:
@@ -198,19 +206,20 @@ With the new built-in functional interfaces we can model common patterns, such a
 - Transforming an object (Function, UnaryOperator)
 - Combining two objects into one (BinaryOperator)
 
-Here are the new functional interfaces:
-| Interface                    | Input arguments | Output  | Interpretation |  
-|------------------------------|-----------------|---------|----------------|
-| Comparator                  | (T o1, T o2) | int | Define an order on T's |
-| BinaryOperator    |  (T left, T right) | T | Combine two T's into one T.  |
-| Consumer                    | (T arg) | void | Do something with argument |
-| BiConsumer    | (T arg1, U arg2) | void | Do something with the arguments |
-| Function                          | (T arg) | R | Transform a T into an R |
-| BiFunction         | (T arg1, U arg2) | R | Transform a T and U into an R |
-| Predicate               | (T arg) | boolean | Check if a T has a property |
-| Supplier                             | () | T | Produces object of type T |
-| UnaryOperator                       | (T arg) | T | Transforms a T to a T |
-| Runnable                                     | () | void | Execute a task |
+Here are some common functional interfaces:
+
+| Interface                    | Input arguments     | Output    | Interpretation                  |
+|------------------------------|---------------------|-----------|---------------------------------|
+| Comparator                   | `(T o1, T o2)`      | `int`     | Define an order on T's          |
+| BinaryOperator               | `(T left, T right)` | `T`       | Combine two T's into one T.     |
+| Consumer                     | `(T arg)`           | `void`    | Do something with argument      |
+| BiConsumer                   | `(T arg1, U arg2)`  | `void`    | Do something with the arguments |
+| Function                     | `(T arg)`           | `R`       | Transform a T into an R         |
+| BiFunction                   | `(T arg1, U arg2)`  | `R`       | Transform a T and U into an R   |
+| Predicate                    | `(T arg)`           | `boolean` | Check if a T has a property     |
+| Supplier                     | `()`                | `T`       | Produces object of type T       |
+| UnaryOperator                | `(T arg)`           | `T`       | Transforms a T to a T           |
+| Runnable                     | `()`                | `void`    | Execute a task                  |
 
 They are useful to construct methods that are generic. Rather than hardcoding these tasks, we can pass them as an argument. Calling is easy due to lambda expressions and method references.
 
@@ -245,6 +254,13 @@ public static <T extends Comparable> Comparator<T> naturalOrder()
 public static <T extends Comparable> Comparator<T> reverseOrder()
 ```
 
+These can be used to quickly obtain a `Comparator` without creating a separate class.
+For example, `Comparator<String> strCmp = Comparator.reverseOrder()` will give you
+a `Comparator` for `String` objects that is a reverse alphabetical order.
+`Comparator<Student> stdCmp = Comparator.comparing(Student::getName)` gives
+a `Comparator` that orders `Student` objects by the natural order of the
+`String` objects returned when `getName()` is called on a `Student` object.
+
 And also some default methods:
 ```java
 // Composition of Comparators
@@ -252,7 +268,25 @@ public default <T> Comparator<T> thenComparing(Comparator<T> other)
 public default <T> Comparator<T> thenComparing(Function<T,Comparable> keyExtractor)
 public default <T,U> Comparator<T> thenComparing(Function<T,U> keyExtractor, Comparator<U> keyComparator)
 ```
+
+These can be used to create `Comparators` that look at different aspects. For example,
+
+```java
+Comparator<Student> stdCmp = Comparator.comparing(Student::getFirstName)
+                                       .thenComparing(Student::getAge, Comparator.reverseOrder());
+```
+
+gives  you a comparator that first orders `Student` objects based on the alphabetical order
+of their first names, and if two students have the same first name, orders them from old
+to younger.
+
 ### Writing shorter Comparators
+
+We consider more examples of writing shorter `Comparator`s.
+
+We can write methods rather than classes, and then use a
+method reference to obtain a `Comparator`:
+
 ```java
 public static int compareCourses(Course left, Course right) {
     if (left.getTeacher().equals(right.getTeacher())) {
@@ -268,6 +302,8 @@ public static void sortCourses(List<Course> courses) {
     Collections.sort(courses, MyClass::compareCourses);
 }
 ```
+
+Some more examples based on `Comparator.comparing` and `thenComparing`:
 
 ```java
 Comparator<Course> compTeacher = Comparator.comparing(Course::getTeacher);
@@ -285,16 +321,23 @@ Collections.sort(courses, comp);
 ```
 
 ### The `Optional<T>` class
-An object of `Optional<T>` either: holds a single value of type T, or holds no value at all. It can be used to avoid returning null values and forces the user to deal
-with potential absence of a result.
+An object of `Optional<T>` either: holds a single value of type T, or holds no value at all. It can be used to avoid returning null values and forces the
+caller to deal with potential absence of a result.
 Static methods that can be used to obtain an `Optional` object:
+
 ```java
 public static <T> Optional<T> empty()
 public static <T> Optional<T> of(T elem)
 public static <T> Optional<T> ofNullable(T elem)
 ```
 
-The following methods are available on an `Optional` object:
+So for example `Optional<String> name = Optional.of("Grace")` gives an
+`Optional` that holds a value, while `Optional<String> missing = Optional.empty()`
+gives you an empty `Optional`.
+
+The following methods are available on an `Optional` object and can be used to
+handle the object:
+
 ```java
 public T get()
 public void ifPresent(Consumer<T> action)
@@ -310,7 +353,10 @@ The main interface is `Stream<T>`. It models an (unfinished) data processing pip
 - A single **terminal operation**
 Objects only start flowing through the pipeline and are actually processed when they are requested by a terminal operation. The data source and intermediate operations are called **lazy operations**. The terminal operation is a non-lazy operation.
 
-The most common way to obtain a Stream is by means of a new default method that was added to the Collection interface: `public default Stream<T> stream()`. The following code examples give us Stream objects:  
+The most common way to obtain a Stream is by means of a new default method that was added to the Collection interface: `public default Stream<T> stream()`,
+which you can call for example on your favorite `ArrayList` or `HashSet` objects.
+
+The following code examples are some alternative ways to obtain `Stream` objects:
 ```java
 public default Stream<T> stream()
 // A stream that will emit three string objects
@@ -328,36 +374,38 @@ These operations are **lazy**, so no objects start flowing (yet)
 Intermediate operation are lazy and can be recognized from the fact the return type is also a Stream.
 This resulting Stream represents the data processing pipeline with an additional operation attached to it.
 
-|Method                         |Output              |Description                |
-|-------------------------------|--------------------|---------------------------|
-|distinct()                     |Stream&lt;T&gt;           |discards duplicate elements|
-|filter(Predicate&lt;T&gt; predicate) |Stream&lt;T&gt;           |discards false elements    |
-|limit(long n)                  |Stream&lt;T&gt;           |emits at most n elements   |
-|map(Function&lt;T,R&gt; mapper)      |Stream&lt;R&gt;           |converts objects to type R |
-|skip(long n)                   |Stream&lt;T&gt;           |discards the next n elements|
-|sorted()                       |Stream&lt;T&gt;           |sorts elements by their natural order|
-|sorted(Comparator&lt;T&gt; comparator)|Stream&lt;T&gt;          |sorts elements with the comparator|
+|Method                              |Output      |Description                           |
+|------------------------------------|------------|--------------------------------------|
+|`distinct()`                        |`Stream<T>` |discards duplicate elements           |
+|`filter(Predicate<T> predicate)`    |`Stream<T>` |discards false elements               |
+|`limit(long n)`                     |`Stream<T>` |emits at most n elements              |
+|`map(Function<T,R> mapper)`         |`Stream<R>` |converts objects to type R            |
+|`skip(long n)`                      |`Stream<T>` |discards the next n elements          |
+|`sorted()`                          |`Stream<T>` |sorts elements by their natural order |
+|`sorted(Comparator<T> comparator)`  |`Stream<T>` |sorts elements with the comparator    |
 
-   
-When you call a terminal operation on a Stream, it starts consuming objects from the stream and objects finally start flowing through the processing pipeline.
+
+When you call a terminal operation on a Stream, it starts consuming objects from the stream and objects finally start flowing through the processing pipeline
+until they reach the terminal operation.
 
 The following operations are available:
-|Method                               |Output              |Description                    |
-|-------------------------------------|--------------------|-------------------------------|
-|allMatch(Predicate&lt;T&gt; predicate)     |boolean             |Is predicate true for all      |
-|anyMatch(Predicate&lt;T&gt; predicate)     |boolean             |Is predicate true for any      |
-|count()                              |long                |Number of objects              |
-|collect(Collector&lt;T,A,R&gt; collector)  |R                   |Aggregate using the collector  |
-|findFirst()                          |Optional&lt;T&gt;         |First object emitted           |
-|forEach(Consumer&lt;T&gt; action)          |void                |Perform action on all objects  |
-|max(Comparator&lt;T&gt; comparator)        |Optional&lt;T&gt;         |Maximum according to comparator|
-|min(Comparator&lt;T&gt; comparator)        |Optional&lt;T&gt;         |Minimum according to comparator|
-|noneMatch(Predicate&lt;T&gt; predicate)    |boolean             |Is predicate false for all     |
-|reduce(BinaryOperator&lt;T&gt; accumulator)|Optional&lt;T&gt;         |Aggregate using the accumulator|
 
-The collect operation requires an object of type `Collector<T,A,R>`. 
+|Method                                  |Output              |Description                    |
+|----------------------------------------|--------------------|-------------------------------|
+|`allMatch(Predicate<T> predicate)`      |`boolean`           |Is predicate true for all      |
+|`anyMatch(Predicate<T> predicate)`      |`boolean`           |Is predicate true for any      |
+|`count()`                               |`long`              |Number of objects              |
+|`collect(Collector<T,A,R> collector)`   |`R`                 |Aggregate using the collector  |
+|`findFirst()`                           |`Optional<T>`       |First object emitted           |
+|`forEach(Consumer<T> action)`           |`void`              |Perform action on all objects  |
+|`max(Comparator<T> comparator)`         |`Optional<T>`       |Maximum according to comparator|
+|`min(Comparator<T> comparator)`         |`Optional<T>`       |Minimum according to comparator|
+|`noneMatch(Predicate<T> predicate)`     |`boolean`           |Is predicate false for all     |
+|`reduce(BinaryOperator<T> accumulator)` |`Optional<T>`       |Aggregate using the accumulator|
+
+The `collect` operation requires an object of type `Collector<T,A,R>`.
 - A collector takes objects of type `T`.
 - Accumulates them into a (mutable) accumulator type A
 - Transforms the final accumulation into type R
 There is no need to implement them by yourself (unless you want to). The `Collectors` class provides methods to obtain many useful collectors (similar to `Comparator.comparing()`).
-`Collectors.toList()` and `Collectors.toSet()` for contructing a `List` or `Set` dataset from the elements of a `Stream`. `Collectors.joining()` is for combining strings into a single `String` (with or without delimiter, prefix and suffix). 
+`Collectors.toList()` and `Collectors.toSet()` for contructing a `List` or `Set` dataset from the elements of a `Stream`. `Collectors.joining()` is for combining strings into a single `String` (with or without delimiter, prefix and suffix).

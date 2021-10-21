@@ -1,14 +1,10 @@
 ---
-path: '/week7/2-packages'
+path: '/week7/4-packages'
 title: 'More on packages'
 hidden: false
 extra: true
+ready: true
 ---
-
-
-<hint>
- <h3> This subject will <b>not</b> be part of the exam. It is volunatary, for those who are interested. </h3>
-</hint>
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
