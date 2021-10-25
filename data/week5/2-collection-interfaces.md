@@ -25,7 +25,7 @@ Java implements several data structures. We already know some of them, such as t
 The `List` interface is a subtype of the `Collection` interface, and the `Collection`
 interface itself is a subtype of the `Iterable` interface.
 
-Also, the `Set` interface and `Map` interface are part of the `Collection` interface. To navigate through all these data structures, the `Collection` implements the `Iterable` interface. We will cover all these interfaces in the next section.
+Also, the `Set` interface and `List` interface are super-types of the `Collection` interface. To navigate through all these data structures, the `Collection` implements the `Iterable` interface. We will cover all these interfaces in the next section.
 
 ### Iterable interface
 The interface `Iterable<T>` are all types that we can use the **enhanced for-loop** on.
