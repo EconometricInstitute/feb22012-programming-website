@@ -49,7 +49,7 @@ The interface could then be used in different classes: `PokerHand`, `BlackjackHa
 algorithm that operated on the `GameValue` type, rather than having a separate function for each type. As an advantage, if we would introduce a new type of game, we can
 apply the analysis that was created earlier as soon as it implements the `GameValue` interface.
 
-Since the bank has an advantage in some types of games, we want to be able to detect whether a value was obtained by the bank or someone else. We could add a method `public boolean fromBank();` to the GameValue interface, but then all our classes would need to add a second method, while some of the games may not even have a bank.
+Since the bank has an advantage in some types of games, we want to be able to detect whether a value was obtained by the bank or someone else. We could add a method `boolean fromBank();` to the GameValue interface, but then all our classes would need to add a second method, while some of the games may not even have a bank. Note that we do not explicitly write that this method is `public`, as interface methods cannot be private. You may write public, but please be consistent.
 We could create a second interface `BankScore` as follows:
 
 ```java
@@ -63,7 +63,7 @@ If the analysis information needs only one of the two pieces of information, thi
 example because you need to compute the average outcome that where influenced by the staff of the casino, you would need both types.
 
 As do not have a singly type where we can use both and we can choose only one type for (instance) variables and/or method and constructor arguments.
-One idea could be to add `public int getValue()'` to the `BankScore` interface:
+One idea could be to add `int getValue()'` to the `BankScore` interface:
 
 ```java
 public interface BankScore {
