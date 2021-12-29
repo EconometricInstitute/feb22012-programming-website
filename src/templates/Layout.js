@@ -120,7 +120,7 @@ class Layout extends React.Component {
                     {
                       name: "description",
                       content:
-                        "Course webpage for the Introduction to Programming Course of the Erasmus School of Economics.",
+                        "Course webpage for the Programming Course of the Erasmus School of Economics.",
                     },
                     {
                       name: "keywords",
