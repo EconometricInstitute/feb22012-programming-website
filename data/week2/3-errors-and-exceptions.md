@@ -428,3 +428,47 @@ If you still feel like you are struggling with the understanding of exceptions, 
 Note that it also includes some nice exercises at the bottom of the page. The blue paragraph titles are clickable.
 
 </text-box>
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+What is an exception used for?
+
+<Solution>
+
+An exception is an event which occurs during the execution of a program, that disrupts the normal flow of the program's instructions. The exception is an object that tells you more about what went wrong.
+You can code beforehand what to do in case of exceptions. So, an exception is used to either let the code know what to do in case an exception is thrown, or to let the user know that something went wrong.
+
+</Solution>
+
+
+Does the general statement `catch (Exception e)` always work when catching an exception?
+If so, is it desirable to do this? If it does not always work, what do we do when the general statement does not work?
+
+<Solution>
+
+Yes, this general statement always works in a `try-catch` composition, but is not necessarily desirable. It is much better to be more specific about the exceptions that you expect as a coder. That makes the code easier to read and it also makes the exceptions easier to handle for other programmers that use your code.
+
+</Solution>
+
+What will happen in case an exception occurs in the code below?
+```
+ try {
+    doSomething();
+}
+catch (Exception e) {
+ }
+```
+ 
+<Solution>
+
+Nothing will happen. The code will continue as if nothing happened. As a programmer or user, you will receive no indication that something went wrong. 
+However, your results will be useless and may contain many errors. 
+To prevent this from happening, you should always put something in the `catch` block, such as `e.printStackTrace();`, to get an indication if something went wrong.
+
+</Solution>
+
+#TODO may later want to add a question on checked and unchecked exceptions.
+
+</Exercise>
