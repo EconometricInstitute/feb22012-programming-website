@@ -175,3 +175,58 @@ Collections framework to make sure that we can do things we would expect are pos
 while the compiler can still be strict in checking if things make sense. Usually, when
 you work with methods where these constraints appear, you can just use them without
 even notificing they are there.
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+What is the advantage of using generic types?
+
+<Solution>
+
+It is an easy way to create a method that works for several types. Also, it lets you call methods faster than via an interface. 
+    
+</Solution>
+
+
+What are disadvantages of using generic types?
+
+<Solution>
+
+- Generics don't work with primitive types.
+- We can't create Generic Arrays.
+- We cannot create an instance of a type parameter.
+- We cannot create, catch, or throw generic types.
+- You cannot use `instanceof` with generic types.
+- We cannot declare `static` fields of a type parameter.
+</Solution>
+
+
+What is the usage difference between generic types and interfaces?
+
+<Solution>
+
+Generics are a facility of generic programming in Java that allow a type or method to operate on objects of various types while providing compile-time type safety.
+
+The interface in java is a mechanism to achieve fully abstraction and multiple inheritances in Java.
+</Solution>
+
+What does the diamond operator do and what does it look like in code?
+
+<Solution>
+
+The diamond operator looks like this: `<>`, and the compiler figures out what type should be in there. The diamond operator is used while creating a new instance of an object, for instance like this: `List<Integer> exampleList = new ArrayList<>();`. The compiler can figure out that the `ArrayList` holds objects of the type `Integer` as we already told the compiler that the variable type was some sort of `List` holding `Integer` objects.
+Please note that the non-primitive type `Integer` is used here.
+</Solution>
+    
+When do you use `?` as a type and what is it called?
+
+<Solution>
+
+Using the question mark as a type is called using a wildcard. You use it in case you have no clue what type will be given to the method. Unfortunately, this comes with the disadvantage that not all usual methods work any longer. 
+If you can use a generic type, please do so. It is safer.
+You can read more on the differences on [Stack Overflow](https://stackoverflow.com/questions/10943137/difference-between-generic-type-and-wildcard-type), which by the way is a very nice website that contains almost all coding questions one could ask oneself, and corresponding answers.
+
+</Solution>
+
+</Exercise>
