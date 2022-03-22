@@ -68,6 +68,29 @@ There are some variants of the method references, based on whether you write a c
 
 There are five types of method references. The five types are shown here, together with an equivalent lambda expression.
 
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+In the class World there is a static method countCreatures(String animals) with a return value of an integer. How do we write a method reference and a lambda expression for that?  
+
+<Solution>
+
+The method reference is as follows: `World::countCreatures`
+The lambda expression is as follows: `(int) -> World.countCreatures(cows)`.
+
+</Solution>
+
+What method reference belongs to this lambda expression?
+`World::new`
+    
+<Solution>
+
+(arg) -> new World(arg)
+    
+</Solution>
+</Exercise>
+
 <!-- TODO: discussion of static vs non-static in a special interest block -->
 
 ## Default Methods in Interfaces
@@ -386,3 +409,56 @@ D (2000)
 C (2001)
 
 </sample-output>
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+Why do we use types in Java?
+
+<Solution>
+
+Firstly, a powerful type system helps to prevent bugs.
+Also, it allows overloading of methods.
+Moreover, the code is easier to read and to refactor.
+More advantages can be found in the advantages text box.
+
+</Solution>
+
+
+What is method overloading?
+
+
+<Solution>
+
+When the same method name is used for more than one method, the name is **overloaded**.
+In Java, you can overload method names provided that the parameter types are different. For example, you can declare two methods, both called `print`:
+
+`public void print(String s)`
+`public void print(int i)`
+
+When the `print` method is called, `print(x);`, the compiler looks at the type of `x`. If `x` is a `String`, the first method is called. If `x` is an integer value, the second method is called. If `x` is neither, the compiler generates an error.
+
+</Solution>
+
+
+What is the difference between a primitive type and a non-primitive type?
+
+<Solution>
+
+A non-primitive type is an instance of a class, which is an object.
+Primitive types, on the other hand, just hold a value (number, character or true/false).
+There are only eight primitive types, namely `byte`, `short`, `int`, `long`, `float`, `double`, `char` and `boolean`.
+
+</Solution>
+
+
+Can you autobox from `Integer` to `double`? And from `int` to `Double`?
+
+<Solution>
+
+Yes, you can autobox from `Integer` to `double`, but you cannot autobox from `int` to `Double`. Please reread the last paragraph of the text for further explanation.
+
+</Solution>
+
+</Exercise>
