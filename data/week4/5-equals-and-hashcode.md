@@ -172,3 +172,36 @@ Whether you need to override `equals()` and `hashCode()` depends on your intende
 On the other hand, if you want to be able to compare separate objects of your class based on their contents, you should override `hashCode` and `equals`.
 For example, if you read and store pairs of numbers from a file and create objects that way and then want to check whether they also exist in a second file.
 In most cases where you want to override both methods, it is preferable to let your IDE generate the code, but in some circumstances (such as unordered pairs), you may want to do it yourself, or generate the code automatically and adjust it as needed.
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+If you would want to compare to strings and she if they hold the same word(s), would you use `==` or `equals`, and why?
+
+<Solution>
+
+A String is a non-primitive type, as it is written with a capital letter. Therefore, the `==`-operator would not work here, as we do not want to compare if the objects are the same, but whether the values that the objects hold are the same.
+ 
+</Solution>
+
+
+What should you keep in mind when overriding the `equals()` method?
+
+<Solution>
+
+The method that you write should adhere to some rule. It should be reflexive, symmetric, transitive and consistent.
+Also, you must override the `hashcode()` method!
+
+</Solution>
+
+What does it mean when two objects have the same hashcode? And what if they have different ones?
+
+<Solution>
+
+If two objects have the same hashcode, they are in the same collection of objects. Therefore, they might hold the same value(s) and thus be the same object, but they also still might be very different.
+On the other hand, if two objects have different hashcodes, we are sure the objects are different from each other. As soon as the `equals()` method finds that the two objects have different hashcodes, it returns `false` immediately.
+
+</Solution>
+
+</Exercise>
