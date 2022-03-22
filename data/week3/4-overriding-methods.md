@@ -57,7 +57,7 @@ public class Polynomial extends SimpleFunction {
 
     private double[] factors;
 
-    public Polynomial(doublep[ coefficients) {
+    public Polynomial(double[] coefficients) {
         super();
         factors = coefficients;
     }
@@ -119,3 +119,33 @@ Which implementation of a method is executed, depends on the type of object, not
 
 It is possible to forbid that a method can be overridden in subclasses by adding the `final` keyword to the method header,
 for example: `public final void doSomething() { ... }`.
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+Why should you put the `@Override` annotation above an overriden class?
+
+<Solution>
+
+It is good practice to add the `@Override` annotation to such a method: in case there is a typo method name or a mistake in the arguments, the compiler will warn that the method is not overriding something. This is very helpful, because these are often very nasty types of mistakes to debug.
+    
+</Solution>
+
+What does overriding a method do?
+
+<Solution>
+
+The ability of a subclass to override a method allows a class to inherit from a superclass whose behavior is "close enough" and then to modify behavior as needed. The overriding method has the same name, number and type of parameters, and return type as the method that it overrides.
+
+</Solution>
+
+Can your classes use all methods of a superclass?
+
+<Solution>
+
+Yes, they can; this can be very useful!
+    
+</Solution>
+
+</Exercise>
