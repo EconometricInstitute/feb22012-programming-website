@@ -11,6 +11,33 @@ ready: true
 
 </text-box>
 
+Before starting this last paragraph, let us first test our knowledge of what we have learned so far.
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+What is the difference between a `List` and a `Set` object?
+
+<Solution>
+
+In a `List`, we store items in an order, and preserve the order. We can iterate through the list by index. In a `Set`, however, we also store items, but without keeping track of any order. 
+Another difference is that an item might occur twice in a `List`, but in a `Set` each item can occur at most once.
+  
+</Solution>
+
+What is a `Map`?
+  
+<Solution>
+
+A `Map` is a `Collection` interface that provides data structures to store pairs of things. Each pair has a **key** and a **value**. For each key, a certain value is stored. This means that each key may occur only once, as otherwise it would not be clear which key the program should return the value of.
+The values, on the other hand, may occur multiple times, as different keys can hold the same value.
+The most commonly used `Map` is the `HashMap`.
+
+</Solution>
+
+</Exercise>
+
 ### Collections class
 
 Java contains a number of classes that provide handy, `static` utility methods. Example of this you may have see before are
