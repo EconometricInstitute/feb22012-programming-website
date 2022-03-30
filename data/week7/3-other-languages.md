@@ -6,7 +6,7 @@ extra: true
 ready: true
 ---
 
-## C#
+## C&#35;
 C# is (probably) the language most similar to Java. The type system and implementation of Object Oriented Programming concepts can be learned without much effort if you already know Java.
 It has some additional features compared to Java, but these won’t be too hard to learn or are not strictly necessary to know.
 However, some things are named differently:
