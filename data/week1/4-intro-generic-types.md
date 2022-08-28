@@ -122,39 +122,52 @@ The var keyword was introduced in Java 10. Type inference is used in `var` keywo
 
 ```java
 public static void main(String[] args) {
-    // int
-    var x = 100;
+    // compiler will deduce x is an int
+    var x = 42;
 
-    // double
-    var y = 1.90;
+    // compiler will deduce pi is a double
+    var pi = 3.14;
 
-    // char
-    var z = 'a';
+    // compiler will deduce a is a char
+    var a = 'z';
 
-    // string
-    var p = "tanu";
+    // compiler will deduce message is a String
+    var message = "hi";
 
-    // boolean
-    var q = false;
+    // compiler will deduce success is a boolean
+    var success = false;
 
-    // type inference is used in var keyword in which it
-    // automatically detects the datatype of a variable
-    System.out.println(x);
-    System.out.println(y);
-    System.out.println(z);
-    System.out.println(p);
-    System.out.println(q);
+    // ....
 }
 ```
 
-Unfortunately, `var` cannot be used var cannot be used for method parameters and return type.
-Neither, it can be used as a Generic type, or with a Generic type.
-Thus, both `List<var> myList` and `var<Integer> myVar` are invalid.
-Lastly, `var` cannot be used without explicit initialization.
+Since the compiler has to know the type of each expression, `var` cannot be used for method parameters and return types.
+Lastly, `var` cannot be used without explicit initialization: it is always necessary to immediately assign a value to
+a variable declared by `var`.
+It can be helpful in situations where you have very long generic types:
+
+```java
+public static List<List<List<String>>> buildSomeList() {
+    List<List<List<String>>> result = new ArrayList<>();
+    // Some code here
+    // ....
+    return result;
+}
+
+public static void main (String [] args) {
+    // Long cumbersome variable declaration:
+    List<List<List<String>>> complicatedList = buildSomeList();
+
+    // Shorter variable declaration using var:
+    var otherComplicatedList = buildSomeList();
+}
+
+```
+
+In the latter example, the compiler will figure out that `buildSomeList()` is guaranteed to return a `List<List<List<String>>>`
+and therefore, it knows that `otherComplicatedList` should also get that type.
 
 Although `var` can be very handy in some situations, it has also many restrictions. Therefore, we suggest not to use it for now.
-
-_Source: [Geeks for Geeks](https://www.geeksforgeeks.org/var-keyword-in-java/)_
 
 </text-box>
 
@@ -168,6 +181,58 @@ What are generic types?
 
 A generic type is a generic class or interface that is parameterized over types.
 Essentially, generic types allow you to write a general, generic class (or method) that works with different types, allowing for code re-use.
+
+</Solution>
+
+---
+
+Can you name a standard class you have used in Java that has a generic type? Can you also name some classes that do not have generic types?
+
+<Solution>
+
+The most obvious example is the `ArrayList` class, which can store different types of objects. The are much more examples of classes that
+are not generic: String, Integer, Scanner, etcetera.
+
+</Solution>
+
+---
+
+Rewrite the following class in such a way that it can hold any type of object that represent a message, not just `String` objects.
+
+```java
+public class MessageContainer {
+    private String message;
+
+    public MessageContainer(String message) {
+        this.message = message;
+    }
+
+    public void printMessage() {
+        System.out.println(message);
+    }
+}
+```
+
+<Solution>
+
+Note that to make it generic, we need to introduce a type variable.
+In this example, `E` was chosen. Then we replace the occurences of the
+`String` type by the type `E`.
+
+```java
+public class MessageContainer<E> {
+    private E message;
+
+    public MessageContainer(E message) {
+        this.message = message;
+    }
+
+    public void printMessage() {
+        System.out.println(message);
+    }
+
+}
+```
 
 </Solution>
 

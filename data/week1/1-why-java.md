@@ -33,7 +33,7 @@ public class HelloWorld {
     }
 }
 ```
-\
+
 In the weeks after, you have learned to use loops to prevent repetitive code and if-statements to account for multiple cases. To store large quantities of values, you have learned to use arrays and lists. Also, you have written methods to structure your code and used objects to create different instances of one construct.
 
 ## This course
@@ -51,13 +51,12 @@ What does the Java Virtual Machine do?
 
 <Solution>
 
-Java programs, as we write them, contain instructions for the Java Virtual Machine (JVM).
-The Java Virtual Machine translates these instructions to bytecode (zeros and ones) for the CPU, the Central Processing Unit (CPU), which then executes the translated instructions.
+Java programs, as we write them, are compiled to Java *bytecode* by the Java compiler. The Java Virtual Machine (JVM) translates these instructions to machine code for the CPU, the Central Processing Unit (CPU), which then executes the translated instructions. Different
 
 </Solution>
 
 
-### For loops
+### For and while-loops
 
 What is wrong with the following piece of code?
 
@@ -75,6 +74,7 @@ The condition and the execution block of the for loop belong together and should
 
 </Solution>
 
+---
 
 How does a for-each loop work?
 
@@ -96,6 +96,97 @@ Will print the sentence: "Hello there!"
 
 </Solution>
 
+---
+
+Rewrite the following method so that it contains a for-loop rather than a while loop:
+
+```java
+public static String repeat(String text, int repetitions) {
+    int i = 0;
+    StringBuilder sb = new StringBuilder();
+    while (i < repetitions) {
+        sb.append(text);
+        i++;
+    }
+    return sb.toString()
+}
+```
+
+<Solution>
+
+```java
+public static String repeat(String text, int repetitions) {
+    StringBuilder sb = new StringBuilder();
+    for (int i=0; i < repetitions; i++) {
+        sb.append(text);
+    }
+    return sb.toString()
+}
+```
+
+</Solution>
+
+---
+
+Rewrite the following method so that it contains a while-loop rather than a for-loop:
+
+```java
+public static int sumProduct(int[] listA, int[] listB) {
+    int result = 0;
+    for (int i=0; i < listA.length && i < listB.length; i++) {
+        result += listA[i] * listB[i];
+    }
+    return result;
+}
+```
+
+<Solution>
+
+```java
+public static int sumProduct(int[] listA, int[] listB) {
+    int result = 0;
+    int i=0;
+    while (i < listA.length && i < listB.length) {
+        result += listA[i] * listB[i];
+        i++;
+    }
+    return result;
+}
+
+```
+
+</Solution>
+
+---
+
+Rewrite the following method so that it contains a for-loop rather than a while loop:
+
+```java
+public List<String> makeList() {
+    List<String> result = new ArrayList<>();
+    while (moreComing()) {
+        result.add(nextString())
+    }
+    return result;
+}
+```
+
+<Solution>
+
+Note that a for is unnatural for this function. However, we are allowed to leave everything except the condition empty in the for-loop:
+
+```java
+public List<String> makeList() {
+    List<String> result = new ArrayList<>();
+    for (;moreComing();) {
+        result.add(nextString())
+    }
+    return result;
+}
+```
+
+</Solution>
+
 
 ### Types
 
@@ -105,7 +196,7 @@ What is a type?
 
 A type is a named set of values and the operations that can be carried out with them.
 
-Think for instance of a String: it is a set of all words or letter combinations you can think of, and you can use its operations, such as requesting the length of the String.
+Think for instance of the type String: it is a set of all possible Strings, which can be all combinations of words, letters and symbols you can think of. On each object of the String type, you can use its operations, such as requesting the length of the String.
 
 </Solution>
 
@@ -116,28 +207,30 @@ What is an object?
 
 <Solution>
 
-An object is an instance of a class, so from one class, several objects can be made. An object has instance variables that are specific to the internal state of that object. The object's methods specify what the object does.
+An object is an instance of a class. From one class, several objects can be made. An object has instance variables that are specific to the internal state of that object. The classes non-static methods specify what methods can be performed on the object.
 
-Think for instance of dogs. A class can be called `Dog`. Each dog has its own characteristics (i.e. states) and behaviors. The states of a dog could be his color, name, and breed. Its behaviors could be wagging the tail, barking, or eating.
+Think for instance of dogs. Each dog has its own characteristics (i.e. states) and behaviors. If we would create a class `Dog` that repesents dogs, the states of a dog could for example be the dog's color, name, and breed. We could create methods for wagging the tail, barking, or eating to mimic a dog's behavior.
 
 </Solution>
 
+---
 
 What is a constructor?
 
 <Solution>
 
 A constructor instantiates a new object when you use the `new` keyword.
-The object's variables are set to default or to arguments that you passed to the constructor.
+The object's instance variables are set to defaults or they can be set by the constructor using arguments that you passed to it.
 
 </Solution>
 
+---
 
 What does a class do?
 
 <Solution>
 
-A class contains the blueprint needed to create objects, and also defines the objects' variables and methods. An object is created on the basis of the class constructor.
+A class contains the blueprint needed to create objects, and also defines the objects' variables and methods. An object is created using the constructor of the class.
 
 </Solution>
 

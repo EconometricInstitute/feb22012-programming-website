@@ -1,7 +1,7 @@
 ---
 path: "/grading-and-exams"
 title: "Grading and exams"
-hidden: false
+hidden: true
 information_page: true
 ---
 

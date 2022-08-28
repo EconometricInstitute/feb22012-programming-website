@@ -38,7 +38,9 @@ Take a moment to think which of the two options would be the correct one.
 
 <Solution>
 
-It depends on how the register method is defined. Consider the two following options:
+This was a trick question. You don't have enough information to answer it as it
+depends on how the `register` method is defined. Consider the two following options:
+
 ```java
 public static void register(int grade, int student) {...}
 ```
@@ -48,8 +50,7 @@ public static void register(int student, int grade) {...}
 ```
 
 It all depends on what happens with the `student` and `grade` variables inside the method.
-Therefore, there is no way to tell the correct answer to this question as insufficient
-information is given.
+Therefore, there is no way to tell the correct answer to this question.
 
 </Solution>
 
@@ -58,23 +59,29 @@ information is given.
 Unfortunately, in the exercise above, there is no way to tell which of the two is correct! They might both be, but it depends on the way
 the actual method was implemented. This makes it very easy to introduce nasty bugs, by accidentally swapping the two, only
 discovering your programming error when a student shows up for the wrong course.
-Problems like this are things we would like to avoid and **the best way to avoid bugs is to make them impossible.**
-Let us rewrite this code by introducing types for `Student` and `Grade`.
+Using the type system we can make sure that the compiler can catch a mistake if we accidentally swap the two.
+A nice quote from Java for Everyone is that **the best way to avoid bugs is to make them impossible.**
+Let do this by rewriting this code by introducing new types for `Student` and `Grade`.
 ```java
 Student student = getStudent(36);
 Course grade = getCourse(12);
 register(student, course);
 ```
 
-This way only one register method signature is valid, and the compiler will check if we provide the right parameters.
+This way only one signature for the `register` method is valid, and the compiler will check if we provide the right parameters.
 In the above code, we have used the `Student` and `Course` types.
-Now, if the method signature is `public static void register(Course course, Student student)` the code will not compile, but with `public static void register(Student student, Course course)` it will.
+Now, if the method signature is `public static void register(Course course, Student student)` the code will not compile,
+but with `public static void register(Student student, Course course)` it will.
 This way, the compiler finds a mistake before we can even run the code, which saves the effort of debugging.
 
 The types also help a lot with the tools you use for programming. IntelliJ can often do very good suggestions
 which methods you can call on a certain variable, or suggest what argument to pass to a method. It uses the
 type information to make these suggestions and provide you with powerful features to manipulate your code,
 generate code and scan your code for typical errors.
+
+For a programmer, it can also make understanding the code easier. If a sloppy programmer declares two variables
+ `int s` and `int c`, it may be hard to guess what they represent. If `Student s` and `Course c` are declared,
+ it is much easier to understand what type of data is being held in the objects referenced by those variables.
 
 ### Method Overloading
 
@@ -114,7 +121,7 @@ arguments and the types of those arguments to decide this.
 
 The use of types in Java both has advantages and disadvantages, which are listed below.
 
-<text-box title="Advantages and Disadvantages">
+<text-box name="Advantages and Disadvantages of the Java Type System">
 
 **Advantages**
 * A powerful type system helps to **prevent bugs**.
@@ -136,12 +143,12 @@ In Java, exactly eight primitive types exist, which you already know: `byte`, `s
 
 <text-box name="characters" variant="hint">
 
-One of the eight primitive types is a character, shortened by `char`. It holds one Unicode character (e.g. a letter or emoji) and is used for many purposes. 
+One of the eight primitive types is a character, shortened by `char`. It holds one Unicode character (e.g. a letter or emoji) and is used for many purposes.
 All the letters and signs that we use have a unicode number. If you are interested, you can read more about this at [Unicode.org](https://home.unicode.org/).
 In the book `Think Java`, some nice examples are covered, such as the following (from page 96) :
 
-In Unicode, each character is represented by a “code point”, which you can think of as an integer. The code points for uppercase Greek letters run from 913 to 937, so we can display the Greek alphabet like this:
-    
+In Unicode, each character is represented by a *code point*, which you can think of as an integer. The code points for uppercase Greek letters run from 913 to 937, so we can display the Greek alphabet like this:
+
 ```java
 System.out.print("Greek alphabet: ");
 for (int i = 913; i <= 937; i++) {
@@ -242,10 +249,16 @@ public static int evenSum(List<Integer> numbersList) {
 ```
 Note that the remainder `%` and unary plus `+=` operators do not apply to `Integer` objects. However, the compiler does not generate an error, because it unboxes the objects to `int` objects at runtime.
 
-<text-box title="Advantages of Autoboxing and Unboxing">
+<text-box name="Advantages of Autoboxing and Unboxing">
 
-- The compiler makes you write code that is easier to read, because we do not need to cast types explicitly.
-- It also lets you use primitive and non-primitive types interchangeably, which is convenient.
+**Advantages**
+
+- The compiler allows you to write code that is easier to read, because we do not need to cast types explicitly.
+- The compiler lets you use primitive and non-primitive types interchangeably, which is convenient.
+
+**Disadvantages**
+
+- If you want to write extremely performant code, autoboxing can give overhead which you may need to try to avoid.
 
 </text-box>
 
@@ -281,39 +294,43 @@ More advantages can be found in the advantages text box.
 
 </Solution>
 
+---
 
 What is method overloading?
-
 
 <Solution>
 
 When the same method name is used for more than one method, the name is **overloaded**.
 In Java, you can overload method names provided that the parameter types are different. For example, you can declare two methods, both called `print`:
 
-`public void print(String s)`
-`public void print(int i)`
+```java
+public void print(String s) { ... }
+public void print(int i) { ... }
+```
 
-When the `print` method is called, `print(x);`, the compiler looks at the type of `x`. If `x` is a `String`, the first method is called. If `x` is an integer value, the second method is called. If `x` is neither, the compiler generates an error.
+When the `print` method is called, for example using the statement `print(x);`, the compiler looks at the type of `x`. If `x` is a `String`, the first method is called. If `x` is an integer value, the second method is called. If there is no print method that is suitable for the type of `x`, the compiler generates an error.
 
 </Solution>
 
+---
 
 What is the difference between a primitive type and a non-primitive type?
 
 <Solution>
 
-A non-primitive type is an instance of a class, which is an object.
-Primitive types, on the other hand, just hold a value (number, character or true/false).
 There are only eight primitive types, namely `byte`, `short`, `int`, `long`, `float`, `double`, `char` and `boolean`.
+All other types are non-primitive, including arrays of primitive types (i.e. `int []`), the boxed versions of the
+primitive types (i.e. `Integer`) and also `String` is a non-primitive type.
 
 </Solution>
 
+---
 
 Can you autobox from `Integer` to `double`? And from `int` to `Double`?
 
 <Solution>
 
-Yes, you can autobox from `Integer` to `double`, but you cannot autobox from `int` to `Double`. Please reread the last paragraph of the text for further explanation.
+Yes, you can autobox from `Integer` to `double`, but you cannot autobox from `int` to `Double`.
 
 </Solution>
 

@@ -1,12 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import ReduxActionAnalytics from "redux-action-analytics"
-import * as storejs from "store"
+// import ReduxActionAnalytics from "redux-action-analytics"
+// import * as storejs from "store"
 import withSimpleErrorBoundary from "../util/withSimpleErrorBoundary"
 
+/*
 let analytics = undefined
 
-initAnalytics()
+//initAnalytics()
 
 function initAnalytics() {
   if (typeof window === "undefined") {
@@ -52,6 +53,8 @@ function logAction(action, player) {
   }
   analytics.saveAction(snapshot)
 }
+
+*/
 
 const VideoWrapper = styled.div`
   position: relative;

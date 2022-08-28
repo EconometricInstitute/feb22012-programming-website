@@ -200,16 +200,19 @@ What is the difference between private and public variables?
 
 <Solution>
 
-The keyword private means that the variables are "hidden" inside the object, which is known as encapsulation.
-Public variables, on the other hand, are exposed as public to other programmers, whereas the internals should be hidden away from other programmers and kept private.
+The keyword `private` means that the variables are meant for internal use within the class, which is known as encapsulation.
+Using the `public` keyword to define variables, on the other hand, means these variables are exposed as public to other programmers, and can be directly accessed from other classes.
 In general, instance variables are almost always kept private, as providing access to them via methods provides more flexibility to change something at a later point in time.
 
 </Solution>
 
+---
 
-Can you give an example of a variable that references to an object? And also a variable that does not?
+Can you write a code example that defines a variable that references to an object? And another variable that does not reference an object?
 
 <Solution>
+
+Some example code:
 
 ```java
 List<Integer> myList = new ArrayList<>();
@@ -220,15 +223,19 @@ int number = myList.get(0);
 Here, the first value of the list references to an `Integer` object that on its turn holds the value 23.
 The `number` variable is an example of a variable that actually holds the value.
 
+Only variables of primitive types hold actual values, all non-primitive variables hold references.
+
 </Solution>
 
+---
 
 Say that you have a `Dog` class and want each dog to take certain behavior, such as barking. Assume that you do not want to let every dog bark.
 You make a `bark()` method. Should this be a **static** or a **non-static** method?
 
 <Solution>
 
-The bark method will be called on certain dogs, so we want to be able to call the method on an object. This means that we should make the `bark()` method non-static. Now, the method can be accessed via the `this` keyword.
+The bark method will be called on certain dogs, so we want to be able to call the method on an object. This means that we should make the `bark()` method non-static.
+Now, the method has to be called on a particular `Dog` object. If the method is implemented well, it should make only the dog on which the method is called bark.
 
 </Solution>
 

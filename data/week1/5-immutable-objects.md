@@ -50,13 +50,24 @@ System.out.println(b);
 What do you will be printed here?
 
 <Solution>
+
 Would you expect 233 and 377 to be printed?
 
 It may then come as a surprise that for both _a_ and _b_ the number 233 will be printed here. That is because of the definition of the add method for BigInteger objects, which you can find in the [Java documentation](https://docs.oracle.com/javase/8/docs/api/java/math/BigInteger.html):
 
 > The method `add(BigInteger val)` "returns a BigInteger whose value is `(this + val)`".
 
-In the previous code, we computed a new value, but did not do anything with it. Lesson learned: check the return type! If we change `b.add(addValue)` into `b = b.add(addValue);`, it will print 233 and 377.
+In the previous code, the line `b.add(addValue)` computed a new value, but did not do anything with it. If we change it into
+
+```java
+b = b.add(addValue);
+```
+
+it will print 233 and 377.
+
+Since an immutable object can not change, they will typically produce *new* objects when we perform operations on them.
+With mutable objects, the results can be stored in the state of the object, and returning new objects is typically not
+necessary. So the lesson learned here is: check the return type, to make sure how to use the operations on mutable or immutable objects correctly!
 
 </Solution>
 
@@ -78,7 +89,7 @@ If you want to create your own class for immutable objects, follow these simple 
 
 Lastly, we will list the advantages and disadvantages of immutable objects here.
 
-<text-box title="Advantages and Disadvantages">
+<text-box name="Advantages and Disadvantages">
 
 **Advantages**
 - We do not have to worry about copying them, we can pass references.
@@ -89,4 +100,84 @@ Lastly, we will list the advantages and disadvantages of immutable objects here.
 - Creating a new object every time implies we have to copy data more often.
 - You may lose efficiency compared to very optimized mutable objects.
 - In some setting it is more intuitive to change the state of an object, such as a simulated environment or a bank account.
+
 </text-box>
+
+
+
+<Exercise title="Test your knowledge">
+
+Explain what a immutability is. Can you give an example of a commonly used Java class that is immutable? Can you also
+name a mutable class?
+
+<Solution>
+
+Immutability means that the state of objects of a class never changes. It is set once upon creation and then
+always remains the same. The most commonly used immutable class is `String`, and all classes for boxing
+primitive values, such as `Integer`, `Boolean` and `Double` are also immutable.
+
+The most commonly used mutable class is `ArrayList`. For example, the `add` and `remove` operation really change
+the contents of the list object, and therefore update the state of the list. As a consequence, the `List` class
+is mutable.
+
+</Solution>
+
+---
+
+Adjust the following mutable class so that it becomes immutable:
+
+```java
+public class Doubler {
+    private int number;
+
+    public Doubler(int initialValue) {
+        this.number = initialValue;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void doubleNumber() {
+        number *= 2;
+    }
+}
+```
+
+<Solution>
+
+The main way to do this, is by first making sure all instance variables are final.
+Furthermore, we need to adjust the method `doubleNumber` method that modifies the
+state of an object, so it returns a new object. If we do this, we get the following:
+
+```java
+public class Doubler {
+    private final int number;
+
+    public Doubler(int initialValue) {
+        this.number = initialValue;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void doubleNumber() {
+        return new Doubler(number * 2);
+    }
+}
+```
+
+</Solution>
+
+---
+
+Name an advantage and name a disadvantage of making a class immutable.
+
+<Solution>
+
+A list of advantages and disadvantages can be found on somewhat higher on this same page.
+
+</Solution>
+
+</Exercise>
