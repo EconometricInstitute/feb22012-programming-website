@@ -3,7 +3,7 @@ path: '/week2'
 title: 'Week 2'
 overview: true
 hidden: false
-ready: false
+ready: true
 ---
 
 In the second week of the course we focus on some concepts that are relevant in the assignments, including random number generator, the exception mechanism and reading

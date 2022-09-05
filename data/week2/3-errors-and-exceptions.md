@@ -422,7 +422,7 @@ Exceptions are meant to deal with **exceptional** situations. They should thus n
 You should **throw early, catch late**. It means that you should check the input of a method before you start doing computations. If the input is not okay, throw an exception.
 If an exception can occur within a method that is not able to provide a good solution to the problem, the exception should be thrown to the caller.
 
-<text-box name="exceptions tutorial" variant="hint">
+<text-box name="Exceptions Tutorial" variant="hint">
 
 If you still feel like you are struggling with the understanding of exceptions, feel free to check this [tutorial](https://docs.oracle.com/javase/tutorial/essential/exceptions/).
 Note that it also includes some nice exercises at the bottom of the page. The blue paragraph titles are clickable.
@@ -442,6 +442,7 @@ You can code beforehand what to do in case of exceptions. So, an exception is us
 
 </Solution>
 
+---
 
 Does the general statement `catch (Exception e)` always work when catching an exception?
 If so, is it desirable to do this? If it does not always work, what do we do when the general statement does not work?
@@ -452,6 +453,8 @@ Yes, this general statement always works in a `try-catch` composition, but is no
 
 </Solution>
 
+---
+
 What will happen in case an exception occurs in the code below?
 ```
  try {
@@ -460,15 +463,105 @@ What will happen in case an exception occurs in the code below?
 catch (Exception e) {
  }
 ```
- 
+
 <Solution>
 
-Nothing will happen. The code will continue as if nothing happened. As a programmer or user, you will receive no indication that something went wrong. 
-However, your results will be useless and may contain many errors. 
+Nothing will happen. The code will continue as if nothing happened. As a programmer or user, you will receive no indication that something went wrong.
+However, your results will be useless and may contain many errors.
 To prevent this from happening, you should always put something in the `catch` block, such as `e.printStackTrace();`, to get an indication if something went wrong.
 
 </Solution>
 
-#TODO may later want to add a question on checked and unchecked exceptions.
+---
+
+An `IllegalArgumentException` is an *unchecked* exception, while a `FileNotFoundException` is a *checked* exception. Suppose a colleague has created two methods
+with the following signatures:
+
+```java
+public List<Student> readStudentData(File input)
+                throws FileNotFoundException {
+    // Code from your colleague here
+}
+public List<Student> findStudentsOfYear(List<Student> students, int year)
+                throws IllegalArgumentException {
+    // Code from your colleague here
+}
+```
+
+Now you want to create a method `readStudentDataOfYear` that accepts a file an a year, and reads the data
+from the file and returns only the relevant students. For the following alternative implementations, determine
+if they will compile or not. Which alternative would be preferred?
+
+**Fragment 1**
+
+```java
+public List<Student> readStudentDataOfYear(File input, int year) {
+    return findStudentsOfYear(readStudentData(input), year);
+}
+```
+
+**Fragment 2**
+
+```java
+public List<Student> readStudentDataOfYear(File input, int year) {
+    try {
+        List<Student> data = readStudentData(input);
+        return findStudentsOfYear(data, year);
+    } catch (FileNotFoundException ex) {
+        return new ArrayList<>();
+    }
+}
+```
+
+**Fragment 3**
+
+```java
+public List<Student> readStudentDataOfYear(File input, int year) {
+    try {
+        List<Student> data = readStudentData(input);
+        return findStudentsOfYear(data, year);
+    } catch (IllegalArgumentException ex) {
+        return new ArrayList<>();
+    }
+}
+```
+
+**Fragment 4**
+
+```java
+public List<Student> readStudentDataOfYear(File input, int year)
+        throws FileNotFoundException, IllegalArgumentException {
+    return findStudentsOfYear(readStudentData(input), year);
+}
+```
+
+**Fragment 5**
+
+```java
+public List<Student> readStudentDataOfYear(File input, int year) throws FileNotFoundException {
+    return findStudentsOfYear(readStudentData(input), year);
+}
+```
+
+
+<Solution>
+
+Fragment 1 will not compile, as the *unchecked* `FileNotFoundException` that might occur in the `readStudentData` call is not handled.
+
+Fragment 2 will compile, as the `FileNotFoundException` is caught and suppressed, so the compiler will consider it as being handled.
+
+Fragment 3 will not compile, as the *unchecked* `FileNotFoundException` is not handled at all.
+
+Fragment 4 will compile, as the `FileNotFoundException` is delegated to the called. The compiler will consider it as being handled.
+
+Fragment 5 will compile. As the `IllegalArgumentException` from fragment 5 is *unchecked*, it is not required to handle it.
+
+As the `input` file is provided by the caller of the `readStudentDataOfYear` method, it is typically nice to indicate to the
+called that a problem occurs while reading this file. With fragment 3, the caller has no way to know if the file did not
+exist, or if the dataset turned out to be empty. In a case like this, it is typically better to signal the caller that a
+problem occurred, and use either fragment 4 or fragment 5. The advantage of fragment 4 is that there is more information to
+the caller of things that can possibly go wrong, so the caller can prepare for these situations.
+
+</Solution>
 
 </Exercise>

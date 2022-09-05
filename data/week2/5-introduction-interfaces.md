@@ -11,8 +11,6 @@ ready: true
 
 - You know how to use interfaces as variable types, method parameters and method return values.
 
-- You're aware of some of the interfaces that come with Java.
-
 </text-box>
 
 ## Motivation to use Interfaces
@@ -171,3 +169,49 @@ When a class implements an interface, it signs an agreement. The agreement dicta
 The interface defines only the names, parameters, and return values of the required methods. The interface, however, does not have a say on the internal implementation of its methods. It is the responsibility of the programmer to define the internal functionality for the methods.
 
 </text-box>
+
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+Sarah is implementing a mobility simulation for her thesis internship. During her
+programming work, she created an interface called `Vehicle` with methods such as
+ `maxSpeed()` and `seatCapacity()`. Try to imagine some classes she may created that
+implement this interface.
+
+<Solution>
+
+Typically you would expect some concrete types of vehicle are implemented, such as
+`Car`, `Train`, `Bus`, `Bicycle`.
+
+</Solution>
+
+---
+
+Look at the following code that makes use of an interface called `Food`. Is it possible
+that this is legal Java code? If yes, what do we know about the `Apple`, `Strawberry`
+and `RiceBowl` types? If not, what is the fundamental reason the compiler will never
+accept this?
+
+```java
+Food food1 = new Apple();
+Food food2 = new Strawberry();
+Food food3 = new RiceBowl();
+
+List<Food> foodList = List.of(food1, food2, food3);
+```
+
+<Solution>
+
+This can be perfectly legal Java code. What is necessary for the above code to be
+legal is that `Apple`, `Starberry` and `Ricebowl` are classes implementing the
+`Food` interface. Furthermore, they should have constructors with zero arguments.
+
+Constructing a list with objects from different classes, but which classes implement
+the same interface is possible, if we define the type of the objects in the list
+to be a common types of the objects we want to add to the list.
+
+</Solution>
+
+</Exercise>

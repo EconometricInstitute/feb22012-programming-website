@@ -61,6 +61,15 @@ try (Scanner scanner = new Scanner(Paths.get("file.txt"))) {
 
 A file is read from the project root by default ( when `new Scanner(Paths.get("file.txt"))` is called), i.e., the folder that contains the folder `src` (and possibly other files as well). The contents of this folder can the inspected using the `Project Files`-tab in IntelliJ.
 
+<text-box variant="pitfall" name="Be careful using Scanner!">
+
+While `Scanner` is rather convenient to use, it also has a number of issues that can make using it quite dangerous in some situations. In particular, when reading lines longer than 1024 characters, the `Scanner` just reads 1024 characters and ignores the rest.
+Unfortunately this has been a [long and open bug](https://bugs.java.com/bugdatabase/view_bug.do?bug_id=8028387) in Java.
+
+Therefore, **if you need to read long lines of text from a file, don't use Scanner!**
+
+</text-box>
+
 ### Reading files using a BufferedReader
 Since the Scanner does not work properly on files with very long lines, you will also learn to read files with a BufferedReader. This method is highly recommended by us, because you do not have to think about your files having long lines or not.
 The problem with long lines for the Scanner is a reported bug. When there are lines longer than 1024 characters in a file, the Scanner breaks down without giving any warning. The BufferedReader is a good alternative. We will provide you with an example here:
@@ -114,26 +123,26 @@ The constructor of the `PrintWriter` class might throw an exception that must be
 ```java
 public class Storer {
 
-    public void writeToFile(String fileName, String text) throws Exception {
-        PrintWriter writer = new PrintWriter(fileName);
-        writer.println(text);
-        writer.close();
+    public void writeToFile(String fileName, String text) throws IOException {
+        try (PrintWriter writer = new PrintWriter(fileName)) {
+            writer.println(text);
+        }
     }
 }
 ```
 
-In the `writeToFile` method above, we begin by creating a `PrintWriter` object. It writes data to the file that is located at the path that the string `fileName` indicates. After this, we write the text to the file by calling the `println` method. The possible exception that the constructor throws has to be handled with a `try-catch` block, or the handling responsibility has to be transferred elsewhere. In the `writeToFile` method, the responsibility to handle the exception is placed on the method that calls `writeToFile`.
+In the `writeToFile` method above, we begin by creating a `PrintWriter` object using a try-with-resources. It writes data to the file that is located at the path that the string `fileName` indicates. After this, we write the text to the file by calling the `println` method. The possible exception that the constructor throws has to be handled with a `try-catch` block, or the handling responsibility has to be transferred elsewhere. In the `writeToFile` method, the responsibility to handle the exception is placed on the method that calls `writeToFile`.
 
 Let's create a `main` method that calls the `writeToFile` of a `Storer` object. There is nothing to force the `main` method to handle the exception -- it, too, can state that it might throw an exception by adding `throws Exception` to the method definition.
 
 ```java
-public static void main(String[] args) throws Exception {
+public static void main(String[] args) throws IOException {
     Storer storer = new Storer();
     storer.writeToFile("diary.txt", "Dear diary, today was a good day.");
 }
 ```
 
-By calling the method above, we create a file called "diary.txt" and write the text "Dear diary, today was a good day." into it. If the file already exists, the earlier contents are erased when we store the new text.
+By calling the method above, we create a file called `diary.txt` and write the text "*Dear diary, today was a good day.*" into it. If the file already exists, the earlier contents are erased when we store the new text.
 
 It is also possible to handle files in a way that adds the new text after the existing content. In that case, you might want to use the [FileWriter](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/FileWriter.html) class.
 
@@ -155,7 +164,7 @@ catch (FileNotFoundException e) {
 }
 ```
 
-As you can see, we have added a call to the PrintWriter's flush method. The PrintWriter maintains a buffer, as it is typically more efficient to write a lot of data to a storage device at once. If we want to be sure that all printed data is actually written to the file, we should call flush(). If the program crashes before the file is closed, non-flushed data may not have been written to the file. To mark the difference between printed and written data, note that printed data is the data that you send to the `PrintWriter`, while written data means that the data is actually written to the hard disc or saved in the file. There is a difference, because the `PrintWriter` often waits a bit with actually writing it away from an efficiency point of view. 
+As you can see, we have added a call to the PrintWriter's flush method. The PrintWriter maintains a buffer, as it is typically more efficient to write a lot of data to a storage device at once. If we want to be sure that all printed data is actually written to the file, we should call flush(). If the program crashes before the file is closed, non-flushed data may not have been written to the file. To mark the difference between printed and written data, note that printed data is the data that you send to the `PrintWriter`, while written data means that the data is actually written to the hard disc or saved in the file. There is a difference, because the `PrintWriter` often waits a bit with actually writing it away from an efficiency point of view.
 When the PrintWriter is closed, the flush method is called automatically. Since we have used the PrintWriter inside a `try-with-resources` environment, the PrintWriter would already have closed after the flush line, thus automatically calling it. Here, the flush() call is thus just for demonstration purposes, but it is good to know that you should remember to close or flush a PrintWriter if you keep a file open for a longer time.
 
 ## Filtering a file
@@ -221,3 +230,75 @@ As you might have noticed, one of the read methods that are provided by the `Fil
 This can be important when you deal with data that contains special characters such as &#233; or Emoji. You can read more in the [background content on this topic](./6-character encoding).
 
 </text-box>
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+Explain the difference between reading with a `Scanner`, a `BufferedReader` or the `Files` class. Name an advantage of using the `Scanner` and a disadvantage of using a `Scanner`.
+
+<Solution>
+
+With a `Scanner`, you can read specific elements from a file one by one, using methods such as `nextLine()` or `nextInt()`, which also convert the contents of the file into the
+expected type of data. `BufferedReader` gives a more low-level approach and is more difficult to construct, and only has methods to read `String` objects from a file. The `Files`
+class offers convenient method, such as `readAllLines` that gives you a `List<String>` directly, rather than having to read the file line by line yourself.
+
+One big advantage of the `Scanner` is that if you want to read numbers from a file, it is very convenient that you have methods that immediately produce numbers.
+One disadvantage is that it has a bug that makes it unsuitable to read very long lines of text from a file.
+
+</Solution>
+
+---
+
+Name two ways in which you can write textual data to a file.
+
+<Solution>
+
+In this chapter, three ways are mentioned: using a `PrintWriter`, using a `FileWriter` and using the `Files` utility class.
+
+</Solution>
+
+---
+
+Read the documentation of the `FileWriter` class. The following implementation replaces the content of the diary file,
+deleting previous entries, which is not how a diary is supposed to work. How would you adjust the following method to
+make sure it *appends* the text written to the file containing the diary?
+
+**Hint:** you can pass a `FileWriter` object into the constructor of `PrintWriter` to obtain a `PrintWriter` that can
+write using the `FileWriter`.
+
+```java
+public class Storer {
+
+    public void writeToFile(String fileName, String text) throws IOException {
+        try (PrintWriter writer = new PrintWriter(fileName)) {
+            writer.println(text);
+        }
+    }
+}
+```
+
+<Solution>
+
+The `FileWriter` class has a constructor that accepts a second boolean argument
+indicating if the text should be appended. We should pass `true` as this argument
+to be able to append to a file, rather than overwriting it's content.
+
+As the `FileWriter` does not have convenient methods to write lines of text, we
+have to wrap the `FileWriter` in a `PrintWriter` to be able to call `println`
+on it.
+
+```java
+public class Storer {
+
+    public void writeToFile(String fileName, String text) throws IOException {
+        try (PrintWriter writer = new PrintWriter(FileWriter(fileName, true))) {
+            writer.println(text);
+        }
+    }
+}
+```
+
+</Solution>
+
+</Exercise>
