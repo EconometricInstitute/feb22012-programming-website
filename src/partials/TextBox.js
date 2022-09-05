@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faInfoCircle, faUserGraduate, faBookOpen } from "@fortawesome/free-solid-svg-icons"
+import { faInfoCircle, faUserGraduate, faBookOpen, faExclamationTriangle } from "@fortawesome/free-solid-svg-icons"
 import withSimpleErrorBoundary from "../util/withSimpleErrorBoundary"
 
 const Wrapper = styled.aside`
@@ -35,24 +35,28 @@ const variantToColor = {
   hint: "#528afc",
   learningObjectives: "#57b181",
   backgroundMaterial: '#17a2b8',
+  pitfall: "#f44336",
 }
 
 const variantToIcon = {
   hint: faInfoCircle,
   learningObjectives: faUserGraduate,
   backgroundMaterial: faBookOpen,
+  pitfall: faExclamationTriangle,
 }
 
 const variantIconSize = {
   hint: "2x",
   learningObjectives: "1x",
   backgroundMaterial: "2x",
+  pitfall: "2x",
 }
 
 const variantToDescription = {
   hint: 'Hint',
   learningObjectives: '',
   backgroundMaterial: 'Background Material',
+  pitfall: "Pitfall"
 }
 
 const TextBox = props => {
