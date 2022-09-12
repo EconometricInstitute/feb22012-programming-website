@@ -124,28 +124,69 @@ for example: `public final void doSomething() { ... }`.
 
 In this quiz, you can test your knowledge on the subjects covered in this chapter.
 
-Why should you put the `@Override` annotation above an overriden class?
+Why should you put the `@Override` annotation above an overriden method?
 
 <Solution>
 
-It is good practice to add the `@Override` annotation to such a method: in case there is a typo method name or a mistake in the arguments, the compiler will warn that the method is not overriding something. This is very helpful, because these are often very nasty types of mistakes to debug.
-    
+It is good practice to add the `@Override` annotation to such a method: in case there is a typo method name or a mistake in the arguments, the compiler will warn that the method is not overriding something. This is very helpful, as it is possible you
+make a type, or accidentally try to override a method using the wrong signature. For example, if you try to override a method `generalCheck()` but accidentally type `generalcheck()`, the `@Override` annotation will warn you that you are not overriding
+anything. That will probably help you catch the bug that you forgot to capitalize the `c` in `check`.
+
 </Solution>
+
+---
 
 What does overriding a method do?
 
 <Solution>
 
-The ability of a subclass to override a method allows a class to inherit from a superclass whose behavior is "close enough" and then to modify behavior as needed. The overriding method has the same name, number and type of parameters, and return type as the method that it overrides.
+It allows you to change the behavior of methods that were defined in a superclass or supertype. This way you redefine the behavior of the method when it is a called an object of the type that overrides the method.
 
 </Solution>
 
-Can your classes use all methods of a superclass?
+---
+
+Can your classes call all methods of a superclass?
 
 <Solution>
 
-Yes, they can; this can be very useful!
-    
+They can only directly call methods of a superclass that are `public` or `private`.
+
+</Solution>
+
+---
+
+Suppose we have two classes:
+
+```java
+public class OneClass {
+    public void printSomething() {
+        System.out.println("One thing");
+    }
+}
+
+public class AnotherClass extends OneClass {
+    @Override
+    public void printSomething() {
+        System.out.println("Another thing");
+    }
+}
+```
+
+Now suppose we run the following code. What will be printed?
+
+```java
+OneClass oc = new AnotherClass();
+oc.printSomething();
+```
+
+<Solution>
+
+This will print `Another thing`. The important thing to remember is
+that the implementation that will be executed depends on the type of
+the object on which we call the method, not on the type of the variable
+that holds a reference to the object.
+
 </Solution>
 
 </Exercise>

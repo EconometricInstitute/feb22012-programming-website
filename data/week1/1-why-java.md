@@ -108,7 +108,7 @@ public static String repeat(String text, int repetitions) {
         sb.append(text);
         i++;
     }
-    return sb.toString()
+    return sb.toString();
 }
 ```
 

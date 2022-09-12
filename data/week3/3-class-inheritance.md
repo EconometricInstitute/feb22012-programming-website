@@ -24,6 +24,7 @@ If we do so, we call `A` a *superclass* of `B` and `B` a *subclass* of `A`.
 Where interfaces only define methods, classes also have *instance variables* and
 *method implementations*. When we work with class inheritance, these are inherited as well.
 Here is an example:
+
 ```java
 // Contents of Square.java
 public class Square {
@@ -98,9 +99,11 @@ We can call methods of the superclass like we can with methods that are defined 
 We have now seen the two ways in which we can achieve polymorphism with classes: *interfaces* and *inheritance*.
 For (class) inheritance, subtype and supertype relationships work the same as with interfaces:
 the type of a subclass is a *specialization* of a superclass, and the superclass is a *generalization* of the
-subclass. These relations are always transative, and the general type conversion rules apply. Converting a
+subclass. These relations are always transitive, and the general type conversion rules apply. Converting a
 type to a more general type is always possible and can be done automatically, whereas conversion from a more
-general type to a more specific type needs special care.
+general type to a more specific type needs special care. Because of transitivity, subtype and supertype relations
+can have several intermediate types but still be called subtype or supertype. If a distinction is needed, we
+call a relation without intermediates a *direct* supertype, subtype, supertype or subclass relation.
 
 Moreover, a class **can have at most one direct superclass** but **implement any non-negative number of interfaces**.
 Consider the following example:
@@ -209,3 +212,120 @@ If a method or variable has the access modifier `private`, it is visible only to
 A subclass sees everything that is defined with the `public` modifier in the superclass. If we want to define some variables or methods that are visible to the subclasses but invisible to everything else, we can use the access modifier `protected` to achieve this.
 Methods and variables that are `protected`, can not only be called and accessed from within the same class definitions, but also from within its subclass definitions. Also, they can be called and accessed from within the same package, but in our assignments we do not use packages, so all our classes are in the same package. For instance, `ArrayList` is in the `java.util` package, so we cannot acces `protected` variables and methods of an `ArrayList`, unless we create a subclass of it.
 
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+What is the purpose of performing a call `super(...)` and `this(...)` in
+the first line of a constructor?
+
+<Solution>
+
+With a call to `super(...)` we can call a constructor of the direct super-class.
+This way we can make sure the super-class can perform proper initialization.
+
+With a call to `this(...)` we can call another overloaded constructor in the
+same class. One reason to do this is to have easier to use constructors that
+require fewer arguments. Another reason is to reduce duplicate code that
+initializes the class as much as possible.
+
+</Solution>
+
+---
+
+Suppose we want to override a `void` method `doSomething()` in a subclass that was
+defined in a superclass. Give an implementation of this method that first prints
+`This is new!` and then does whatever the superclass does when `doSomething()`
+is called?
+
+<Solution>
+
+We can use the `super` keyword as follows:
+
+```java
+@Override
+public void doSomething() {
+  System.out.println("This is new!");
+  super.doSomething();
+}
+```
+
+If we forget the `super.` part, the method ends up calling itself, and would
+result in a `StackOverflowError`. The `super` keyword makes sure we use the
+implementation we are overriding.
+
+</Solution>
+
+---
+
+Explain the difference between declaring a method `public`, `protected` and `private`.
+
+<Solution>
+
+If a method is declared `public`, it can be accessed from anywhere.
+If a method is declared `protected`, it can be accessed from subclasses, and within the same package.
+If a method is declared `private`, it can only be accessed from within the same `.java` source file.
+
+</Solution>
+
+---
+
+Suppose the following classes have been created (the contents were omitted for reasons of brevity):
+
+```java
+public interface I { ... }
+public class A { ... }
+public class B extends A { ... }
+public class C extends B implements I { ... }
+public class D extends C { ... }
+public class E extends C { ... }
+```
+
+For each of the following, choose the correct option:
+
+* Class `B` is a (sub-class of / super-class of / not related to) `A`
+* Class `A` is a (sub-class of / super-class of / not related to) `B`
+* Class `C` is a (sub-class of / super-class of / not related to) `A`
+* Class `A` is a (sub-class of / super-class of / not related to) `C`
+* Class `D` is a (sub-class of / super-class of / not related to) `A`
+* Class `A` is a (sub-class of / super-class of / not related to) `E`
+* Class `D` is a (sub-class of / super-class of / not related to) `E`
+* Class `A` is a (sub-type of / super-type of / not related to) `I`
+* Class `C` is a (sub-type of / super-type of / not related to) `I`
+* Class `E` is a (sub-type of / super-type of / not related to) `I`
+* Class `E` is a (direct sub-type / sub-type) of `C`
+* Class `E` is a (direct sub-type / sub-type) of `B`
+
+<Solution>
+
+* Class `B` is a **sub-class of** `A`
+* Class `A` is a **super-class of** `B`
+* Class `C` is a **sub-class of** `A`
+* Class `A` is a **super-class of** `C`
+* Class `D` is a **sub-class of** `A`
+* Class `A` is a **super-class of** `E`
+* Class `D` is a **not related to** `E`
+* Class `A` is a **not related to** `I`
+* Class `C` is a **sub-type of** `I`
+* Class `E` is a **sub-type of** `I`
+* Class `E` is a **direct sub-type** of `C`
+* Class `E` is a **sub-type** of `B`
+
+</Solution>
+
+---
+
+Suppose we introduce a new class with header `public class G extends F`.
+Are there any rules related to the constructors of class `G` we have to
+take into account?
+
+<Solution>
+
+Yes. If there are any constructors in `F`, we have to make sure we call
+them in the constructors of `G`. This way we ensure that the part of the
+objects `G` that is defined in class `F` is properly initialized.
+
+</Solution>
+
+</Exercise>

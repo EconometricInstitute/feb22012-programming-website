@@ -214,29 +214,42 @@ Why do we use interfaces in Java?
 
 <Solution>
 
-We use interfaces to prevent from writing duplicate code. We even do not want to do that if the code differs a little. For instance, if the object types are different, but the methods applying to the objects work the same, we want to write (and if needed debug) the code only once.
-This way, we make good use of polymorphism: treating objects of different classes uniformly.
-    
-</Solution>
+We use interfaces to achieve polymorphism, that lets us use different objects in a uniform way.
 
+This can prevent the writing duplicate code. Writing duplicate code should be avoided even if the code differs a little.
+That way we need to write (and if needed debug) the code only once. If the code needs to be adjusted later, there is no
+risk that we forget to update one of the copies.
+
+Furthermore, it makes our code modular: we can easily swap components that model investing behavior, that implement
+statistical models, etcetera.
+
+</Solution>
 
 Why would one use the interface type as a method parameter or return type?
 
 <Solution>
 
-We use the more general interface type as parameters and return types to keep methods general. By doing so, we make sure that all inheriting classes can use the method. 
-It is also used in creating and declaring new variables. A very well-known example is the following: `List<String> exampleList = new ArrayList<>();`.
-Here, the type `List` is general, as there exist many different types of lists. The class `ArrayList` inherits the class `List`, so that `List` is an interface of `List` here. In the [documentation](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/List.html) you can find which implementing classes the interface `List` has.
+We use the more general interface type as parameters and return types to keep methods general.
+By doing so, we make sure that all inheriting classes can use the method and avoid having to
+implement the same method for each inheriting class.
+
+It is also used in creating and declaring new variables.
+A very well-known example is the following: `List<String> exampleList = new ArrayList<>();`.
+Here, the type `List` is general, as there exist many different types of lists.
+The class `ArrayList` inherits the class `List`, so that `List` is an interface of `List` here.
+In the [documentation](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/List.html)
+you can find which other implementing classes have the interface `List`.
 
 </Solution>
-
 
 What can you do to avoid making mistakes while converting between types?
 
 <Solution>
 
-To safely convert between types, it is best to use the `instanceof` keyword to check if the type of your variable is actually the same as the type you want to convert to.
-    
+To safely convert between types, it is best to use the `instanceof` keyword to check if the type
+of your variable is actually the same as the type you want to convert to. Don't forget to think
+about what your program should do if the result of this check is `false`.
+
 </Solution>
 
 </Exercise>

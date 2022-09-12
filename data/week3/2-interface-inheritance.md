@@ -94,3 +94,88 @@ To summarize, when we establish an *inheritance relationship* between interface 
 2. The type `B` is considered as a specialization of the `A`, so references to objects of type `B` can be assigned to variables of type `A`. However, there is **no** guarantee that every object of type `A` will also be an object of type `B`.
 
 These relationships are *transitive*: if we have `B extends A` and `C extends B`, classes implementing `C` need to implement all methods from `A`, `B` and `C`, and object references of type `C` can be assigned to variables of both type `A` and type `B`.
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+Explain how we can use *interface inheritance* and what the consequences of using it are.
+
+<Solution>
+
+Interface inheritance can be used via the `extends` keyword in the header of the interface, e.g. `interface B extends A`,
+where `A` is another interface.
+
+One consequence of doing this, is that `B` inherits the contents of interface `A`.
+Typically that means that any class that implements interface `B` must implement all methods declared in both `B` and
+`A`. Classes that implement only interface `A` are oblivious of interface `B` and thus only have to implement the
+methods of interface `B`.
+
+Another consequence is that we can assign references to objects of type `B` to variables of type `A`, as type `B` is
+now a specialization of type `A`, and type `A` is a generalization of type `B`. This means any object of type `B` is
+guaranteed to be also of type `A`, whereas not all objects of type `A` are guaranteed to be of type `B`.
+
+</Solution>
+
+---
+
+Consider the following interfaces:
+
+```java
+interface A {
+    int getANumber();
+}
+
+interface B extends A {
+    String getBString();
+}
+
+interface C extends B {
+    double getCDouble();
+}
+
+interface D extends B {
+    boolean getDBoolean();
+}
+```
+
+Suppose we create some objects of these types in some way:
+
+```java
+A aObj = /* some constructor */;
+B bObj = /* some constructor */;
+C cObj = /* some constructor */;
+D dObj = /* some constructor */;
+```
+
+Determine for each of the following statements if they can be executed:
+
+* `A otherA1 = bObj;`
+* `A otherA2 = cObj;`
+* `C otherC = aObj;`
+* `D otherD = bObj;`
+* `D otherD = cObj;`
+* `String bStr = aObj.getBString();`
+* `String bStr2 = cObj.getBString();`
+* `int aNum = bObj.getANumber();`
+* `int aNum2 = dObj.getANumber();`
+* `double cDouble = aObj.getCDouble();`
+* `boolean dBoolean = cObj.getDBoolean();`
+
+<Solution>
+
+* `A otherA1 = bObj;` : This is allowed.
+* `A otherA2 = cObj;` This is allowed.
+* `C otherC = aObj;` This is not allowed, not every object of type `A` has to be of type `C`.
+* `D otherD = bObj;` This is not allowed, not every object of type `B` has to be of type `D`.
+* `D otherD = cObj;` This is not allowed, an object of type `C` typically will not be of type `D`, unless a class implements both `C` and `D`.
+* `String bStr = aObj.getBString();` This is not allowed, as the `A` interface does not have this method.
+* `String bStr2 = cObj.getBString();` This is allowed.
+* `int aNum = bObj.getANumber();` This is allowed.
+* `int aNum2 = dObj.getANumber();` This is allowed.
+* `double cDouble = aObj.getCDouble();` This is not allowed, as the `getCDouble` method is not available for type `A`.
+* `boolean dBoolean = cObj.getDBoolean();` This is not allowed, as the `getDBoolean` method is not available for type `C`.
+
+</Solution>
+
+</Exercise>
