@@ -42,14 +42,14 @@ This was a trick question. You don't have enough information to answer it as it
 depends on how the `register` method is defined. Consider the two following options:
 
 ```java
-public static void register(int grade, int student) {...}
+public static void register(int course, int student) {...}
 ```
 or alternatively,
 ```java
-public static void register(int student, int grade) {...}
+public static void register(int student, int course) {...}
 ```
 
-It all depends on what happens with the `student` and `grade` variables inside the method.
+It all depends on what happens with the `student` and `course` variables inside the method.
 Therefore, there is no way to tell the correct answer to this question.
 
 </Solution>
@@ -61,7 +61,7 @@ the actual method was implemented. This makes it very easy to introduce nasty bu
 discovering your programming error when a student shows up for the wrong course.
 Using the type system we can make sure that the compiler can catch a mistake if we accidentally swap the two.
 A nice quote from Java for Everyone is that **the best way to avoid bugs is to make them impossible.**
-Let do this by rewriting this code by introducing new types for `Student` and `Grade`.
+Let do this by rewriting this code by introducing new types for `Student` and `Course`.
 ```java
 Student student = getStudent(36);
 Course grade = getCourse(12);

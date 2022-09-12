@@ -41,7 +41,7 @@ When something goes wrong or unexpected happens while the program is running, it
 Raising an exception means that the execution of the current method is stopped, and that we return to the calling method with an exception status. There are two options in the calling method: it can either handle the exception, or it will
 pass on the exception to the method that called it. When an exception is raised, an none of the calling methods handle it, the execution will stop and the program will terminate with an error.
 
-You can raise an exception with the `throw` keyword, which behaves very similar to the `return` keyword, the difference being that is ignores the return type of the method, but raise an exception.
+You can raise an exception with the `throw` keyword, which behaves very similar to the `return` keyword, the difference being that it ignores the return type of the method, but raises an exception.
 It is a good idea to indicate what types of exception may be raised by `throw` statements in a method. This can be indicated in the method header using the `throws` keyword.
 
 Here is an example of a method that uses the `throw` keyword to raise an exception if not enough money is on a bank account. The exception type used is an `IllegalArgumentException`:
@@ -59,7 +59,7 @@ Also note that you don't need an 'else' because the exception will stop the meth
 
 
 Let consider some more examples of exceptions. For example, an `UnsupportedOperationException`
-can be raise using the statement `throw new UnsupportedOperationException()`.
+can be raised using the statement `throw new UnsupportedOperationException()`.
 The following code always throws an exception.
 
 ```java

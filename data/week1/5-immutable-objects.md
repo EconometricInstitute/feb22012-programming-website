@@ -23,11 +23,11 @@ Thus, we do not need to copy immutable objects to prevent their state from being
 
 First, we have a look at a `String` example, were we have `String str = "abc";`.
 If we want the letter c as a `String` object, we need to create a new object, or explicitly overwriting the old object, basically creating a new one and throwing the old object away.
-For instance, we can state `String c = abc.substring(2,3);`.
+For instance, we can state `String c = str.substring(2,3);`.
 The substring method returns the letter c, which is stored in the variable with the same name.
-On the other hand, if we would only call `abc.substring(2,3);`, nothing would happen.
+On the other hand, if we would only call `str.substring(2,3);`, nothing would happen.
 After both calls the first variable would still contain the string `"abc"`.
-If we would make the call `abc = abc.substring(2,3);`, the variable _seems_ to change, but behind the scenes it replaces the reference to the old string `"abc"` away to store a reference to the the new string `"c"` in the variable named `abc`.
+If we would make the call `str = str.substring(2,3);`, the variable _seems_ to change, but behind the scenes it replaces the reference to the old string `"abc"` away to store a reference to the the new string `"c"` in the variable named `str`.
 
 <Exercise title="BigInteger">
 
@@ -162,7 +162,7 @@ public class Doubler {
         return number;
     }
 
-    public void doubleNumber() {
+    public Doubler doubleNumber() {
         return new Doubler(number * 2);
     }
 }

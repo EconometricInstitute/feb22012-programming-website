@@ -51,7 +51,7 @@ What does the Java Virtual Machine do?
 
 <Solution>
 
-Java programs, as we write them, are compiled to Java *bytecode* by the Java compiler. The Java Virtual Machine (JVM) translates these instructions to machine code for the CPU, the Central Processing Unit (CPU), which then executes the translated instructions. Different
+Java programs, as we write them, are compiled to Java *bytecode* by the Java compiler. The Java Virtual Machine (JVM) translates these instructions to machine code for the CPU, the Central Processing Unit (CPU), which then executes the translated instructions. Different computer platforms (e.g. Windows, Mac OS, iOS, Android) each have their own JVM, which can execute Java bytecode. This way, it is (usually) easy to transfer Java programs from platform to another platform.
 
 </Solution>
 
