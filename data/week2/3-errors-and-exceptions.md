@@ -157,7 +157,7 @@ Scanner scan = new Scanner(System.in);
 while(ask) {
    try {
       System.out.println("Please enter the amount to withdraw.");
-      String line = s.nextLine();
+      String line = scan.nextLine();
       int amount = Integer.parseInt(line);
       withdrawMoney(amount);
       ask = false;
