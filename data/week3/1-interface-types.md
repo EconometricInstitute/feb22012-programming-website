@@ -99,14 +99,21 @@ Since an interface can be used as a variable's type, it can also be used as a pa
 For example, the `getValue` method of the class below accepts an argument of type `GameValue`.
 
 ```java
-public class GameValue {
-    public void printValue(GameValue gameValue) {
+public class Main {
+    public static void printValue(GameValue gameValue) {
         System.out.println(gameValue.getValue());
+    }
+
+    public static void main(String [] args) {
+        GameValue gameValue = new Dice(3, 4);
+        printValue(gameValue);
+        gameValue = new PokerHand("A♥", "K♥", "Q♥", "J♥", "T♥");
+        printValue(gameValue);
     }
 }
 ```
 
-The value of declaring the `getValue` method such that it accepts a `GameValue` argument lies in the fact that it can be given objects of *any* class that implements the `GameValue` interface as input.
+The benefit of declaring the `printValue` method such that it accepts a `GameValue` argument lies in the fact that it can be given objects of *any* class that implements the `GameValue` interface as input.
 When we call method with any object instantiated from a class that inherits the GameValue class, the method would function as desired. This avoid having to create many different methods for different
 types of casino games.
 
