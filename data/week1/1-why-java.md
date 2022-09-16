@@ -209,7 +209,7 @@ What is an object?
 
 An object is an instance of a class. From one class, several objects can be made. An object has instance variables that are specific to the internal state of that object. The classes non-static methods specify what methods can be performed on the object.
 
-Think for instance of dogs. Each dog has its own characteristics (i.e. states) and behaviors. If we would create a class `Dog` that repesents dogs, the states of a dog could for example be the dog's color, name, and breed. We could create methods for wagging the tail, barking, or eating to mimic a dog's behavior.
+Think for instance of dogs. Each dog has its own characteristics (i.e. states) and behaviors. If we would create a class `Dog` that represents dogs, the states of a dog could for example be the dog's color, name, and breed. We could create methods for wagging the tail, barking, or eating to mimic a dog's behavior.
 
 </Solution>
 
