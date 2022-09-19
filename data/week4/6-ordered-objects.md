@@ -27,13 +27,17 @@ But for new classes, things are usually not so clear. For instance, considering 
 price per month and an data limit per month:
 ```java
 public class Subscription {
+
     private double price;
     private int dataLimit;
+
     public Subscription(double price, int limit) {
         this.price = price;
         this.dataLimit = limit;
     }
-    …
+
+    public double getPrice() { return this.price; }
+    public int getDataLimit() { return this.dataLimit; }
 }
 ```
 
@@ -197,6 +201,7 @@ for (Member m : members) {
 
 <sample-output>
 
+```
 mikael (182)
 matti (187)
 ada (184)
@@ -204,6 +209,7 @@ ada (184)
 mikael (182)
 ada (184)
 matti (187)
+```
 
 </sample-output>
 
@@ -286,10 +292,120 @@ System.out.println(subs);
 it would print the following:
 
 <sample-output>
+
+```
 [(price: 5.0, limit: 20 MB), (price: 30.0, limit: 1000 MB), (price: 10.0, limit: 15 MB), (price: 15.0, limit: 250 MB)]
 [(price: 5.0, limit: 20 MB), (price: 10.0, limit: 15 MB), (price: 15.0, limit: 250 MB), (price: 30.0, limit: 1000 MB)]
 [(price: 30.0, limit: 1000 MB), (price: 15.0, limit: 250 MB), (price: 5.0, limit: 20 MB), (price: 10.0, limit: 15 MB)]
+```
+
 </sample-output>
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+What is the difference between the `Comparable` and the `Comparator` interface?
+How is this difference visible when we call the `Collections.sort()` method?
+
+<Solution>
+
+The `Comparable` interface is used to define a natural order on a class, whereas the `Comparator` interface is used to
+define an ad-hoc, external order. Typically, the class header for a natural order looks like:
+
+```java
+public class MyClass implements Comparable<MyClass> { ... }
+```
+
+whereas for an ad-hoc external order we have:
+
+```java
+public class MyComparator implements Comparable<SomeOtherClass> { ... }
+```
+
+When using `Collections.sort()`, we can sort a `List` of a type that has a natural order
+without any additional information, for example:
+
+```java
+List<MyClass> myList = new ArrayList<>();
+// Add some objects here
+Collections.sort(myList);
+```
+
+If we want to have more control over the exact that is being used to sort the objects, or if
+no natural order is available, we can pass a `Comparator` as a second argument to the
+`Collections.sort()` method, for example:
+
+```java
+List<SomeOtherClass> list = new ArrayList<>();
+// Add some objects here
+Collections.sort(list, new MyComparator());
+```
+
+</Solution>
+
+---
+
+Consider the following class:
+
+```java
+public class Employee {
+    private int yearsOfService;
+    private String surName;
+
+    public Employee(String surName, int yearsOfService) {
+        this.yearsOfService = yearsOfService;
+        this.surName = surname;
+    }
+
+    public int getYearsOfService() { return this.yearsOfService; }
+    public String getSurName() { return this.surName; }
+}
+```
+
+1. Write a class `EmployeeComparator` that provides an ad-hoc order where the longest years of service comes first, and employees with equal years of service are ordered according to their surname.
+2. Adjust the class `Employee` so that is provides a natural order where the employee are first ordered by surname, and then by asceding years of service (i.e. the shortest years of service comes first).
+
+<Solution>
+
+**Part 1**
+
+```java
+public class EmployeeComparator implements Comparator<Employee> {
+    public int compare(Employee e1, Employee e2) {
+        int diffYearsOfService = e2.getYearsOfService() - e1.getYearsOfService();
+        if (diffYearsOfService != 0) {
+            return diffYearsOfService;
+        }
+        return e1.getSurName().compareTo(e2.getSurName());
+    }
+}
+```
+
+**Part 2**
+
+```java
+public class Employee implements Comparable<Employee> {
+    /* All contents from original Employee go here */
+    public int compareTo(Employee other) {
+        int diffSurname = this.surName.compareTo(other.surName);
+        if (diffSurname != 0) {
+            return diffSurname;
+        }
+        return this.yearsOfService - other.yearsOfService;
+    }
+}
+```
+
+**Note:** we are allowed to access the private instance variable `yearsOfService` in the `other` object,
+because we are writing this code within the `Employee` class itself.
+This would not be allowed in the `EmployeeComparator` class, where we have to use the `getSurName()`
+and `getYearsOfService()` methods to access this data.
+
+
+</Solution>
+
+</Exercise>
 
 <!--
 <programming-exercise name='Wage order' tmcname='part10-Part10_11.WageOrder'>

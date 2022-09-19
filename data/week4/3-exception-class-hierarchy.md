@@ -40,4 +40,48 @@ All other exceptions must be caught and are called *checked exceptions*. These h
 The answer on whether an exception must be caught or may be caught can thus be found by looking at the Exception hierarchy. *Unchecked Exceptions* do not have to be caught and are either a subclass of `Error` or `RuntimeException`. All other exceptions are *Checked Exceptions* and must be caught.
 You can even create your own exception types by writing `public class MyException extends IllegalArgumentException {...}`. If you want it to be unchecked, you put them underneath the `RuntimeException` in the Exception class hierarchy, and otherwise, in case of a checked exception, you let it be a subclass of `Exception`, but not of `RuntimeException`.
 
-**NB.** Please note that you do *not* have to learn the upper hierarchy diagram by heart. You can always figure out these relationship from the *reference* that is provided during the exam. You do need to remember that *unchecked* exceptions are all types that are subtypes of `Error` and `RuntimeException`, and yopu should be able to figure out the rest using the `extends` relantionships listed in the *reference*.
+**NB.** Please note that you do *not* have to learn the upper hierarchy diagram by heart. You can always figure out these relationship from the *reference* that is provided during the exam. You do need to remember that *unchecked* exceptions are all types that are subtypes of `Error` and `RuntimeException`, and you should be able to figure out the rest using the `extends` relationships listed in the *reference*.
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+How do you determine if a particular exception is a *checked* or an *unchecked* exception?
+
+<Solution>
+
+If the class of the exception is a sub-class of `Error` or a sub-class of `RuntimeException` it is an *unchecked* exception. If that is not the case, it is a *checked* exception.
+
+</Solution>
+
+---
+
+When we call `readLine()` on a `BufferedReader`, we are required to handle a potential `IOException`. When we call `.get(index)` on a `List`, we are not required to handle a
+potential `IndexOutOfBoundsException`. Explain why this is the case.
+
+<Solution>
+
+As `IndexOutOfBoundsException` is a subclass of `RuntimeException`, it is an *unchecked* exception and thus we are not required to handle it. As `IOException` is a direct
+subclass of `Exception` and does not have `RuntimeException` or `Error` as it's super class, it is a *checked* exception and thus we have to handle it.
+
+</Solution>
+
+---
+
+Under what circumstances should you use a `catch` block to handle an exception, and under what circumstances should you propagate it to the caller with a `throws` clause in
+the method header? Are there circumstances where you want to do both?
+
+<Solution>
+
+This is discussed in earlier materials. Generally, we prefer to *throw early* and *catch late*. That means that we should only use a `catch` block if we have a good way
+to handle an Exception. As using a `catch` block means that the exception is not propagated to the caller of the method, the caller will not know that something went
+wrong. If this information would be relevant for the caller, we should thus prefer to propagate to the caller. If there is a good solution to solve the problem in the
+current method, a `catch` block should be used.
+
+We never should use both approaches for the same type of exception. The only case when it is appropriate for a method to both propagate exception to the caller and use
+a catch block, is if one type of exception can occur that can be handle appropriately in the method, and another type of exception can occur that should be propagated
+to the caller.
+
+</Solution>
+
+</Exercise>

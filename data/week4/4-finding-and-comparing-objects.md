@@ -10,10 +10,6 @@ ready: true
  - You understand the difference between the `==`-operator and the `equals()` method.
  - You understand why many standard classes such as `String` and `Integer` override the `equals()` method
  - You are aware that you should prefer to use your IDE (IntelliJ/Eclipse) to generate the code for `equals()` rather than write it yourself
- - You can override the equals() and/or hashCode() method or generate its code.
- - You know when to override these methods.
- - You can explain what a contract is.
-
 </text-box>
 
 ## Comparing objects
@@ -64,3 +60,29 @@ We suggest that you do not try to write the code for an overridden `equals` meth
 you will typically see that the following elements are used: the comparison first looks at the references. If the argument points to the same object in memory, they should be equal. If they are two separate objects, this is followed by checking the parameter object's type with the `instanceof` operation - if the object type does not match the type of our class, the object cannot be the same. Then, if the class is the same, a cast is performed after which after which the object variables are compared against each other.
 
 The is one more issue to take into account when you override the equals method: if we do so, we should take care of the `hashCode` method as well. To understand why this is the case, you have to understand what the contract of the `hashCode` method is, and what it is used for, which we discuss in the next section, *Equals and Hashcode*.
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+
+* Suppose a fellow student has implemented a class `Dataset`. Suppose you have obtained two references two `Dataset` objects held in variables `a` and `b`.
+Which of the following statements are true?
+
+1. If `a == b` returns `true`, then `a.equals(b)` must also return `true`.
+2. If `a == b` returns `false`, it is still possible that `a.equals(b)` returns `true`.
+3. Assuming `a` and `b` are not null, it is guaranteed that `a == b` and `a.equals(b)` always return the same.
+4. Assuming `a` and `b` are not null, it is possible that `a == b` and `a.equals(b)` always return the same.
+5. If `a.equals(b)` returns `false`, then `a == b` must also return `false`.
+
+<Solution>
+
+1. **True**: if `a == b` is `true`, this means both refer to the same object in memory. Since `a` and `b` are then really a single object, the contents of `a` and `b` must be equal as well.
+2. **True**: this is true. If `a == b` is `false`, that means `a` and `b` are different objects. However, they may be different objects which hold the same values. If `equals()` is overriden to compare the contents of the objects, `a.equals(b)` would return `true` in that case.
+3. **False**: this is not guaranteed. If `equals` is overridden to compare the contents of the objects, for two objects with the same values `a == b` would return `false`, yet `a.equals(b)` would return true.
+4. **True**: this is possible. If `equals` is not overridden, the behavior of the equals method is to check if two objects are in fact the exact same object in the memory.
+5. **True**: if `a.equals(b)` returns `false`, the is a difference in the contents as therefore there must be two different objects. This automatically means that the reference in `a` and `b` must be different as well.
+
+</Solution>
+
+</Exercise>

@@ -3,7 +3,7 @@ path: '/week4'
 title: 'Week 4'
 overview: true
 hidden: false
-ready: false
+ready: true
 ---
 
 In the fourth week of the course we will look into arrays and handling multidimensional data by using arrays. Moreover, we start looking into object-oriented programming this week, where we consider an introduction into objects.

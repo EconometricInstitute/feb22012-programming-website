@@ -5,6 +5,15 @@ hidden: false
 ready: true
 ---
 
+<text-box variant='learningObjectives' name='Learning Objectives'>
+
+- You understand what an abstract class is.
+- You know how to use create and extend abstract classes.
+- You know the difference between methods that are declared abstract and regular methods.
+- You understand that abstract classes themselves cannot be instantiated.
+
+</text-box>
+
 The advantage of using interfaces is that we can define methods without an implementation,
 for which then different classes can create different implementations of those methods,
 easily allowing us to choose different types of behavior in simulations or other types
@@ -26,7 +35,7 @@ abstract class. They can include normal methods which have a method body, but it
 method definition. Implementing the abstract methods is the responsibility of subclasses.
 
 To define an abstract class or an abstract method the keyword `abstract` is used in the class header.
-For example, you would write  `public abstract class MyAbstractClass` as the class headaer. This then
+For example, you would write  `public abstract class MyAbstractClass` as the class header. This then
 allows you to to use the `abstract` keyword in method headers for which you do not want to provide
 an implementation. For example the method header `public abstract ReturnType nameOfMethod();`, would
 for subclasses to implement a method called `nameOfMethod` similar to when it would implement and interface.
@@ -51,10 +60,18 @@ public abstract class Operation {
     }
 
     public abstract void execute(Scanner scanner);
+
+    public void executeAndRepeat(Scanner scanner, int repetitions) {
+        for (int i=0; i < repetitions; i++) {
+            this.execute(scanner);
+        }
+    }
 }
 ```
 
-The abstract class `Operation` works as a basis for implementing different actions. For instance, you can implement the plus operation by extending the `Operation` class in the following manner.
+The abstract class `Operation` works as a basis for implementing different actions.
+
+For instance, you can implement the plus operation by extending the `Operation` class in the following manner.
 
 ```java
 public class PlusOperation extends Operation {
@@ -102,7 +119,10 @@ public class UserInterface {
                 break;
             }
 
-            executeOperation(choice);
+            System.out.println("How often: ")
+            String repetitions = this.scanner.nextLine();
+
+            executeOperation(choice, repetitions);
             System.out.println();
         }
     }
@@ -117,11 +137,12 @@ public class UserInterface {
         }
     }
 
-    private void executeOperation(String choice) {
+    private void executeOperation(String choice, String repetitions) {
         int operation = Integer.valueOf(choice);
+        int reps = Integer.valueOf(repetitions);
 
         Operation chosen = this.operations.get(operation - 1);
-        chosen.execute(scanner);
+        chosen.executeAndRepeat(scanner, reps);
     }
 }
 ```
@@ -137,10 +158,12 @@ userInterface.start();
 
 <sample-output>
 
+```
 Operations:
         0: Stop
         1: PlusOperation
 Choice: **1**
+How often: **1**
 First number: **8**
 Second number: **12**
 The sum of the numbers is 20
@@ -149,6 +172,7 @@ Operations:
         0: Stop
         1: PlusOperation
 Choice: **0**
+```
 
 </sample-output>
 
@@ -162,4 +186,54 @@ constructors. The purpose of this is that these constructors should be called in
 of a subclass. You could already see this in the `Operation` class introduced above, which
 specify a constructor that is called in the subclass `PlusOperation`.
 
+The rules discussed for constructors in case of regular classes also apply to abstract classes.
+The only difference is that the constructors of an abstract class cannot be called using the
+`new` keyword in the same way as for regular classes. However, they typically do have to be
+called by a constructor of a subclass.
+
 </text-box>
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+Suppose someone has created an abstract class `MotorizedVehicle`. Is it possible
+to obtain an object of this type `MotorizedVehicle`? If yes, what steps would be
+needed?
+
+<Solution>
+
+It is not possible to directly instantiate an abstract class. In order to obtain
+an object that also has type `MotorizedVehicle`, we need to create a non-abstract
+subclass of `MotorizedVehicle`, implement all methods from `MotorizedVehicle` that
+have no implementation, and then call a constructor of this subclass.
+
+</Solution>
+
+---
+
+Determine whether of the following statements are true or false, and why:
+
+* Inside an abstract class you are not yet allowed to call methods that are abstract
+* Abstract classes can have constructors
+* We can use the `MotorizedVehicle mv = new MotorizedVehicle();` keyword to instantiate the abstract class `MotorizedVehicle`, as long as it has the proper constructor.
+* Since abstract classes can not be instantiated, they can not be used as a type
+
+<Solution>
+
+*Inside an abstract class you are not yet allowed to call methods that are abstract*:
+This is **false**. In the example on this page the `executeAndRepeat` method calls the
+`execute` method in the same class.
+
+*Abstract classes can have constructors*: This is **true**, abstract classes can have constructors
+
+*We can use the `new` keyword to instantiate an abstract class, as long as the abstract class has a constructor.* This is **false**, the constructor
+can not be used to instantiate `MotorizedVehicle` like this. Typically there should be some subclass, e.g. `public class Car extends MotorizedVehicle { ... }`
+for which we can then do `MotorizedVehicle mv = new Car();`.
+
+*Since abstract classes can not be instantiated, they can not be used as a type.* This is **false**. Abstract classes, like interfaces, can be used as
+a type, for example in variable and parameter declaration, even though they can not be instantiated into objects directly.
+
+</Solution>
+
+</Exercise>

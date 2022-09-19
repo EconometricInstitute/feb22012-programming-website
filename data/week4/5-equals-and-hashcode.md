@@ -182,25 +182,30 @@ If you would want to compare to strings and she if they hold the same word(s), w
 <Solution>
 
 A String is a non-primitive type, as it is written with a capital letter. Therefore, the `==`-operator would not work here, as we do not want to compare if the objects are the same, but whether the values that the objects hold are the same.
- 
+
 </Solution>
 
+---
 
 What should you keep in mind when overriding the `equals()` method?
 
 <Solution>
 
 The method that you write should adhere to some rule. It should be reflexive, symmetric, transitive and consistent.
-Also, you must override the `hashcode()` method!
+Also, you must override the `hashCode()` method
 
 </Solution>
 
-What does it mean when two objects have the same hashcode? And what if they have different ones?
+---
+
+Assuming the contract between `hashCode()` and `equals()` is respected, what does it mean when two objects have the same hash code?
+And what if they have different ones?
 
 <Solution>
 
-If two objects have the same hashcode, they are in the same collection of objects. Therefore, they might hold the same value(s) and thus be the same object, but they also still might be very different.
-On the other hand, if two objects have different hashcodes, we are sure the objects are different from each other. As soon as the `equals()` method finds that the two objects have different hashcodes, it returns `false` immediately.
+If two objects have the same hash code, it is possible their contents that are considered in the `equals` method *may* or *may not* be equal.
+On the other hand, if two objects have different hash codes, we are sure the objects are different from each other with respect to the
+contents that are considered by the `equals` method.
 
 </Solution>
 

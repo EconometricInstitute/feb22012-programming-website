@@ -56,7 +56,7 @@ What is this all about?
 
 In addition to each variable's original type, each variable can also be represented by the types of interfaces it implements and classes that it inherits. The String class inherits the Object class and, as such, String objects are always of type Object. The Object class does not inherit a String class, so Object-type variables are not automatically of type String. Take a closer look at the <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html"> String </a> API documentation, in particular at the top of the HTML page.
 
-<img src="../img/material/string-api-perinta.png" alt="A screenshot of the String Class API documentation. The screenshot shows that the String class inherits the class Object."/>
+![A screenshot of the String Class API documentation. The screenshot shows that the String class inherits the class Object.](../img/material/string-api-perinta.png)
 
 The API documentation for the String class begins with a generic header followed by the class' package (`java.lang`). After the package details, the name of the class (`Class String`) is followed by the  *inheritance hierarchy* of the class.
 
@@ -73,14 +73,10 @@ Knowledge of the fact that objects can be of many different types -- of type Obj
 
 ```java
 public class Printer {
-
     public void printManyTimes(Object object, int times) {
-        int i = 0;
-        while (i < times) {
+        for (int i=0; i < times; i++) {
             System.out.println(object.toString());
             // or System.out.println(object);
-
-            i = i + 1;
         }
     }
 }
@@ -104,11 +100,13 @@ printer.printManyTimes(words, 3);
 
 <sample-output>
 
+```
 o
 o
 [polymorphism, inheritance, encapsulation, abstraction]
 [polymorphism, inheritance, encapsulation, abstraction]
 [polymorphism, inheritance, encapsulation, abstraction]
+```
 
 </sample-output>
 
@@ -119,13 +117,15 @@ Let's continue to look at the API description of the `String` class. The inherit
   <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html" target="_blank" rel="noopener">Serializable</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/CharSequence.html" target="_blank" rel="noopener">CharSequence</a>, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html" target="_blank" rel="noopener">Comparable</a><<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html" target="_blank" rel="noopener">String</a>>
 </pre>
 
-The `String` class implements the `Serializable`, `CharSequence`, and `Comparable <String>` interfaces. An interface is also a type. According to the class' API description, the following interfaces can be set as the type of a String object.
+The `String` class implements the `Serializable`, `CharSequence`, and `Comparable` interfaces. An interface is also a type. According to the class' API description, the following interfaces can be set as the type of a String object.
 
 ```java
-Serializable serializableString = "string";
-CharSequence charSequenceString = "string";
-Comparable<String> comparableString = "string";
+Serializable serializableString = "some text";
+CharSequence charSequenceString = "more text";
+Comparable<String> comparableString = "other text";
 ```
+
+Note that we only discuss the `Comparable` interface in a later week, and the `Serializable` and `CharSequence` interface are only used as an example, but are not interfaces you have to be familiar with.
 
 Since we're able to define the type of a method's parameter, we can declare methods that receive an object that *implements a specific interface*. When a method's parameter is an interface, any object that implements that interface can be passed to it as an argument.
 
@@ -133,26 +133,22 @@ We'll extend the `Printer` class so that it has a method for printing the charac
 
 ```java
 public class Printer {
-
     public void printManyTimes(Object object, int times) {
-        int i = 0;
-        while (i < times) {
-            System.out.println(object);
-            i = i + 1;
+        for (int i=0; i < times; i++) {
+            System.out.println(object.toString());
+            // or System.out.println(object);
         }
     }
 
     public void printCharacters(CharSequence charSequence) {
-        int i = 0;
-        while (i < charSequence.length()) {
+        for (int i=0; i < charSequence.length(); i++) {
             System.out.println(charSequence.charAt(i));
-            i = i + 1;
         }
     }
 }
 ```
 
-The `printCharacters` method can be passed any object that implements the `CharSequence` interface. These include `String` as well as `StringBuilder`, which is often more functional for building strings than `String`. The `printCharacters` method prints each character of a given object on its own line.
+The `printCharacters` method can be passed any object that implements the `CharSequence` interface. These include `String` as well as `StringBuilder`, which is often more efficient for building `String` objects step by step than by using the `+` operator to repeatedly concatenate `String` objects. The `printCharacters` method prints each character of a given object on its own line.
 
 ```java
 Printer printer = new Printer();
@@ -164,13 +160,79 @@ printer.printCharacters(string);
 
 <sample-output>
 
+```
 w
 o
 r
 k
 s
+```
 
 </sample-output>
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+Suppose we create an object with the expression `new ArrayList<Integer>`.
+For each of the following types, determine if this object has that type:
+
+* `Object`
+* `Integer`
+* `List<Integer>`
+* `String`
+* `Integer []`
+
+<Solution>
+
+* `Object` - is a type of the object
+* `Integer` - is not a type of the object
+* `List<Integer>` - is a type of the object
+* `String` - is not a type of the object
+* `Integer []` - is not a type of the object
+
+</Solution>
+
+---
+
+What is special about the `Object` class? How does it relate to class hierarchies?
+
+<Solution>
+
+Every class that does not specify a direct superclass using the `extends` keyword in the
+class header, is automatically a direct subclass of the `Object` superclass. Therefore,
+the `Object` class is at the root of the class hierarchy, and every non-array non-primitive
+type has the methods define in the `Object` class, including `toString()`, `equals()` and
+`hashCode()`.
+
+</Solution>
+
+---
+
+Although we do not work with them, Java has various classes that can be used to build visual
+user interfaces with buttons, windows and textfields. One class that can be used for this is
+the `JTextField` class. Search for the Javadoc page of `JTextField` and determine which
+super classes `JTextField` has in it's class hierarchy.
+How many interfaces are implemented by `JTextField`?
+
+**Note:** you do not have to understand what a `JTextField` does or how you to use it to
+answer this question.
+
+<Solution>
+
+This answer is based on [this Javadoc page](https://docs.oracle.com/javase/8/docs/api/javax/swing/JTextField.html).
+
+There are five super-classes in the class hierarchy: `JTextComponent`, `JComponent`, `Container`,
+`Component` and `Object`.
+
+It implements six interfaces: `ImageObserver`, `MenuContainer`, `Serializable`, `Accessible`,
+`Scrollable` and `SwingConstants`.
+
+This information can be found at the top of the Javadoc page.
+
+</Solution>
+
+</Exercise>
 
 <!--
 
