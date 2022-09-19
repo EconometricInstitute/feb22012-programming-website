@@ -62,8 +62,10 @@ However, this approach gives us two separate types. On `GameValue` objects we ca
 If the analysis information needs only one of the two pieces of information, this approach would work. However, if both pieces of information are needed, for
 example because you need to compute the average outcome that where influenced by the staff of the casino, you would need both types.
 
-As do not have a singly type where we can use both and we can choose only one type for (instance) variables and/or method and constructor arguments.
-One idea could be to add `int getValue()'` to the `BankScore` interface:
+Using two separate interfaces we do not have a single type where we can use both the `getValue()` and `fromBank()` methods and we can choose only one type for (instance)
+variables and/or method and constructor arguments. This makes it difficult to access both the `getValue()` and `fromBank()` information at the same time.
+
+To solve this issue, one idea could be to add `int getValue()` to the `BankScore` interface:
 
 ```java
 public interface BankScore {
@@ -72,7 +74,7 @@ public interface BankScore {
 }
 ```
 
- However, we can then still not use `BankScore` objects in our old sorting algorithm. `BankScore` is still a separate type from `GameValue`.
+However, we can then still not use `BankScore` objects in our old sorting algorithm. `BankScore` then is still a separate type from `GameValue`.
 
 To solve this problem, we let the interface `BankScore` inherit the interface `GameValue` with the `extends` keyword as follows:
 
@@ -109,7 +111,7 @@ where `A` is another interface.
 One consequence of doing this, is that `B` inherits the contents of interface `A`.
 Typically that means that any class that implements interface `B` must implement all methods declared in both `B` and
 `A`. Classes that implement only interface `A` are oblivious of interface `B` and thus only have to implement the
-methods of interface `B`.
+methods of interface `A` and not those of `B`.
 
 Another consequence is that we can assign references to objects of type `B` to variables of type `A`, as type `B` is
 now a specialization of type `A`, and type `A` is a generalization of type `B`. This means any object of type `B` is

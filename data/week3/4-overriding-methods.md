@@ -150,7 +150,7 @@ Can your classes call all methods of a superclass?
 
 <Solution>
 
-They can only directly call methods of a superclass that are `public` or `private`.
+They can only directly call methods of a superclass that are `public` or `protected`.
 
 </Solution>
 
