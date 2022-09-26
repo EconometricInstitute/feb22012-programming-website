@@ -73,7 +73,7 @@ for (Iterator<Integer> iter = iterable.iterator(); iter.hasNext();) {
 
 Since the names of the `Iterator` and `Iterable` interfaces are so similar,
 learners often struggle with the difference. However, the names are quite
-inuitive. In English, the word *Iterator*  means *something that can
+intuitive. In English, the word *Iterator*  means *something that can
 perform iteration*, whereas *Iterable* means something that can be iterated.
 
 One possible analogy is *water* and a *faucet*. Water can flow, and thus
@@ -84,6 +84,10 @@ With `Iterable`, it is similar: it is a thing that can produce some number
 of objects. Often these objects come from some container, such as a list.
 The object that performs the iteration, i.e. keeps track of which objects
 have been seen and which ones are still to come, is an `Iterator`.
+
+Note that the same idea is true for the `Comparable`, which are things
+that can be compared, and the `Comparator`, which is a thing that can
+perform the comparison (but can not necessarily be compared itself).
 
 </text-box>
 
@@ -136,3 +140,71 @@ interface:
 - Lists and Queues
 - Sets: HashSets and TreeSets
 - Maps: HashMaps and TreeMaps
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+Explain how you can use an `Iterator` object. How do you obtain such an object from
+a variable `myList` with type `List<String>`?
+
+<Solution>
+
+To use an `Iterator` object, you call `hasNext()` which returns a boolean if any
+more objects are left to iterate over. Calling `next()` returns the next object
+and the iterator is advanced to the next object in the iteration.
+
+We can call `myList.iterator()` to obtain an `Iterator<String>`.
+
+</Solution>
+
+---
+
+What is the difference between the `Iterator` and the `Iterable` interface?
+Can you use the enhanced for loop on both?
+
+<Solution>
+
+An `Iterator` is an object that we use to perform iteration of something.
+An `Iterable` is an object on which we can perform some type of iteration,
+from which we can obtain an `Iterator`. For details, see the infobox above.
+
+The enhanced for loop can only be used on `Iterable` objects.
+
+</Solution>
+
+---
+
+A colleague created a new class `CookieJar`. Do we know any interfaces that are
+implemented by this class, given that the following code compiles?
+
+```java
+CookieJar jar = CookieJar.getTheJar();
+for (Cookie cookie : jar) {
+  cookie.eat();
+}
+```
+
+<Solution>
+
+Since it is possible to use the enhanced for loop on objects of the class `CookieJar`,
+it must be the case that this class implements the interface `Iterable<Cookie>`. The
+value of the type parameter can be derived of the `Cookie` type as defined in the for
+each loop.
+
+</Solution>
+
+---
+
+Why does the `addAll()` method in the `Collection` interface return a boolean?
+
+<Solution>
+
+All methods that possibly modify the contents of a Collection return a boolean
+which indicates if the contents of the `Collection` were changed due to the
+operation. Thus, calling `.addAll()` with an empty list as an argument would
+result in `false` being returned.
+
+</Solution>
+
+</Exercise>

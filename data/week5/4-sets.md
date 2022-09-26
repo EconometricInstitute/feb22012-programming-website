@@ -109,7 +109,7 @@ the rules in the contract between `equals` and `hashCode`.
 
 Here is a visual example from the slides that shows how a `HashSet` with six objects is organized in the memory:
 
-<img width="683" alt="In the picture six buckets are depicted. Object 1 and 4 are in the first bucket, having the same Hash. Object 1 contains string aab and object 4 contains aabaab. The other buckets either contain one or zero objects, with all different hash codes and (slightly) different string elements." src="https://user-images.githubusercontent.com/67587903/128778160-0cd013d4-b381-441c-b1ff-8e29799d03e8.PNG">
+<img width="100%" alt="In the picture six buckets are depicted. Object 1 and 4 are in the first bucket, having the same Hash. Object 1 contains string aab and object 4 contains aabaab. The other buckets either contain one or zero objects, with all different hash codes and (slightly) different string elements." src="https://user-images.githubusercontent.com/67587903/128778160-0cd013d4-b381-441c-b1ff-8e29799d03e8.PNG">
 
 The `HashSet` class has the following two constructors:
 
@@ -176,7 +176,7 @@ kept relatively balanced when elements are inserted or removed.
 Below is an example of how a `TreeSet` could organize seven integer values in the computer's memory with this approach. In practice, the *value* variable in each node would be a reference to some object,
 which is then compare using the `Comparable`/`Comparator` implementation.
 
-<img width="724" alt="The TreeSet&lt;Integer%gt; object contains the reference to the root node of the TreeSet and an integer value of the size. A node has a pointer to a node object with a smaller value, a pointer to a node object with a greater value and a pointer to the integer value of the node itself. In this example, the root node has two children and they also have two children each. If you go to the left from one node, you obtain node objects with smaller values. On the right, however, are nodes with greater values." src="https://user-images.githubusercontent.com/67587903/128865316-5ff48ad7-eb80-409d-a9c6-eb7b4fc79421.PNG">
+<img width="100%" alt="The TreeSet&lt;Integer%gt; object contains the reference to the root node of the TreeSet and an integer value of the size. A node has a pointer to a node object with a smaller value, a pointer to a node object with a greater value and a pointer to the integer value of the node itself. In this example, the root node has two children and they also have two children each. If you go to the left from one node, you obtain node objects with smaller values. On the right, however, are nodes with greater values." src="https://user-images.githubusercontent.com/67587903/128865316-5ff48ad7-eb80-409d-a9c6-eb7b4fc79421.PNG">
 
 The `TreeSet<E>` class has the advantage that iterating over the elements happens according to the specified order, and that minimum/maximum elements and ranged subsets can be selected efficiently.
 However, in practice, `HashSet` is faster (unless you end up in the very unlikely case that all objects end up in the same bucket). However, `HashSet`s have random order, while a `TreeSet` has a reliable order,
@@ -190,3 +190,128 @@ public TreeSet()
 public TreeSet(Comparator<? super E> comparator)
 public TreeSet(Collection<? extends E> c)
 ```
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+What is the difference between a `Set` and `List`? Is there a difference in the
+methods that can be called on these two types?
+
+<Solution>
+
+A `Set` has no notion of the order or method of storage of objects, and contains each
+object only once. A `List` has a notion of order, works with indices, and can store the
+same object multiple times at different indices in the list.
+
+With a `Set` we only have operations that are defined in the `Collection` interface.
+A `List`, additional methods are added that deal with indices.
+
+</Solution>
+
+---
+
+Will the following code run without problems? If yes, what will it print. If not, what
+is the problem?
+
+```java
+Set<String> mySet = Set.of("hello", "there", "set");
+for (int i=0; i < mySet.size(); i++) {
+    System.out.println(mySet.get(i));
+}
+```
+
+<Solution>
+
+This code will not compile, because the method `get` with an index is not supported on a
+`Set`. It is only available on `List`. The proper way to iterate over the elements in a
+set is using an `Iterator`, which can be done most conveniently using the enhanced for loop:
+
+```java
+Set<String> mySet = Set.of("hello", "there", "set");
+for (String str : mySet) {
+    System.out.println(str);
+}
+```
+
+This version will print:
+
+```
+hello
+there
+set
+```
+
+</Solution>
+
+---
+
+What is the difference between a `HashSet` and a `TreeSet`? What assumptions are needed to make
+sure a `HashSet` or a `TreeSet` work correctly?
+
+<Solution>
+
+The `HashSet` makes use of the `hashCode` method to divide the objects in the `Set` over various
+buckets. This way, if we want to check if a new object is already contained in the set, we only
+need to check a single bucket and can skip performing an `equals()` check on the objects in all
+other buckets. In order to work correctly, it is important that the objects stored in a `HashSet`
+adhere to the contract between the `hashCode()` and `equals()` methods.
+
+A `TreeSet` makes use of an order and stores the elements in the set in a binary search tree,
+where for each node the objects in the left subtree come earlier in the order, and the objects
+in the right subtree come later in the order.
+This way, if we want to check if a new object is already contained in the set, we only need to
+check one of the subtrees of each node. This way, in the worst case we need to check only a
+number of elements equal to the depth of the tree. In order to work correctly, the objects that
+are stored in a `TreeSet` need to have an order. This can either be due to these objects have the
+`Comparable` type, so a natural order can be used. Alternatively, we can provide a `Comparator`
+object to the constructor of `TreeSet` to use an ad-hoc order.
+
+A `TreeSet` also implements the `SortedSet` interface, which provides a number of additional
+methods.
+
+</Solution>
+
+---
+
+Suppose you get a set of `String` objects containing different words, and you want to find all
+the words that are between the words `"d"` and `"k"` according to an alphabetical order. Would
+you choose to use a `HashSet` or a `TreeSet` to find these words?
+
+<Solution>
+
+Here a `TreeSet` is more convenient because it implements the `SortedSet` interface. Therefore,
+we can use something like this:
+
+```java
+SortedSet<String> words = new TreeSet<>(providedWords);
+SortedSet<String> subset = words.subSet("d", "k");
+```
+
+Note that making clever use of the `SortedSet` interface results in
+much shorter than when you perform the comparison yourself:
+
+```java
+Set<String> subset = new HashSet<>();
+for (String word : providedWords) {
+    if  ("d".compareTo(word) < 0 && word.compareTo("k") < 0) {
+        subset.add(word);
+    }
+}
+```
+
+</Solution>
+
+---
+
+What methods can you use to compute a set difference, a set union and a set intersection?
+
+<Solution>
+
+The method `removeAll()` can be used to compute the set difference, a set union can be
+computed using `addAll()` and a set intersection can be computed using the `retainAll()`
+method.
+
+</Solution>
+
+</Exercise>

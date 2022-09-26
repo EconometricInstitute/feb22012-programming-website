@@ -167,6 +167,115 @@ public TreeMap(Comparator<? super K> comparator) { ... }
 public TreeMap(Map<? extends K, ? extends V> m) { ... }
 ```
 
+### Iterating over a Map
+
+As a `Map` is not a sub-interface of `Collection` itself, we can not use the enhanced for-loop directly on a `Map`.
+
+
+```java
+Map<String,Integer> map = /* some map */;
+for (String key : map.keySet()) {
+    Integer value = map.get(key);
+    System.out.println(key + " => " + value);
+}
+```
+
+Alternatively, there is an option to iterate over the entries in the map:
+
+```java
+Map<String,Integer> map = /* some map */;
+for (Entry<String,Integer> entry : map.entrySet()) {
+    String key = entry.getKey();
+    Integer value = entry.getValue();
+    System.out.println(key + " => " + value);
+}
+```
+
+Finally, if you are only interested in the values stored in the map, it is also possible to do this:
+
+```java
+Map<String,Integer> map = /* some map */;
+for (Integer value : map.values()) {
+    System.out.println("Value: "+value);
+}
+```
+
+
+### Collections Overview
+
 Finally, we provide you with a full overview of the interfaces and classes we have learned about this week:
 
-<img width="744" alt="a visual summary of the Collections, Maps and Sets interfaces and inheritances is provided here. The information is not new from this week's text." src="https://user-images.githubusercontent.com/67587903/129039074-6c5b1469-7394-41a4-84b2-1b0a69044ede.PNG">
+<img width="100%" alt="a visual summary of the Collections, Maps and Sets interfaces and inheritances is provided here. The information is not new from this week's text." src="https://user-images.githubusercontent.com/67587903/129039074-6c5b1469-7394-41a4-84b2-1b0a69044ede.PNG">
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+How is a `Map` different from a `List` or `Set`?
+
+<Solution>
+
+A `Map` stores key-value pairs, such that the keys are unique. In a sense, the keys can be seen of a
+generalization of list indices.
+
+An important difference is that a `Map` works with pairs, and has `put` and `get` methods to store such
+pairs in the map. A `List` and a `Set` work with single elements stored in the data structure.
+
+</Solution>
+
+---
+
+Determine the contents of the `Map` after the following code is run:
+
+```java
+Map<String,String> myMap = new HashMap<>();
+myMap.put("a", "hello");
+myMap.put("c", "world");
+myMap.put("d", "universe");
+myMap.put("a", "hi!");
+myMap.remove("c");
+```
+
+<Solution>
+
+After running the code, the map `myMap` contains the following key-value pairs:
+
+```
+{"a"="hi!", "d="universe""}
+```
+
+</Solution>
+
+---
+
+What is the relation between `HashMap` and `HashSet`? Similarly, what is the
+relation between `TreeMap` and `TreeSet`?
+
+<Solution>
+
+The main relation is the way in which they store and find elements under the hood.
+The `HashSet` and `HashMap` both work with the contract defined between `Object.hashCode`
+and `Object.equals()`. Similarly, `TreeMap` and `TreeSet` both work with an order as defined
+by either a natural order indicated by the `Comparable` interface, or with an explicitly
+provided `Comparator` that is passed to their constructor.
+
+There is also an analogy between the `SortedSet` and `SortedMap` interfaces; although they
+define different methods, they both indicate that there is an order defined on the objects or
+keys stored, and they both provide methods that make use of this order.
+
+</Solution>
+
+---
+
+Can you use the enhanced for loop on a `TreeMap`? Explain your answer.
+
+<Solution>
+
+No, this is not directly possible. It is possible to use the enhanced for loop
+on `map.keySet()` to iterate over the keys, on `map.values()` to iterate over the
+values, or on `map.entrySet()` to iterate over `Entry` objects that contain the key-value
+pairs.
+
+</Solution>
+
+</Exercise>
