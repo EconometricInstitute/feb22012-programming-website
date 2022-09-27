@@ -168,7 +168,7 @@ public boolean equals(Object obj) {
 
 ## When to override hashCode and equals
 
-Whether you need to override `equals()` and `hashCode()` depends on your intended use. If you are likely to have two separate objects with the same values, but really want to regard them as separate objects, the default implementation is what you want.
+Whether you need to override `equals()` and `hashCode()` depends on your intended use. If you are likely to have two separate objects with the same values but want to regard them as separate objects under all circumstances, the default implementation is what you want.
 On the other hand, if you want to be able to compare separate objects of your class based on their contents, you should override `hashCode` and `equals`.
 For example, if you read and store pairs of numbers from a file and create objects that way and then want to check whether they also exist in a second file.
 In most cases where you want to override both methods, it is preferable to let your IDE generate the code, but in some circumstances (such as unordered pairs), you may want to do it yourself, or generate the code automatically and adjust it as needed.
@@ -177,11 +177,11 @@ In most cases where you want to override both methods, it is preferable to let y
 
 In this quiz, you can test your knowledge on the subjects covered in this chapter.
 
-If you would want to compare to strings and she if they hold the same word(s), would you use `==` or `equals`, and why?
+If you would want to compare two `String` objects and see if they hold the same word(s), would you use `==` or `equals`, and why? You should assume that these `String` objects can come from any source (e.g. from user input, from a file, etcetera).
 
 <Solution>
 
-A String is a non-primitive type, as it is written with a capital letter. Therefore, the `==`-operator would not work here, as we do not want to compare if the objects are the same, but whether the values that the objects hold are the same.
+A String is a non-primitive type, as it is written with a capital letter. Therefore, the `==`-operator would not work here, as we do not want to compare if the objects are the same, but whether the values that the objects hold are the same. There are some cases in which the `==` might accidentally work for `String` objects because the Java compiler performs some magic under the hood, but you can't assume this will always work (in particular with `String` objects that come from external sources). It is therefore good practice to always use `equals`, also with `String` objects.
 
 </Solution>
 

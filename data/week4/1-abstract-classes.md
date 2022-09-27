@@ -38,7 +38,8 @@ To define an abstract class or an abstract method the keyword `abstract` is used
 For example, you would write  `public abstract class MyAbstractClass` as the class header. This then
 allows you to to use the `abstract` keyword in method headers for which you do not want to provide
 an implementation. For example the method header `public abstract ReturnType nameOfMethod();`, would
-for subclasses to implement a method called `nameOfMethod` similar to when it would implement and interface.
+require subclasses to implement a method called `nameOfMethod`, similar to when it would implement an
+interface requiring to implement a method.
 
 Since an abstract class is designed to be finished in a subclass, a `final abstract class` is not allowed,
 as forbidding subclasses of an abstract class would imply it can never be finished, and thus never used.

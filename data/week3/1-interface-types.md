@@ -83,7 +83,7 @@ now be used as the same `GameValue` type.
 
 ### Interface Types in Variable Declarations
 
-When a variable is declared, it must always be clear what the variable, usually by writing the type in front of the variable name. There are two kinds of type, the primitive-type variables (int, double, ...) and reference-type variables (all objects). We've so far used an object's class as the type of a reference-type variable.
+When a variable is declared, it must always be clear what the type of the variable is, usually by writing the type in front of the variable name. There are two kinds of type, the primitive-type variables (int, double, ...) and reference-type variables (all objects). We've so far used an object's class as the type of a reference-type variable.
 An object's type can be other than its class. For example, the type of the `Dice` class that implements the `GameValue` interface is both `Dice` and `GameValue`.
 
 ```java
