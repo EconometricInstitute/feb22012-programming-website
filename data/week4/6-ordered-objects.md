@@ -168,12 +168,12 @@ public class Member implements Comparable<Member> {
 }
 ```
 
-As returning a negative number from `compareTo()` is enough if the `this` object is smaller than the parameter object, and returning zero is sufficient when the lengths are the same, the `compareTo` method described above can also be implemented as follows.
+As returning a negative number from `compareTo()` is enough if the `this` object is smaller than the parameter object, and returning zero is sufficient when the heights are the same, the `compareTo` method described above can also be implemented as follows.
 
 ```java
 @Override
 public int compareTo(Member member) {
-    return this.length - member.getHeight();
+    return this.height - member.getHeight();
 }
 ```
 

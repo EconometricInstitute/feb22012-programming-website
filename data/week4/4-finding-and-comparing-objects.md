@@ -10,6 +10,7 @@ ready: true
  - You understand the difference between the `==`-operator and the `equals()` method.
  - You understand why many standard classes such as `String` and `Integer` override the `equals()` method
  - You are aware that you should prefer to use your IDE (IntelliJ/Eclipse) to generate the code for `equals()` rather than write it yourself
+
 </text-box>
 
 ## Comparing objects
