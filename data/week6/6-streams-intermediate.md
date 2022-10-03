@@ -94,3 +94,103 @@ Stream<String> names = stream.map(Course::getCourseName);
 We have now seen some very useful intermediate operations, that can be added to the pipeline by calling the appropiate methods.
 However, data only starts flowing through the pipeline when we call a *terminal operation*, which is what we discuss in the
 next section.
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+Can you obtain a `Stream` from both a `List` and `Set`? Explain your answer.
+
+<Solution>
+
+Yes, the `.stream()` method is defined in the `Collection` interface, which is a super-type of both `List` and `Set` objects.
+Therefore we can obtain a `Stream` from any `Collection`, including `List` and `Set` objects.
+
+</Solution>
+
+---
+
+In order to gain a bit more experience with the intermediate operations, you will use them in imperative code.
+
+Write a method that inspects a `List<Course> and uses a `Predicate<Course>` that
+represents a condition for `Course` objects to count how many course objects
+in the list agree with the condition(i.e. the condition returns true). The header
+of this method should be
+
+```java
+public int countConditional(List<Course> courses, Predicate<Course> condition)
+{
+   ...
+}
+```
+
+You can use a regular `for` loop, but should of course make use of the `condition` object.
+
+<Solution>
+
+A typical solution would be something as follows:
+
+```java
+public int countConditional(List<Course> courses, Predicate<Course> condition)
+{
+   int result = 0;
+   for (Course c : courses)
+   {
+      if (condition.test(c))
+	  {
+	     result++;
+	  }
+   }
+   return result;
+}
+```
+
+</Solution>
+
+---
+
+In order to gain a bit more experience with the intermediate operations, you will use them in imperative code.
+
+Write a method that give a `List<Course>`, a `Consumer<Course>` that represents an
+action that can be performed with a course and a `Predicate<Course>` that represents a
+condition for a course that does the following:
+as long as the condition is true for `Course` objects in the list, feed them to the
+`Consumer`. As soon as you find a `Course` object for which the condition is false,
+stop feeding the objects to the `Consumer`. The header of this method should be
+```java
+public void performWhile(List<Course> courses, Predicate<Course> condition,
+                         Consumer<Course> action)
+{
+   ...
+}
+```
+
+You can use a regular `for` loop, but should of course make use of the `condition` and `action` objects.
+
+<Solution>
+
+```java
+public void performWhile(List<Course> courses, Predicate<Course> condition,
+                         Consumer<Course> action)
+{
+   for (Course c : courses)
+   {
+      if (condition.test(c))
+	  {
+	     action.accept(c);
+	  }
+	  else
+	  {
+	     return;
+	  }
+   }
+}
+```
+
+Note that variants are possible. It would work to use `break` rather than `return` in this
+case, and it would also be possible to write a variant that is based on a while loop, although that
+would probably require an additional boolean variable.
+
+</Solution>
+
+</Exercise>

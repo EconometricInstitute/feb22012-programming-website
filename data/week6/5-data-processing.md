@@ -133,12 +133,52 @@ An alternative way to think about the `transform` method we developed in Listing
 
 When we think about data processing pipelines, it is useful to think about three categories of units that make up the pipeline. At the beginning of the pipeline, there is a **data source** that is able to emit data objects that flow through the pipeline. After the data source, the data objects flow through a sequence of **intermediate operations**, that can perform various tasks: filter out data objects based on some condition, transform data objects into different data objects, shut down the flow of data objects after a certain number of objects have passed through it and many other tasks. At the end of the pipeline, there is a single **terminal operation** that consumes all objects flowing through the pipeline and does something with them: store them in a data structure such as a `List` or `Set`, compute some aggregate statistic based on them such as a sum or maximum value, or perform a task for each object that flows out of the pipeline.
 
-In Java 8, the `Stream` API was introduced that allows us to define data processing pipelines such as the one visualized in Figure [\[fig:mapfilterpipeline\]][1]. When we want to implement data processing tasks that fit the paradigm of the pipeline well, this `API` enables you to write very concise code, that typically leaves little room for accidental programming mistakes. It often holds that if your code compiles, it behaves as intended.
+In Java 8, the `Stream` API was introduced that allows us to define data processing pipelines such as the one visualized in the figure above. When we want to implement data processing tasks that fit the paradigm of the pipeline well, this `API` enables you to write very concise code, that typically leaves little room for accidental programming mistakes. It often holds that if your code compiles, it behaves as intended.
 
 The concept of data processing pipelines has proven to be quite popular since the advent of the *Big Data* hype.
 Traditional procedural implementations of data processing methods require programmers to write statement like: for each element in the list, check if some condition holds, then call some method on it, if that succeeds put it in an output list.
 However, if the data is distributed over a number of different computers or if we want to perform the data processing in a parallel fashion, it often requires a lot of work to convert the procedural approach to the new setting.
-If think about data processing in terms of a pipeline, we do not need to define how all steps are precisely executed, but only what should happen in each of the processing units of the pipeline.
+If we think about data processing in terms of a pipeline, we do not need to define how all steps are precisely executed, but only what should happen in each of the processing units of the pipeline.
 This *declarative* way of thinking has a major advantage: when we want to execute the pipeline in a distributed or parallel fashion, we only need to think if the different steps in our pipeline support this.
 We can leave the actual execution of the steps in the pipeline to the library that implements the `Stream` API, whether it is applied to a standard data structure, executed in a parallel fashion or perform on many computers connected to each other via a network.
 
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+In a imperative coding style, we write instructions to the computer in steps that state *do this*, then *do that*, *repeat that* etcetera. In a declarative coding style, we aim to write programs that state *what we want to achieve*.
+
+Think of two possible advantages of a declarative coding style. Also think of at least one possible disadvantage of a declarative coding style.
+
+<Solution>
+
+A (non-exhaustive) list of possible advantages are:
+
+* Declarative programs are often shorter
+* Declarative programs are often easier to read and understand
+* Declarative programs can reduce the amount of code we need to write for common tasks
+* Using declarative programs we can more easily rely on the expertise, effort and optimization of existing frameworks (such as parallel or distributed computing)
+
+A (non-exhaustive) list of possible disadvantages are:
+
+* Declarative programs require that you give up control over what the computer does exactly
+* Declarative programs require that you understand how to write code such that the used framework understand it
+* Declarative programs may more easily result in logical errors if you make wrong assumptions about the meaning of the code you write
+* Declarative programs are a different style which you have to learn, and you could also just write thousands of lines of code using the concepts you already know
+
+</Solution>
+
+---
+
+Which elements are important for a typical data-processing pipeline?
+
+<Solution>
+
+For a typical data processing pipeline, you want a **data source**, that provides the data you are interested in,
+an optional number of **intermediate operations** that can transform and filter the data while the data flows
+through the pipeline, and finally a **terminal operation** that extracts the data through the pipeline and
+constructs the final result of the data processing operation.
+
+</Solution>
+
+</Exercise>

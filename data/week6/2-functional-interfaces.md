@@ -114,7 +114,7 @@ The functional interfaces `Consumer`, `Function` and `BinaryOperator` are just t
 
 | Interface           | Arguments           | Returns   | Interpretation                      |
 |:--------------------|:--------------------|:----------|:------------------------------------|
-| `ComparatorT`       | `(T o1, T o2)`      | `int`     | Define an order on `T`’s            |
+| `Comparator<T>`     | `(T o1, T o2)`      | `int`     | Define an order on `T`’s            |
 | `BinaryOperator<T>` | `(T left, T right)` | `T`       | Combine two `T`’s into one `T`.     |
 | `Consumer<T>`       | `(T arg)`           | `void`    | Do something with argument          |
 | `BiConsumer<T,U>`   | `(T arg1, U arg2)`  | `void`    | Do something with the arguments     |
@@ -126,3 +126,36 @@ The functional interfaces `Consumer`, `Function` and `BinaryOperator` are just t
 | `Runnable`          | `()`                | `void`    | Execute a task                      |
 
 All newly added functional interfaces are defined in the java package `java.util.function`. The package contains a large number of additional functional interfaces that are typically variants of the interfaces in the table above, focused on primitive types. For example: a *predicate* that accepts an `int` is an `IntPredicate`, or a *function* that converts something to a `double` is a `DoubleFunction`. At the bottom of this page, you can find a table with the definitions of some of these additional interfaces.
+
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+In your code, you want to choose a type for an object that can do one of the following tasks.
+Determine which functional type would be most suitable. State the full type, including generics.
+
+So for example, the answer for an object to determine the order of two students of type `Student`
+would be `Comparator<Student>`.
+
+1. Check if a student of type `Student` has enrolled before the year 2019
+2. Use a trained regression model of type `Model` to make a prediction for a new observation of type `Observation` and print the result to the screen
+3. Use a trained regression model of type `Model` to make a prediction for a new observation of type `Observation` and obtain a prediction of type `Prediction`
+4. Multiply two square matrices of type `SquareMatrix`
+5. Transposing a square matrix of type `SquareMatrix`
+6. Determining the determinant of a square matrix of type `SquareMatrix` as a `Double` value
+7. Send the message in an `EmailMessage` object to a friend
+
+<Solution>
+
+1. a `Predicate<Student>`
+2. a `BiConsumer<Model,Observation>` (printing to the screen is usually void, so a `Consumer` is appropriate)
+3. a `BiFunction<Model,Observation,Prediction>`
+4. a `BinaryOperator<SquareMatrix>` as the result of multiplying two square matrix is itself a `SquareMatrix`. A `BiFunction<SquareMatrix,SquareMatrix,SquareMatrix>` would be an alternative, more verbose option.
+5. a `UnaryOperator<SquareMatrix>` as the result of transposing a square matrix is itself a `SquareMatrix`. A `Function<SquareMatrix,SquareMatrix>` would be an alternative, more verbose option.
+6. a `Function<SquareMatrix,Double>` as the determinant is typically a `Double` value. Since the output type is different from the input type, we need a `Function`.
+7. a `Consumer<EmailMessage>`, as sending an e-mail is typically a `void` method that just performs the sending. For void methods, a `Consumer` is a good choice.
+
+</Solution>
+
+</Exercise>

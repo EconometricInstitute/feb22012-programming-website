@@ -14,85 +14,6 @@ ready: true
 
 </text-box>
 
-## Method references
-As we are now familiar with lambda expressions and functional interfaces, we should be comfortable with writing code such as:
-
-```java
-    Consumer<String> printer = str -> System.out.println(str);
-    Function<Course,String> courseToString = c -> c.getTeacher();
-    BinaryOperator<Integer> plus = (a,b) -> Integer.sum(a,b);
-```
-
-While these are simple and elegant lambda expressions, there is still a small bit of boilerplate code left in these examples. In these examples, our intention is to use the method `System.out.println` as a `Consumer<String>`, use the `getTeacher()` method to convert a `Course` to a `String`, or use the method `Integer.sum` as a `BinaryOperator`. However, we still define variables such as `str`, `c`, `a` and `b` to utilize these methods within the functional interfaces.
-
-An alternative to lambda expression are **method references**. A method reference is a way in which we can express the idea that the implementation of a functional interface is given by a particular method. A method reference is given using either a class name or an object, followed by double colon operator `::` followed by the name of the method. Since we are not calling the method, but want to use it as an object of a function interface type, parenthesis and arguments are omitted. Using method references, we can write the `printer`, `courseToString` and `plus` references as follows:
-
-```java
-Consumer<String> printer = System.out::println;
-Function<Course,String> courseToString = Course::getTeacher;
-BinaryOperator<Integer> plus = Integer::sum;
-```
-
-Note that you can always use the lambda notation instead: the main advantage of method references is that they are shorter, and we do not have the need to introduce a variable. Another advantage of method references, is that methods are generally easier to test and debug than lambda expressions. For very short lambda expressions, there is often little need for debugging, but when we write longer lambda expressions, debugging becomes complicated.
-
-Recall our long lambda expression implementing a rather complicated `Comparator<Course>` given in Listing [\[lst:longlambda\]][1]. This is a good candidate to replace with a method reference as follows:
-
-```java
-public class ComparatorExamples {
-    public static int compareCourses(Course o1, Course o2) {
-        if (!o1.getTeacher().equals(o2.getTeacher())) {
-            return o1.getTeacher().compareTo(o2.getTeacher());
-        }
-        if (o1.getCourseYear() != o2.getCourseYear()) {
-            return o1.getCourseYear() - o2.getCourseYear();
-        }
-        return o1.getCourseName().compareTo(o2.getCourseName());
-    }
-
-    public static void sortCourses(List<Course> courses) {
-        Collections.sort(courses, ComparatorExamples::compareCourses);
-    }
-}
-```
-The advantage of this approach, over writing a lambda expression, is that it is now easier to write test cases that call the `compareCourses` method directly. It also makes the code a bit easier to read: we have fewer nested blocks. In fact, the only Java 8 style syntax we are using here is a single method reference.
-
-There are some variants of the method references, based on whether you write a class name or object before the `::` and whether the method name after the `::` is `static` or not. Table [1][] shows all five types of method references, together with their equivalent lambda expressions.
-
-| Type        | Method Reference          | Lambda Expression                      |
-|:------------|:--------------------------|:---------------------------------------|
-| Static      | `MyClass::myStaticMethod` | `(arg) -> MyClass.myStaticMethod(arg)` |
-| Bound       | `var::myMethod`           | `(arg) -> var.myMethod(arg)`           |
-| Unbound     | `MyClass::myMethod`       | `(obj, arg) -> obj.myMethod(arg)`      |
-| Constructor | `MyClass::new`            | `(arg) -> new MyClass(arg)`            |
-| Array       | `int[]::new`              | `(len) -> new int[len]`                |
-
-There are five types of method references. The five types are shown here, together with an equivalent lambda expression.
-
-<Exercise title="Test your knowledge">
-
-In this quiz, you can test your knowledge on the subjects covered in this chapter.
-
-In the class World there is a static method countCreatures(String animals) with a return value of an integer. How do we write a method reference and a lambda expression for that?  
-
-<Solution>
-
-The method reference is as follows: `World::countCreatures`
-The lambda expression is as follows: `(int) -> World.countCreatures(cows)`.
-
-</Solution>
-
-What method reference belongs to this lambda expression?
-`World::new`
-    
-<Solution>
-
-(arg) -> new World(arg)
-    
-</Solution>
-</Exercise>
-
-<!-- TODO: discussion of static vs non-static in a special interest block -->
-
 ## Default Methods in Interfaces
 If you paid attention, you may have noticed that we referred to functional interfaces as interfaces that contain only a single *unimplemented* method. That may seem rather verbose, as Java versions prior to version 8 do not allow interfaces to contain any method implementations. That has changed with Java 8, as it is now possible to provide a *default* method implementation within an interface. Note that it is still not to declare *variables* within an interface, and classes that implement the interface are allowed to override the default implementation provided by the interface.
 
@@ -414,51 +335,82 @@ C (2001)
 
 In this quiz, you can test your knowledge on the subjects covered in this chapter.
 
-Why do we use types in Java?
+What does it mean for a variable to be *effectively final*?
 
 <Solution>
 
-Firstly, a powerful type system helps to prevent bugs.
-Also, it allows overloading of methods.
-Moreover, the code is easier to read and to refactor.
-More advantages can be found in the advantages text box.
+This means the variable is only assigned a value once. It basically means that we could declare the variable as `final` and the program would still compile, but it currently is not declared as a `final` variable.
 
 </Solution>
 
+---
 
-What is method overloading?
-
+How does the ability to write default methods in interfaces relate to abstract classes? Are there still things you can do with abstract classes that you can not do with interfaces?
 
 <Solution>
 
-When the same method name is used for more than one method, the name is **overloaded**.
-In Java, you can overload method names provided that the parameter types are different. For example, you can declare two methods, both called `print`:
+Earlier, we discussed that it is possible to mix methods with an implementation and methods without an implementation in abstract classes. Default methods in interface also bring this functionality to interfaces.
+However, interfaces still can not declare any instance variables. Therefore, it is also not possible to write any implementation in the default methods that make use of instance variables.
 
-`public void print(String s)`
-`public void print(int i)`
-
-When the `print` method is called, `print(x);`, the compiler looks at the type of `x`. If `x` is a `String`, the first method is called. If `x` is an integer value, the second method is called. If `x` is neither, the compiler generates an error.
+In general, if it is possible and convenient to have an interface, we prefer to have interfaces (see Effective Java, 3rd Edition Item 20 for a motivation)
 
 </Solution>
 
+---
 
-What is the difference between a primitive type and a non-primitive type?
+Now that you have practice writing lambda expressions, you should practice writing `Comparator` in a functional programming style.
+
+You will do so for objects from the following class which we saw in detail in an earlier chapter.
+
+```java
+public class Course {
+    // Instance variables and constructors omitted
+
+    public long getCourseNumber() { ... }
+
+    public int getCourseYear() { ... }
+
+    public String getCourseName() { ... }
+
+    public double getEcts() { ... }
+
+    public String getTeacher() { ... }
+}
+```
+
+Use the static and default methods of the `Comparable` interface with lambda expressions
+and method references to define `Comparator<Course>` objects that express the following orders:
+
+1. Order the courses by their name in alphabetic order
+2. First order the courses by the alphabetic order of their teacher's name, and if the names of teachers are equal, use the numeric (ascending) order of the course year (so oldest course first).
+3. First order the courses by the alphabetic order of the name of the course. If two courses have the same name, put the most recent course first (i.e. use the reverse natural order of their year).
+4. First order the courses by the name of the course. If the course names are equal, use the alphabetic order of the teacher of the course. Finally, if the same teacher has taught the same course multiple times, put the most recent course first (so use the reverse natural order of the year).
 
 <Solution>
 
-A non-primitive type is an instance of a class, which is an object.
-Primitive types, on the other hand, just hold a value (number, character or true/false).
-There are only eight primitive types, namely `byte`, `short`, `int`, `long`, `float`, `double`, `char` and `boolean`.
+```java
+// Order 1.
+Comparator<Course> comp1;
+comp1 = Comparator.comparing(Course::getCourseName);
+
+// Order 2.
+Comparator<Course> comp2;
+comp2 = Comparator.comparing(Course::getTeacher)
+                  .thenComparing(Course::getCourseYear);
+
+// Order 3.
+Comparator<Course> comp3;
+comp3 = Comparator.comparing(Course::getCourseName)
+                  .thenComparing(Course::getCourseYear, Comparator.reverseOrder());
+
+// Order 4.
+Comparator<Course> comp4;
+comp4 = Comparator.comparing(Course::getCourseName)
+                  .thenComparing(Course::getTeacher)
+                  .thenComparing(Course::getCourseYear, Comparator.reverseOrder());
+```
 
 </Solution>
 
-
-Can you autobox from `Integer` to `double`? And from `int` to `Double`?
-
-<Solution>
-
-Yes, you can autobox from `Integer` to `double`, but you cannot autobox from `int` to `Double`. Please reread the last paragraph of the text for further explanation.
-
-</Solution>
 
 </Exercise>

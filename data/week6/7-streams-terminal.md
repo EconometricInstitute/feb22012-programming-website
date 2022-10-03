@@ -194,6 +194,7 @@ Every once in a while, you may consider to write a program that performs some re
 ```java
 List<String> names = Arrays.asList("Achmed", "Catherine", "John", "Mei", "Yousra");
 StringBuilder sb = new StringBuilder();
+boolean first = true;
 for (String name : names) {
    if (sb.length() > 0) {
       sb.append(", ");
@@ -283,3 +284,115 @@ the following should be printed:
 
 ## Further Reading
 The [documentation](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html) of the `java.util.stream` package contains an in-depth treatise of the design and terminology related to the Stream API.
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+Write some code that does the following:
+
+1. Create an empty `Optional<String>`
+2. Create an `Optional<Integer>` that holds the number 42
+3. A method `doubler` that accepts an `Optional<Integer>` and returns an `Integer` 0 if the given `Optional<Integer>` is empty and double the value as `Integer` if it is non-empty.
+
+<Solution>
+
+```java
+// Part 1.
+Optional<String> emtpy = Optional.empty();
+
+// Part 2.
+Optional<Integer> fortyTwo = Optional.of(42);
+
+// Part 3.
+public Integer doubler(Optional<Integer> in) {
+      // Shortest solution
+      return 2 * in.orElse(0);
+}
+
+// Part 3 (alternative, longer and not-preferred solution)
+public Integer doulber(Optional<Integer> in) {
+      if (in.isPresent()) {
+            return 2 * in.get();
+      }
+      return 0;
+}
+```
+
+</Solution>
+
+---
+
+Again, consider the `Course` class we introduced earlier:
+
+```java
+public class Course {
+    // Instance variables and constructors omitted
+
+    public long getCourseNumber() { ... }
+
+    public int getCourseYear() { ... }
+
+    public String getCourseName() { ... }
+
+    public double getEcts() { ... }
+
+    public String getTeacher() { ... }
+}
+```
+
+Suppose we have a variable `List<Course> courses` containing objects for all courses taught at a University in
+the recent past. Use the `Stream` API to write code that solves each of the following data analysis tasks
+in a single statement (one declaration and one statement per task).
+
+1. Compute a `List<String>` containing the names of all courses.
+2. Compute a `Set<String>` of unique teachers that have taught courses in the year 2015.
+3. Compute a `String` containing the names of all courses separated by commas. Course names should be repeated if a course was taught multiple times.
+4. Print a line with the course year using `System.out.println`  for every year a course with the name `"Programming"` was taught.
+5. Compute a `boolean` that indicates whether all courses with the name `"Programming"` where taught by a teacher with name `"Bouman"`.
+6. Compute a `Map<Integer,List<courses>{}>` that provides a list of the courses taught by a teacher with name `"Bouman"` per year.
+
+<Solution>
+
+Note that the following are potential answer. Often, there is more than one way to do it.
+
+```java
+// Task 1.
+List<String> names;
+names = courses.stream()
+               .map(Course::getCourseName)
+               .collect(Collectors.toList());
+
+// Task 2.
+Set<String> teachers;
+teachers = courses.stream()
+                  .filter(c -> c.getCourseYear() == 2015)
+                  .map(Course::getTeacher)
+                  .collect(Collectors.toList());
+
+// Task 3.
+String names;
+names = courses.stream()
+               .map(Course::getCourseName)
+               .collect(Collectors.joining(","));
+
+// Task 4.
+courses.stream()
+       .filter(c -> c.getCourseName().equals("Programming"))
+       .forEach(System.out::println);
+
+// Task 5.
+boolean answer;
+answer = courses.stream()
+                .filter(c -> c.getCourseName().equals("Programming"))
+                .allMatch(c -> c.getTeacher().equals("Bouman");
+
+// Task 6.
+Map<Integer,List<Course>> result;
+result = courses.stream()
+                .filter(c -> c.getTeacher().equals("Bouman"))
+                .collect(Collectors.groupingBy(Course::getCourseYear));
+```
+</Solution>
+
+</Exercise>

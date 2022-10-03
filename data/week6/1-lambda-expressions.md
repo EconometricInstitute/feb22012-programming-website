@@ -154,7 +154,11 @@ Comparator<Course> comp = (o1,o2) -> {
 };
 ```
 
-There is another useful trick we can use here. Notice that the only code within the lambda is a single return statement. If only a single expression is returned, we are allowed to omit the curly braces and return statement and only write the expression. This provides an extremely concise syntax to create our `Comparator`: `Comparator<Course> comp = (o1,o2) -> o1.getTeacher().compareTo(o2.getTeacher());`
+There is another useful trick we can use here. Notice that the only code within the lambda is a single return statement. If only a single expression is returned, we are allowed to omit the curly braces and return statement and only write the expression. This provides an extremely concise syntax to create our `Comparator`:
+
+```java
+Comparator<Course> comp = (o1,o2) -> o1.getTeacher().compareTo(o2.getTeacher());
+```
 
 While this is great for a `Comparator` that compares a single attribute of our `Course` object, it is not sufficient for a more complex `Comparator` object. Take, for example, the order in which we first compare the teacher. If the teachers are equal, we compare the course year. If the course years are also equal, we finally compare the names of the courses in alphabetical order. In that case, we should still use a more verbose lambda expression with explicit return statements.
 
@@ -171,3 +175,85 @@ Comparator<Course> comp = (o1, o2) -> {
 ```
 
 If we can only use lambda expressions, this is the best we can. But Java introduced more features that make it possible to define a complex comparator in a much more compact way than the above code. But before we can work on that, we need to study two additional topics: functional interfaces and method references. We do so in the following two sections.
+
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+Which of the following pieces of code are a valid lambda expression?
+
+```java
+// Piece 1
+Comparator<String> strCmp = (String s1, String s2) -> s1.length() - s2.length();
+// Piece 2
+Comparator<List<Object>> listCmp;
+listCmp = (List<Object> lst1, List<Object> ls2) -> lst2.size() - lst1.size();
+// Piece 3
+Comparator<Course> courseCmp = course1.getCourseName().compareTo(course2.getCourseName());
+// Piece 4
+Comparator<Integer> modSevenCmp = (Integer i1, Integer i2) -> {
+    int tmp1 = i1 % 7;
+    int tmp2 = i2 % 7;
+    return tmp1-tmp2;
+}
+```
+
+<Solution>
+
+Pieces 1, 2 and 4 are valid lambda expressions. Pieces 1 and 2 a concise style, although the type declarations before the arrow could also be removed as the compiler can deduce them using type-inference on the type of `strCmp` and `listCmp`.
+Piece 4 uses a block as the body of the lambda expression. This makes it possible to declare variables.
+
+Piece 3 is an invalid lambda expression, as the variables `course1` and `course2` are not declared, and there is no arrow to indicate that this is a lambda expression.
+
+</Solution>
+
+---
+
+What is the difference between the form
+
+```java
+Comparator<Course> c = (o1,o2) -> o1.getTeacher().compareTo(o2.getTeacher());
+```
+
+and the following form?
+
+```java
+Comparator<Course> c = (Course o1, Course o2) -> o1.getTeacher().compareTo(o2.getTeacher());
+```
+
+Why can the types be omitted from the first form?
+
+<Solution>
+
+In the first form, the types are omitted in the input part of the lambda. The Java Compiler can
+deduce what the types of `o1` and `o2` should be using the specification of the `compareTo` method
+in `Comparator`, and the fact that we are creating a `Comparator<Course>` object.
+
+The technique the compiler uses to fill in the types for you, is called *type inference*.
+
+</Solution>
+
+---
+
+Look at the `Course` class at the start of this chapter. Write a separate *lambda expression*
+that defines a `Comparator<Course>` for each of the following orderings.
+Do not use of static methods of the `Comparator` class such as `Comparator.comparing` yet.
+
+1. Order the courses in alphabetic order of their course names
+2. Order the courses by descending number of \emph{ects}
+3. Order the courses by ascending number of \emph{ects}
+4. Order the courses by ascending course year
+5. Order the courses by descending course year
+
+<Solution>
+
+1. `Comparator<Course> comp = (o1,o2) -> o1.getCourseName().compareTo(o2.getCourseName()`
+2. `Comparator<Course> comp = (o1,o2) -> (int)Math.signum(o2.getEcts()-o1.getEcts())`
+3. `Comparator<Course> comp = (o1,o2) -> (int)Math.signum(o1.getEcts()-o2.getEcts())`
+4. `Comparator<Course> comp = (o1,o2) -> o2.getCourseYear() - o1.getCourseYear()`
+5. `Comparator<Course> comp = (o1,o2) -> o1.getCourseYear() - o2.getCourseYear()`
+
+</Solution>
+
+</Exercise>

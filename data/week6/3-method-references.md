@@ -68,3 +68,93 @@ There are some variants of the method references, based on whether you write a c
 There are five types of method references. The five types are shown here, together with an equivalent lambda expression.
 
 <!-- TODO: discussion of static vs non-static in a special interest block -->
+
+<Exercise title="Test your knowledge">
+
+In this quiz, you can test your knowledge on the subjects covered in this chapter.
+
+What does the following piece of code do? What type of method reference was used?
+What is an equivalent program where the method references and functional types are removed?
+
+```java
+BigInteger bi10 = BigInteger.valueOf(10);
+BigInteger bi2 = BigInteger.valueOf(2);
+BinaryOperator<BigInteger> op = BigInteger::multiply;
+BigInteger result = op.apply(bi10, bi2);
+System.out.println(result);
+```
+
+<Solution>
+
+The program creates two `BigInteger` objects with numbers 10 and 2, multiplies them and prints the result (20).
+In this case, and *unbound* method reference was used, as `multiply` is not a static method and the method reference
+is applied to the class `BigInteger` and not an object of type `BigInteger`.
+
+The equivalent program without a method reference or functional interface is written as follows:
+
+```java
+BigInteger bi10 = BigInteger.valueOf(10);
+BigInteger bi2 = BigInteger.valueOf(2);
+BigInteger result = bi10.multiply(bi2);
+System.out.println(result);
+```
+
+</Solution>
+
+
+---
+
+For each of the following tasks and types, use a method reference to create an object that implements a functional interface of the given type:
+
+1. An object of type `BinaryOperator<Double>` that computes the maximum of two `Double` objects using `Math.max`
+2. An object of type `Function<Integer,BigInteger>` that converts an `Integer` into a `BigInteger` using `BigInteger.valueOf`
+3. An object of type `Predicate<String>` that tests whether a given `String` object is in a `List<String>` object named `myList`
+4. An object of type `Supplier<List<Integer>>` that ca be used to create new `ArrayList<Integer>` objects.
+5. An object of type `BiConsumer<List<String>,String>` that adds a given `String` to a given `List<String>` using `List.add()`
+6. An object of type `BiConsumer<Integer,String>` that adds a given `String` to a `List<String>` object `myList` at a given `Integer` index using `List.add()`
+
+**Note:** it is possible to use a method reference to a method that returns something while a void method is excepted, e.g. `List.add()` can be used for a `Consumer`/`BiConsumer`, although `List.add()` returns a `boolean`.
+
+<Solution>
+
+1. `BinaryOperator<Double> bo = Math::max;` (this is a static reference)
+2. `Function<Integer,BigInteger> f = BigInteger::valueOf;` (this is a static reference)
+3. `Predicate<String> p = myList::contains;` (this is a bound reference)
+4. `Supplier<List<Integer>> s = ArrayList::new;` (this is a constructor reference)
+5. `BiConsumer<List<String>,String> bc = List::add;` (this is an unbound reference)
+6. `BiConsumer<Integer,String> bc2 = myList::add;` (this is a bound reference)
+
+</Solution>
+
+---
+
+For each of the following lambda expressions and method references, determine a possible type using a function interface.
+
+1. `(Double d) -> d+1`
+2. `Double::sum`
+3. `(Double d1, Double d2) -> d1 - Math.floor(d2) < 0.5`
+4. `(Double d) -> Arrays.asList(d)`
+5. `(Double d, String s) -> s + " : " + d;`
+6. `() -> Math.random() * 10`
+7. `(Double d) -> System.out.println("Value: "+d)`
+8. `(Double d, String str) -> System.out.println("text: "+str);`
+9. `(List<Double> lst) -> lst.contains(42.0)`
+
+You can choose from `BinaryOperator<Double>`, `Supplier<Double>`, `Consumer<Double>`, `BiFunction<Double,String,String>`, `Predicate<List<Double>>`, `UnaryOperator<Double>`, `BiConsumer<Double,String>`, `BiPredicate<Double>`, and `Function<Double,List<Double>>`.
+
+<Solution>
+
+1. `UnaryOperator<Double>`
+2. `BinaryOperator<Double>`
+3. `BiPredicate<Double>`
+4. `Function<Double,List<Double>>`
+5. `BiFunction<Double,String,String>`
+6. `Supplier<Double>`
+7. `Consumer<Double>`
+8. `BiConsumer<Double,String>`
+9. `Predicate<List<Double>>`
+
+</Solution>
+
+
+</Exercise>
