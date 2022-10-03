@@ -39,7 +39,7 @@ In Java, the _exception mechanism_ provides a flexible mechanism for passing con
 ### Throwing exceptions
 When something goes wrong or unexpected happens while the program is running, it typically makes no sense to continue running the code in the regular fashion. In Java, you can raise an exception, which will break the normal control flow.
 Raising an exception means that the execution of the current method is stopped, and that we return to the calling method with an exception status. There are two options in the calling method: it can either handle the exception, or it will
-pass on the exception to the method that called it. When an exception is raised, an none of the calling methods handle it, the execution will stop and the program will terminate with an error.
+pass on the exception to the method that called it. When an exception is raised, and none of the calling methods handle it, the execution will stop and the program will terminate with an error.
 
 You can raise an exception with the `throw` keyword, which behaves very similar to the `return` keyword, the difference being that it ignores the return type of the method, but raises an exception.
 It is a good idea to indicate what types of exception may be raised by `throw` statements in a method. This can be indicated in the method header using the `throws` keyword.
