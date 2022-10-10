@@ -188,7 +188,7 @@ Which of the following pieces of code are a valid lambda expression?
 Comparator<String> strCmp = (String s1, String s2) -> s1.length() - s2.length();
 // Piece 2
 Comparator<List<Object>> listCmp;
-listCmp = (List<Object> lst1, List<Object> ls2) -> lst2.size() - lst1.size();
+listCmp = (List<Object> lst1, List<Object> lst2) -> lst2.size() - lst1.size();
 // Piece 3
 Comparator<Course> courseCmp = course1.getCourseName().compareTo(course2.getCourseName());
 // Piece 4

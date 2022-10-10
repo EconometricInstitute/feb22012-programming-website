@@ -106,7 +106,7 @@ These come in three flavours: *wildcard types*, *extends* type constraints and *
 
 ### Wildcard Types
 
-Sometimes we do not care what type of object is store in a particular list. Suppose we want to create
+Sometimes we do not care what type of object is stored in a particular list. Suppose we want to create
 a method that accepts a list of *anything*, which will check if it is at least of a certain size.
 In such a case, can use a *wildcard type*, indicated by a `?` in a place where you would normally
 expect a type variable. The following method gives such an example.
