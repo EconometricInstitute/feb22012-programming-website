@@ -1,5 +1,5 @@
 ---
-path: '/week7/4-packages'
+path: '/week7/4-more-packages'
 title: 'More on packages'
 hidden: false
 extra: true
@@ -18,7 +18,7 @@ As the number of classes implemented for the program grows, remembering all the 
 
 Packages are practically directories in which the source code files are organised.
 
-IDEs offer existing tools for package management. Up until this point, we have only created classes and interfaces in the default package of the Source Packages folder of the project. You can create a new package in NetBeans by right-clicking on the Source Packages section (which contains the project's packages), and then selecting *New -&gt; Java Package...*.
+IDEs offer existing tools for package management. Up until this point, we have only created classes and interfaces in the default package of the Source Packages folder of the project. You can create a new package in IntelliJ by right clicking ont he sources and choosing *new package*.
 
 You can create classes inside a package in the same way you can in the default package. Below we create the class `Program` in the newly created package `library`.
 
@@ -78,10 +78,8 @@ Hello packageworld: the ABCs of packages!
 From this point on, *nearly all* of the exercises will use packages. Let's begin by creating our first very own packages.
 
 ## Directory structure in a file system
-Every project you see in NetBeans is in your computer's [file system](https://en.wikipedia.org/wiki/File_system) or on a centralized server.
-The project directory `src/main/java` contains the source code files of the program. If the package of a class is library, that class is stored inside the `src/main/java/libary` folder of the source code directory. You can also check the concrete project structure in NetBeans in the **Files** tab, which is normally next to the **Project** tab. If you cannot see the **Files** tab, you can make it appear by choosing the option **Files** from the dropdown menu **Window**.
-
-Application development is normally done in the **Projects** tab, where NetBeans hides unimportant files from the programmer.
+Every project you see in IntelliJ is in your computer's [file system](https://en.wikipedia.org/wiki/File_system) or on a centralized server.
+The project directory `src/main/java` contains the source code files of the program. If the package of a class is library, that class is stored inside the `src/main/java/libary` folder of the source code directory.
 
 ## Packages and access modifiers
 Until now, we've used two access modifiers. The modifier `private` is used to define variables (and methods) that are only visible inside the class where they are defined. They cannot be used from outside that class. The methods and variables defined with `public`, on the other hand, are available for everyone to use.
