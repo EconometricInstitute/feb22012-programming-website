@@ -174,7 +174,7 @@ use that method to order students. By using the right type constraints,
 Collections framework to make sure that we can do things we would expect are possible,
 while the compiler can still be strict in checking if things make sense. Usually, when
 you work with methods where these constraints appear, you can just use them without
-even notificing they are there.
+even noticing they are there.
 
 <Exercise title="Test your knowledge">
 

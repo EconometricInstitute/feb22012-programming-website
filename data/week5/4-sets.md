@@ -174,7 +174,7 @@ This results in a huge speed up: searching a balanced tree of a million element 
 kept relatively balanced when elements are inserted or removed.
 
 Below is an example of how a `TreeSet` could organize seven integer values in the computer's memory with this approach. In practice, the *value* variable in each node would be a reference to some object,
-which is then compare using the `Comparable`/`Comparator` implementation.
+which is then compared using the `Comparable`/`Comparator` implementation.
 
 <img width="100%" alt="The TreeSet&lt;Integer%gt; object contains the reference to the root node of the TreeSet and an integer value of the size. A node has a pointer to a node object with a smaller value, a pointer to a node object with a greater value and a pointer to the integer value of the node itself. In this example, the root node has two children and they also have two children each. If you go to the left from one node, you obtain node objects with smaller values. On the right, however, are nodes with greater values." src="https://user-images.githubusercontent.com/67587903/128865316-5ff48ad7-eb80-409d-a9c6-eb7b4fc79421.PNG">
 

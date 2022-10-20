@@ -62,7 +62,7 @@ the list, or randomize the order of the elements by using a `Random` object with
 the `shuffle` method, which randomizes the order like you would shuffle a deck of
 cards.
 
-The are also a number of useful methods for very basic statistics:
+There are also a number of useful methods for very basic statistics:
 
 ```java
 public static <T> T max(Collection<? extends T> coll, Comparator<? super T> comp)
