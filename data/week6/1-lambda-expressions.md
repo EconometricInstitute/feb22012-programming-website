@@ -251,8 +251,8 @@ Do not use of static methods of the `Comparator` class such as `Comparator.compa
 1. `Comparator<Course> comp = (o1,o2) -> o1.getCourseName().compareTo(o2.getCourseName()`
 2. `Comparator<Course> comp = (o1,o2) -> (int)Math.signum(o2.getEcts()-o1.getEcts())`
 3. `Comparator<Course> comp = (o1,o2) -> (int)Math.signum(o1.getEcts()-o2.getEcts())`
-4. `Comparator<Course> comp = (o1,o2) -> o2.getCourseYear() - o1.getCourseYear()`
-5. `Comparator<Course> comp = (o1,o2) -> o1.getCourseYear() - o2.getCourseYear()`
+4. `Comparator<Course> comp = (o1,o2) -> o1.getCourseYear() - o2.getCourseYear()`
+5. `Comparator<Course> comp = (o1,o2) -> o2.getCourseYear() - o1.getCourseYear()`
 
 </Solution>
 

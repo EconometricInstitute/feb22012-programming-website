@@ -320,7 +320,7 @@ public class MyClass implements Comparable<MyClass> { ... }
 whereas for an ad-hoc external order we have:
 
 ```java
-public class MyComparator implements Comparable<SomeOtherClass> { ... }
+public class MyComparator implements Comparator<SomeOtherClass> { ... }
 ```
 
 When using `Collections.sort()`, we can sort a `List` of a type that has a natural order
