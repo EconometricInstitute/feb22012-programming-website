@@ -203,7 +203,7 @@ the third element from the start? Can you make sure that `myQueue` is in it's or
 A general approach would work as follows:
 
 ```java
-public String getElem(Deque<String> q, int index) {
+public static String getElem(Deque<String> q, int index) {
     int count = 0;
     for (String str : q) {
         if (count == index) {

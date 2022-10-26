@@ -33,7 +33,7 @@ public static void printCourseNames(List<Course> courses) {
 }
 ```
 
-The creators of `Java 8` added a new method to the `Iterable` interface called `forEach`. Since all `Collection` is a supertype of `Iterable`, and `List` and `Set` are both subtypes of `Collection`, this methods can also be used `List` and `Set` objects. The `forEach` method is defined as follows: `public void forEach(Consumer<? super T> action);`.
+The creators of `Java 8` added a new method to the `Iterable` interface called `forEach`. Since all `Collection`s are a subtype of `Iterable`, and `List` and `Set` are both subtypes of `Collection`, this method can also be used on `List` and `Set` objects. The `forEach` method is defined as follows: `public void forEach(Consumer<? super T> action);`.
 
 Notice that the expression `System.out.println(c.getCourseName())` depends on a single variable `c` and returns nothing. We can use a lambda expression to turn this expression into a `Consumer<Course>`, like this: `Consumer<Course> printer = c -> System.out.println(c.getCourseName());`
 
