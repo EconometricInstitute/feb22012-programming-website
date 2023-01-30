@@ -67,7 +67,7 @@ Besides methods with *default* implementations, Java 8 now also allows the defin
 # Writing Functional Comparators
 Using lambda expressions and method references, we have great tools to write concise and declarative implementations of the `Comparator` interface. A good example is that we can obtain a `Comparator` object that defines an order on `Course` objects based on their teacher: `Comparator<Course> comp = (o1,o2) -> o1.getTeacher().compareTo(o2.getTeacher());`.
 
-Using the static utility and a method reference to the `getTeacher` method, we can even reduces this to `Comparator<Course> comp = Comparator.comparing(Course::getTeacher);`.
+Using the static utility and a method reference to the `getTeacher` method, we can even reduce this to `Comparator<Course> comp = Comparator.comparing(Course::getTeacher);`.
 
 If we want to compare a single attribute of a `Course` object, this is great. The property of the objects the comparator is comparing is called a *key*. The `Comparator` interface has a number of static methods that can help use create `Comparator` objects based on such keys. These are:
 
@@ -92,7 +92,7 @@ public static Comparator<T extends Comparable> naturalOrder();
 public static Comparator<T extends Comparable> reverseOrder();
 ```
 
-For example, we can obtain a comparator for the reverse order of `String` objects using the `reverseOrder()` method. Suppose we want to sort our courses by the reverse alphabetical order of their teach name. We can use the following code for this:
+For example, we can obtain a comparator for the reverse order of `String` objects using the `reverseOrder()` method. Suppose we want to sort our courses by the reverse alphabetical order of their teacher's name. We can use the following code for this:
 
 ```java
 // Obtain a reverse alphabetic order comparator

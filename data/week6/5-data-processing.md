@@ -63,7 +63,7 @@ public List<String> getNamesAfterYear(int year) {
 
 Next we consider the concept of *transforming* the `Course` objects to data we want to store in the data list. In the example, `Course` objects are transformed to `String` objects by calling the `getCourseName` method of the `Course` class. Can you guess which functional interface from the table is most suited to represent the task of transforming one type of data to another type of data?
 
-The functional interface that is useful in this context is called `Function<T,R>`. A function has a method `R apply(T arg)` that accepts an object of type `T` and transforms it to an object of type `R`. In our case, we are transforming a `Course` object to a `String` object by calling the `getCourseName` method from the `Course` class. We can generalize our `getNamesConditional` method to work with different transformations by using a `Function<Course,String` object as follows:
+The functional interface that is useful in this context is called `Function<T,R>`. A function has a method `R apply(T arg)` that accepts an object of type `T` and transforms it to an object of type `R`. In our case, we are transforming a `Course` object to a `String` object by calling the `getCourseName` method from the `Course` class. We can generalize our `getNamesConditional` method to work with different transformations by using a `Function<Course,String>` object as follows:
 
 ```java
 public List<String> transformToString(Function<Course,String> f, Predicate<Course> p) {
@@ -122,7 +122,7 @@ public List<Double> getECTSForTeacher(String teacherName) {
 }
 ```
 
-The first of these methods, computers a list of the names of teachers of courses that take place in a given year. The second method computes a list of course ECTS for courses taught by a particular teacher. Thanks to the generality of the `transform` method, we can *declaratively* write queries on our data set of courses, rather than having to write an explicit imperative program with `for` and `each`.
+The first of these methods computes a list of the names of teachers of courses that take place in a given year. The second method computes a list of course ECTS for courses taught by a particular teacher. Thanks to the generality of the `transform` method, we can *declaratively* write queries on our data set of courses, rather than having to write an explicit imperative program with `for` and `each`.
 
 As we have seen, using lambda expressions and method references allow us to write queries on a list of data in a more declarative and more concise way. However, we still implemented the transform method by our self. One of the main innovations that was introduced in Java 8, the Stream API, can help us to avoid writing our own `transform` method and many variants of it for similar but slightly different patterns.
 

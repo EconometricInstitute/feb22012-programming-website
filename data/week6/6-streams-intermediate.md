@@ -57,8 +57,8 @@ In the following sections, we discuss the most common intermediate operations: `
 | `sorted(Comparator<T> comparator)` | `Stream<T>` | sorts elements with the `comparator`  |
 
 ### The `filter` operation
-Not all objects that flow through a data processing pipeline may be of interest for the analysis you intend to perform. It is thus helpful to have an operation that can remove the objects that are not relevant to the analysis from the data flow, before they can reach the processing stops further down the pipeline. The intermediate operation `filter` does this.
-The `filter` method requires a `Predicate<T>` object that is used to determine if objects should be continue to flow to the next processing units in the pipeline or be discarded. If the `test()` function of the `Predicate` returns `true`, an object is send to the next unit in the pipeline, and if it returns `false`, the object is discarded.
+Not all objects that flow through a data processing pipeline may be relevant to the analysis you intend to perform. It is thus helpful to have an operation that can remove the objects that are not relevant to the analysis from the data flow, before they can reach the processing stops further down the pipeline. The intermediate operation `filter` does this.
+The `filter` method requires a `Predicate<T>` object that is used to determine if objects should be continue to flow to the next operations in the pipeline or be discarded. If the `test()` function of the `Predicate` returns `true`, an object is send to the next unit in the pipeline, and if it returns `false`, the object is discarded.
 
 The next example shows how we can obtain a `Stream` of all even numbers from a stream that contains all numbers.
 

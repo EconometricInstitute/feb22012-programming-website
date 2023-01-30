@@ -18,7 +18,7 @@ After constructing a `Stream` object from a data source and zero or more interme
 
 The previous table contains an overview of some of the terminal operations that are available in the `Stream` interface. Note that terminal operations can be recognized from the fact that they return something that is **not** of type `Stream`. By ending the pipeline, we obtain a different kind of result.
 
-The `allMatch`, `anyMatch` and `noneMath` terminal operations all take a `Predicate` as an argument and compute a `boolean` value from the application of the `Predicate` to all objects emitted from the stream. The `count` terminal operations counts the number of objects emitted from the stream. The terminal operation `collect` requires a special object that can aggregate the emitted objects into an output. Different options for such `Collector` objects are explained in Section [\[sec:collectors\]][2]. We discuss the remaining terminal operations in more detail in the following sections.
+The `allMatch`, `anyMatch` and `noneMath` terminal operations all take a `Predicate` as an argument and compute a `boolean` value from the application of the `Predicate` to all objects emitted from the stream. The `count` terminal operation counts the number of objects emitted from the stream. The terminal operation `collect` requires a special object that can aggregate the emitted objects into an output. Different options for such `Collector` objects are explained in Section [\[sec:collectors\]][2]. We discuss the remaining terminal operations in more detail in the following sections.
 
 **Some terminal operations in the `Stream` interface**
 
@@ -52,7 +52,7 @@ should print:
 </sample-output>
 
 ### `Optional<T>`
-It is possible to have streams that omit no data at all. This can happen if we call `stream()` on an empty `Collection`, or if we use a `filter` operation that is so strict that all objects are discarded from the stream. To deal with such situations in a neat way the creators of decided to introduce a new class `Optional<T>`. An object of type `Optional<T>` either holds a single value of type `T`, or is empty. As a consequence, rather than specifying a return type `T` that may be `null` if no suitable value can be returned, you can specify explicitly that a method may not always return a value by means of the `Optional<T>` return type.
+It is possible to have streams that omit no data at all. This can happen if we call `stream()` on an empty `Collection`, or if we use a `filter` operation that is so strict that all objects are discarded from the stream. To deal with such situations in a neat way a new class `Optional<T>` was introduced. An object of type `Optional<T>` either holds a single value of type `T`, or is empty. As a consequence, rather than specifying a return type `T` that may be `null` if no suitable value can be returned, you can specify explicitly that a method may not always return a value by means of the `Optional<T>` return type.
 
 The most useful methods that are available for objects of the `Optional` class are
 
