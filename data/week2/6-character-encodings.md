@@ -10,10 +10,10 @@ extra: true
 
 Within computers, all data is stores in a binary format. A `String` contains textual
 data, but in order to store textual data the text must be represented using binary
-values that we can easily interpret as number, also called code points. In order to'
-do so, a mapping between texual values and numeric values is defined.
+values that we can easily interpret as number, also called code points. In order to
+do so, a mapping between textual values and numeric values is defined.
 The American Standard Code for Information Interchange (ASCII) defines the relation
-between numbers 0 to 127, where for example the decimal numbers 65 to 90 for the
+between numbers 0 to 127, for example the decimal numbers 65 to 90 correspond to the
 characters `A` to `Z`,  and the decimal numbers 97 to 122 correspond to the
 characters `a` to `z`. This relationship between numbers and characters is called
 a *character encoding* or a *character set*.
@@ -27,7 +27,7 @@ the Unicode Consortium has worked on creating a universal standard
 character set that covers most of the scripts and ways of writing around the world,
 including symbols and support for right-to-left languages, and even Emoji. The most
 common and popular encoding is UTF-8, and the Unicode specification released in
-March 2020 support 143,859 unique characters.
+March 2020 supports 143,859 unique characters.
 
 When we want to read or write textual data, for example to files, most software and
 programming languages allow us to specify which character encoding should be used.
