@@ -15,7 +15,7 @@ ready: true
 
 ## Motivation to use Interfaces
 An important reason to use Object-oriented programming, is that we prevent duplication of code. With this in the back of your mind, consider a simple dice game:
-We throw two dice. If they have the same value, we multiply any one of them by a hundred. In case of different values, we multiply the highest by then and add the lowest. Or, in case we have a one and a two, it's worth a thousand.
+We throw two dice. If they have the same value, we multiply any one of them by a hundred. In case of different values, we multiply the highest by ten and add the lowest. Or, in case we have a one and a two, it's worth a thousand.
 This game can be implemented as follows:
 ```java
 public class Dice {
@@ -28,7 +28,7 @@ public class Dice {
     }
 
     public int getValue() {
-        if (d1 ==2 && d2 == 1) {
+        if (d1 == 2 && d2 == 1) {
             return 1000;
         }
         if (d1 == d2) {
@@ -139,7 +139,7 @@ GameValue val = new Dice(3,5);
 Dice d = (Dice) val;
 ```
 
-Here, explicit casting is necessary because the dice is a more specific type than the Gamevalue type.
+Here, explicit casting is necessary because `Dice` is a more specific type than the `GameValue` type.
 
 Now, we can adapt our sorting code in the following way:
 ```java
