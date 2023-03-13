@@ -24,7 +24,7 @@ overriding something. This is very helpful, because these are often very nasty
 types of mistakes to debug.
 
 Consider the following example, where we have an elementary algorithm
-that we can use to numerical perform root-finding for continuous functions where
+that we can use to numerically perform root-finding for continuous functions where
 a certain range is sweeped with a certain step size to find the input for the
 `compute` method that yields an output as close to zero as possible.
 Since the `findClostestToZero` calls this `compute` function, it is interesting
