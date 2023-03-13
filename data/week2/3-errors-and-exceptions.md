@@ -352,7 +352,7 @@ A programmer can also leave the exception unhandled and shift the responsibility
 We can shift the responsibility of handling an exception forward by throwing the exception out of a method, and adding notice of this to the declaration of the method.
 This means that between the open and close parentheses that hold the arguments, and before the `{` symbol that indicates the start of the block with the implementation
 of the method, we write `throws ExceptionType` where `ExceptionType` is the type of the `Exception` that can be thrown. To indicate multiple different exception types
-can be thrown, they are separated by comma's. And example where we indicate that a method may throw a `IOException` is written as follows.
+can be thrown, they are separated by comma's. And example where we indicate that a method may throw a `FileNotFoundException` is written as follows.
 
 ```java
 public int readFile() throws FileNotFoundException {
@@ -365,8 +365,7 @@ public int readFile() throws FileNotFoundException {
 ```
 
 The `throws` clause signals the caller of your method that it may encounter a `FileNotFoundException`. Then the caller needs to make the decision whether to handle the exception, or declare that the exception may be thrown.
-Note that you **must** specify all checked exceptions that a method may throw. This means either check exceptions that are directly thrown with the `throw` keyword, or any unhandled checked exceptions that may be thrown
-by other methods called inside the method.
+Note that you **must** specify all checked exceptions that a method may throw. This means either check exceptions that are directly thrown with the `throw` keyword, or any unhandled checked exceptions that may be thrown by other methods called inside the method.
 
 Sometimes the responsibility of handling exceptions is avoided until the end, and even the `main` method can throw an exception to the caller:
 
@@ -400,7 +399,7 @@ try {
 
 The `Exception` class has some useful methods. For example, we can use `getMessage()`
 to obtain the error message that is part of the Exception object.
-Another example we saw is the `printStackTrace()` prints the *stack trace*, which shows from whhere we ended up with this exception.
+Another example we saw is the `printStackTrace()` prints the *stack trace*, which shows from where we ended up with this exception.
 Below is a stack trace printed by the `printStackTrace()` method.
 
 <sample-output>
@@ -488,7 +487,7 @@ public List<Student> findStudentsOfYear(List<Student> students, int year)
 }
 ```
 
-Now you want to create a method `readStudentDataOfYear` that accepts a file an a year, and reads the data
+Now you want to create a method `readStudentDataOfYear` that accepts a file and a year, and reads the data
 from the file and returns only the relevant students. For the following alternative implementations, determine
 if they will compile or not. Which alternative would be preferred?
 
