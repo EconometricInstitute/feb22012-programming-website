@@ -365,7 +365,7 @@ public int readFile() throws FileNotFoundException {
 ```
 
 The `throws` clause signals the caller of your method that it may encounter a `FileNotFoundException`. Then the caller needs to make the decision whether to handle the exception, or declare that the exception may be thrown.
-Note that you **must** specify all checked exceptions that a method may throw. This means either check exceptions that are directly thrown with the `throw` keyword, or any unhandled checked exceptions that may be thrown by other methods called inside the method.
+Note that you **must** specify all checked exceptions that a method may throw. This means either checked exceptions that are directly thrown with the `throw` keyword, or any unhandled checked exceptions that may be thrown by other methods called inside the method.
 
 Sometimes the responsibility of handling exceptions is avoided until the end, and even the `main` method can throw an exception to the caller:
 
