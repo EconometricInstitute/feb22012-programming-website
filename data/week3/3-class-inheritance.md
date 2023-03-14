@@ -90,7 +90,7 @@ public class SquareSumPlus extends SquareSum {
 
 When we use class inheritance, the subclass inherits the methods of the superclass (including their body/implementation) and the instance variables of the superclass.
 However, instance variables and methods that are `private` can not be accessed in a subclass (as the subclass is written in a different `.java`) as they are invisible.
-However, when you use the debugger, you will still see that `private` variables exists within the object.
+However, when you use the debugger, you will still see that `private` variables exist within the object.
 We can call methods of the superclass like we can with methods that are defined in the current class, unless they are private.
 
 
@@ -103,7 +103,7 @@ subclass. These relations are always transitive, and the general type conversion
 type to a more general type is always possible and can be done automatically, whereas conversion from a more
 general type to a more specific type needs special care. Because of transitivity, subtype and supertype relations
 can have several intermediate types but still be called subtype or supertype. If a distinction is needed, we
-call a relation without intermediates a *direct* supertype, subtype, supertype or subclass relation.
+call a relation without intermediates a *direct* supertype, subtype, superclass or subclass relation.
 
 Moreover, a class **can have at most one direct superclass** but **implement any non-negative number of interfaces**.
 Consider the following example:
@@ -192,7 +192,7 @@ When the constructor (of the subclass) is called, the variables defined in the s
 A subclass **must** have a constructor that calls the constructor of the superclass when the superclass has one or more specified constructors. In the previous example, this means that you could remove the second constructor, but not the first, unless you would make a new constructor calling the super class.
 
 ```java
-Engine engine = new Engine("combustion", "hz", "volkswagen", "VW GOLF 1L 86-91");
+Engine engine = new Engine("combustion", "hz", "volkswagen");
 System.out.println(engine.getEngineType());
 System.out.println(engine.getManufacturer());
 ```
@@ -229,31 +229,6 @@ With a call to `this(...)` we can call another overloaded constructor in the
 same class. One reason to do this is to have easier to use constructors that
 require fewer arguments. Another reason is to reduce duplicate code that
 initializes the class as much as possible.
-
-</Solution>
-
----
-
-Suppose we want to override a `void` method `doSomething()` in a subclass that was
-defined in a superclass. Give an implementation of this method that first prints
-`This is new!` and then does whatever the superclass does when `doSomething()`
-is called?
-
-<Solution>
-
-We can use the `super` keyword as follows:
-
-```java
-@Override
-public void doSomething() {
-  System.out.println("This is new!");
-  super.doSomething();
-}
-```
-
-If we forget the `super.` part, the method ends up calling itself, and would
-result in a `StackOverflowError`. The `super` keyword makes sure we use the
-implementation we are overriding.
 
 </Solution>
 

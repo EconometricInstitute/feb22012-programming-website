@@ -114,7 +114,7 @@ public class Main {
 ```
 
 The benefit of declaring the `printValue` method such that it accepts a `GameValue` argument lies in the fact that it can be given objects of *any* class that implements the `GameValue` interface as input.
-When we call method with any object instantiated from a class that inherits the GameValue class, the method would function as desired. This avoid having to create many different methods for different
+When we call the method with any object instantiated from a class that implements the GameValue interface, the method would function as desired. This avoids having to create many different methods for different
 types of casino games.
 
 ### Interface Types as Return Types
@@ -131,7 +131,7 @@ public static GameValue getHighestValue(GameValue a, GameValue b) {
 ```
 ### Type Conversion
 
-Note that since the `Dice` class that inherits the `GameValue` interface class, it is guaranteed that every `Dice` can be used as a `GameValue`.
+Note that since the `Dice` class inherits the `GameValue` interface class, it is guaranteed that every `Dice` can be used as a `GameValue`.
 However, not all classes that implement the `GameValue` interface are guaranted to be of type `Dice`.
 As a consequence, you can assign an object created from the `Dice` class to a `GameValue`-type variable,
 but it does not work the other way without an explicit type conversion. In case you still want to do this, you have to use an explicit cast:
@@ -175,7 +175,7 @@ public void printDiceValue(GameValue dice) {
 To make sure we perform the type conversion only when this is safe, we can use the `instanceof` keyword to check whether
 it is safe to cast a certain reference to a particular type. It is a binary operator which on the left hand side has
 an expression, and on the right hand side has a type, like so: `expr instanceof Type`. The operator will return `true`
-in case the reference in `expr` can be converted to the give `Type` and otherwise returns `false`. We can adjust
+in case the reference in `expr` can be converted to the given `Type` and otherwise returns `false`. We can adjust
 the code above as follows to use this mechanism:
 
 ```java
@@ -243,7 +243,7 @@ implement the same method for each inheriting class.
 It is also used in creating and declaring new variables.
 A very well-known example is the following: `List<String> exampleList = new ArrayList<>();`.
 Here, the type `List` is general, as there exist many different types of lists.
-The class `ArrayList` inherits the class `List`, so that `List` is an interface of `List` here.
+The class `ArrayList` inherits the class `List`, so that `List` is an interface of `ArrayList` here.
 In the [documentation](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/List.html)
 you can find which other implementing classes have the interface `List`.
 
