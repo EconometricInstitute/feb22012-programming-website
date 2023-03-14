@@ -29,7 +29,7 @@ This week, you will learn more about inheritance. First we will discuss how inhe
 
 <text-box variant='hint' name='Recap on polymorphism and interfaces'>
 
-We can use interfaces to define behavior that's required from a class, i.e., its methods. Thus, interfaces are used to guarantee that an object has one or more methods available. Interfaces provide *polymorphism* because we can write code that is able to handle objects of different classes, but which share a common interface type. This means that objects can take on multiple forms.
+We can use interfaces to define behavior that's required from a class, which means a definition of methods that are required to exist. Thus, interfaces are used to guarantee that an object of different classes all have a particular set of methods available. Interfaces provide *polymorphism* because we can write code that is able to handle objects of different classes, but which share a common interface type. This means that objects can take on multiple forms and are implemented in different classes, but still all share common behavior via a common list of methods that can be called on all of them.
 
 If you do not remember the concepts of polymorphism and interfaces well enough, please reread the this topic in the material [from last week](/week2/5-introduction-interfaces).
 

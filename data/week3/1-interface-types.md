@@ -114,7 +114,7 @@ public class Main {
 ```
 
 The benefit of declaring the `printValue` method such that it accepts a `GameValue` argument lies in the fact that it can be given objects of *any* class that implements the `GameValue` interface as input.
-When we call the method with any object instantiated from a class that implements the GameValue interface, the method would function as desired. This avoids having to create many different methods for different
+When we call the method with any object instantiated from a class that implements the `GameValue` interface, the method would function as desired. This avoids having to create many different methods for different
 types of casino games.
 
 ### Interface Types as Return Types
@@ -131,7 +131,7 @@ public static GameValue getHighestValue(GameValue a, GameValue b) {
 ```
 ### Type Conversion
 
-Note that since the `Dice` class inherits the `GameValue` interface class, it is guaranteed that every `Dice` can be used as a `GameValue`.
+Note that since the `Dice` class implements the `GameValue` interface, it is guaranteed that every `Dice` can be used as a `GameValue`.
 However, not all classes that implement the `GameValue` interface are guaranted to be of type `Dice`.
 As a consequence, you can assign an object created from the `Dice` class to a `GameValue`-type variable,
 but it does not work the other way without an explicit type conversion. In case you still want to do this, you have to use an explicit cast:
@@ -237,15 +237,17 @@ Why would one use the interface type as a method parameter or return type?
 <Solution>
 
 We use the more general interface type as parameters and return types to keep methods general.
-By doing so, we make sure that all inheriting classes can use the method and avoid having to
-implement the same method for each inheriting class.
+By doing so, we that any objects that work with classes that implement the interface do
+not have to implement the same method for each class implementing the interface.
 
 It is also used in creating and declaring new variables.
 A very well-known example is the following: `List<String> exampleList = new ArrayList<>();`.
-Here, the type `List` is general, as there exist many different types of lists.
-The class `ArrayList` inherits the class `List`, so that `List` is an interface of `ArrayList` here.
+Here, the interface type `List` is general, as there exist many different types of lists.
+The class `ArrayList` implements the interface `List`. `List` is an interface defining the particular
+behavior of what we can do with a list, for example adding, removing and retrieving elements at particular
+indices.
 In the [documentation](https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/List.html)
-you can find which other implementing classes have the interface `List`.
+you can find which other iclasses that implement the interface `List`.
 
 </Solution>
 

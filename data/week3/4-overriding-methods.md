@@ -189,4 +189,29 @@ that holds a reference to the object.
 
 </Solution>
 
+---
+
+Suppose we want to override a method `void doSomething()` in a subclass `Child` that was
+defined in a superclass `Parent`. Give an implementation of this method that first prints
+`This is new!` and then does whatever the superclass does when `doSomething()`
+is called.
+
+<Solution>
+
+We can use the `super` keyword as follows:
+
+```java
+@Override
+public void doSomething() {
+  System.out.println("This is new!");
+  super.doSomething();
+}
+```
+
+If we forget the `super.` part, the method ends up calling itself, and would
+result in a `StackOverflowError`. The `super` keyword makes sure we use the
+implementation from the `Parent` class we are overriding in the `Child` class.
+
+</Solution>
+
 </Exercise>

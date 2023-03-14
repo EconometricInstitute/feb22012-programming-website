@@ -158,7 +158,7 @@ public class Part {
 ```
 
 One part of the car is the engine. As is the case with all parts, the engine, too, has a manufacturer, an identifier, and a description. In addition, each engine has a type: for instance, an internal combustion engine, an electric motor, or a hybrid engine.
-Let's create the class `Engine` using inheritance in our implementation. We'll create the class `Engine` which inherits the class `Part`: an engine is a special case of a part.
+Let's create the class `Engine` using inheritance in our implementation. We'll create the class `Engine` which applies inheritance by extending the class `Part`: an engine is a special case of a part.
 
 On the first line of a constructor, it is allow to call another constructor. To call another constructor within the same class, we can use `this(...)`. To call a constructor of the superclass, we can use `super(...)`. The following code contains
 an example of types of calls to other constructors:
