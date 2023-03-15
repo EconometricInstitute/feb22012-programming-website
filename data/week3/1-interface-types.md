@@ -96,7 +96,7 @@ GameValue throwDice3 = throwDice;
 
 The true benefits of interfaces are reaped when they are used as the type of parameter provided to a method.
 Since an interface can be used as a variable's type, it can also be used as a parameter type in method calls.
-For example, the `getValue` method of the class below accepts an argument of type `GameValue`.
+For example, the `printValue` method of the class below accepts an argument of type `GameValue`.
 
 ```java
 public class Main {
@@ -113,7 +113,7 @@ public class Main {
 }
 ```
 
-The benefit of declaring the `printValue` method such that it accepts a `GameValue` argument lies in the fact that it can be given objects of *any* class that implements the `GameValue` interface as input.
+The benefit of declaring the `printValue` method such that it accepts a `GameValue` argument lies in the fact that we can pass objects of *any* class that implements the `GameValue` interface as arguments.
 When we call the method with any object instantiated from a class that implements the `GameValue` interface, the method would function as desired. This avoids having to create many different methods for different
 types of casino games.
 
