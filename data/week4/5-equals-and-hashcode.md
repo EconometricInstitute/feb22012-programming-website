@@ -58,7 +58,7 @@ Adhering to the contracts of `equals()` and `hashCode()` can be a tricky busines
 <text-box variant='hint' name='Assisted creation of the equals method and hashCode '>
 
 IntelliJ provides support for the creation of both `equals` and `hashCode`. You can select Code -> Generate from the menu and then select *equals() and hashCode()* from the drop-down list.
-The IDE then asks for the instance variables used in the methods. The methods developed by NetBeans are typically sufficient for our needs.
+The IDE then asks for the instance variables used in the methods. The methods developed by Intellij are typically sufficient for our needs.
 
 </text-box>
 
@@ -171,7 +171,7 @@ public boolean equals(Object obj) {
 Whether you need to override `equals()` and `hashCode()` depends on your intended use. If you are likely to have two separate objects with the same values but want to regard them as separate objects under all circumstances, the default implementation is what you want.
 On the other hand, if you want to be able to compare separate objects of your class based on their contents, you should override `hashCode` and `equals`.
 For example, if you read and store pairs of numbers from a file and create objects that way and then want to check whether they also exist in a second file.
-In most cases where you want to override both methods, it is preferable to let your IDE generate the code, but in some circumstances (such as unordered pairs), you may want to do it yourself, or generate the code automatically and adjust it as needed.
+In most cases where you want to override both methods, it is preferable to let your IDE generate the code, but in some circumstances (such as unordered pairs, i.e. if we do want the pair `[1, 2]` to be considered equal to `[2, 1]`), you may want to do it yourself, or generate the code automatically and adjust it as needed.
 
 <Exercise title="Test your knowledge">
 
@@ -191,7 +191,7 @@ What should you keep in mind when overriding the `equals()` method?
 
 <Solution>
 
-The method that you write should adhere to some rule. It should be reflexive, symmetric, transitive and consistent.
+The method that you write should adhere to some rules. It should be reflexive, symmetric, transitive and consistent.
 Also, you must override the `hashCode()` method
 
 </Solution>
