@@ -8,8 +8,8 @@ ready: true
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
  - You understand the difference between the `==`-operator and the `equals()` method.
- - You understand why many standard classes such as `String` and `Integer` override the `equals()` method
- - You are aware that you should prefer to use your IDE (IntelliJ/Eclipse) to generate the code for `equals()` rather than write it yourself
+ - You understand why many standard classes such as `String` and `Integer` override the `equals()` method.
+ - You are aware that you should prefer to use your IDE (IntelliJ/Eclipse) to generate the code for `equals()` rather than write it yourself.
 
 </text-box>
 
@@ -67,7 +67,7 @@ There is one more issue to take into account when you override the equals method
 In this quiz, you can test your knowledge on the subjects covered in this chapter.
 
 
-* Suppose a fellow student has implemented a class `Dataset`. Suppose you have obtained two references two `Dataset` objects held in variables `a` and `b`.
+Suppose a fellow student has implemented a class `Dataset`. Suppose you have obtained two references to two `Dataset` objects held in variables `a` and `b`.
 Which of the following statements are true?
 
 1. If `a == b` returns `true`, then `a.equals(b)` must also return `true`.
