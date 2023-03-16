@@ -17,8 +17,8 @@ In your own small projects, you may end up with a few classes which use inherita
 However, many useful libraries, which you are likely to end up using, make extensive use of it. Often these libraries
 have a lot of classes, which can be daunting to the uninitiated, but with a diagram it is often easy to understand
 the structure of these libraries. For example, when you create Graphical User Interfaces (GUIs) there are different
-classes that represent component (e.g. a button, a text field) and containers that contain multiple components but
-are also containers themselves. They also contain classes that allow you to specify the layout of components, and
+classes that represent components (e.g. a button, a text field) and containers that contain multiple components but
+are also classes themselves. They also contain classes that allow you to specify the layout of components, and
 classes that help specify actions, that can for example be used if a user clicks a button.
 
 Understanding such hierarchies of classes, a *class hierarchy diagram* provides insight into the structure of
@@ -78,7 +78,7 @@ to handle an Exception. As using a `catch` block means that the exception is not
 wrong. If this information would be relevant for the caller, we should thus prefer to propagate to the caller. If there is a good solution to solve the problem in the
 current method, a `catch` block should be used.
 
-We never should use both approaches for the same type of exception. The only case when it is appropriate for a method to both propagate exception to the caller and use
+We never should use both approaches for the same type of exception. The only case when it is appropriate for a method to both propagate exceptions to the caller and use
 a catch block, is if one type of exception can occur that can be handle appropriately in the method, and another type of exception can occur that should be propagated
 to the caller.
 
