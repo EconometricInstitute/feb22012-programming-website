@@ -8,7 +8,7 @@ ready: true
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
 - You understand what an abstract class is.
-- You know how to use, create and extend abstract classes.
+- You know how to use create and extend abstract classes.
 - You know the difference between methods that are declared abstract and regular methods.
 - You understand that abstract classes themselves cannot be instantiated.
 
@@ -177,7 +177,7 @@ Choice: **0**
 
 </sample-output>
 
-The greatest difference between interfaces and abstract classes is that abstract classes can contain object variables and constructors in addition to methods. Since you can also define functionality in abstract classes, you can use them to define e.g. default behavior. In the user interface above, storing the name of the operation used the functionality defined in the abstract `Operation` class.
+The greatest difference between interfaces and abstract classes is that abstract classes can contain object variables and constructors in addition to methods. Since you can also define functionality in abstract classes, you can use them to define e.g. default behavior. In the user interface above storing the name of the operation used the functionality defined in the abstract `Operation` class.
 
 <text-box variant='hint' name='Abstract Classes and Constructors'>
 
@@ -213,7 +213,7 @@ have no implementation, and then call a constructor of this subclass.
 
 ---
 
-Determine whether the following statements are true or false, and why:
+Determine whether of the following statements are true or false, and why:
 
 * Inside an abstract class you are not yet allowed to call methods that are abstract
 * Abstract classes can have constructors
