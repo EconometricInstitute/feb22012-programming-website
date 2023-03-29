@@ -8,7 +8,7 @@ ready: true
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
 - You are familiar with the Set interface and the `SortedSet` interface.
-- You are aware of the `HashSet` and `TreeSet` classes and have a general idea how they speed up containment queries
+- You are aware of the `HashSet` and `TreeSet` classes and have a general idea how they speed up containment queries.
 
 </text-box>
 
@@ -16,7 +16,7 @@ ready: true
 Sometimes, we want to work with data while we do not care about the order elements were added or how often they occur.
 In such cases, we should use a `Set` instead of a `List`. The Set interface describes functionality related to sets,
 similar to the concept of a set in mathematics. That means that a `Set` either contains or does not contain an
-object/element, but that these elements are not organized sequentially, or that it is possible to have multiple copies
+object/element, but that these elements are not organized sequentially, nor that it is possible to have multiple copies
 of the same element/object in the set. In Java `Set` objects, duplicate element are filtered using the `equals` method.
 For example, when finding repeated values in a set of data or when keeping track of whether we have seen something before,
 a `Set` is very useful, as adding multiple objects that are equal according to their `equals` implementation will make
@@ -34,7 +34,7 @@ as operations on mathematical sets:
 - The set difference (S \ 𝑇) can be performed via the removeAll method: `public boolean removeAll(Collection<?> arg0);`
 - Checking for subsets (S ⊆ 𝑇) can be done via the containsAll method: `public boolean containsAll(Collection<?> arg0);`
 
-Since sets do not have a notion of the position or sequence, it is not possible to iterate over the elements of the
+Since sets do not have a notion of position or sequence, it is not possible to iterate over the elements of the
 set via indices. Here's how to go through the elements of a set.
 
 ```java
@@ -85,11 +85,11 @@ severe mistake if you use the index-based loop on anything else than a `List`.
 
 </text-box>
 
-Note that Set does not assume or guarantee anything about the order of a set of elements.
+Note that `Set` does not assume or guarantee anything about the order of a set of elements.
 A `Set` only knows which elements are contained in the `Set`, and which elements are
 not.
 If you iterate over a `Set`, the elements may show up in a completely different order
-than the order in which you added them, and for some types of `Set` it maybe even
+than the order in which you added them, and for some types of `Set` it may even
 seem different every time you run your program. This is very different from `List`
 objects, where the order of the elements is dictated by their *indices*.
 
@@ -122,12 +122,12 @@ If the hash codes of the objects added to a `HashSet` are distributed uniformly,
 
 <text-box variant='hint' name='Use a LinkedHashSet'>
 
-While a `HashSet` is usually quite efficient, the disadvantage is that the order of the elements may appear to change each time you re-run your program (although this depends a bit on the implementation of `hashCode` in the objects your add).
+While a `HashSet` is usually quite efficient, the disadvantage is that the order of the elements may appear to change each time you re-run your program (although this depends a bit on the implementation of `hashCode` in the objects you add).
 As an alternative, you can use the `LinkedHashSet`, which internally maintains both a `HashSet` that allows checking for quick containment, and a `LinkedList` that keeps track of the order in which elements were added to the set.
 The main convenience is that when you iterate through the elements in the `LinkedHashSet`, the order in which they were originally inserted is used rather than the random order in which the elements appear in the various buckets.
 
 The `LinkedHashSet` is a drop-in replacement for the `HashSet`. In you use the `Set` type to declare your variables, it is typically a matter of replacing a call to the constructor of `HashSet` with a call to the
-constructor of `LinkedHashSet`. For example, the following example always ensures that the Strings`"Hello"` and `"World!"` are always printed in that order.
+constructor of `LinkedHashSet`. For example, the following example always ensures that the Strings `"Hello"` and `"World!"` are always printed in that order.
 
 ```java
 Set<String> set = new LinkedHashSet<>();
@@ -181,9 +181,9 @@ which is then compared using the `Comparable`/`Comparator` implementation.
 The `TreeSet<E>` class has the advantage that iterating over the elements happens according to the specified order, and that minimum/maximum elements and ranged subsets can be selected efficiently.
 However, in practice, `HashSet` is faster (unless you end up in the very unlikely case that all objects end up in the same bucket). However, `HashSet`s have random order, while a `TreeSet` has a reliable order,
 as defined by the `Comparable`/`Comparator` used by the `TreeSet`. Therefore, iterating over a `TreeSet<String>` would return all the elements in an alphabetical order, regardless of the order in which the elements
-were inserted. `TreeSet` does require the order defined in the `compareTo`/`compare` methods to be consistent with equals in order to work correctly.
+were inserted. `TreeSet` does require the order defined in the `compareTo`/`compare` methods to be consistent with `equals` in order to work correctly.
 
-Three of TreeSet’s constructors are:
+Three of `TreeSet`’s constructors are:
 
 ```java
 public TreeSet()
@@ -236,11 +236,13 @@ for (String str : mySet) {
 
 This version will print:
 
-```
+<sample-output>
+
 hello
 there
 set
-```
+
+</sample-output>
 
 </Solution>
 
@@ -289,7 +291,7 @@ SortedSet<String> subset = words.subSet("d", "k");
 ```
 
 Note that making clever use of the `SortedSet` interface results in
-much shorter than when you perform the comparison yourself:
+much shorter code than when you perform the comparison yourself:
 
 ```java
 Set<String> subset = new HashSet<>();
