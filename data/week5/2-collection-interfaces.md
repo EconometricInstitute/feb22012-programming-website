@@ -17,7 +17,7 @@ ready: true
 A very important application of computer programs is to manipulate, analyze and process a lot of data.
 In an Object Oriented language, the data is often converted to objects, for example an object per
 transaction in a financial dataset, one object per observation in a scientific experiment, or
-one object per product in a retailer's databased.
+one object per product in a retailer's database.
 To store many of such objects while being able to retrieve them efficiently,
 Java implements several data structures. We already know some of them, such as the
 `ArrayList` and the array. The `ArrayList` implements the `List` interface.
@@ -30,7 +30,7 @@ Also, the `Set` interface and `List` interface are sub-types of the `Collection`
 ### Iterable interface
 The interface `Iterable<T>` are all types that we can use the **enhanced for-loop** on.
 It specifies only one method: `public Iterator<T> iterator()`.
-An iterator is able to indicate whether there are any elements left to iterate on (with `hasNext()`) and to produce the next element (with `next()`).
+An `Iterator` is able to indicate whether there are any elements left to iterate on (with `hasNext()`) and to produce the next element (with `next()`).
 When we work with a collection of data containing a bunch of objects, it is often useful to do something _for each_ object.
 The enhanced for-loop should be preferred in such cases. It will use the most efficient way to iterate over a collection.
 
@@ -61,7 +61,7 @@ while (iter.hasNext()) {
 ```
 
 You can use a regular for-loop as well, where you leave the increment part of the
-for empty:
+for-loop empty:
 ```java
 for (Iterator<Integer> iter = iterable.iterator(); iter.hasNext();) {
   Integer i = iter.next();
@@ -93,7 +93,7 @@ perform the comparison (but can not necessarily be compared itself).
 
 ## Collection interface
 
-As mentioned before, it is often used to store a large number of objects
+As mentioned before, a `Collection` is often used to store a large number of objects
 that represent some kind of data: *transactions*, *products*, *observations*,
 and many other things. In Java, the `Collection` interface can be used to
 indicate that something holds zero or more objects. It does not define
