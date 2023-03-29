@@ -14,7 +14,7 @@ ready: true
 </text-box>
 
 In this section we will consider two subtypes of the `Collection` interface that model
-data that is stored *sequentially*. Remember that semantics (the meaning) of the
+data that is stored *sequentially*. Remember that the semantics (the meaning) of the
 `Collection` interface only states that something is a container of multiple objects, but doesn't
 give any information on how these objects are organized. Subtypes of `Collection`
 give more details on the organization of objects. The most common, and perhaps, intuitive way
@@ -110,7 +110,7 @@ an item stored a specific index can not be performed with all types of `Collecti
 and therefore, these methods are only included in `List` types.
 
 ### ArrayList&lt;E&gt; class
-The List you are most familiar with is the ArrayList. It implements the `List<E>` interface.
+The `List` you are most familiar with is the `ArrayList`. It implements the `List<E>` interface.
 As a result it implements all methods in `List<E>` and its super interfaces `Collection<E>` and `Iterable<E>`.
 Two of its constructors are:
 
@@ -138,13 +138,18 @@ public LinkedList() { ... }
 public LinkedList(Collection<? extends E> c) { ... }
 ```
 
-Due to the way it works, adding and removing elements at the front or the end of the list is very efficient, but accessing an element at a fixed index requires it to walk over the elements in the list.
+Due to the way it works, adding and removing elements at the front or the end of the list (or in fact, anywhere in the list) is very efficient,
+but accessing an element at a fixed index requires it to walk over the elements in the list.
 Since it needs to create objects for every element it is often slower than `ArrayList` for many list-related applications.
 
 <img width="100%" alt="The description of the diagram that depicts an example of a linked list, is directly under the picture." src="https://user-images.githubusercontent.com/67587903/128730017-50f2fada-1fb8-4217-8b61-bd8e9081299c.PNG">
 
-This figure shows schematically how a LinkedList with four `Integer` objects is organized in the computer's memory.
-The LinkedList object contains a reference to the first and last element objects of the list and also holds an integer that represents its size. Each object contains a reference to its previous and next object and the value it contains. The reference of the first object to its previous object is null, because it is the first object. The next reference of the last object is also null, because no next object exists. If another element would be added, another element object would be created, and the last (or first) node
+This figure shows schematically how a `LinkedList` with four `Integer` objects is organized in the computer's memory.
+The `LinkedList` object contains a reference to the first and last element objects of the list and also holds an integer that represents its size.
+Each object contains a reference to its previous and next object and the value it contains.
+The reference of the first object to its previous object is `null`, because it is the first object.
+The next reference of the last object is also `null`, because no next object exists.
+If another element would be added, another element object would be created, and the last (or first) node
 could update the next/previous references.
 
 <text-box variant='hint' name='Prefer interface types'>
