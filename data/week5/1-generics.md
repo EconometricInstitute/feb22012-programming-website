@@ -7,9 +7,9 @@ ready: true
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
-- You understand what basic *generic types* are and how you can use them
-- You know generic type constraints exist and are not alarmed when you see them in the documentation
-- You understand that you can just try to use methods that work with generic type constraints and do not have too worry a lot about them for this course
+- You understand what basic *generic types* are and how you can use them.
+- You know generic type constraints exist and are not alarmed when you see them in the documentation.
+- You understand that you can just try to use methods that work with generic type constraints and do not have too worry a lot about them for this course.
 
 </text-box>
 
@@ -62,7 +62,7 @@ Sometimes, other names such as `U` or `S` are also used, or even names such as `
 
 **Note:** you only need to understand the remainder of this section passively - there will not be any exam
 questions that test if you understand it. However, you will come accross generic type constraints
-on the slides and in the documentation and therefore it is important you are aware the exist.
+on the slides and in the documentation and therefore it is important you are aware they exist.
 
 Suppose we have two types, `Person` and `Student`, where `Student` is a subtype of `Person`.
 This means that the following code would work without any problems (assuming some sensible
@@ -152,7 +152,7 @@ In the example where we tried to assign a `Comparator<Student>` to a variable of
 `Comparator<Student>` could make use of information that is only specific to a `Student`.
 However, if we would have a `Comparator<Person>`, we would expect that it can still be
 used to compare `Student` objects, since `Students` will contain all the information
-(and likely more) than a basic `Person`, because it is a subtype.
+of a basic `Person` (and likely more), because it is a subtype.
 
 In a case like this, we could do this type of conversion by stating that we want a
 `Comparator` that can compare `Student` objects, or any super-type of it. Similar to the
@@ -168,7 +168,8 @@ Collections.sort(students, studentComp);
 ```
 
 In this example, it makes sense that if we have a way to order persons, we can also
-use that method to order students. By using the right type constraints,
+use that method to order students. By using the right type constraints, we can inform
+the compiler that we want this to be possible.
 
 **Main take-away:** these *generic type constraints* appear in some methods of the
 Collections framework to make sure that we can do things we would expect are possible,
@@ -222,7 +223,10 @@ What does the diamond operator do and what does it look like in code?
 
 <Solution>
 
-The diamond operator looks like this: `<>`, and the compiler figures out what type should be in there. The diamond operator is used while creating a new instance of an object, for instance like this: `List<Integer> exampleList = new ArrayList<>();`. The compiler can figure out that the `ArrayList` holds objects of the type `Integer` as we already told the compiler that the variable type was some sort of `List` holding `Integer` objects.
+The diamond operator looks like this: `<>`, and the compiler figures out what type should be in there.
+The diamond operator is used while creating a new instance of a class, for instance like this: `List<Integer> exampleList = new ArrayList<>();`.
+The compiler can figure out that the `ArrayList` holds objects of the type `Integer`
+as we already told the compiler that the variable type was some sort of `List` holding `Integer` objects.
 Please note that the non-primitive type `Integer` is used here.
 
 </Solution>
