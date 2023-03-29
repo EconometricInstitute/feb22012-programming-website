@@ -17,8 +17,8 @@ ready: true
 In this part, we will discuss the third main type of data structure
 introduced in the Java Collections framework: the `Map`. Maps are
 very useful and many languages, including Python, provide special
-syntax to use them in an convenient and easy way. In this section
-we first consider how `Map` work and are implemented in the
+syntax to use them in a convenient and easy way. In this section
+we first consider how `Map`s work and are implemented in the
 Collections framework, and then consider some practical examples
 of how they can be used.
 
@@ -29,9 +29,9 @@ The keys in a map are unique: the keys of a map form the **key set**. For every 
 Maps have many uses. Some examples include:
 - Counting how often a String occurs in a file (keys: `String`, values: `Integer`)
 - Keep track of the reputation of a Player (keys: `Player`, values: `Double`)
-- which line of text is contained in which files (keys: `String`, values: `List<File>`)
+- Which line of text is contained in which files (keys: `String`, values: `List<File>`)
 
-The interface `Map<K,V>` has two type parameters: one for the keys (K) and one for the values (V).
+The interface `Map<K,V>` has two type parameters: one for the keys (`K`) and one for the values (`V`).
 It does **not** extend `Collection<E>` because `Collection`s only hold values of a single type,
 whereas the maps holds pairs of values where the keys are unique and thus form a *set*.
 
@@ -90,7 +90,7 @@ true
 
 ### HashMap&lt;K,V&gt; class
 
-A HashMap is, in addition to ArrayList, one of the most widely used of Java's pre-built data structures. The hash map is used whenever data is stored as key-value pairs, where values can be added, retrieved, and deleted using keys.
+A `HashMap` is, in addition to `ArrayList`, one of the most widely used of Java's pre-built data structures. The hash map is used whenever data is stored as key-value pairs, where values can be added, retrieved, and deleted using keys.
 The way `HashMap` stores it key-value pairs is very similar to the way `HashSet` works: it depends on the `hashCode()` and `equals()` methods of the key objects.
 Two constructors for `HashMap<K,V>` are:
 
@@ -106,12 +106,10 @@ and `equals` methods.
 
 <text-box variant='hint' name='Use a LinkedHashMap'>
 
-While a `HashMap` is usually quite efficient, the disadvantage is that the order of the key/value pairs may appear to change each time you re-run your program (although this depends a bit on the implementation of `hashCode` in the objects your add).
-As an alternative, you can use the `LinkedHashMap`, which internally maintains both a `HashMap` that allows checking for quick containment, and a `LinkedList` that keeps track of the order in which keys were added to the map.
-The main convenience is that when you iterate through the key-value pairs in the `LinkedHashMap`, the order in which they were originally inserted is used rather than the random order in which the key-value pairs appear in the various buckets.
+Just like we can use a `LinkedHashSet` to maintain the order of objects in a `HashSet`,
+a `LinkedHashMap` maintains the order in which objects were added. This is contrary to a `HashMap`, where the order of the key/value pairs may appear to change each time you re-run your program.
 
-The `LinkedHashMap` is a drop-in replacement for the `HashMap`. In you use the `Map` type to declare your variables, it is typically a matter of replacing a call to the constructor of `HashMap` with a call to the
-constructor of `LinkedHashMap`. For example, the following example always ensures that the Strings`"Hello"` and `"World!"` are always printed in that order.
+For example, the following example always ensures that `Poster : 23` and `Photo : 5` are always printed in that order:
 
 ```java
 Map<String,Integer> map = new LinkedHashMap<>();
@@ -123,7 +121,7 @@ for (String key : map.keySet()) {
 }
 ```
 
-which will always print
+will always print
 
 <sample-output>
 
@@ -170,6 +168,7 @@ public TreeMap(Map<? extends K, ? extends V> m) { ... }
 ### Iterating over a Map
 
 As a `Map` is not a sub-interface of `Collection` itself, we can not use the enhanced for-loop directly on a `Map`.
+We can, however, iterate over the set of keys:
 
 
 ```java
@@ -255,7 +254,7 @@ relation between `TreeMap` and `TreeSet`?
 
 The main relation is the way in which they store and find elements under the hood.
 The `HashSet` and `HashMap` both work with the contract defined between `Object.hashCode`
-and `Object.equals()`. Similarly, `TreeMap` and `TreeSet` both work with an order as defined
+and `Object.equals`. Similarly, `TreeMap` and `TreeSet` both work with an order as defined
 by either a natural order indicated by the `Comparable` interface, or with an explicitly
 provided `Comparator` that is passed to their constructor.
 
