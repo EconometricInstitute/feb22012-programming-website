@@ -7,18 +7,20 @@ ready: true
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
- - Know how terminal operators are used in the context of streams
- - Understand the meaning of the `Optional` type
- - Understand that you can do some powerful data transformations with the `Collectors` class together with a stream
+ - Know how terminal operators are used in the context of streams.
+ - Understand the meaning of the `Optional` type.
+ - Understand that you can do some powerful data transformations with the `Collectors` class together with a stream.
 
 </text-box>
 
 ## Terminal Operations
-After constructing a `Stream` object from a data source and zero or more intermediate operations, a **terminal operation** starts up the actual flow of objects through the pipeline and processes them into a final result. The Stream API is rather flexible in what this final result can be: you can feed all objects that are emitted from the stream to a `Consumer` such as `System.out::print`, check if some condition holds, obtain a the first object that is emitted from the stream, collect all objects that come out into a `Collection` type, or combine all emitted objects into an aggregate result such as a mean, sum, minimum or maximum value.
+After constructing a `Stream` object from a data source and zero or more intermediate operations, a **terminal operation** starts up the actual flow of objects through the pipeline and processes them into a final result.
+The Stream API is rather flexible in what this final result can be: you can feed all objects that are emitted from the stream to a `Consumer` such as `System.out::print`, check if some condition holds, obtain the first object that is emitted from the stream, collect all objects that come out into a `Collection` type, or combine all emitted objects into an aggregate result such as a mean, sum, minimum or maximum value.
 
 The previous table contains an overview of some of the terminal operations that are available in the `Stream` interface. Note that terminal operations can be recognized from the fact that they return something that is **not** of type `Stream`. By ending the pipeline, we obtain a different kind of result.
 
-The `allMatch`, `anyMatch` and `noneMath` terminal operations all take a `Predicate` as an argument and compute a `boolean` value from the application of the `Predicate` to all objects emitted from the stream. The `count` terminal operation counts the number of objects emitted from the stream. The terminal operation `collect` requires a special object that can aggregate the emitted objects into an output. Different options for such `Collector` objects are explained in Section [\[sec:collectors\]][2]. We discuss the remaining terminal operations in more detail in the following sections.
+The `allMatch`, `anyMatch` and `noneMatch` terminal operations all take a `Predicate` as an argument and compute a `boolean` value from the application of the `Predicate` to all objects emitted from the stream. The `count` terminal operation counts the number of objects emitted from the stream.
+The terminal operation `collect` requires a special object that can aggregate the emitted objects into an output. Different options for such `Collector` objects are explained in Section [\[sec:collectors\]][2]. We discuss the remaining terminal operations in more detail in the following sections.
 
 **Some terminal operations in the `Stream` interface**
 
@@ -36,7 +38,7 @@ The `allMatch`, `anyMatch` and `noneMath` terminal operations all take a `Predic
 | `reduce(BinaryOperator<T> accumulator)` | `Optional<T>` | aggregate using the `accumulator` |
 
 ### `forEach`
-The `forEach` terminal operation requires as `Consumer` and feeds all objects emitted from the `Stream` to this `Consumer`. An example of a possible `Consumer` is `System.out::println`, which prints the objects to the standard out. Thus, the following code fragment
+The `forEach` terminal operation requires a `Consumer` and feeds all objects emitted from the `Stream` to this `Consumer`. An example of a possible `Consumer` is `System.out::println`, which prints the objects to the standard out. Thus, the following code fragment
 
 ```java
 Stream.of("hello", "world", "via", "stream")
@@ -45,14 +47,15 @@ Stream.of("hello", "world", "via", "stream")
 should print:
 
 <sample-output>
-    hello
-    world
-    via
-    stream
+hello
+world
+via
+stream
 </sample-output>
 
 ### `Optional<T>`
-It is possible to have streams that omit no data at all. This can happen if we call `stream()` on an empty `Collection`, or if we use a `filter` operation that is so strict that all objects are discarded from the stream. To deal with such situations in a neat way a new class `Optional<T>` was introduced. An object of type `Optional<T>` either holds a single value of type `T`, or is empty. As a consequence, rather than specifying a return type `T` that may be `null` if no suitable value can be returned, you can specify explicitly that a method may not always return a value by means of the `Optional<T>` return type.
+It is possible to have streams that omit no data at all. This can happen if we call `stream()` on an empty `Collection`, or if we use a `filter` operation that is so strict that all objects are discarded from the stream. To deal with such situations in a neat way a new class `Optional<T>` was introduced.
+An object of type `Optional<T>` either holds a single value of type `T`, or is empty. As a consequence, rather than specifying a return type `T` that may be `null` if no suitable value can be returned, you can specify explicitly that a method may not always return a value by means of the `Optional<T>` return type.
 
 The most useful methods that are available for objects of the `Optional` class are
 
@@ -63,7 +66,7 @@ public boolean isPresent();
 public T orElse(T alternative);
 ```
 
-Here, the `get()` method returns the value if a value is present, and throws an `NoSuchElementException` if the `Optional` is empty. The `isPresent()` method can be used to check if an actual value is present. The `ifPresent()` method has a `Consumer` as argument and feed the value contained in the `Optional` to this `Consumer` in the case a value is present. The `orElse()` method will return the value stored in the `Optional` if a value is present and return the argument if no value is present.
+Here, the `get()` method returns the value if a value is present, and throws an `NoSuchElementException` if the `Optional` is empty. The `isPresent()` method can be used to check if an actual value is present. The `ifPresent()` method has a `Consumer` as argument and feeds the value contained in the `Optional` to this `Consumer` in the case a value is present. The `orElse()` method will return the value stored in the `Optional` if a value is present and return the argument if no value is present.
 
 There are three `static` methods in the `Optional` class that we can use to obtain an `Optional` object. These are:
 
@@ -73,7 +76,7 @@ public static <T> Optional<T> of(T elem);
 public static <T> Optional<T> ofNullable(T elem);
 ```
 
-The method `Optional.empty()` should be used to obtain an `Optional` object which holds no value. The method `Optional.of(x)` can be used to obtain an `Optional` object that holds the value `x`. However, if `x` is `null`, the call to `Optional.of(x)` will throw an `NullPointerException`. As an alternative we can use `Optional.ofNullable(x)`, which returns an `Optional` object that holds the value `x` is it is not `null` and `Optional.empty()` if `x` is equal to `null`.
+The method `Optional.empty()` should be used to obtain an `Optional` object which holds no value. The method `Optional.of(x)` can be used to obtain an `Optional` object that holds the value `x`. However, if `x` is `null`, the call to `Optional.of(x)` will throw an`NullPointerException`. As an alternative we can use `Optional.ofNullable(x)`, which returns an `Optional` object that holds the value `x` if it is not `null` and `Optional.empty()` if `x` is equal to `null`.
 The following code example:
 
 ```java
@@ -95,7 +98,7 @@ hello world
 ### `findFirst`, `max` and `min`
 The `Stream` interface contains a number of terminal operations that return an `Optional`.
 
-The terminal operation `findFirst` extracts a single element from the stream, and returns an `Optional` containing that element. If it turns out if the stream contains no objects at all, `Optional.empty()` is returned.
+The terminal operation `findFirst` extracts a single element from the stream, and returns an `Optional` containing that element. If it turns out the stream contains no objects at all, `Optional.empty()` is returned.
 
 The terminal operations `max` and `min` require a `Comparator<T>` and will respectively return the maximum or minimum value emitted by the stream according to the order defined by the `Comparator`. In case the stream contains no objects at all, these terminal operations also return `Optional.empty()`.
 
@@ -153,9 +156,9 @@ will print:
 </sample-output>
 
 ## The `Collectors` class
-The most powerful terminal operation of the `Stream` interface is the `collect` operation, which requires an object of type `Collector<T,A,R>`. A `Collector<T,A,R>` collections objects of type `T` from a `Stream<T>` in an intermediate mutable accumulator object of type `A` and converts this accumulator object into a final result of type `R` that is ultimately returned by the `collect()` method. While it is technically possible to implement your own `Collector` objects, this is rarely necessary and we will not discuss how to do this in this course.
+The most powerful terminal operation of the `Stream` interface is the `collect` operation, which requires an object of type `Collector<T,A,R>`. A `Collector<T,A,R>` collects objects of type `T` from a `Stream<T>` in an intermediate mutable accumulator object of type `A` and converts this accumulator object into a final result of type `R` that is ultimately returned by the `collect()` method. While it is technically possible to implement your own `Collector` objects, this is rarely necessary and we will not discuss how to do this in this course.
 
-Fortunately, introduced a new class `Collectors` that contains a number of useful `static` methods that can produce `Collector` objects for many use cases. This includes `Collector` objects that collect all the objects in the stream in a `List`, a `Set` or even a `Map` object, `Collector` objects that can combine a stream of `String` objects into a single `String`, and even a `Collector` that can partition the objects emitted by a `Stream` into different categories. All these `Collector` objects are discussed in the following sections.
+Fortunately, Java 8 introduced a new class `Collectors` that contains a number of useful `static` methods that can produce `Collector` objects for many use cases. This includes `Collector` objects that collect all the objects in the stream in a `List`, a `Set` or even a `Map` object, `Collector` objects that can combine a stream of `String` objects into a single `String`, and even a `Collector` that can partition the objects emitted by a `Stream` into different categories. All these `Collector` objects are discussed in the following sections.
 
 ### `toList`, `toSet`
 A common thing we may want to do with the objects that are emitted from a data processing pipeline, is to store all those objects into a `Collection` object, such as a `List`, a `Set`. The Collectors class has the following methods than can help us achieve this:
@@ -189,7 +192,7 @@ will print:
 Note that the order of elements in the set could vary.
 
 ### `joining` of `String` objects
-Every once in a while, you may consider to write a program that performs some reporting based on data that comes from a `List` or other type of `Collection`. In those cases, it may be desirable to convert all your objects to a `String` in some way, and then separate these `String` objects by for example with the string `" ,"`. Implementing this in the traditional way is always a rather tedious exercise, as the code typically looks as follows:
+Every once in a while, you may consider to write a program that performs some reporting based on data that comes from a `List` or other type of `Collection`. In those cases, it may be desirable to convert all your objects to a `String` in some way, and then separate these `String` objects by for example the string `", "`. Implementing this in the traditional way is always a rather tedious exercise, as the code typically looks as follows:
 
 ```java
 List<String> names = Arrays.asList("Achmed", "Catherine", "John", "Mei", "Yousra");
@@ -215,7 +218,7 @@ public static Collector<String,?,String> joining(String delimiter)
 public static Collector<String,?,String> joining(String delimiter, String prefix, String suffix)
 ```
 
-The `Collector` produced by `Collectors.joining()` concatenates the `String` objects emitted by the `Stream`. The `Collector` produced by `Collectors.joining(", ")` concatenates the the `String` objects emitted by the `Stream` separated by `", "`. Finally, the `Collector` produced by `Collectors.joining(", ", "[", "]")` results in a `String` that begins with a `[` followed by the `String` objects from the `Stream` separated by `", "` and a `]` symbol at the end.
+The `Collector` produced by `Collectors.joining()` concatenates the `String` objects emitted by the `Stream`. The `Collector` produced by `Collectors.joining(", ")` concatenates the `String` objects emitted by the `Stream` separated by `", "`. Finally, the `Collector` produced by `Collectors.joining(", ", "[", "]")` results in a `String` that begins with a `[` followed by the `String` objects from the `Stream` separated by `", "` and a `]` symbol at the end.
 
 The following example code:
 
@@ -235,9 +238,9 @@ System.out.println(concatAll);
 will print:
 
 <sample-output>
-    AdrianCatherineJohnMeiYousra
-    Adrian, Catherine, John, Mei, Yousra
-    [Adrian, Catherine, John, Mei, Yousra]
+AdrianCatherineJohnMeiYousra
+Adrian, Catherine, John, Mei, Yousra
+[Adrian, Catherine, John, Mei, Yousra]
 </sample-output>
 
 ### `toMap` and `groupingBy`
@@ -248,9 +251,9 @@ public static Collector<T,?,Map<K,List<T>>> groupingBy(Function<T,K> classifier)
 public static Collector<T,?,Map<K,V>> toMap(Function<T,K> keyMapper, Function<T,V> valueMapper);
 ```
 
-Remember that a `Map<K,V>` holds a set of *key* objects of type `K` and that each key is associated with a value. The method `Collectors.toMap()` requires two `Function` object, of which the first function should convert the objects emitted from the stream to an object that will be used as a key value in the output `Map` and the second function should transform those objects in the associated value. As it could happen that multiple objects from the stream result in the same key object, the `Collector` produced by `toMap()` can throw an `IllegalStateException` if it encounters the same key more than once.
+Remember that a `Map<K,V>` holds a set of *key* objects of type `K` and that each key is associated with a value. The method `Collectors.toMap()` requires two `Function` objects, of which the first function should convert the objects emitted from the stream to an object that will be used as a key value in the output `Map` and the second function should transform those objects in the associated value. As it could happen that multiple objects from the stream result in the same key object, the `Collector` produced by `toMap()` can throw an `IllegalStateException` if it encounters the same key more than once.
 
-An alternative `Collector` that produces a `Map` as output can be obtained by calling the `Collectors.groupingBy()` method. This method requires a single `Function<T,K>` that converts the objects of type `T` emitted from the stream to key values of type `K`. The output map has type `Map<K,List<T>>`. The `Collector` object groups all objects that share the same key value in the `List<T>` associated with that key in the output map. This is very useful, as it allows you to partition the objects from a stream into based on a property of those objects.
+An alternative `Collector` that produces a `Map` as output can be obtained by calling the `Collectors.groupingBy()` method. This method requires a single `Function<T,K>` that converts the objects of type `T` emitted from the stream to key values of type `K`. The output map has type `Map<K,List<T>>`. The `Collector` object groups all objects that share the same key value in the `List<T>` associated with that key in the output map. This is very useful, as it allows you to partition the objects from a stream into `List`s based on a property of those objects.
 
 When the following example code is executed:
 
@@ -277,9 +280,9 @@ System.out.println(coursesPerTeacher.get("van den Heuvel"));
 the following should be printed:
 
 <sample-output>
-    {Programming 2018=Bouman, Programming 2019=Bouman, ICT 2019=Bouman, Combinatorial Optimization 2019=van den Heuvel}
-    [Course [courseNumber=22012, courseYear=2019, courseName=Programming, teacher=Bouman, ects=4.0], Course [courseNumber=22012, courseYear=2018, courseName=Programming, teacher=Bouman, ects=4.0], Course [courseNumber=11013, courseYear=2019, courseName=ICT, teacher=Bouman, ects=4.0]]
-    [Course [courseNumber=22002, courseYear=2019, courseName=Combinatorial Optimization, teacher=van den Heuvel, ects=4.0]]
+{Programming 2018=Bouman, Programming 2019=Bouman, ICT 2019=Bouman, Combinatorial Optimization 2019=van denHeuvel}
+[Course [courseNumber=22012, courseYear=2019, courseName=Programming, teacher=Bouman, ects=4.0], Course[courseNumber=22012, courseYear=2018, courseName=Programming, teacher=Bouman, ects=4.0], Course[courseNumber=11013, courseYear=2019, courseName=ICT, teacher=Bouman, ects=4.0]]
+[Course [courseNumber=22002, courseYear=2019, courseName=Combinatorial Optimization, teacher=van den Heuvel, ects=4.0]]
 </sample-output>
 
 ## Further Reading
@@ -350,7 +353,7 @@ in a single statement (one declaration and one statement per task).
 3. Compute a `String` containing the names of all courses separated by commas. Course names should be repeated if a course was taught multiple times.
 4. Print a line with the course year using `System.out.println`  for every year a course with the name `"Programming"` was taught.
 5. Compute a `boolean` that indicates whether all courses with the name `"Programming"` where taught by a teacher with name `"Bouman"`.
-6. Compute a `Map<Integer,List<courses>{}>` that provides a list of the courses taught by a teacher with name `"Bouman"` per year.
+6. Compute a `Map<Integer,List<Course>>` that provides a list of the courses taught by a teacher with name `"Bouman"` per year.
 
 <Solution>
 
