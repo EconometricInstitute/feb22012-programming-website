@@ -7,8 +7,8 @@ ready: true
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
- - You understand there are common patterns in how data in a dataset can be processed
- - You understand that for many of those patterns, a pipeline is a useful way to look at data processing
+ - You understand there are common patterns in how data in a dataset can be processed.
+ - You understand that for many of those patterns, a pipeline is a useful way to look at data processing.
 
 </text-box>
 
@@ -88,7 +88,7 @@ public List<String> getNamesAfterYear(int year) {
 }
 ```
 
-Note that the output type is now `List<String>`. But we may want to transform `Course` objects to `Integer` (using the `getCourseYear()` method) or `Double` (using the `getEcts()` method). We can make our `transformToString` method even more general by defining a method specific type variable `E` for the output type. Both the `Function` and the method itself should have this type `E` as their output. This results in the following method:
+Note that the output type is now `List<String>`. But we may want to transform `Course` objects to `Integer` (using the `getCourseYear()` method) or `Double` (using the `getEcts()` method). We can make our `transformToString` method even more general by defining a method-specific type variable `E` for the output type. Both the `Function` and the method itself should have this type `E` as their output. This results in the following method:
 
 ```java
 public <E> List<E> transform(Function<Course,E> f, Predicate<Course> p) {
@@ -105,7 +105,7 @@ public <E> List<E> transform(Function<Course,E> f, Predicate<Course> p) {
 
 We can rewrite the `getNamesAfterYear` method as follows:
 ```java
-public List<String> getNamesAfterYear4(int year) {
+public List<String> getNamesAfterYear(int year) {
     return transform(Course::getCourseName, c -> c.getCourseYear() >= year);
 }
 ```
@@ -129,7 +129,7 @@ As we have seen, using lambda expressions and method references allow us to writ
 ## A data processing pipeline
 An alternative way to think about the `transform` method we developed in Listing [\[lst:transform\]][1] is to visualize it as a data processing *pipeline*. Through this data pipeline, we have the *source* list `courses`, which can emit its `Course` objects into the pipeline. The first step these objects hit in the pipeline is a *filter* unit that removes any `Course` objects that only lets objects flow through it if they adhere to a given condition, removing any objects from the flow that fail to meet the condition. After the filter unit, there is a *transform* unit that takes `Course` objects that flow into it through the pipeline, and transforms them into some other kind of object of a generic type `E`. Finally, there is a *terminal unit* at the end of the pipeline, that takes any objects of type `E` that reach it, and puts them in a `List<E>`. Thus, this *terminal unit* has the task of assembling the final output. In the figure below, you can see a visual representation of this pipeline:
 
-<img width="593" alt="In the figure, the visual representation shows four stadia. The first is the Source List, that points to the second, which says Filter. The Filter points to Transform and Transform points to Output list." src="https://user-images.githubusercontent.com/67587903/129425492-74770591-9e7c-44cc-83c7-0c81034ae125.PNG">
+<center><img width="593" alt="In the figure, the visual representation shows four stadia. The first is the Source List, that points to the second, which says Filter. The Filter points to Transform and Transform points to Output list." src="https://user-images.githubusercontent.com/67587903/129425492-74770591-9e7c-44cc-83c7-0c81034ae125.PNG"></center>
 
 When we think about data processing pipelines, it is useful to think about three categories of units that make up the pipeline. At the beginning of the pipeline, there is a **data source** that is able to emit data objects that flow through the pipeline. After the data source, the data objects flow through a sequence of **intermediate operations**, that can perform various tasks: filter out data objects based on some condition, transform data objects into different data objects, shut down the flow of data objects after a certain number of objects have passed through it and many other tasks. At the end of the pipeline, there is a single **terminal operation** that consumes all objects flowing through the pipeline and does something with them: store them in a data structure such as a `List` or `Set`, compute some aggregate statistic based on them such as a sum or maximum value, or perform a task for each object that flows out of the pipeline.
 
@@ -140,13 +140,13 @@ Traditional procedural implementations of data processing methods require progra
 However, if the data is distributed over a number of different computers or if we want to perform the data processing in a parallel fashion, it often requires a lot of work to convert the procedural approach to the new setting.
 If we think about data processing in terms of a pipeline, we do not need to define how all steps are precisely executed, but only what should happen in each of the processing units of the pipeline.
 This *declarative* way of thinking has a major advantage: when we want to execute the pipeline in a distributed or parallel fashion, we only need to think if the different steps in our pipeline support this.
-We can leave the actual execution of the steps in the pipeline to the library that implements the `Stream` API, whether it is applied to a standard data structure, executed in a parallel fashion or perform on many computers connected to each other via a network.
+We can leave the actual execution of the steps in the pipeline to the library that implements the `Stream` API, whether it is applied to a standard data structure, executed in a parallel fashion or performed on many computers connected to each other via a network.
 
 <Exercise title="Test your knowledge">
 
 In this quiz, you can test your knowledge on the subjects covered in this chapter.
 
-In a imperative coding style, we write instructions to the computer in steps that state *do this*, then *do that*, *repeat that* etcetera. In a declarative coding style, we aim to write programs that state *what we want to achieve*.
+In an imperative coding style, we write instructions to the computer in steps that state *do this*, then *do that*, *repeat that* etcetera. In a declarative coding style, we aim to write programs that state *what we want to achieve*.
 
 Think of two possible advantages of a declarative coding style. Also think of at least one possible disadvantage of a declarative coding style.
 
