@@ -7,9 +7,9 @@ ready: true
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
- - You understand how to start a stream
- - You understand how to obtain a stream from a `List` or `Set`
- - You know some important intermediate operations on a stream and how to use them
+ - You understand how to start a stream.
+ - You understand how to obtain a stream from a `List` or `Set`.
+ - You know some important intermediate operations on a stream and how to use them.
 
 </text-box>
 
@@ -58,7 +58,7 @@ In the following sections, we discuss the most common intermediate operations: `
 
 ### The `filter` operation
 Not all objects that flow through a data processing pipeline may be relevant to the analysis you intend to perform. It is thus helpful to have an operation that can remove the objects that are not relevant to the analysis from the data flow, before they can reach the processing stops further down the pipeline. The intermediate operation `filter` does this.
-The `filter` method requires a `Predicate<T>` object that is used to determine if objects should be continue to flow to the next operations in the pipeline or be discarded. If the `test()` function of the `Predicate` returns `true`, an object is send to the next unit in the pipeline, and if it returns `false`, the object is discarded.
+The `filter` method requires a `Predicate<T>` object that is used to determine if objects should be continue to flow to the next operations in the pipeline or be discarded. If the `test()` function of the `Predicate` returns `true`, an object is sent to the next unit in the pipeline, and if it returns `false`, the object is discarded.
 
 The next example shows how we can obtain a `Stream` of all even numbers from a stream that contains all numbers.
 
@@ -112,7 +112,7 @@ Therefore we can obtain a `Stream` from any `Collection`, including `List` and `
 
 In order to gain a bit more experience with the intermediate operations, you will use them in imperative code.
 
-Write a method that inspects a `List<Course> and uses a `Predicate<Course>` that
+Write a method that inspects a `List<Course>` and uses a `Predicate<Course>` that
 represents a condition for `Course` objects to count how many course objects
 in the list agree with the condition(i.e. the condition returns true). The header
 of this method should be
