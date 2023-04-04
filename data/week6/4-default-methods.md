@@ -9,15 +9,15 @@ ready: true
 
 - You know what a default method in an interface is and where it is used.
 - You can write a sorting method as a lambda expression or method reference.
-- You understand how you can construct a `Comparator` with the `Comparator.comparing` method
+- You understand how you can construct a `Comparator` with the `Comparator.comparing` method.
 - You can sort by multiple criteria.
 
 </text-box>
 
 ## Default Methods in Interfaces
-If you paid attention, you may have noticed that we referred to functional interfaces as interfaces that contain only a single *unimplemented* method. That may seem rather verbose, as Java versions prior to version 8 do not allow interfaces to contain any method implementations. That has changed with Java 8, as it is now possible to provide a *default* method implementation within an interface. Note that it is still not to declare *variables* within an interface, and classes that implement the interface are allowed to override the default implementation provided by the interface.
+If you paid attention, you may have noticed that we referred to functional interfaces as interfaces that contain only a single *unimplemented* method. That may seem rather verbose, as Java versions prior to version 8 do not allow interfaces to contain any method implementations. That has changed with Java 8, as it is now possible to provide a *default* method implementation within an interface. Note that it is still not possible to declare *variables* within an interface, and classes that implement the interface are allowed to override the default implementation provided by the interface.
 
-Writing a *default* method implementation in an interface is very similar to writing a regular method implementation, with the main different being the keyword `default` in the method header. We are allowed to call other methods defined in the interface, even if those methods have no method implementation.
+Writing a *default* method implementation in an interface is very similar to writing a regular method implementation, with the main difference being the keyword `default` in the method header. We are allowed to call other methods defined in the interface, even if those methods have no method implementation.
 
 The following is an example of an interface for two-dimensional points in the Euclidean plane.
 
@@ -35,9 +35,9 @@ The following is an example of an interface for two-dimensional points in the Eu
     }
  ```
 
-Now, any non-abstract class that implements the `Point2D` interface is required to implement both the `getX()` and `getY()` method, but is not required to implement the `distanceTo` method. If no implementation of the `distanceTo` method is written in the class, the default implementation of the `distanceTo` method is written in the class, the default implementation provided in the interface is used.
+Now, any non-abstract class that implements the `Point2D` interface is required to implement both the `getX()` and `getY()` method, but is not required to implement the `distanceTo` method. If no implementation of the `distanceTo` method is written in the class, the default implementation provided in the interface is used.
 
-In Java versions prior to version 8, the language creators almost never dared to add additional methods to existing interfaces, at it would break compatibility with all classes implementing that interface. With the introduction of default method implementations in interface, many new helpful methods were added to existing interfaces, including `Map` and `List`. The `merge` method of the `Map` interface mentioned in the section on Binary Operators is one example of a new default method implementation.
+In Java versions prior to version 8, the language creators almost never dared to add additional methods to existing interfaces, as it would break compatibility with all classes implementing that interface. With the introduction of default method implementations in interfaces, many new helpful methods were added to existing interfaces, including `Map` and `List`. The `merge` method of the `Map` interface mentioned in the section on BinaryOperators is one example of a new default method implementation.
 
 Another advantage of default method implementations in interfaces is that we can use a lambda expression or a method reference for that interface when that interface contains more than one method, as long as only a single method has no default implementation. This is the case for the `Comparator` interface, to which a number of default methods were added in Java 8. One example is the `reversed` method:
 
@@ -86,7 +86,7 @@ Comparator<Course> compEcts = Comparator.comparingDouble(Course::getEcts);
 Comparator<Course> compName = Comparator.comparing(Course::getCourseName);
 ```
 
-We can also obtain a basic `Comparator` object for types that have a natural order defined by the `Comparable` type. The `Comparator` interfaces contains two static methods related to natural orders:
+We can also obtain a basic `Comparator` object for types that have a natural order defined by the `Comparable` type. The `Comparator` interface contains two static methods related to natural orders:
 ```java
 public static Comparator<T extends Comparable> naturalOrder();
 public static Comparator<T extends Comparable> reverseOrder();
@@ -146,7 +146,7 @@ for (int i=1; i <= 10; i++) {
 }
 ```
 
-The above is illegal since variable i is not effectively final! The reason is that i is incremented at the end of each loop, and thus changes in every iteration.
+The above is illegal since variable `i` is not effectively final! The reason is that `i` is incremented at the end of each loop, and thus changes in every iteration.
 Often, it is relatively easy to fix this issue by the introduction of a new variable:
 
 ```java
@@ -358,7 +358,7 @@ In general, if it is possible and convenient to have an interface, we prefer to 
 
 ---
 
-Now that you have practice writing lambda expressions, you should practice writing `Comparator` in a functional programming style.
+Now that you have practiced writing lambda expressions, you should practice writing `Comparator` in a functional programming style.
 
 You will do so for objects from the following class which we saw in detail in an earlier chapter.
 
