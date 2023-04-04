@@ -8,9 +8,9 @@ extra: true
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
- - Know the term library and know some third party libraries
- - Know where to search for libraries
- - Can implement an application which uses a third party library
+ - Know the term library and know some third party libraries.
+ - Know where to search for libraries.
+ - Can implement an application which uses a third party library.
  - Know that an application can be packaged and shared with others, and that applications shared this way do not require a development environment to work.
 
 </text-box>
@@ -18,7 +18,7 @@ extra: true
 ## Introduction
 A famous quote relating to scientific progress is, attributed to Sir Isaac Newton (1676) is: "If I have seen further it is by **standing on the shoulders of giants**."
 
-This quote refers to the idea that the discovery of scientific truth is built upon previous discoveries. When we write code in a high level language such as Java, this quote applies as well: many of the built in data structures and classes have been designed for us, ready to use. This way, we do not need to implement an `ArrayList` ourselves, but can use the work others have done before us.
+This quote refers to the idea that the discovery of scientific truth is built upon previous discoveries. When we write code in a high level language such as Java, this quote applies as well: many of the built-in data structures and classes have been designed for us, ready to use. This way, we do not need to implement an `ArrayList` ourselves, but can use the work others have done before us.
 While the standard library that comes with Java contains many useful classes that can help us write great and useful programs, there are also many things not immediately supported. Think about matrix operations, solving mathematical optimization problems or performing statistical tests.
 
 ## Packages
@@ -35,7 +35,7 @@ When the Java Runtime Environment needs to create objects, it searches for the c
 
 In particular when you want to use multiple libraries, or in case some of your libraries require other libraries themselves, manually downloading jar files becomes cumbersome. Many popular languages, including Python and R, provide nice ways to define which libraries you want to use, and then automatically download the required files and add them to your project.
 
-One tool that can do that for your Java projects is *Maven* [https://maven.apache.org/](https://maven.apache.org/) (the most popular alternative being *Gradle*, [https://gradle.org](https://gradle.org). Most good IDE’s, including Eclipse, have Maven support built in, so you typically don’t need to install Maven yourself. Maven is a project management tool with *dependency management* as one of the features. Dependency management allows you to define on which projects/libraries your project *depends*, and can handle the hard work of downloading those libraries and configuring your project to make those libraries available. Even if the libraries you depend on have other dependencies themselves, *Maven* will be able to figure out which `.jar` files are required, download everything that is necessary, and configure your project as required.
+One tool that can do that for your Java projects is *Maven* [https://maven.apache.org/](https://maven.apache.org/) (the most popular alternative being *Gradle*, [https://gradle.org](https://gradle.org)). Most good IDE’s, including Eclipse, have Maven support built in, so you typically don’t need to install Maven yourself. Maven is a project management tool with *dependency management* as one of the features. Dependency management allows you to define on which projects/libraries your project *depends*, and can handle the hard work of downloading those libraries and configuring your project to make those libraries available. Even if the libraries you depend on have other dependencies themselves, *Maven* will be able to figure out which `.jar` files are required, download everything that is necessary, and configure your project as required.
 
 When a Java project is configured as a *Maven* project, the root folder of the project will contain a file `pom.xml`, which refers to the *project object model*: data that describes all relevant information for your project. Every Maven project has at least the following three properties:
 
@@ -120,7 +120,7 @@ If this turns out to be difficult or inconvenient, it often a good idea to study
 
 It is often helpful to figure out to look at the *manual* of the library and see if they have any *quick introduction*, *user guide* or *example code*.
 These things can usually be found on the website of the more professional libraries that are available.
-Having good examples are often extremely helpful if you need a quick and brief introduction of how to obtain results with the library.
+Good examples are often extremely helpful if you need a quick and brief introduction of how to obtain results with the library.
 
 Finally, an important piece of advice is: experiment! Try writing short programs that call and use the library, and see if the results and behavior are similar to what you expect.
 Sometimes libraries seem to be intuitive in their usage, but they may exhibit unexpected behavior, in particular if you do not inspect that documentation that describes the behavior of the classes in the library.
@@ -288,7 +288,7 @@ The [website of XChart](https://knowm.org/open-source/xchart/xchart-example-code
 ## Apache POI
 The final library we discuss is the Apache POI library, which provides a Java API for Microsoft Office Documents. If you work with quantitative data and want to be able to open your data using Microsoft Excel (or similar Spreadsheet software), you can use `csv` files. However, those files have a disadvantage, as the way they are treated by Excel depends on the regional settings of the operating system.
 Thus, a computer that has its regional settings configured to *United States* may read in different numbers and values than a computer that has its regional settings configured to *The Netherlands*.
-This issue can be avoided by using the default file format of Microsoft Excel, `xlsx`, but this is too complicated to read and write by hand. The Apache POI library can take care of this. It website has many [code examples](https://poi.apache.org/components/spreadsheet/quick-guide.html) that showcase its many features. It is also possible to read more details in the [Javadoc documentation](https://poi.apache.org/apidocs/4.1/) of the library.
+This issue can be avoided by using the default file format of Microsoft Excel, `xlsx`, but this is too complicated to read and write by hand. The Apache POI library can take care of this. Its website has many [code examples](https://poi.apache.org/components/spreadsheet/quick-guide.html) that showcase its many features. It is also possible to read more details in the [Javadoc documentation](https://poi.apache.org/apidocs/4.1/) of the library.
 
 Microsoft Excel is the world’s most popular *Spreadsheet* application. Spreadsheets consist of three main components: a **workbook** corresponds to a spreadsheet file, which may contain multiple **sheets** that appear in Excel as tabs at the bottom of the application. Each sheet contains a table of **cell**s. Each cell has a row and column index that make up the address of the cell, and can contain either a value (textual or numeric), or a formula that defines how the value should be computed based on other cells. The figure below shows a screenshot of an Microsoft Excel workbook and points out where you can choose the active sheet, and highlights a single cell.
 
@@ -307,10 +307,10 @@ Note that if you create a row that already exists, **old row including all its c
 
 Alternative, the `Sheet` interface extends the `Iterable<Row>` interface, and it is thus possible to use the enhanced for loop to iterate over all `Row` objects present in a particular `Sheet` object.
 
-A `Row` objects presents a particular row in a sheet, and contains a number of `Cell` objects. These `Cell` objects represent the actual cells in a sheet, that can either hold values or formulas.
+A `Row` objects represents a particular row in a sheet, and contains a number of `Cell` objects. These `Cell` objects represent the actual cells in a sheet, that can either hold values or formulas.
 `Cell` objects can be obtained from a `Row` object, either by calling the `createCell(int colnum)` method or the `getCell(int colnum)` method.
 Note that if you create a cell that is already present, **the old cell including its data is overwritten**.
-Furthermore, the `Row` interface extends the `Iterable<Cell>` interface, so it is possible to u se the enhanced for loop to iterate over all `Cell` objects present in a row.
+Furthermore, the `Row` interface extends the `Iterable<Cell>` interface, so it is possible to use the enhanced for loop to iterate over all `Cell` objects present in a row.
 
 If we have a `Cell` object, we can set a new value to that cell by calling the `setCellValue(double value)` or the `setCellValue(String value)` methods on it.
 Alternatively, it is possible to set a formula for the cell by calling the `setCellFormula(String formula)` method.
@@ -351,7 +351,7 @@ try (Workbook wb = new XSSFWorkbook(); OutputStream out = new FileOutputStream(n
 
 ### Reading Spreadsheet
 In order to read data from an `xlsx` file, we can pass a `InputStream` object to the constructor of the `XSSFWorkbook` class.
-While there is also a constructor in `XSSFWorkbook` that accepts a file directly, any modification to cells are immediately written, and you fail to correctly close the `Workbook` resource, all data in your spreadsheet may be lost.
+While there is also a constructor in `XSSFWorkbook` that accepts a file directly, any modification to cells are immediately written, and if you fail to correctly close the `Workbook` resource, all data in your spreadsheet may be lost.
 By using an `InputStream` instead, you protect yourself from this potential harmful behavior of Apache POI.
 The following example code opens the spreadsheet stored in file `readthis.xlsx`, obtains the first sheet in the workbook, and iterates over all rows and cells of that sheet:
 
