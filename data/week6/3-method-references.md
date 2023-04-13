@@ -8,8 +8,8 @@ ready: true
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
 - You understand and can write method references.
-- You are aware of the different types of method references
-- You understand that method references are shorter notation for some specific lambda expressions
+- You are aware of the different types of method references.
+- You understand that method references are shorter notation for some specific lambda expressions.
 
 </text-box>
 
@@ -24,7 +24,7 @@ As we are now familiar with lambda expressions and functional interfaces, we sho
 
 While these are simple and elegant lambda expressions, there is still a small bit of boilerplate code left in these examples. In these examples, our intention is to use the method `System.out.println` as a `Consumer<String>`, use the `getTeacher()` method to convert a `Course` to a `String`, or use the method `Integer.sum` as a `BinaryOperator`. However, we still define variables such as `str`, `c`, `a` and `b` to utilize these methods within the functional interfaces.
 
-An alternative to lambda expression are **method references**. A method reference is a way in which we can express the idea that the implementation of a functional interface is given by a particular method. A method reference is given using either a class name or an object, followed by double colon operator `::` followed by the name of the method. Since we are not calling the method, but want to use it as an object of a function interface type, parenthesis and arguments are omitted. Using method references, we can write the `printer`, `courseToString` and `plus` references as follows:
+An alternative to lambda expression are **method references**. A method reference is a way in which we can express the idea that the implementation of a functional interface is given by a particular method. A method reference is given using either a class name or an object, followed by double colon operator `::` followed by the name of the method. Since we are not calling the method, but want to use it as an object of a functional interface type, parenthesis and arguments are omitted. Using method references, we can write the `printer`, `courseToString` and `plus` references as follows:
 
 ```java
 Consumer<String> printer = System.out::println;
@@ -109,7 +109,7 @@ For each of the following tasks and types, use a method reference to create an o
 1. An object of type `BinaryOperator<Double>` that computes the maximum of two `Double` objects using `Math.max`
 2. An object of type `Function<Integer,BigInteger>` that converts an `Integer` into a `BigInteger` using `BigInteger.valueOf`
 3. An object of type `Predicate<String>` that tests whether a given `String` object is in a `List<String>` object named `myList`
-4. An object of type `Supplier<List<Integer>>` that ca be used to create new `ArrayList<Integer>` objects.
+4. An object of type `Supplier<List<Integer>>` that can be used to create new `ArrayList<Integer>` objects
 5. An object of type `BiConsumer<List<String>,String>` that adds a given `String` to a given `List<String>` using `List.add()`
 6. An object of type `BiConsumer<Integer,String>` that adds a given `String` to a `List<String>` object `myList` at a given `Integer` index using `List.add()`
 

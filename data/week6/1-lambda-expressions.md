@@ -80,7 +80,7 @@ public interface Comparator<T> {
 ```
 that should return a negative `int` value if `left` \< `right`, return a positive `int` value if `left` \> `right` and zero if and only if `left` = `right`.
 
-If we intend to sort a `List<Course>` by the alphabetical order of the names of the teachers of the courses, we could implement the `Comparator` in a class, and define a `sortCourses` method as follows:
+If we intend to sort a `List<Course>` by the alphabetical order of the names of the teachers of the courses, we could implement the `Comparator` as a class *within the `Course`-class*, and define a `sortCourses` method as follows:
 
 ```java
 public static class TeacherComparator implements Comparator<Course> {
@@ -126,7 +126,7 @@ Lambda expressions can only be used to create an object that implements an inter
 
 Most Computer Science bachelor programs contain a course called _functional programming_ dedicated to a programming language that focuses on the composition of functions, rather than given step-by-step descriptions of what the computer should do.
 The first and oldest functional programming language is _Lisp_, and more modern functional languages are _Haskell_, _Scala_, _F\#_ and _OCaml_. One of the advantages of functional programming, is that it makes it easier to write programs that can be distributed over multiple computers or processors.
-With the rise of multicore processors (most mobile phones already have four or eight cores) and the popularity of _distributed_ computing, where data analysis tasks must be spread out over datasets that are stored on a number of different.
+With the rise of multicore processors (most mobile phones already have four or eight cores) and the popularity of _distributed_ computing, where data analysis tasks must be spread out over datasets that are stored on a number of different computers, such languages have a natural benefit.
 
 </text-box>
 
@@ -241,8 +241,8 @@ that defines a `Comparator<Course>` for each of the following orderings.
 Do not use of static methods of the `Comparator` class such as `Comparator.comparing` yet.
 
 1. Order the courses in alphabetic order of their course names
-2. Order the courses by descending number of \emph{ects}
-3. Order the courses by ascending number of \emph{ects}
+2. Order the courses by descending number of *ects*
+3. Order the courses by ascending number of *ects*
 4. Order the courses by ascending course year
 5. Order the courses by descending course year
 

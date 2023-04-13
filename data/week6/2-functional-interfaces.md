@@ -18,7 +18,7 @@ The `Comparator` type is a bit different from many of the types we are familiar 
 The idea that a type, such as `Comparator` can represent a method rather than data, has proven to be quite powerful: we do not need to implement a sorting algorithm for every type we introduce, and we do not need to adapt complex sorting code when we want to define a new ad-hoc order for our objects. In `Java`, the `Collections.sort` method accepts not only data, but also a function that can be called to determine if two objects are in the correct order or not.
 
 In the programming paradigm called *functional programming*, it is a common idea to have one function, for example `Collections.sort`, have another function as input, for example a `compare` method.
-In the terminology of *functional programming*, a function that accepts another function as part of its input is called a **higher order function**. While that idea has always been possible in `Java` to write such higher order functions (the `Comparator` interface is much older than Java 8), it typically required the use of anonymous classes and Java programmers often preferred the straightforward way to keep their code more readable and understandable.
+In the terminology of *functional programming*, a function that accepts another function as part of its input is called a **higher order function**. While it has always been possible in `Java` to write such higher order functions (the `Comparator` interface is much older than Java 8), it typically required the use of anonymous classes and Java programmers often preferred the straightforward way to keep their code more readable and understandable.
 
 ### Consumer
 With the introduction of `Java 8`, the creators of the language added a number of new built-in interfaces that are meant to be used by such higher order functions, representing certain patterns that occur frequently in Java programs. One such interface is the `Consumer<T>` interface, which represents a function that does something with an argument of type `T`, but returns nothing. The single unimplemented method of this interface is defined as follows: `public void accept(T t);`.
@@ -45,7 +45,7 @@ public static void printCourseNames(List<Course> courses) {
 ```
 
 ### Function
-When we think about the implementation of our `Comparator<Course>`, we typically extract a property from two `Course` objects than can be compared, and return an answer based on the result of that comparison.
+When we think about the implementation of our `Comparator<Course>`, we typically extract a property from two `Course` objects that can be compared, and return an answer based on the result of that comparison.
 This is a very common pattern in `Comparator` implementations, and we can think about it differently: we want to **transform** two `Course` objects into two objects that have a *natural order*, and then use that natural order to determine our result.
 
 In `Java 8`, there is a functional interface that can be used to represent a transformation called `Function`. It is defined as follows:
@@ -103,7 +103,7 @@ public static Map<String,Integer> countOccurences(List<String> words) {
     return result;
 }
 ```
-Notice how short our method has become! At first, the second argument of the merge method may look a little cryptic, but it is just one way in which we can produce a `BinaryOperator` object that represents the mathematical + symbol. The statement `result.merge(word, 1, (i,j) -> i+j)` can be read as follows: store a 1 as the value for the key `word` if that key does not occur in the map, or combine 1 with the current value in the map using the + operator and store the result as the new value for key `word`.
+Notice how short our method has become! At first, the second argument of the merge method may look a little cryptic, but it is just one way in which we can produce a `BinaryOperator` object that represents the mathematical + symbol. The statement `result.merge(word, 1, (i,j) -> i+j)` can be read as follows: store a 1 as the value for the key `word` if that key does not occur in the map, otherwise combine 1 with the current value in the map using the + operator and store the result as the new value for key `word`.
 
 <!-- Note: in fact, the actual {\tt Map} interface defines the third argument of {\tt merge} as a {\tt BiFunction} which is a super type of {\tt BinaryOperator}, but in almost every case, you will pass a {\tt BinaryOperator} to this method. -->
 
