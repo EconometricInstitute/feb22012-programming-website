@@ -80,18 +80,23 @@ public interface Comparator<T> {
 ```
 that should return a negative `int` value if `left` \< `right`, return a positive `int` value if `left` \> `right` and zero if and only if `left` = `right`.
 
-If we intend to sort a `List<Course>` by the alphabetical order of the names of the teachers of the courses, we could implement the `Comparator` as a class *within the `Course`-class*, and define a `sortCourses` method as follows:
+If we intend to sort a `List<Course>` by the alphabetical order of the names of the teachers of the courses, we could implement the `Comparator` as a static class *within the `Course`-class*, and define a `sortCourses` method as follows:
 
 ```java
-public static class TeacherComparator implements Comparator<Course> {
-    @Override
-    public int compare(Course o1, Course o2) {
-        return o1.getTeacher().compareTo(o2.getTeacher());
-    }
-}
+public class Course {
 
-public static void sortCourses(List<Course> courses) {
-    Collections.sort(courses, new TeacherComparator());
+    // other contents omitted
+
+    public static class TeacherComparator implements Comparator<Course> {
+        @Override
+        public int compare(Course o1, Course o2) {
+            return o1.getTeacher().compareTo(o2.getTeacher());
+        }
+    }
+
+    public static void sortCourses(List<Course> courses) {
+        Collections.sort(courses, new TeacherComparator());
+    }
 }
 ```
 

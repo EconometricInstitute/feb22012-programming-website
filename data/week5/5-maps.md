@@ -132,6 +132,21 @@ Photo : 5
 
 in this exact order. With a regular `HashMap` this order may differ between runs.
 
+If you consistently declare your variables using the `Map` interface, it is easy to switch between the type of `Map`
+you use. If your code currently reads:
+
+```
+Map<String,Integer> myMap = new HashMap<>();
+```
+
+changing it to
+
+```
+Map<String,Integer> myMap = new LinkedHashMap<>();
+```
+
+will not cause any compiler errors.
+
 </text-box>
 
 ## SortedMap&lt;K,V&gt; interface

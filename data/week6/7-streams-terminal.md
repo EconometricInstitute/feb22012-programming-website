@@ -20,7 +20,7 @@ The Stream API is rather flexible in what this final result can be: you can feed
 The previous table contains an overview of some of the terminal operations that are available in the `Stream` interface. Note that terminal operations can be recognized from the fact that they return something that is **not** of type `Stream`. By ending the pipeline, we obtain a different kind of result.
 
 The `allMatch`, `anyMatch` and `noneMatch` terminal operations all take a `Predicate` as an argument and compute a `boolean` value from the application of the `Predicate` to all objects emitted from the stream. The `count` terminal operation counts the number of objects emitted from the stream.
-The terminal operation `collect` requires a special object that can aggregate the emitted objects into an output. Different options for such `Collector` objects are explained in Section [\[sec:collectors\]][2]. We discuss the remaining terminal operations in more detail in the following sections.
+The terminal operation `collect` requires a special object that can aggregate the emitted objects into an output. Different options for such `Collector` objects are explained in <a href="#collectors">below</a>. We discuss the remaining terminal operations in more detail in the following sections.
 
 **Some terminal operations in the `Stream` interface**
 
@@ -156,6 +156,7 @@ will print:
 </sample-output>
 
 ## The `Collectors` class
+<a id="collectors"></a>
 The most powerful terminal operation of the `Stream` interface is the `collect` operation, which requires an object of type `Collector<T,A,R>`. A `Collector<T,A,R>` collects objects of type `T` from a `Stream<T>` in an intermediate mutable accumulator object of type `A` and converts this accumulator object into a final result of type `R` that is ultimately returned by the `collect()` method. While it is technically possible to implement your own `Collector` objects, this is rarely necessary and we will not discuss how to do this in this course.
 
 Fortunately, Java 8 introduced a new class `Collectors` that contains a number of useful `static` methods that can produce `Collector` objects for many use cases. This includes `Collector` objects that collect all the objects in the stream in a `List`, a `Set` or even a `Map` object, `Collector` objects that can combine a stream of `String` objects into a single `String`, and even a `Collector` that can partition the objects emitted by a `Stream` into different categories. All these `Collector` objects are discussed in the following sections.
@@ -280,7 +281,7 @@ System.out.println(coursesPerTeacher.get("van den Heuvel"));
 the following should be printed:
 
 <sample-output>
-{Programming 2018=Bouman, Programming 2019=Bouman, ICT 2019=Bouman, Combinatorial Optimization 2019=van denHeuvel}
+{Programming 2018=Bouman, Programming 2019=Bouman, ICT 2019=Bouman, Combinatorial Optimization 2019=van den Heuvel}
 [Course [courseNumber=22012, courseYear=2019, courseName=Programming, teacher=Bouman, ects=4.0], Course[courseNumber=22012, courseYear=2018, courseName=Programming, teacher=Bouman, ects=4.0], Course[courseNumber=11013, courseYear=2019, courseName=ICT, teacher=Bouman, ects=4.0]]
 [Course [courseNumber=22002, courseYear=2019, courseName=Combinatorial Optimization, teacher=van den Heuvel, ects=4.0]]
 </sample-output>

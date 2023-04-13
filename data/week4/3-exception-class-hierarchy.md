@@ -17,9 +17,14 @@ In your own small projects, you may end up with a few classes which use inherita
 However, many useful libraries, which you are likely to end up using, make extensive use of it. Often these libraries
 have a lot of classes, which can be daunting to the uninitiated, but with a diagram it is often easy to understand
 the structure of these libraries. For example, when you create Graphical User Interfaces (GUIs) there are different
-classes that represent components (e.g. a button, a text field) and containers that contain multiple components but
-are also classes themselves. They also contain classes that allow you to specify the layout of components, and
+classes that represent components (e.g. a button, a text field) and containers that are components themselves and
+can contain one or more other components themselves (e.g. a tab-pane).
+They also contain ccomponents that allow you to specify the layout of components, and
 classes that help specify actions, that can for example be used if a user clicks a button.
+Typically, for each type of component there is a specific class that has some general `Component` class as a super-class,
+whereas only some of them will have the `Container` class as a super-class,
+which by itself can also have `Component` as a super-class.
+
 
 Understanding such hierarchies of classes, a *class hierarchy diagram* provides insight into the structure of
 a library you are using. In these diagrams, we follow the following conventions:
