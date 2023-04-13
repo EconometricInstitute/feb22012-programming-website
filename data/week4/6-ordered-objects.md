@@ -7,7 +7,7 @@ ready: true
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
-- You are aware of Java's Comparable interface and know how to implement the compareTo method in your own classes
+- You are aware of Java's Comparable interface and know how to implement the compareTo method in your own classes.
 - You know what is Java's Comparator interface and how to implement the compare method.
 - You can explain the difference between the compareTo method and the compare method and when to use which.
 - You know how to sort list elements using multiple criteria (e.g., you know how to sort a person based on name and age).
@@ -43,9 +43,9 @@ public class Subscription {
 
 For the following examples, is there a natural order?
 ```java
-new Subscription(30,1000);
+new Subscription(30, 1000);
 new Subscription(15, 250);
-new Subscription(5,20);
+new Subscription(5, 20);
 new Subscription(10, 15);
 ```
 
@@ -106,6 +106,7 @@ public class MyDouble implements Comparable<MyDouble> {
 ```
 
 With a `String`, you can even delegate the comparison to the compareTo function of the `String` class! For instance, like this:
+
 ```java
 public class MyText implements Comparable<MyText> {
     private final String text;
@@ -201,7 +202,6 @@ for (Member m : members) {
 
 <sample-output>
 
-```
 mikael (182)
 matti (187)
 ada (184)
@@ -209,7 +209,6 @@ ada (184)
 mikael (182)
 ada (184)
 matti (187)
-```
 
 </sample-output>
 
@@ -278,8 +277,8 @@ and if we assign the following tasks to the compiler:
 
 ```java
 ArrayList<Subscription> subs = new ArrayList<>();
-subs.add(new Subscription(5,20));
-subs.add(new Subscription(30,1000));
+subs.add(new Subscription(5, 20));
+subs.add(new Subscription(30, 1000));
 subs.add(new Subscription(10, 15));
 subs.add(new Subscription(15, 250));
 System.out.println(subs);
@@ -293,11 +292,9 @@ it would print the following:
 
 <sample-output>
 
-```
 [(price: 5.0, limit: 20 MB), (price: 30.0, limit: 1000 MB), (price: 10.0, limit: 15 MB), (price: 15.0, limit: 250 MB)]
 [(price: 5.0, limit: 20 MB), (price: 10.0, limit: 15 MB), (price: 15.0, limit: 250 MB), (price: 30.0, limit: 1000 MB)]
 [(price: 30.0, limit: 1000 MB), (price: 15.0, limit: 250 MB), (price: 5.0, limit: 20 MB), (price: 10.0, limit: 15 MB)]
-```
 
 </sample-output>
 

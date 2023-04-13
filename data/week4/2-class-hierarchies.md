@@ -46,12 +46,13 @@ String text = "text";
 Object textString = text;
 ```
 
-In the examples above, a string variable is represented as both a String type and an Object type. Also, a String-type variable is assigned to an Object-type variable. However, assignment in the other direction, i.e., setting an Object-type variable to a String type, will not work. This is because `Object`-type variables are not of type `String`
+In the examples above, a string variable is represented as both a String type and an Object type. Also, a String-type variable is assigned to an Object-type variable. However, assignment in the other direction, i.e., setting an Object-type variable to a String type, will not work. This is because `Object`-type variables are not of type `String`.
 
 ```java
 Object textString = "another string";
 String text = textString; // WON'T WORK!
 ```
+
 What is this all about?
 
 In addition to each variable's original type, each variable can also be represented by the types of interfaces it implements and classes that it inherits. The String class inherits the Object class and, as such, String objects are always of type Object. The Object class does not inherit a String class, so Object-type variables are not automatically of type String. Take a closer look at the <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html"> String </a> API documentation, in particular at the top of the HTML page.
@@ -65,7 +66,7 @@ The API documentation for the String class begins with a generic header followed
   <img src="../img/material/perinta.gif"/> java.lang.String
 </pre>
 
-The inheritance hierarchy lists all the classes that the given class has inherited. Inherited classes are listed in the order of inheritance, with class being inspected always at the bottom. In the inheritance hierarchy of the String class, we see that the `String` class inherits the `Object` class. *In Java, each class can inherit one class at most*. On the other hand, the inherited class may have inherited another class. As such, a class may indirectly inherit more than a single class.
+The inheritance hierarchy lists all the classes that the given class has inherited. Inherited classes are listed in the order of inheritance, with the class being inspected always at the bottom. In the inheritance hierarchy of the String class, we see that the `String` class inherits the `Object` class. *In Java, each class can inherit one class at most*. On the other hand, the inherited class may have inherited another class. As such, a class may indirectly inherit more than a single class.
 
 The inheritance hierarchy can also be thought of as a list of the different types that the class implements.
 
@@ -100,13 +101,11 @@ printer.printManyTimes(words, 3);
 
 <sample-output>
 
-```
-o
-o
+ o
+ o
 [polymorphism, inheritance, encapsulation, abstraction]
 [polymorphism, inheritance, encapsulation, abstraction]
 [polymorphism, inheritance, encapsulation, abstraction]
-```
 
 </sample-output>
 
@@ -148,7 +147,7 @@ public class Printer {
 }
 ```
 
-The `printCharacters` method can be passed any object that implements the `CharSequence` interface. These include `String` as well as `StringBuilder`, which is often more efficient for building `String` objects step by step than by using the `+` operator to repeatedly concatenate `String` objects. The `printCharacters` method prints each character of a given object on its own line.
+The `printCharacters` method can be passed any object that implements the `CharSequence` interface. These include `String` as well as `StringBuilder`, which is often more efficient for building `String` objects step by step than using the `+` operator to repeatedly concatenate `String` objects. The `printCharacters` method prints each character of a given object on its own line.
 
 ```java
 Printer printer = new Printer();
@@ -160,13 +159,11 @@ printer.printCharacters(string);
 
 <sample-output>
 
-```
 w
 o
 r
 k
 s
-```
 
 </sample-output>
 

@@ -7,7 +7,7 @@ ready: true
 
 <text-box variant='learningObjectives' name='Learning Objectives'>
 
-- You are aware of the utility methods in the `Collections` class that can help you deal with `Collection` objects
+- You are aware of the utility methods in the `Collections` class that can help you deal with `Collection` objects.
 
 </text-box>
 
@@ -40,13 +40,13 @@ The most commonly used `Map` is the `HashMap`.
 
 ### Collections class
 
-Java contains a number of classes that provide handy, `static` utility methods. Example of this you may have see before are
+Java contains a number of classes that provide handy, `static` utility methods. Examples of this you may have see before are
 `Math`, using `Math.pow()` or `Math.sin()`, or `Arrays`, using `Arrays.toString()` to convert an array to a string you can
 print conveniently.
 
-There is a similar class with useful utility methods that can be used to deal with all kinds of `Collection` objects.
+`Collections` is a similar class with useful utility methods that can be used to deal with all kinds of `Collection` objects.
 
-Some useful methods for List types:
+Some useful methods for `List` types:
 
 ```java
 public static <T extends Comparable<? super T>> void sort(List<T> list)
@@ -70,10 +70,12 @@ public static <T> T min(Collection<? extends T> coll, Comparator<? super T> comp
 public static int frequency(Collection<?> c, Object o)
 ```
 
+For both `min` and `max`, if the type `T` implements the `Comparable` interface, the `Comparator` doesn't have to be passed.
+
 We can find the minimum or maximum value in any `Collection` (so this works for
 both `Set` and `List` objects) according to an order specified by a given `Comparator`
 with the `min` and `max` methods. The `frequency` method can be used to determine
-how often a certain element appeart in a `Collection`, which will work on a `Set`
+how often a certain element appears in a `Collection`, which will work on a `Set`
 and a `List`, even though a typical `Set` will contain an element at most once.
 
 If we want to return a version of a `List`, `Set` or `Map` that cannot be modified (and we don’t want to copy it),
@@ -130,18 +132,18 @@ Integer greatest = Collections.max(numbers);
 
 Now that you have seen the different collection types, determine for each of the following use cases
 which data structure (e.g. `LinkedList`, `ArrayList`, `HashSet`, `TreeSet`, `HashMap` or `TreeMap`)
-you would prefer to use..
+you would prefer to use.
 
-1. You have set of unique specimens, each with an unique numerical identifier. You want to be able to keep tracks of which specimens were involved in various experiments, but do not care about the order or frequency of occurrence. You also want to be able to access a subset from those specimens within a certain of ID's.
+1. You have set of unique specimens, each with an unique numerical identifier. You want to be able to keep tracks of which specimens were involved in various experiments, but do not care about the order or frequency of occurrence. You also want to be able to access a subset from those specimens within a certain range of IDs.
 2. There is an interface `EventType` with different classes implementing this interface. You want to keep track how often each `EventType` occurs during a simulation. There is no natural order of `EventType` objects available.
 3. You need to analyze the history of `Product` objects that are viewed by a user of your store's website. The order of the products that were visited is important and you need to have quick access to products at various locations in the list.
 4. You want to keep track of `Task` objects that represent work you still need to perform in a first-in first-out order. After a task is completed, you want to remove it, and when a new task comes up you want to add it.
-5. You want to associate the names of different persons with those persons' phone numbers. Preferably, you want to have the person's names in alphabetical order when you print them.
+5. You want to associate the names of different persons with those persons' phone numbers. Preferably, you want to have the persons' names in alphabetical order when you print them.
 6. You write an algorithm that wants to visit all `Location` objects in a certain `Environment`. While exploring, you want to keep track of `Location` objects you have visited at least once. No natural order of `Location` objects is available.
 
 <Solution>
 
-1. Here, a `TreeSet<Integer>` or `TreeSet<Long>` could be appropriate, as these support selecting a sub-range of ID's. Furthermore, they keep only track of unique occurrences which is sufficient for this use case.
+1. Here, a `TreeSet<Integer>` or `TreeSet<Long>` could be appropriate, as these support selecting a sub-range of IDs. Furthermore, they keep only track of unique occurrences which is sufficient for this use case.
 2. Here a `HashMap<EventType,Integer>` is appropriate. The event types are the keys, and the values correspond to the currently held counts. When a new event is observed, the count can be updated in the `HashMap`. A `TreeMap` is not appropriate since we can not easily get an order of the `EventType` objects.
 3. Since order is important, we should use a `List<Product>`. In this particular case, the `ArrayList<Product>` is most appropriate, since quick access of elements at different indices is desired.
 4. Since we want to maintain a first-in first-out order, and we only need to add and remove from the two ends, a `Deque` is appropriate. Thus, a `LinkedList<Task>` is the only option we can select.
