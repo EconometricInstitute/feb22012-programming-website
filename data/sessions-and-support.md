@@ -13,9 +13,9 @@ designed to be a self-study course, where the examination through exercises diff
 
 For details regarding the organisation of these different courses we refer you to their respective Canvas pages:
 
-* [Canvas page FEB22012 Programmeren](https://canvas.eur.nl/courses/40012)
-* [Canvas page FEB22012X Programming](https://canvas.eur.nl/courses/40013)
-* Canvas page FEB61003 Programming (SPOC): to be announced here
+* [Canvas page FEB22012 Programmeren](https://canvas.eur.nl/courses/43880)
+* [Canvas page FEB22012X Programming](https://canvas.eur.nl/courses/44097)
+* [Canvas page FEB61003 Programming (SPOC)](https://canvas.eur.nl/courses/43859)
 
 ### Who is teaching? (FEB22012 and FEB22012X)
 
@@ -24,16 +24,17 @@ Paul Bouman: _Course Organization, Lectures, Exam and Assignments_
 Contact us via [eb-feb22012@ese.eur.nl](mailto:eb-feb22012@ese.eur.nl). This will get you a faster response than sending e-mails to our personal mailboxes,
 as more people will keep an eye on the course e-mail. Course related e-mails in my personal mailbox will get very low priority.
 
-Teaching Assistants (2022-2023) in the _Tutorials_ of FEB22012 and FEB22012X:
+Teaching Assistants (2023-2024) in the _Tutorials_ of FEB22012 and FEB22012X:
 
-* Danique Thaens
-* Emma van der Leeden
-* Gonem Lau
-* Joost van Ginkel
-* Kamlesh Jagesser
-* Mirte van Dijk
-* Twan Mulder
-* Yassine Ben Haddou
+* Daniel Enzlin
+* Daris Fadhilah
+* Erwin van der Bij
+* Floris Beks
+* Julia op den Akker
+* Mateusz Rozalski
+* Patrick Huizinga
+* Paulo de Souza Miranda
+* Roeland Schuiling
 
 ### Who is teaching? (FEB61003)
 
@@ -43,9 +44,9 @@ Support for FEB61003 is provided by Pedro José Correia Duarte and Paul Bouman.
 
 Support for this course will mainly be provided through scheduled sessions and if necessary via e-mail.
 For an overview of when the sessions take place, see the online timetable:
-* [FEB22012 Programmeren](https://timetables.eur.nl/link?timetables.0.key=FEB22012&timetables.0.type=module&timetables.0.source=2022&timetables.1.key=FEB22012_2022&timetables.1.type=timeedit_course&timetables.1.source=TimeEdit&ignoreEmpty=true&ignoreNotFound=true&view=list).
-* [FEB22012X Programming](https://timetables.eur.nl/link?timetables.0.key=FEB22012X&timetables.0.type=module&timetables.0.source=2022&timetables.1.key=FEB22012X_2022&timetables.1.type=timeedit_course&timetables.1.source=TimeEdit&ignoreEmpty=true&ignoreNotFound=true&view=list)
-* [FEB61003 Programminig (SPOC)](https://timetables.eur.nl/link?timetables.0.key=FEB61003&timetables.0.type=module&timetables.0.source=2022&timetables.1.key=FEB61003_2022&timetables.1.type=timeedit_course&timetables.1.source=TimeEdit&ignoreEmpty=true&ignoreNotFound=true&view=list)
+* [FEB22012 Programmeren](https://timetables.eur.nl/link?timetables.0.key=FEB22012&timetables.0.type=module&timetables.0.source=2023&timetables.1.key=FEB22012_2023&timetables.1.type=timeedit_course&timetables.1.source=TimeEdit&ignoreEmpty=true&ignoreNotFound=true&view=list).
+* [FEB22012X Programming](https://timetables.eur.nl/link?timetables.0.key=FEB22012X&timetables.0.type=module&timetables.0.source=2023&timetables.1.key=FEB22012X_2023&timetables.1.type=timeedit_course&timetables.1.source=TimeEdit&ignoreEmpty=true&ignoreNotFound=true&view=list)
+* [FEB61003 Programminig (SPOC)](https://timetables.eur.nl/link?timetables.0.key=FEB61003&timetables.0.type=module&timetables.0.source=2023&timetables.1.key=FEB61003_2023&timetables.1.type=timeedit_course&timetables.1.source=TimeEdit&ignoreEmpty=true&ignoreNotFound=true&view=list)
 
 ### Communcation and Netiquette
 
