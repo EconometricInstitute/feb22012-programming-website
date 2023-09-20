@@ -54,7 +54,7 @@ public static void sort(ArrayList<Dice> input) {
                 greatestDice = jDice;
             }
         }
-        // Swap the current position with the smallest
+        // Swap the current position with the greatest
         input.set(greatest, input.get(i));
         input.set(i, greatestDice);
     }
@@ -77,7 +77,7 @@ public static void sort(ArrayList<PokerHand> input) {
                 greatestDice = jDice;
             }
         }
-        // Swap the current position with the smallest
+        // Swap the current position with the greatest
         input.set(greatest, input.get(i));
         input.set(i, greatestDice);
     }
@@ -154,7 +154,7 @@ public static void sort(ArrayList<GameValue> input) {
                 greatestDice = jDice;
             }
         }
-        // Swap the current position with the smallest
+        // Swap the current position with the greatest
         input.set(greatest, input.get(i));
         input.set(i, greatestDice);
     }
