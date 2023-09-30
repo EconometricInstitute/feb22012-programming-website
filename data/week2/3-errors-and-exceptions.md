@@ -286,15 +286,13 @@ public void readFile(File f) throws FileNotFoundException {
          lines.add(scan.nextLine());
      }
    }
-   catch (Exception e) {
-      System.out.println("Error: " + e.getMessage());
-   }
 }
 ```
 
-In the above example, the recourse is right behind the try statement. Now the resource is automatically closed when block exits. Now references to files can "disappear", because we do not need them anymore. If the resources are not closed, the operating system sees them as being in use until the program is closed.
-Also, no `catch` is required, since the `FileNotFoundException` is thrown by the method. However, you can still add a catch block like is done here, to get information if an exception was thrown anyways.
-
+In the above example, the `Scanner` resource is declared in the parentheses directly after try statement. Now the resource is automatically closed when block exits, no matter the reason.
+If the resources are not closed, the operating system sees them as being in use until the program is closed.
+In the example no `catch` block is required, since the `FileNotFoundException` is thrown by the method. However, it is possible to use a `catch` block together with a `try-with-resources`.
+In that case, the `try` statements has two meanigs: it is used to manage resources and it is used to perform exception handling.
 
 <text-box variant='hint' name='Blast from the past: try - finally'>
 
