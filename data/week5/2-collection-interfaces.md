@@ -1,6 +1,6 @@
 ---
 path: '/week5/2-collection-interfaces'
-title: 'Collection interfaces'
+title: 'The Collection and Iterable interfaces'
 hidden: false
 ready: true
 ---

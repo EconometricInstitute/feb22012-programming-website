@@ -1,6 +1,6 @@
 ---
 path: '/week5/6-collections-utilities'
-title: 'Collection interfaces'
+title: 'The Collections utility class'
 hidden: false
 ready: true
 ---
