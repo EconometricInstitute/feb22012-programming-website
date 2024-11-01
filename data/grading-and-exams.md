@@ -73,9 +73,7 @@ The final grade is still checked by humans: if they find mistakes that were unfo
 
 ## Exam
 
-For FEB22012 and FEB22012X there is an exam which counts for 40%. In order to obtain a valid grade for this course, you need to obtain at least a 3 for the exam. Furthemore, in order to obtain a valid grade for this course you need to obtain at least a 3 on average for the assignments.
+For FEB22012 and FEB22012X there is an exam which counts for 40%. In order to obtain a valid grade for this course, you need to obtain at least a 3 for the exam. Furthemore, in order to obtain a valid grade for this course you need to obtain at least a 3 on average for the assignments. For FEB61003, only assignments are necessary.
 
 The exam is a "paper" exam, where you do not have access to the compiler or a programming environment such as IntelliJ or Eclipse. By working extensively on the assignments, it is expected that you are able to write typical small pieces of programs
 in accordance with all the theory and rules that are learned during the course. Roughly 50% of the exam consists of theory questions, and 50% asks you to write code this way.
-
-There is currently a lot of uncertainty surrounding the time, place and way the exam is done. If more information becomes available, this will be communicated via Canvas announcements.

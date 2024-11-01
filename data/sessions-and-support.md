@@ -15,6 +15,7 @@ For details regarding the organisation of these different courses we refer you t
 
 * [Canvas page FEB22012 Programmeren](https://canvas.eur.nl/courses/47744)
 * [Canvas page FEB22012X Programming](https://canvas.eur.nl/courses/47863)
+* [Canvas page FEB61003 Programming (SPOC)](https://canvas.eur.nl/courses/47919)
 
 ### Who is teaching? (FEB22012 and FEB22012X)
 
@@ -32,6 +33,13 @@ Teaching Assistants (2024-2025) in the _Tutorials_ of FEB22012 and FEB22012X:
 * Liselot Goossen
 * Paulo de Souza Miranda
 
+### Who is teaching? (FEB61003)
+
+Paul Bouman: _Course Organization, Lectures and Assignments_
+Khue Nguyen: _General Support, Answering Questions_
+
+Contact us via [eb-feb61003@ese.eur.nl](mailto:eb-feb61003@ese.eur.nl). If you want to make an appointment via MS Teams or in person, please feel free to reach
+out to this mailbox.
 
 ### Support
 
@@ -55,7 +63,7 @@ Since some things are still uncertain and part of the activities take place onli
 
 Lecture videos emphasize important theory. Before or afterwards you can read about this material on the website.
 In FEB22012 and FEB22012X you can use tutorials to get help and ask questions about the assignments while working on them.
-In FEB61003 there are question hours available for support.
+In FEB61003 there are question hours available by request via e-mail.
 Also, in order to be succesful in the assignments, it is vital to use the automated feedback provided by Codegrade. It is therefore important to start working on assignments early, so you have enough time to process the feedback. This also allows you to ask specific questions if you are attending tutorials.
 Assignments that are not able to pass the automated feedback do not get points.
 When working on assignments, make sure you understand how the discussed theory is brought to practice. This is important for the exam. There are some self checks on the different pages of this website that can also be used to prepare for the exam. There are also practice exams available.
