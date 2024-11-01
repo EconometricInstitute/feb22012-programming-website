@@ -1,5 +1,5 @@
 ---
-path: "/sessions-and-support"
+path: "/sessions-and-support-old"
 title: "Sessions and support (old)"
 hidden: true
 information_page: true
