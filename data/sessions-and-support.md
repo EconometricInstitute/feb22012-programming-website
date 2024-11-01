@@ -35,11 +35,10 @@ Teaching Assistants (2024-2025) in the _Tutorials_ of FEB22012 and FEB22012X:
 
 ### Who is teaching? (FEB61003)
 
-Paul Bouman: _Course Organization, Lectures and Assignments_
-Khue Nguyen: _General Support, Answering Questions_
+* Paul Bouman: _Course Organization, Lectures and Assignments_
+* Khue Nguyen: _General Support, Answering Questions_
 
-Contact us via [eb-feb61003@ese.eur.nl](mailto:eb-feb61003@ese.eur.nl). If you want to make an appointment via MS Teams or in person, please feel free to reach
-out to this mailbox.
+Contact us via [eb-feb61003@ese.eur.nl](mailto:eb-feb61003@ese.eur.nl). If you have questions related to the course, its contents or want to make an appointment via either online or in person, please feel free to reach out to this mailbox.
 
 ### Support
 
