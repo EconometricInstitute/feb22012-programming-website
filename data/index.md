@@ -27,3 +27,4 @@ Lectures are provided via Panopto videos, of which the slides are available on C
 
 ## Canvas Page
 Note that more information can ben found on the Canvas page. Visit either the [Canvas Page for the Dutch Course FEB22012](https://canvas.eur.nl/courses/40012) or the [Canvas Page for the English Course FEB22012X](https://canvas.eur.nl/courses/40013).
+There is also the [Canvas Page for the extracurricular course FEB61003 Programming (SPOC)](https://canvas.eur.nl/courses/47919).
