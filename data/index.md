@@ -26,5 +26,5 @@ If you feel that you need some further background material, we advise you to loo
 Lectures are provided via Panopto videos, of which the slides are available on Canvas. During tutorials, you can ask questions and support for the work on your assignments. Furthermore, there are weekly demonstration and question hours, where the teacher will provide a hands-on demonstration and provide additional the topics of the previous week based on questions and remarks from the audience. See an overview of the provided sessions [on this page](/sessions-and-support).
 
 ## Canvas Page
-Note that more information can ben found on the Canvas page. Visit either the [Canvas Page for the Dutch Course FEB22012](https://canvas.eur.nl/courses/40012) or the [Canvas Page for the English Course FEB22012X](https://canvas.eur.nl/courses/40013).
-There is also the [Canvas Page for the extracurricular course FEB61003 Programming (SPOC)](https://canvas.eur.nl/courses/47919).
+Note that more information can ben found on the Canvas page. Visit either the [Canvas Page for the Dutch Course FEB22012](https://canvas.eur.nl/courses/51095) or the [Canvas Page for the English Course FEB22012X](https://canvas.eur.nl/courses/50821).
+There is also the [Canvas Page for the extracurricular course FEB61003 Programming (SPOC)](https://canvas.eur.nl/courses/51090).

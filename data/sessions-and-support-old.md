@@ -63,3 +63,40 @@ In FEB22012 and FEB22012X you can use tutorials to get help and ask questions ab
 In FEB61003 there are question hours available for support.
 Also, in order to be succesful in the assignments, it is vital to use the automated feedback provided by Codegrade. It is therefore important to start working on assignments early, so you have enough time to process the feedback. This also allows you to ask specific questions during tutorials. Assignments that are not able to pass the automated feedback do not get points.
 When working on assignments, make sure you understand how the discussed theory is brought to practice. This is important for the exam. There are some self checks on the different pages of this website that can also be used to prepare for the exam. There are also practice exams available.
+
+
+### (part from 2024)
+
+Lecture videos emphasize important theory. Before or afterwards you can read about this material on the website.
+In FEB22012 and FEB22012X you can use tutorials to get help and ask questions about the assignments while working on them.
+In FEB61003 there are question hours available by request via e-mail.
+Also, in order to be succesful in the assignments, it is vital to use the automated feedback provided by Codegrade. It is therefore important to start working on assignments early, so you have enough time to process the feedback. This also allows you to ask specific questions if you are attending tutorials.
+Assignments that are not able to pass the automated feedback do not get points.
+When working on assignments, make sure you understand how the discussed theory is brought to practice. This is important for the exam. There are some self checks on the different pages of this website that can also be used to prepare for the exam. There are also practice exams available.
+
+Within this course, the goal is to increase your programming skill through experience, and equip you with abstractions and concepts that make it easier to write
+larger and more complicated programs, or write programs that make use of existing large and complicated programs, such as advanced statistical methods,
+machine learning and mathematical programming tools. To achieve this you should spend quite a bit of time working on the assignments to gain this experience. The assignments are carefully designed to
+ensure you have to apply most of the theory you are required to learn for the exam of this course. As such, you can be much more effective during your
+work on the assignments if you study the theory you are supposed to apply.
+
+We suggest that early in each week, preferably on Monday or Tuesday, you watch the video lectures.
+Before or afterwards you can read the .
+Most of the topics on the website have "Test your Knowledge" quizzes at the end of the content.
+These can be used to practice with more theoretical types of questions you can also expect for the exam.
+
+During tutorials within the non-SPOC versions of this course you can get help and ask questions about the assignments while working on them.
+Also, make use of the continuous feedback provided by Codegrade. It is very unlikely you have addressed all edges cases on your first attempt,
+and it is expected you need to fix your code. This type of debugging is also a vital skill when later you do not have access to automated
+tests in Codegrade.
+
+When working on assignments, make sure you understand how the discussed theory is brought to practice. This is important for the exam of FEB22012 and FEB22012X.
+This year, we introduce a page with some *learning questions*, that can help you think about how you are applying the theory from the lecture during your
+assignment work. You do not need to hand in the answers to the learning questions.
+
+While working on the assignments, you will run into many errors and mistakes. Often, such moments are when you can learn a lot, as resolving them will result in important AHA moment.
+If you are already able to write all programs without any mistakes you would not need this course. However, such situations can also make you feel frustrated or feel insecure.
+When that happens, it is often a good idea to take a short break away from the computer.
+In order to allow yourself sufficient time for such breaks, it is important to start early and plan to have multiple moments to work on the assignment and avoid doing everything one day before the deadline.
+Also, avoid that you struggle for days on the same problem. If you feel you struggled a long time on the same issue, please contact us via e-mail on  [eb-feb22012@ese.eur.nl](mailto:eb-feb22012@ese.eur.nl).
+
