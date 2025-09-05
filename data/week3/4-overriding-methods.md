@@ -80,7 +80,7 @@ SimpleFunction f1 = new SimpleFunction();
 System.out.println(f1.compute(2));
 
 double[] coeffs = {2,3,1};
-Polynomial f2 = New Polynomial(coeffs);
+Polynomial f2 = new Polynomial(coeffs);
 System.out.println(f2.compute(2));
 
 SimpleFunction f3 = f2;
