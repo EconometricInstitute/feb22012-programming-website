@@ -324,7 +324,7 @@ The first category is types of exceptions that **may** be caught, such as the `I
 Other types of exceptions **must** be caught or declared in the method header using `throws`. These are called **checked exceptions**, such as the `IOException` and the `FileNotFoundException`.
 Some problems are so severe that they will stop your program if they occur. These are called `Error` instead of `Exception`, such as the `OutOfMemoryError` and `StackOverflowError`.
 
-When unchecked exception can occur in your program, your program will compile without problems and when something goes wrong, the error will typically not be handled and your program
+When an unchecked exception can occur in your program, your program will compile without problems and when something goes wrong, the error will typically not be handled and your program
 stops displaying an exception. With checked exceptions, we have to make sure that their are either handled using a `try-catch`, or delegate the responsibility to handle them using a
 `throws` keyword in the method header.
 
@@ -350,7 +350,7 @@ A programmer can also leave the exception unhandled and shift the responsibility
 We can shift the responsibility of handling an exception forward by throwing the exception out of a method, and adding notice of this to the declaration of the method.
 This means that between the open and close parentheses that hold the arguments, and before the `{` symbol that indicates the start of the block with the implementation
 of the method, we write `throws ExceptionType` where `ExceptionType` is the type of the `Exception` that can be thrown. To indicate multiple different exception types
-can be thrown, they are separated by comma's. And example where we indicate that a method may throw a `FileNotFoundException` is written as follows.
+can be thrown, they are separated by comma's. An example where we indicate that a method may throw a `FileNotFoundException` is written as follows.
 
 ```java
 public int readFile() throws FileNotFoundException {
