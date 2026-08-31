@@ -67,7 +67,7 @@ the more abstract theoretical concepts on the exam.
 ## Codegrade
 
 Assignments are handed in via CodeGrade, which can be accessed by clicking on the assignment in Canvas.
-Codegrade has a feature “Continuous Feedback”. When you **hand in your code early**, you get feedback telling you which parts of you code do not work yet. Parts of the assignment that do not pass the continuous feedback will not receive any points during your final grade.
+Codegrade has a feature "Continuous Feedback". When you **hand in your code early**, you get feedback telling you which parts of you code do not work yet. Parts of the assignment that do not pass the continuous feedback will not receive any points during your final grade.
 The final grade is still checked by humans: if they find mistakes that were unfortunately not found by Codegrade, you can still lose points.
 
 
