@@ -92,10 +92,10 @@ This section looks as follows:
 </dependencies>
 ```
 
-In XML, comments are contained between `<!–` and `–>` symbols. Within the `dependencies` definition above, a single `dependency` is defined, which refers to the groupId, artifactId and version 3.6.1 of the Apache Commons Math library.
+In XML, comments are contained between `<!-` and `->` symbols. Within the `dependencies` definition above, a single `dependency` is defined, which refers to the groupId, artifactId and version 3.6.1 of the Apache Commons Math library.
 This instructs the Maven plugin of Eclipse that it should download the Apache Commons Math library with this particular version (if it has not already done so before) and all its dependencies, and add it to our project.
 If we want to add more libraries, we can just add more `<dependency> ... </dependency>` definitions underneath the first one, as long as they are contained between the `<dependencies>` and `</dependencies>` tags of the file.
-Alternatively, you can use Eclipse’s graphical editor for the `pom.xml` file, which contains a tab “Dependencies” that allow you to add dependencies by entering a groupId, an artifactId and a version of the libraries you want to add to your project.
+Alternatively, you can use Eclipse's graphical editor for the `pom.xml` file, which contains a tab “Dependencies” that allow you to add dependencies by entering a groupId, an artifactId and a version of the libraries you want to add to your project.
 
 When you add dependencies to your project, usually the required libraries are immediately added and downloaded by Eclipse.
 In some cases, it may run into trouble, for example if an internet connection is not available to download the libraries you requested.
@@ -224,7 +224,11 @@ which should print:
 ## XChart
 Another feature commonly required when working with quantitative data is plotting functionality. One Java library that provides ways to plot data is the [XChart](https://knowm.org/open-source/xchart/) library, which is relatively easy to use to make plots, but also has many options for customization of the plots.
 
-The main classes of the library can be found in the package `org.knowm.xchart`, for which [Javadoc documentation](https://knowm.org/javadocs/xchart/org/knowm/xchart/package-summary.html) is available.
+The main classes of the library can be found in the package `org.knowm.xchart`, for which [Javadoc documentation](https://javadoc.io/doc/org.knowm.xchart/xchart/3.9.0/index.html) is available.
+
+<text-box variant='hint' name='Recent Version'>
+Recently, a new series of XChart release (4.x) were released. Since this is very new, we still work with the previous series, 3.x in this course, as there are some breaking changes. Fortunately, with maven we have to explicitly say which version to use, and version 3.9.0 works fine with the explanation below.
+</text-box>
 
 In general charts have many customization options, which makes defining constructors for them sometimes rather complicated, as they would require many arguments. The disadvantage of having constructors with many arguments that have similar types, is that it becomes hard to remember for a user of that class in which order all arguments should be passed. A common way to avoid that issue is to use the **Builder** pattern.
 
