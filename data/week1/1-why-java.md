@@ -165,7 +165,7 @@ Rewrite the following method so that it contains a for-loop rather than a while 
 public List<String> makeList() {
     List<String> result = new ArrayList<>();
     while (moreComing()) {
-        result.add(nextString())
+        result.add(nextString());
     }
     return result;
 }
@@ -179,7 +179,7 @@ Note that a for is unnatural for this function. However, we are allowed to leave
 public List<String> makeList() {
     List<String> result = new ArrayList<>();
     for (;moreComing();) {
-        result.add(nextString())
+        result.add(nextString());
     }
     return result;
 }
